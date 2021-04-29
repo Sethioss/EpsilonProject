@@ -7,13 +7,6 @@ public class Event : MonoBehaviour
 {
     public int IDdialogue = 0;
     public int IDgame = 0;
-    public Text IDDia;
-    public Text IDGa;
-    private void Update()
-    {
-         IDDia.text.Contains("ID Dialogue" + IDdialogue);
-         IDGa.text.Contains("ID Game" + IDgame);
-    }
     public void PositifIDDia()
     {
         ++IDdialogue;
