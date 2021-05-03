@@ -30,4 +30,9 @@ public class CameraHacking : MonoBehaviour
     {
         SceneManager.LoadScene(sceneID);
     }
+
+    public void SetNextDIalogue(TextAsset data)
+    {
+        DialogueManager.Instance.dialogueFile = data;
+    }
 }

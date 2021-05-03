@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvents;ElementEvents;DialogueEvents
-Hey, how are you <i>doing</i>?;Doing okay, what about you?;I'm doing fine as well, glad to hear you're okay!;;1;;<SET>testSet +'358' ;<SCENE>OtherSceneTest
+Hey, how are you <i>doing</i>?;Doing okay, what about you?;I'm doing fine as well, glad to hear you're okay!;;1;;<SET>testSet +'358' ;
 ;Not very good, sorry...;Oh, what's wrong <USERNAME>?;;2;<SET>testSet +'28a5' <SET>testSetFloat *2;;
 ;Third response;A third response? I see huh;;0,2;;;
 ;;;;;;;
@@ -15,4 +15,4 @@ And a fourth one;A fourth one? Whatever;You could act <s>a bit</s> more excited!
 Hey, do you want to go to the second branch?;Sure, why <u>not</u>?;;2;0;<BRANCH>2;;
 ;No thanks;;;;;;
 ;;;;;;;
-Okay okay... Waiting...;;;4;;;;
+Okay okay... Waiting...;;;4;;;<SCENE>CameraMinigame;

@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
-Second dialog coming up!;Finally!;Don't be an impatient one;7;3;;<SET>testSet +'358' ;<SET>testSetFloat *4
+Second dialog coming up!;Finally!;Don't be an impatient one;3;3;;<SET>testSet +'358' ;<SET>testSetFloat *4
 ;;;;;;;
 Let's step this up, alright?;Sure, let's do just this!;I'm glad to see you're pumped!;2;0,2;;;
 ;Nah, don't wanna...;You lazy man;;4;;;

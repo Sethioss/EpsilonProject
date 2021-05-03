@@ -44,6 +44,11 @@ public class DialogueDisplayer : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.dialogueFile);
+    }
+
     private void Update()
     {
         if (proceed)

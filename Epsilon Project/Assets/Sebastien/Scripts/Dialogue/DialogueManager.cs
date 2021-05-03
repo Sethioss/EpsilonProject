@@ -7,8 +7,11 @@ using UnityEngine.SceneManagement;
 public class DialogueManager : MonoBehaviour
 {
     public TextAsset dialogueFile;
+    [HideInInspector]
     public CSVReader reader;
+    [HideInInspector]
     public DialogueHolder holder;
+    [HideInInspector]
     public DialogueDisplayer displayer;
 
     public string testSet { get { return m_testSet; } set { m_testSet = value; } }
@@ -48,15 +51,17 @@ public class DialogueManager : MonoBehaviour
         reader = CSVReader.Instance;
         holder = DialogueHolder.Instance;
         displayer = DialogueDisplayer.Instance;
+
+        //CreateAndStartDialogue(dialogueFile.name);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             CreateAndStartDialogue(dialogueFile.name);
         }
-    }
+    }*/
 
     public void CreateAndStartDialogue(string dialogueFileName)
     {
