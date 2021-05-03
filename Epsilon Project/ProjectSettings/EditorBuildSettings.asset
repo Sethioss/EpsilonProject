@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TimerTest.unity
     guid: 5400f2969fa6df447be72314759af148
+  - enabled: 1
+    path: Assets/Scenes/CameraMinigame.unity
+    guid: 3b7257ff96585284f89024dc91ae8796
   m_configObjects: {}
