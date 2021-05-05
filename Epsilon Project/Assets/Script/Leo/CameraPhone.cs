@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Android;
 
 public class CameraPhone : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class CameraPhone : MonoBehaviour
     public RawImage background;
     public AspectRatioFitter fit;
 
+    private void Awake()
+    {
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+    }
     private void Start()
     {
         defaultTexture = background.texture;
