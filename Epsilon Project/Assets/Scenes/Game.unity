@@ -942,7 +942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec24589b50d4cf46b22bb03167f062b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userName: Sebilol
 --- !u!4 &1849110191
 Transform:
   m_ObjectHideFlags: 0
@@ -1072,9 +1071,41 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: m_testSet
+      value: abn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
       propertyPath: dialogueFile
       value: 
       objectReference: {fileID: 4900000, guid: 9ad692084cf4df542b24db3c3ffc0766, type: 3}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: debugFunction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: debugKeywords
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: m_testSetFloat
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: currentDialogueFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 9ad692084cf4df542b24db3c3ffc0766, type: 3}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: debugCommandKeywords
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202412841198674680, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
+      propertyPath: debugReadCommandKeywords
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8202412841198674681, guid: 27fc75a1d0624a1469e2ec6d69f3edcb, type: 3}
       propertyPath: m_RootOrder
       value: 4

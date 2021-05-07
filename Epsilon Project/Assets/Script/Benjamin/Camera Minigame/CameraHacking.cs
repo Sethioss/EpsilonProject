@@ -33,6 +33,6 @@ public class CameraHacking : MonoBehaviour
 
     public void SetNextDIalogue(TextAsset data)
     {
-        DialogueManager.Instance.dialogueFile = data;
+        DialogueManager.Instance.currentDialogueFile = data;
     }
 }
