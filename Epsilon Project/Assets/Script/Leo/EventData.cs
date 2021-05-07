@@ -13,5 +13,4 @@ public class EventData
         IDdialogue = even.IDdialogue;
         IDgame = even.IDgame;
     }
-    
 }

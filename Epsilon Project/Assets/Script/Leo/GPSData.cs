@@ -14,5 +14,4 @@ public class GPSData : MonoBehaviour
         Latitude = gps.latitude;
         Longitude = gps.longitude;
     }
-
 }
