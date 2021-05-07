@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class Event : MonoBehaviour
 {
+    public static Event Instance { set; get; }
     public int IDdialogue = 0;
     public int IDgame = 0;
+    private void Start()
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     public void PositifIDDia()
     {
         ++IDdialogue;
@@ -23,10 +29,7 @@ public class Event : MonoBehaviour
     {
         --IDgame;
     }
-    public void SaveEvent()
-    {
-        SaveSystem.SaveEvent(this);
-    }
+    
 
     public void LoadEvent()
     {
@@ -34,5 +37,12 @@ public class Event : MonoBehaviour
 
         IDdialogue = data.IDdialogue;
         IDgame = data.IDgame;
+    }
+    public void SaveEvent()
+    {
+
+        SaveSystem.SaveEvent(this);
+
+
     }
 }

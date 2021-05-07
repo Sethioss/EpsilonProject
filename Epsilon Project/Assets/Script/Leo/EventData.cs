@@ -5,15 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class EventData
 {
-
+    public static EventData Instance { set; get; }
     public int IDdialogue;
     public int IDgame;
-    // etc...
-
-    public EventData (Event even)
+    public EventData(Event even)
     {
         IDdialogue = even.IDdialogue;
         IDgame = even.IDgame;
     }
-
+    
 }

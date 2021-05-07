@@ -27,7 +27,20 @@ public class GPS : MonoBehaviour
         StartCoroutine(StartLocationService());
     }
 
-  
+    public void LoadGPS()
+    {
+        GPSData data = SaveSystem.LoadGPS();
+
+        latitude = data.Latitude;
+        longitude = data.Longitude;
+    }
+    public void SaveGPS()
+    {
+
+        SaveSystem.SaveGPS(this);
+
+
+    }
 
     private IEnumerator StartLocationService()
     {
