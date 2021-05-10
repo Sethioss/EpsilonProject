@@ -56,6 +56,7 @@ public class DialogueDisplayer : MonoBehaviour
     private void Start()
     {
         DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.currentDialogueFile);
+        DialogueManager.Instance.timeManager.ParseStringToTime("01:16:49:10");
     }
 
     private void Update()
@@ -114,7 +115,10 @@ public class DialogueDisplayer : MonoBehaviour
 
         textInBubble.text = message;
 
-        isWaitingForReply = true;
+        if(currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
+        {
+            isWaitingForReply = true;
+        }
         isInitialisation = false;
 
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));

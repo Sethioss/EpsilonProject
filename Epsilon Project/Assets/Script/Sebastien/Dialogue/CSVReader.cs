@@ -160,6 +160,13 @@ public class CSVReader : MonoBehaviour
 
                 case "DMODEL":
                     return SystemInfo.deviceModel;
+
+                case "LAT":
+                    return GPS.Instance.latitude.ToString();
+
+                case "LONG":
+                    return GPS.Instance.longitude.ToString();
+
                 default:
                     return "<" + originalString + ">";
             }
