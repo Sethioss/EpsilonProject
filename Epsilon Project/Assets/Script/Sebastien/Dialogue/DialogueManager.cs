@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     #region Dialogue Manager Components
     private CSVReader reader;
     private DialogueDisplayer displayer;
+    public TimeManager timeManager;
 
     [Header("Dialogue initialisation and list")]
     public TextAsset currentDialogueFile;
@@ -71,6 +72,7 @@ public class DialogueManager : MonoBehaviour
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
+        timeManager = FindObjectOfType<TimeManager>();
     }
 
     #region Debugging
@@ -98,6 +100,7 @@ public class DialogueManager : MonoBehaviour
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
+        timeManager = FindObjectOfType<TimeManager>();
 
         currentDialogueFile = dialogueFile;
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
