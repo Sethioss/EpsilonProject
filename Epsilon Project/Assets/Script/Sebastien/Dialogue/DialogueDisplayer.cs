@@ -7,11 +7,28 @@ using UnityEngine.Events;
 
 public class DialogueDisplayer : MonoBehaviour
 {
+    private static DialogueDisplayer instance;
 
-    private bool proceed = false;
+    public static DialogueDisplayer Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
     private Dialogue currentDialogue;
     private int currentDialogueElementId = 0;
-    private float timeToWait = .5f;
+
+    #region Timing / Display des dialogues
+
+    private float chrono = 0;
+    private string awaitingReaction;
+    private float timeToReach = 1;
+
+    //true = Initialisation Time, false = Reaction Time
+    private bool isInitialisation;
+    private bool isWaitingForReply;
 
     [Header("Message Area")]
     public GameObject messagePanel;
@@ -22,14 +39,7 @@ public class DialogueDisplayer : MonoBehaviour
     public GameObject repliesPanel;
     public GameObject replyButtonPrefab;
 
-    private static DialogueDisplayer instance;
-    public static DialogueDisplayer Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+    #endregion
 
     private void Awake()
     {
@@ -43,33 +53,31 @@ public class DialogueDisplayer : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
     private void Start()
     {
-        DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.dialogueFile);
+        DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.currentDialogueFile);
     }
 
     private void Update()
     {
-        if (proceed)
+        if (!isWaitingForReply)
         {
-            proceed = false;
-
-            if (currentDialogueElementId < currentDialogue.elements.Count)
+            chrono += Time.deltaTime;
+            if (chrono >= timeToReach)
             {
-                ContinueDialogue(currentDialogue, currentDialogueElementId);
-            }
-            else
-            {
-                //Dialogue is finished, action can be taken here
-                if(currentDialogue.endDialogueAction != null)
+                chrono = 0;
+                if (isInitialisation)
                 {
-                    InvokeEvent(currentDialogue.endDialogueAction);
+                    DisplayMessage(currentDialogue.elements[currentDialogueElementId].message);
+                    DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
+                }
+                else
+                {
+                    DisplayReaction(awaitingReaction);
                 }
             }
         }
     }
-
     private void Init()
     {
         currentDialogueElementId = 0;
@@ -79,69 +87,55 @@ public class DialogueDisplayer : MonoBehaviour
         }
     }
 
+    #region Dialogue starting methods
+
     public void StartDialogue(Dialogue dialogue)
     {
         Init();
         currentDialogue = dialogue;
-        ContinueDialogue(currentDialogue, currentDialogueElementId);
+        timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
+        isInitialisation = true;
+        isWaitingForReply = false;
     }
-
-    //Proceeds elements by elements
-    private void ContinueDialogue(Dialogue dialogue, int currentDialogueId)
-    {
-        StartCoroutine(DisplayDialogueElement(dialogue.elements[currentDialogueId]));
-    }
-
     private void StopDialogue(Dialogue dialogueToStop)
     {
         InvokeEvent(dialogueToStop.elements[currentDialogueElementId].elementAction);
         InvokeEvent(dialogueToStop.endDialogueAction);
-        StopAllCoroutines();
-    }
-    IEnumerator DisplayDialogueElement(DialogueElement elementToDisplay)
-    {
-        if (elementToDisplay.index < currentDialogue.elements.Count)
-        {
-            DeleteReplies();
-            timeToWait = elementToDisplay.initiationTime;
-
-            yield return new WaitForSeconds(timeToWait);
-            DisplayMessage(elementToDisplay.message);
-
-            if (elementToDisplay.replies.Count <= 0)
-            {
-                yield return new WaitForSeconds(timeToWait);
-
-                GoToNextElement();
-            }
-            else
-            {
-                DisplayPossibleReplies(elementToDisplay.replies);
-            }
-        }
     }
 
+    #endregion
+
+    #region Element display methods
     private void DisplayMessage(string message)
     {
         GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
-
         GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = message;
 
+        isWaitingForReply = true;
+        isInitialisation = false;
+
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
     }
-
-    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg)
+    private void DisplayPossibleReplies(List<Reply> replies)
     {
-        yield return new WaitForEndOfFrame();
+        for (int i = 0; i < replies.Count; i++)
+        {
+            GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
+            replyButton.GetComponentInChildren<TextMeshProUGUI>().text = replies[i].replyText;
 
-        message.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
+            Reply reply = replies[i];
+
+            replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
+
+            if (replies[i].replyEvent != null)
+            {
+                replyButton.GetComponent<Button>().onClick.AddListener(replies[i].replyEvent);
+            }
+        }
     }
-
     private void DeleteReplies()
     {
         foreach (Transform child in repliesPanel.transform)
@@ -149,52 +143,34 @@ public class DialogueDisplayer : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
-    private void DisplayPossibleReplies(List<Reply> replies)
-    {
-        for (int i = 0; i < replies.Count; i++)
-        {
-            GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
-            replyButton.GetComponentInChildren<TextMeshProUGUI>().text = replies[i].reply;
-
-            Reply reply = replies[i];
-
-            replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
-
-            if(replies[i].replyEvent != null)
-            {
-                replyButton.GetComponent<Button>().onClick.AddListener(replies[i].replyEvent);
-            }
-        }
-    }
-
     private void SendReply(Reply reply)
     {
+        DeleteReplies();
+
         GameObject messagePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
 
         GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
 
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
-        textInBubble.text = reply.reply;
+        textInBubble.text = reply.replyText;
+
+        awaitingReaction = reply.reaction;
+        timeToReach = reply.reactionTime;
+        isWaitingForReply = false;
 
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
-        StartCoroutine(DisplayReaction(reply.reaction, reply.reactionTime));
     }
-
-    IEnumerator DisplayReaction(string reaction, float reactionTime)
+    void DisplayReaction(string reaction)
     {
-        yield return new WaitForEndOfFrame();
-        DeleteReplies();
-        yield return new WaitForSeconds(reactionTime);
-
-        if(reaction.Length > 1)
+        if (reaction.Length > 1)
         {
             GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
             GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
             TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
             textInBubble.text = reaction;
+            isInitialisation = true;
 
             StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
         }
@@ -202,25 +178,35 @@ public class DialogueDisplayer : MonoBehaviour
         GoToNextElement();
 
     }
+    #endregion
 
     private void InvokeEvent(UnityAction action)
     {
-        if(action != null)
+        if (action != null)
         {
             UnityEvent endElementEvent = new UnityEvent();
             endElementEvent.AddListener(action);
             endElementEvent.Invoke();
         }
     }
-
-    //Allower for the Dialogue to continue
     private void GoToNextElement()
     {
-        if(currentDialogue.elements[currentDialogueElementId].elementAction != null)
-        {
-            InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
-        }
+        InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
+
+        chrono = 0;
         currentDialogueElementId++;
-        proceed = true;
+        if (currentDialogueElementId >= currentDialogue.elements.Count)
+        {
+            StopDialogue(currentDialogue);
+        }
+
+        timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
+    }
+    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg)
+    {
+        yield return new WaitForEndOfFrame();
+
+        message.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
     }
 }
