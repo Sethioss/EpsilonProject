@@ -28,6 +28,7 @@ public class MailUI : MonoBehaviour
     public bool isMailToShareSpam;
     int currentMail;
 
+    public SwitchScene switchScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +114,11 @@ public class MailUI : MonoBehaviour
         {
             if((isMailToShareSpam && spamOpen == true)||(isMailToShareSpam == false && spamOpen == false)){ 
             Debug.Log("Yup this was the correct one");
+                switchScene.SwitchGame();
+            }
+            else
+            {
+                Debug.Log("Noooo ! This is not correct");
             }
         }
         else
