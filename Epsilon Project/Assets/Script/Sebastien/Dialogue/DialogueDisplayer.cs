@@ -22,13 +22,12 @@ public class DialogueDisplayer : MonoBehaviour
 
     #region Timing / Display des dialogues
 
-    private float chrono = 0;
     private string awaitingReaction;
-    private float timeToReach = 1;
 
     //true = Initialisation Time, false = Reaction Time
-    private bool isInitialisation;
-    private bool isWaitingForReply;
+    private bool isInitialisation = true;
+    private bool isWaitingForReply = false;
+    private string currentWaitingTime = "00:00:00:01";
 
     [Header("Message Area")]
     public GameObject messagePanel;
@@ -38,6 +37,8 @@ public class DialogueDisplayer : MonoBehaviour
     [Header("Reply area")]
     public GameObject repliesPanel;
     public GameObject replyButtonPrefab;
+
+    TimeManager timeManager;
 
     #endregion
 
@@ -55,22 +56,20 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void Start()
     {
+        timeManager = DialogueManager.Instance.timeManager;
         DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.currentDialogueFile);
-        DialogueManager.Instance.timeManager.ParseStringToTime("01:16:49:10");
     }
 
     private void Update()
     {
         if (!isWaitingForReply)
         {
-            chrono += Time.deltaTime;
-            if (chrono >= timeToReach)
+            if (timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting)
             {
-                chrono = 0;
+                timeManager.ResetClock();
                 if (isInitialisation)
                 {
                     DisplayMessage(currentDialogue.elements[currentDialogueElementId].message);
-                    DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
                 }
                 else
                 {
@@ -94,13 +93,19 @@ public class DialogueDisplayer : MonoBehaviour
     {
         Init();
         currentDialogue = dialogue;
-        timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
         isInitialisation = true;
         isWaitingForReply = false;
+
+        if (!DialogueManager.Instance.autoMode)
+        {
+            currentWaitingTime = currentDialogue.elements[currentDialogueElementId].initiationTime;
+        }
+        timeManager.StartClock(currentWaitingTime);
+
+        //timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
-        InvokeEvent(dialogueToStop.elements[currentDialogueElementId].elementAction);
         InvokeEvent(dialogueToStop.endDialogueAction);
     }
 
@@ -114,17 +119,24 @@ public class DialogueDisplayer : MonoBehaviour
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = message;
-
-        if(currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
-        {
-            isWaitingForReply = true;
-        }
         isInitialisation = false;
+
+        if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
+        {
+            DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
+        }
+        else
+        {
+            GoToNextElement();
+        }
+
 
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
     }
     private void DisplayPossibleReplies(List<Reply> replies)
     {
+        isWaitingForReply = true;
+
         for (int i = 0; i < replies.Count; i++)
         {
             GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
@@ -160,8 +172,13 @@ public class DialogueDisplayer : MonoBehaviour
         textInBubble.text = reply.replyText;
 
         awaitingReaction = reply.reaction;
-        timeToReach = reply.reactionTime;
+        //timeToReach = reply.reactionTime;
+        if (!DialogueManager.Instance.autoMode)
+        {
+            currentWaitingTime = reply.reactionTime;
+        }
         isWaitingForReply = false;
+        timeManager.StartClock(currentWaitingTime);
 
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
     }
@@ -197,14 +214,21 @@ public class DialogueDisplayer : MonoBehaviour
     {
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
-        chrono = 0;
+        isInitialisation = true;
         currentDialogueElementId++;
         if (currentDialogueElementId >= currentDialogue.elements.Count)
         {
             StopDialogue(currentDialogue);
         }
+        else
+        {
+            if (!DialogueManager.Instance.autoMode)
+            {
+                currentWaitingTime = currentDialogue.elements[currentDialogueElementId].initiationTime;
+            }
 
-        timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
+            timeManager.StartClock(currentWaitingTime);
+        }
     }
     IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg)
     {

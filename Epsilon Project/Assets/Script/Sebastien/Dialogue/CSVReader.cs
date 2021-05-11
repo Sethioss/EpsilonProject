@@ -71,9 +71,9 @@ public class CSVReader : MonoBehaviour
                     currentRow[h] = ProcessMessage(currentRow[h]);
                 }
 
-                Reply reply = new Reply(currentRow[1], currentRow[2], dialogue.elements.Count, GetFloat(currentRow[4], currentRow[4].Length / 5), replyEvents);
+                Reply reply = new Reply(currentRow[1], currentRow[2], dialogue.elements.Count, GetTime(currentRow[4]), replyEvents);
 
-                dialogueElement = new DialogueElement(currentRow[0], reply, dialogue.elements.Count, GetFloat(currentRow[3], 0), elementEvents);
+                dialogueElement = new DialogueElement(currentRow[0], reply, dialogue.elements.Count, GetTime(currentRow[3]), elementEvents);
 
                 //Iterate through the rows in a nested loop until it finds a new dialogue element
                 for (int j = index; j < rows.Length - 1; j++)
@@ -96,7 +96,7 @@ public class CSVReader : MonoBehaviour
 
                             //PROCESSING REPLY
                             replyEvents = SetEvents(currentRow[5]);
-                            reply = new Reply(currentRow[1], currentRow[2], dialogueElement.replies.Count, GetFloat(currentRow[4], 2f), replyEvents);
+                            reply = new Reply(currentRow[1], currentRow[2], dialogueElement.replies.Count, GetTime(currentRow[4]), replyEvents);
                             dialogueElement.AddReply(reply);
                         }
                         index++;
@@ -161,11 +161,11 @@ public class CSVReader : MonoBehaviour
                 case "DMODEL":
                     return SystemInfo.deviceModel;
 
-                case "LAT":
+                /*case "LAT":
                     return GPS.Instance.latitude.ToString();
 
                 case "LONG":
-                    return GPS.Instance.longitude.ToString();
+                    return GPS.Instance.longitude.ToString();*/
 
                 default:
                     return "<" + originalString + ">";
@@ -491,5 +491,14 @@ public class CSVReader : MonoBehaviour
         float result = defaultValue;
         float.TryParse(stringValue, out result);
         return result;
+    }
+
+    private string GetTime(string cellContent)
+    {
+        if(cellContent.Split(new char[] {':'}, System.StringSplitOptions.RemoveEmptyEntries).Length > 2)
+        {
+            return cellContent;
+        }
+        return "00:00:00:04";
     }
 }
