@@ -350,6 +350,7 @@ public class DialogueDisplayer : MonoBehaviour
         return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
     }
     #endregion
+
     #region SaveWriting
     public int second;
     public int minute;
