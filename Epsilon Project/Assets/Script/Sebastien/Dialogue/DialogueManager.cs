@@ -16,14 +16,15 @@ public class DialogueManager : MonoBehaviour
     public List<Dialogue> dialogueList;
     #endregion
 
-    #region Debugging Variables
+    #region Debug
     [Header("Debugging tools")]
     [Tooltip("Sends debug messages for each command keyword found in the dialogue file")]
     public bool debugReadCommandKeywords = true;
     [Tooltip("Sends debug messages for each function that is played when its call is made")]
     public bool debugExecutingFunction = false;
-    [Tooltip("Doesn't wait between dialogues")]
+    [Tooltip("Waits autoModeWaitingTime between dialogues")]
     public bool autoMode = false;
+    public string autoModeWaitingTime = "00:00:00:01";
 
     private List<string> debugMessages { get; } = new List<string>();
     private string colorCodeStart = "";
@@ -74,7 +75,7 @@ public class DialogueManager : MonoBehaviour
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
-        timeManager = FindObjectOfType<TimeManager>();
+        timeManager = TimeManager.Instance;
     }
 
     #region Debugging
@@ -87,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void AddToDebugFunctionMessage(string messageToPass, List<string> listToAddTo)
+    public void AddToDebugFunctionMessage(string messageToPass, List<string> listToAddTo)
     {
         if (debugExecutingFunction)
         {
@@ -466,6 +467,7 @@ public class DialogueManager : MonoBehaviour
     public void ChangeScene(string sceneToChangeTo)
     {
         string sceneName = sceneToChangeTo;
+        timeManager.ResetClock();
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";

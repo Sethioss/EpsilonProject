@@ -13,9 +13,33 @@ public class TimeManager : MonoBehaviour
     public float timeValue = 60;
     public Text timerText;
 
+    private static TimeManager instance;
+    public static TimeManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        currentTime = System.DateTime.UtcNow.ToLocalTime();
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+
+        if (this != instance)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void Start()
     {
-
+        DontDestroyOnLoad(instance);
     }
 
     void Update()
@@ -58,6 +82,7 @@ public class TimeManager : MonoBehaviour
     {
         //Debug.Log(timeToWait.Day + " " + timeToWait.Hour + " " + timeToWait.Minute + " " + timeToWait.Second);
         storedTime = System.DateTime.UtcNow.ToLocalTime();
+
         Debug.Log("The wait started at " + storedTime.ToString("dd:HH:mm:ss"));
 
         storedTime = storedTime.AddDays(timeToWait.Day - 1);
@@ -65,10 +90,26 @@ public class TimeManager : MonoBehaviour
         storedTime = storedTime.AddMinutes(timeToWait.Minute);
         storedTime = storedTime.AddSeconds(timeToWait.Second);
 
+        System.DateTime latestMessageSendingHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 1, 0, 0);
+        System.DateTime earliestMessageSendingHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 7, 0, 0);
+
+        if ((storedTime.Hour >= latestMessageSendingHour.Hour && storedTime.Hour < earliestMessageSendingHour.Hour) && !DialogueManager.Instance.autoMode)
+        {
+            int randomMinute = Random.Range(0, 3);
+            int randomSecond = Random.Range(0, 10);
+            System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day, earliestMessageSendingHour.Hour, randomMinute, randomSecond);
+
+            storedTime = newTimeToStore;
+#if UNITY_EDITOR
+            Debug.Log("Available time exceeded : New time = " + storedTime.Day + ":" + storedTime.Hour + ":" + storedTime.Minute + ":" + storedTime.Second);
+#endif
+        }
+
         timeToReach = storedTime;
 
         Debug.Log("You will have to wait until " + timeToReach.ToString("dd:HH:mm:ss"));
         currentlyWaiting = true;
+
         //notificationScript.SendNotification(secondsToWait);
     }
 
