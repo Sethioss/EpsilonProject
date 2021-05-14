@@ -214,6 +214,10 @@ MonoBehaviour:
   playerBubblePrefab: {fileID: 6440456784370790435, guid: d4c003afff315734d8fca944459d2381, type: 3}
   repliesPanel: {fileID: 1325532449}
   replyButtonPrefab: {fileID: 6342958404133415085, guid: 524741b7ef3aa454fbec555ce14cd8b5, type: 3}
+  second: 0
+  minute: 0
+  hour: 0
+  day: 0
 --- !u!1 &466427288
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2413.901}
+  m_AnchoredPosition: {x: 0, y: -1311.9999}
   m_SizeDelta: {x: 629.63184, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &466427290
@@ -285,11 +289,11 @@ MonoBehaviour:
   m_ChildAlignment: 6
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!1 &738301270
 GameObject:
@@ -325,8 +329,8 @@ MonoBehaviour:
   dialogueList: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  autoMode: 0
-  autoModeWaitingTime: 00:00:00:00
+  autoMode: 1
+  autoModeWaitingTime: 00:00:00:01
   m_testSet: 45
   m_testSetFloat: 7
   username: Sebilol
@@ -748,6 +752,10 @@ MonoBehaviour:
   currentlyWaiting: 0
   timeValue: 60
   timerText: {fileID: 0}
+  second: 0
+  minute: 0
+  hour: 0
+  day: 0
 --- !u!4 &1656260849
 Transform:
   m_ObjectHideFlags: 0

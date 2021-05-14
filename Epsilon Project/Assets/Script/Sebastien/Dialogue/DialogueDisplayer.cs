@@ -148,18 +148,18 @@ public class DialogueDisplayer : MonoBehaviour
     private void CreateMessageBubble()
     {
         GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
-        GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+        GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = "...";
         currentBubble = messagePrefab;
         bubbleSpawned = true;
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
+        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
 
     }
     private void DisplayMessage(GameObject currentBubble)
     {
-        GameObject imageBg = currentBubble.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+        GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
@@ -174,21 +174,21 @@ public class DialogueDisplayer : MonoBehaviour
         {
             GoToNextElement();
         }
-        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg));
+        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
     }
 
     void DisplayReaction(string reaction, GameObject bubbleObject)
     {
         if (reaction.Length > 1)
         {
-            GameObject imageBg = bubbleObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+            GameObject imageBg = bubbleObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
             TextMeshProUGUI textInBubble = bubbleObject.GetComponentInChildren<TextMeshProUGUI>();
 
             textInBubble.text = reaction;
             isInitialisation = true;
             bubbleSpawned = false;
 
-            StartCoroutine(SetObjectHeightToBackground(bubbleObject, imageBg));
+            StartCoroutine(SetObjectHeightToBackground(bubbleObject, imageBg, messagePanel));
         }
 
         GoToNextElement();
@@ -226,7 +226,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         GameObject messagePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
 
-        GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+        GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
 
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -237,13 +237,15 @@ public class DialogueDisplayer : MonoBehaviour
 
         isWaitingForReply = false;
 
+        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
+
         SetWaitingTime(reply.reactionTime);
         timeManager.StartClock(currentWaitingTime);
 
         writingTime = SetWritingTime(reply.reaction);
         timeToStartWriting = SetTimeToStartWriting();
 
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
+        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
     }
     private void GoToNextElement()
     {
@@ -266,9 +268,12 @@ public class DialogueDisplayer : MonoBehaviour
             timeToStartWriting = SetTimeToStartWriting();
         }
     }
-    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg)
+    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg, GameObject panel)
     {
         yield return new WaitForEndOfFrame();
+
+        panel.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
 
         message.GetComponent<RectTransform>().sizeDelta =
             new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
