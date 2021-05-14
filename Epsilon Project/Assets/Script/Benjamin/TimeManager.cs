@@ -159,4 +159,32 @@ public class TimeManager : MonoBehaviour
 
         StartWaiting(timeToStore);
     }
+
+    
+    #region Save Time To Reach
+    public int second;
+    public int minute;
+    public int hour;
+    public int day;
+    public void LoadTimeToReachData()
+    {
+        TimeToReachData data = SaveSystem.LoadTimeToReach();
+
+        second = data.sec;
+        minute = data.min;
+        hour = data.hour;
+        day = data.day;
+    }
+    public void SaveTimeToReachData()
+    {
+        second = timeToReach.Second;
+        minute = timeToReach.Minute;
+        hour = timeToReach.Hour;
+        day = timeToReach.Day;
+        SaveSystem.SaveTimeToReach(this);
+
+
+    }
+    #endregion
+
 }

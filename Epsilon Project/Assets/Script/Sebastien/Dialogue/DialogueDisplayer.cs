@@ -350,4 +350,30 @@ public class DialogueDisplayer : MonoBehaviour
         return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
     }
     #endregion
+    #region SaveWriting
+    public int second;
+    public int minute;
+    public int hour;
+    public int day;
+
+    public void LoadTimeToStartWriting()
+    {
+        TimeToStartWritingData data = SaveSystem.LoadTimeToStartWriting();
+
+        second = data.sec;
+        minute = data.min;
+        hour = data.hour;
+        day = data.day;
+    }
+    public void SaveTimeToStartWriting()
+    {
+        second = timeToStartWriting.Second;
+        minute = timeToStartWriting.Minute;
+        hour = timeToStartWriting.Hour;
+        day = timeToStartWriting.Day;
+        SaveSystem.SaveTimeToStartWriting(this);
+
+
+    }
+    #endregion
 }
