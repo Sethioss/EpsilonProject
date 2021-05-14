@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FinalScene/Game.unity
     guid: 34b91be464367e344ab005bed883f9aa
   - enabled: 0
     path: Assets/Scenes/BenjaminScene/CameraMinigame.unity
     guid: 3b7257ff96585284f89024dc91ae8796
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LeoScene/LeoTest.unity
     guid: db040492d245cb84e86c93a5ff2fb4f8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FinalScene/SocialMediaMinigame.unity
     guid: b5848c700e40e5b4983e4cfeb09d87ba
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FinalScene/E mails.unity
     guid: 9caa54b4f029444478a736578d19d3d5
   m_configObjects: {}
