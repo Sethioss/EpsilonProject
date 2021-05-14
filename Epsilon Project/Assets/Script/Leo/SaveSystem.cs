@@ -18,10 +18,20 @@ public static class SaveSystem
     public static void SaveGPS(GPS gps)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/event.fun";
+        string path = Application.persistentDataPath + "/GPS.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
         GPSData gpsdata = new GPSData(gps);
         formatter.Serialize(stream, gpsdata);
+        stream.Close();
+
+    }
+    public static void SaveTime(TimeManager time)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Time.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        TimeData timedata = new TimeData(time);
+        formatter.Serialize(stream, timedata);
         stream.Close();
 
     }
@@ -51,6 +61,22 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
             EventData data = formatter.Deserialize(stream) as EventData;
             return data;
+        }
+        else
+        {
+            Debug.LogError(" Save file not found in " + path);
+            return null;
+        }
+    }
+    public static TimeData LoadTime()
+    {
+        string path = Application.persistentDataPath + "/Time.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            TimeData timedata = formatter.Deserialize(stream) as TimeData;
+            return timedata;
         }
         else
         {

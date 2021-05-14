@@ -9,7 +9,7 @@ public class CameraPhone : MonoBehaviour
     private bool camAvaible;
     private WebCamTexture webCamTexture;
     private Texture defaultTexture;
-
+    public RawImage photo;
     public RawImage background;
     public AspectRatioFitter fit;
 
@@ -69,5 +69,15 @@ public class CameraPhone : MonoBehaviour
         background.rectTransform.localEulerAngles = new Vector3(0, 0, -orient);
     }
 
+    public void TakePhoto()
+    {
+        webCamTexture.Play();
+        Texture2D PhotoTaken = new Texture2D(webCamTexture.width, webCamTexture.height);
+        PhotoTaken.SetPixels(webCamTexture.GetPixels());
+        PhotoTaken.Apply();
+        photo.texture = PhotoTaken;
+        int orient = webCamTexture.videoRotationAngle;
+        photo.rectTransform.localEulerAngles = new Vector3(0, 0, -orient);
+    }
 
 }
