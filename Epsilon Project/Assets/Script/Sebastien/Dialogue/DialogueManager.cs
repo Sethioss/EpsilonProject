@@ -9,18 +9,22 @@ public class DialogueManager : MonoBehaviour
     #region Dialogue Manager Components
     private CSVReader reader;
     private DialogueDisplayer displayer;
+    public TimeManager timeManager;
 
     [Header("Dialogue initialisation and list")]
     public TextAsset currentDialogueFile;
     public List<Dialogue> dialogueList;
     #endregion
 
-    #region Debugging Variables
+    #region Debug
     [Header("Debugging tools")]
     [Tooltip("Sends debug messages for each command keyword found in the dialogue file")]
     public bool debugReadCommandKeywords = true;
     [Tooltip("Sends debug messages for each function that is played when its call is made")]
     public bool debugExecutingFunction = false;
+    [Tooltip("Waits autoModeWaitingTime between dialogues")]
+    public bool autoMode = false;
+    public string autoModeWaitingTime = "00:00:00:01";
 
     private List<string> debugMessages { get; } = new List<string>();
     private string colorCodeStart = "";
@@ -32,7 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     public string testSet { get { return m_testSet; } set { m_testSet = value; } }
     public float testSetFloat { get { return m_testSetFloat; } set { m_testSetFloat = value; } }
- 
+
     [Header("Accessible variables (Changed by events)")]
     [SerializeField]
     [Tooltip("Test for string variables")]
@@ -71,6 +75,7 @@ public class DialogueManager : MonoBehaviour
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
+        timeManager = TimeManager.Instance;
     }
 
     #region Debugging
@@ -83,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void AddToDebugFunctionMessage(string messageToPass, List<string> listToAddTo)
+    public void AddToDebugFunctionMessage(string messageToPass, List<string> listToAddTo)
     {
         if (debugExecutingFunction)
         {
@@ -98,6 +103,7 @@ public class DialogueManager : MonoBehaviour
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
+        timeManager = FindObjectOfType<TimeManager>();
 
         currentDialogueFile = dialogueFile;
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
@@ -111,9 +117,13 @@ public class DialogueManager : MonoBehaviour
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=yellow>";
-        debugMessages.Add("=======BRANCH FUNCTION EXECUTING=======");
-        debugMessages.Add(colorCodeStart + "Switching from branch " + currentDialogueFile.name + " to branch: " + dialogueFileName + colorCodeEnd);
-        DebugElement(debugMessages.ToArray());
+        AddToDebugFunctionMessage("=======BRANCH FUNCTION EXECUTING=======", debugMessages);
+        AddToDebugFunctionMessage(colorCodeStart + "Switching from branch " + currentDialogueFile.name + " to branch: " + dialogueFileName, debugMessages);
+
+        if (debugExecutingFunction)
+        {
+            DebugElement(debugMessages.ToArray());
+        }
 #endif
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load("Tables\\" + dialogueFileName));
@@ -152,7 +162,11 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("Yes, " + variableToCompare + " is the same value as " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing first command : " + firstCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(firstCommand, true); };
                     break;
@@ -162,7 +176,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("No, " + variableToCompare + " isn't the same value as " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing second command : " + secondCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(secondCommand, true); };
                     break;
@@ -175,7 +192,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("Yes, " + variableToCompare + " isn't the same value as " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing first command : " + firstCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(firstCommand, true); };
                     break;
@@ -185,7 +205,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("No, " + variableToCompare + " is the same value as " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing second command : " + secondCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(secondCommand, true); };
                     break;
@@ -198,7 +221,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("Yes, " + variableToCompare + " is higher than " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing first command : " + firstCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(firstCommand, true); };
                     break;
@@ -208,7 +234,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("No, " + variableToCompare + " isn't higher than " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing second command : " + secondCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(secondCommand, true); };
                     break;
@@ -221,7 +250,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
                     AddToDebugFunctionMessage("Yes, " + variableToCompare + " is less than " + variableComparedWith, debugMessages);
                     AddToDebugFunctionMessage("Executing first command : " + firstCommand, debugMessages);
-                    DebugElement(debugMessages.ToArray());
+                    if (debugExecutingFunction)
+                    {
+                        DebugElement(debugMessages.ToArray());
+                    }
 #endif
                     eventToTrigger += delegate { CSVReader.Instance.SetEvents(firstCommand, true); };
                     break;
@@ -421,9 +453,9 @@ public class DialogueManager : MonoBehaviour
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=red>";
-        debugMessages.Add("=======SET FUNCTION (Float) EXECUTING=======");
-        debugMessages.Add(colorCodeStart + "SET FUNCTION (Float) :: Inside the delegate, newValue is " + newFloatValue + colorCodeEnd);
-        debugMessages.Add(colorCodeStart + "SET FUNCTION (Float) :: Setting " + variable + " to " + newValue + colorCodeEnd);
+        AddToDebugFunctionMessage("=======SET FUNCTION (Float) EXECUTING=======", debugMessages);
+        AddToDebugFunctionMessage("SET FUNCTION (Float) :: Inside the delegate, newValue is " + newFloatValue, debugMessages);
+        AddToDebugFunctionMessage("SET FUNCTION (Float) :: Setting " + variable + " to " + newValue, debugMessages);
         DebugElement(debugMessages.ToArray());
 #endif
 
@@ -435,6 +467,7 @@ public class DialogueManager : MonoBehaviour
     public void ChangeScene(string sceneToChangeTo)
     {
         string sceneName = sceneToChangeTo;
+        timeManager.ResetClock();
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";

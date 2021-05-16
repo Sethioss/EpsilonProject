@@ -22,13 +22,18 @@ public class DialogueDisplayer : MonoBehaviour
 
     #region Timing / Display des dialogues
 
-    private float chrono = 0;
     private string awaitingReaction;
-    private float timeToReach = 1;
+
+    private System.DateTime writingTime;
+    private System.DateTime timeToStartWriting;
 
     //true = Initialisation Time, false = Reaction Time
-    private bool isInitialisation;
-    private bool isWaitingForReply;
+    private bool isInitialisation = true;
+    private bool isWaitingForReply = false;
+    private bool bubbleSpawned = false;
+    private string currentWaitingTime;
+
+    private GameObject currentBubble;
 
     [Header("Message Area")]
     public GameObject messagePanel;
@@ -38,6 +43,8 @@ public class DialogueDisplayer : MonoBehaviour
     [Header("Reply area")]
     public GameObject repliesPanel;
     public GameObject replyButtonPrefab;
+
+    TimeManager timeManager;
 
     #endregion
 
@@ -55,6 +62,8 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void Start()
     {
+        timeManager = DialogueManager.Instance.timeManager;
+        timeManager.currentlyWaiting = false;
         DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.currentDialogueFile);
     }
 
@@ -62,22 +71,50 @@ public class DialogueDisplayer : MonoBehaviour
     {
         if (!isWaitingForReply)
         {
-            chrono += Time.deltaTime;
-            if (chrono >= timeToReach)
+            if (DialogueManager.Instance.autoMode)
             {
-                chrono = 0;
-                if (isInitialisation)
+                if (IsTimeOver())
                 {
-                    DisplayMessage(currentDialogue.elements[currentDialogueElementId].message);
-                    DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
-                }
-                else
-                {
-                    DisplayReaction(awaitingReaction);
+                    timeManager.ResetClock();
+                    if (isInitialisation)
+                    {
+                        CreateMessageBubble();
+                        DisplayMessage(currentBubble);
+                    }
+                    else
+                    {
+                        CreateMessageBubble();
+                        DisplayReaction(awaitingReaction, currentBubble);
+                    }
                 }
             }
+            else
+            {
+                if (!bubbleSpawned)
+                {
+                    if (IsTimeToStartWriting())
+                    {
+                        CreateMessageBubble();
+                    }
+                }
+                if (IsTimeOver())
+                {
+                    timeManager.ResetClock();
+                    if (isInitialisation)
+                    {
+                        DisplayMessage(currentBubble);
+                    }
+                    else
+                    {
+                        DisplayReaction(awaitingReaction, currentBubble);
+                    }
+                }
+            }
+
         }
     }
+
+    #region Dialogue starting methods
     private void Init()
     {
         currentDialogueElementId = 0;
@@ -85,42 +122,82 @@ public class DialogueDisplayer : MonoBehaviour
         {
             StopDialogue(currentDialogue);
         }
+        isInitialisation = true;
+        isWaitingForReply = false;
     }
-
-    #region Dialogue starting methods
-
     public void StartDialogue(Dialogue dialogue)
     {
         Init();
         currentDialogue = dialogue;
-        timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
-        isInitialisation = true;
-        isWaitingForReply = false;
+
+        SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+        timeManager.StartClock(currentWaitingTime);
+        writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+        timeToStartWriting = SetTimeToStartWriting();
+
+        //timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
-        InvokeEvent(dialogueToStop.elements[currentDialogueElementId].elementAction);
         InvokeEvent(dialogueToStop.endDialogueAction);
     }
 
     #endregion
 
     #region Element display methods
-    private void DisplayMessage(string message)
+    private void CreateMessageBubble()
     {
         GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
         GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
-        textInBubble.text = message;
-
-        isWaitingForReply = true;
-        isInitialisation = false;
-
+        textInBubble.text = "...";
+        currentBubble = messagePrefab;
+        bubbleSpawned = true;
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
+
+    }
+    private void DisplayMessage(GameObject currentBubble)
+    {
+        GameObject imageBg = currentBubble.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+
+        textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
+        isInitialisation = false;
+        bubbleSpawned = false;
+
+        if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
+        {
+            DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
+        }
+        else
+        {
+            GoToNextElement();
+        }
+        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg));
+    }
+
+    void DisplayReaction(string reaction, GameObject bubbleObject)
+    {
+        if (reaction.Length > 1)
+        {
+            GameObject imageBg = bubbleObject.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+            TextMeshProUGUI textInBubble = bubbleObject.GetComponentInChildren<TextMeshProUGUI>();
+
+            textInBubble.text = reaction;
+            isInitialisation = true;
+            bubbleSpawned = false;
+
+            StartCoroutine(SetObjectHeightToBackground(bubbleObject, imageBg));
+        }
+
+        GoToNextElement();
+
     }
     private void DisplayPossibleReplies(List<Reply> replies)
     {
+        isWaitingForReply = true;
+
         for (int i = 0; i < replies.Count; i++)
         {
             GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
@@ -156,30 +233,49 @@ public class DialogueDisplayer : MonoBehaviour
         textInBubble.text = reply.replyText;
 
         awaitingReaction = reply.reaction;
-        timeToReach = reply.reactionTime;
+        //timeToReach = reply.reactionTime;
+
         isWaitingForReply = false;
+
+        SetWaitingTime(reply.reactionTime);
+        timeManager.StartClock(currentWaitingTime);
+
+        writingTime = SetWritingTime(reply.reaction);
+        timeToStartWriting = SetTimeToStartWriting();
 
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
     }
-    void DisplayReaction(string reaction)
+    private void GoToNextElement()
     {
-        if (reaction.Length > 1)
+        InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
+
+        isInitialisation = true;
+        bubbleSpawned = false;
+
+        currentDialogueElementId++;
+        if (currentDialogueElementId >= currentDialogue.elements.Count)
         {
-            GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
-            GameObject imageBg = messagePrefab.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
-            TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
-
-            textInBubble.text = reaction;
-            isInitialisation = true;
-
-            StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg));
+            StopDialogue(currentDialogue);
         }
+        else
+        {
+            SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+            timeManager.StartClock(currentWaitingTime);
 
-        GoToNextElement();
+            writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+            timeToStartWriting = SetTimeToStartWriting();
+        }
+    }
+    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg)
+    {
+        yield return new WaitForEndOfFrame();
 
+        message.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
     }
     #endregion
 
+    #region Invoke element and dialogue event
     private void InvokeEvent(UnityAction action)
     {
         if (action != null)
@@ -189,24 +285,96 @@ public class DialogueDisplayer : MonoBehaviour
             endElementEvent.Invoke();
         }
     }
-    private void GoToNextElement()
-    {
-        InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
+    #endregion
 
-        chrono = 0;
-        currentDialogueElementId++;
-        if (currentDialogueElementId >= currentDialogue.elements.Count)
+    #region "..." as the hacker's writing a message
+    private System.DateTime SetWritingTime(string message)
+    {
+        System.DateTime typingTime = System.DateTime.MinValue;
+        int typingSpeed = GetTypingSpeed(message);
+
+        typingTime = typingTime.AddSeconds(typingSpeed);
+
+        return typingTime;
+    }
+
+    private int GetTypingSpeed(string message)
+    {
+        return message.Length / 3;
+    }
+
+    private System.DateTime SetTimeToStartWriting()
+    {
+        System.TimeSpan typingTime = System.DateTime.MinValue.Subtract(writingTime);
+        System.DateTime temp = timeManager.timeToReach.Add(typingTime);
+
+        if (temp < timeManager.currentTime)
         {
-            StopDialogue(currentDialogue);
+            temp = timeManager.currentTime.AddSeconds(2);
         }
 
-        timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
-    }
-    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg)
-    {
-        yield return new WaitForEndOfFrame();
+        Debug.Log("An empty bubble will start to appear at : " + temp);
 
-        message.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
+        return temp;
     }
+
+    private bool IsTimeToWrite()
+    {
+        return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+    }
+
+    #endregion
+
+    #region ChronoTime
+    private void SetWaitingTime(string waitingTime)
+    {
+        if (DialogueManager.Instance.autoMode)
+        {
+            currentWaitingTime = DialogueManager.Instance.autoModeWaitingTime;
+        }
+        else
+        {
+            currentWaitingTime = waitingTime;
+        }
+    }
+    #endregion
+
+    #region flags
+    private bool IsTimeOver()
+    {
+        return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
+    }
+
+    private bool IsTimeToStartWriting()
+    {
+        return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+    }
+    #endregion
+
+    #region SaveWriting
+    public int second;
+    public int minute;
+    public int hour;
+    public int day;
+
+    public void LoadTimeToStartWriting()
+    {
+        TimeToStartWritingData data = SaveSystem.LoadTimeToStartWriting();
+
+        second = data.sec;
+        minute = data.min;
+        hour = data.hour;
+        day = data.day;
+    }
+    public void SaveTimeToStartWriting()
+    {
+        second = timeToStartWriting.Second;
+        minute = timeToStartWriting.Minute;
+        hour = timeToStartWriting.Hour;
+        day = timeToStartWriting.Day;
+        SaveSystem.SaveTimeToStartWriting(this);
+
+
+    }
+    #endregion
 }

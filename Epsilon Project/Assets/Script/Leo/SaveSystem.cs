@@ -18,10 +18,30 @@ public static class SaveSystem
     public static void SaveGPS(GPS gps)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/event.fun";
+        string path = Application.persistentDataPath + "/GPS.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
         GPSData gpsdata = new GPSData(gps);
         formatter.Serialize(stream, gpsdata);
+        stream.Close();
+
+    }
+    public static void SaveTimeToReach(TimeManager time)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/TimeReach.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        TimeToReachData timedata = new TimeToReachData(time);
+        formatter.Serialize(stream, timedata);
+        stream.Close();
+
+    }
+    public static void SaveTimeToStartWriting(DialogueDisplayer time)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/TimeWriting.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        TimeToStartWritingData timedata = new TimeToStartWritingData(time);
+        formatter.Serialize(stream, timedata);
         stream.Close();
 
     }
@@ -51,6 +71,38 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
             EventData data = formatter.Deserialize(stream) as EventData;
             return data;
+        }
+        else
+        {
+            Debug.LogError(" Save file not found in " + path);
+            return null;
+        }
+    }
+    public static TimeToReachData LoadTimeToReach()
+    {
+        string path = Application.persistentDataPath + "/TimeReach.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            TimeToReachData timedata = formatter.Deserialize(stream) as TimeToReachData;
+            return timedata;
+        }
+        else
+        {
+            Debug.LogError(" Save file not found in " + path);
+            return null;
+        }
+    }
+    public static TimeToStartWritingData LoadTimeToStartWriting()
+    {
+        string path = Application.persistentDataPath + "/TimeWriting.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            TimeToStartWritingData timedata = formatter.Deserialize(stream) as TimeToStartWritingData;
+            return timedata;
         }
         else
         {
