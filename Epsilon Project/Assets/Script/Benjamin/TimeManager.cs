@@ -90,25 +90,42 @@ public class TimeManager : MonoBehaviour
         storedTime = storedTime.AddMinutes(timeToWait.Minute);
         storedTime = storedTime.AddSeconds(timeToWait.Second);
 
-        System.DateTime latestMessageSendingHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 1, 0, 0);
-        System.DateTime earliestMessageSendingHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, 7, 0, 0);
+        System.DateTime inactiveStartHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, DialogueManager.Instance.inactivePeriodStartHour, 0, 0);
+        System.DateTime inactiveEndHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, DialogueManager.Instance.inactivePeriodEndHour, 0, 0);
 
-        if ((storedTime.Hour >= latestMessageSendingHour.Hour && storedTime.Hour < earliestMessageSendingHour.Hour) && !DialogueManager.Instance.autoMode)
+        if(inactiveStartHour.Hour <= inactiveEndHour.Hour)
         {
-            int randomMinute = Random.Range(0, 3);
-            int randomSecond = Random.Range(0, 10);
-            System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day, earliestMessageSendingHour.Hour, randomMinute, randomSecond);
+            if ((storedTime.Hour >= inactiveStartHour.Hour && storedTime.Hour < inactiveEndHour.Hour) && !DialogueManager.Instance.autoMode && DialogueManager.Instance.inactivePeriods)
+            {
+                int randomMinute = Random.Range(0, 3);
+                int randomSecond = Random.Range(0, 10);
+                System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day, inactiveEndHour.Hour, randomMinute, randomSecond);
 
-            storedTime = newTimeToStore;
+                storedTime = newTimeToStore;
 #if UNITY_EDITOR
-            Debug.Log("Available time exceeded : New time = " + storedTime.Day + ":" + storedTime.Hour + ":" + storedTime.Minute + ":" + storedTime.Second);
+                Debug.Log("Available time exceeded : New time = " + storedTime.Day + ":" + storedTime.Hour + ":" + storedTime.Minute + ":" + storedTime.Second);
 #endif
+            }
         }
+        else
+        {
+            if ((storedTime.Hour >= inactiveStartHour.Hour || storedTime.Hour < inactiveEndHour.Hour) && !DialogueManager.Instance.autoMode && DialogueManager.Instance.inactivePeriods)
+            {
+                int randomMinute = Random.Range(0, 3);
+                int randomSecond = Random.Range(0, 10);
+                System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day, inactiveEndHour.Hour, randomMinute, randomSecond);
 
+                storedTime = newTimeToStore;
+#if UNITY_EDITOR
+                Debug.Log("Available time exceeded : New time = " + storedTime.Day + ":" + storedTime.Hour + ":" + storedTime.Minute + ":" + storedTime.Second);
+#endif
+            }
+        }
         timeToReach = storedTime;
 
         Debug.Log("You will have to wait until " + timeToReach.ToString("dd:HH:mm:ss"));
         currentlyWaiting = true;
+
 
         //notificationScript.SendNotification(secondsToWait);
     }

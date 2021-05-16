@@ -26,6 +26,14 @@ public class DialogueManager : MonoBehaviour
     public bool autoMode = false;
     public string autoModeWaitingTime = "00:00:00:01";
 
+    [Tooltip("No messages will be sent in a certain period of time")]
+    [Header("Deactivate auto mode for inactive periods to be active")]
+    public bool inactivePeriods = true;
+    [Range(0, 24)]
+    public int inactivePeriodStartHour = 1;
+    [Range(0, 24)]
+    public int inactivePeriodEndHour = 7;
+
     private List<string> debugMessages { get; } = new List<string>();
     private string colorCodeStart = "";
     private string colorCodeEnd { get; } = "</color>";

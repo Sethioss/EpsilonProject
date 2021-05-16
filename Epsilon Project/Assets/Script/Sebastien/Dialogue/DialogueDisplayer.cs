@@ -71,43 +71,23 @@ public class DialogueDisplayer : MonoBehaviour
     {
         if (!isWaitingForReply)
         {
-            if (DialogueManager.Instance.autoMode)
+            if (!bubbleSpawned)
             {
-                if (IsTimeOver())
+                if (IsTimeToStartWriting())
                 {
-                    timeManager.ResetClock();
-                    if (isInitialisation)
-                    {
-                        CreateMessageBubble();
-                        DisplayMessage(currentBubble);
-                    }
-                    else
-                    {
-                        CreateMessageBubble();
-                        DisplayReaction(awaitingReaction, currentBubble);
-                    }
+                    CreateMessageBubble();
                 }
             }
-            else
+            if (IsTimeOver())
             {
-                if (!bubbleSpawned)
+                timeManager.ResetClock();
+                if (isInitialisation)
                 {
-                    if (IsTimeToStartWriting())
-                    {
-                        CreateMessageBubble();
-                    }
+                    DisplayMessage(currentBubble);
                 }
-                if (IsTimeOver())
+                else
                 {
-                    timeManager.ResetClock();
-                    if (isInitialisation)
-                    {
-                        DisplayMessage(currentBubble);
-                    }
-                    else
-                    {
-                        DisplayReaction(awaitingReaction, currentBubble);
-                    }
+                    DisplayReaction(awaitingReaction, currentBubble);
                 }
             }
 
@@ -134,8 +114,6 @@ public class DialogueDisplayer : MonoBehaviour
         timeManager.StartClock(currentWaitingTime);
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
-
-        //timeToReach = currentDialogue.elements[currentDialogueElementId].initiationTime;
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
@@ -159,22 +137,22 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void DisplayMessage(GameObject currentBubble)
     {
-        GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+            GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+            TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
-        textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
-        isInitialisation = false;
-        bubbleSpawned = false;
+            textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
+            isInitialisation = false;
+            bubbleSpawned = false;
 
-        if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
-        {
-            DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
-        }
-        else
-        {
-            GoToNextElement();
-        }
-        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
+            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
+            {
+                DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
+            }
+            else
+            {
+                GoToNextElement();
+            }
+            StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
     }
 
     void DisplayReaction(string reaction, GameObject bubbleObject)
@@ -233,7 +211,6 @@ public class DialogueDisplayer : MonoBehaviour
         textInBubble.text = reply.replyText;
 
         awaitingReaction = reply.reaction;
-        //timeToReach = reply.reactionTime;
 
         isWaitingForReply = false;
 
@@ -315,7 +292,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         if (temp < timeManager.currentTime)
         {
-            temp = timeManager.currentTime.AddSeconds(2);
+            temp = timeManager.currentTime.AddSeconds(1);
         }
 
         Debug.Log("An empty bubble will start to appear at : " + temp);
@@ -344,7 +321,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     #endregion
 
-    #region flags
+    #region Flags
     private bool IsTimeOver()
     {
         return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
@@ -355,6 +332,7 @@ public class DialogueDisplayer : MonoBehaviour
         return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
     }
     #endregion
+
     #region SaveWriting
     public int second;
     public int minute;
