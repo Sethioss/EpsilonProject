@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TilesBehaviour : MonoBehaviour
 {
+    public bool isInfected = false;
+    public bool holdsVirus;
     Image tileImage;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +17,12 @@ public class TilesBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (holdsVirus) { 
+            isInfected = true;
+            tileImage.color = Color.black;
+        }
+        if (isInfected && holdsVirus == false)
+            tileImage.color = Color.red;
     }
 
     public void TagTile()
@@ -31,6 +38,11 @@ public class TilesBehaviour : MonoBehaviour
     void GetInfected()
     {
         tileImage.color = Color.red;
+    }
+
+    public void DebugYellow()
+    {
+        tileImage.color = Color.yellow;
     }
 
 }

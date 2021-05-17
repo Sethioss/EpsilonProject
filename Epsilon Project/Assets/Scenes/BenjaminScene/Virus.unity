@@ -216,6 +216,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &300276205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300276207}
+  - component: {fileID: 300276206}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &300276206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300276205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e86a3ed90a5c64896245ce2f3f0f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: 2e04bcd131074c345ae789108f68f5d8, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &300276207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300276205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339930987
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &339930989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &568195507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798515411}
   - component: {fileID: 798515410}
+  - component: {fileID: 798515412}
   - component: {fileID: 798515409}
   m_Layer: 0
   m_Name: Main Camera
@@ -476,14 +537,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &798515409
-AudioListener:
+--- !u!114 &798515409
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798515408}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0307a2d2cc37342bd177a4b5fa7df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!20 &798515410
 Camera:
   m_ObjectHideFlags: 0
@@ -541,6 +608,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &798515412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798515408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebb7caf5bb5c9f4a851b1df2c146845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1 &968753051
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &968753054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1039185549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +1024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 1
 --- !u!114 &1253922688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,6 +1114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1597867391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,6 +1204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1687579359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1996007410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &2008681542
 MonoBehaviour:
   m_ObjectHideFlags: 0
