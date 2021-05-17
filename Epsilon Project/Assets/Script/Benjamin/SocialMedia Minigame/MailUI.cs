@@ -51,7 +51,7 @@ public class MailUI : MonoBehaviour
                 if (i < mailContent.Length)
                 {
                     myMails[i].text = mailContent[i];
-                    myMailSenders[i].text = mailSenders[i];
+                    myMailSenders[i].text = "From : " + mailSenders[i];
                 }
                 else
                 {
@@ -64,7 +64,7 @@ public class MailUI : MonoBehaviour
                 if (i < spamContent.Length)
                 {
                     myMails[i].text = spamContent[i];
-                    myMailSenders[i].text = spamSenders[i];
+                    myMailSenders[i].text = "From : " + spamSenders[i];
                 }
                 else
                 {
