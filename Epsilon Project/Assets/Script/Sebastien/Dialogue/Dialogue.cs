@@ -8,13 +8,13 @@ using UnityEngine.Events;
 public class Reply
 {
     public int index;
-    public float reactionTime;
+    public string reactionTime;
     public string replyText;
     public string reaction;
 
     public UnityAction replyEvent = null;
 
-    public Reply(string reply, string reaction, int index, float reactionTime, UnityAction actions)
+    public Reply(string reply, string reaction, int index, string reactionTime, UnityAction actions)
     {
         this.replyText = reply;
         this.reaction = reaction;
@@ -30,12 +30,12 @@ public class Reply
 public class DialogueElement
 {
     public int index;
-    public float initiationTime;
+    public string initiationTime;
     public string message;
     public List<Reply> replies = new List<Reply>();
     public UnityAction elementAction;
 
-    public DialogueElement(string message, Reply reply, int index, float initiationTime, UnityAction elementAction)
+    public DialogueElement(string message, Reply reply, int index, string initiationTime, UnityAction elementAction)
     {
         if (message != "")
         {
