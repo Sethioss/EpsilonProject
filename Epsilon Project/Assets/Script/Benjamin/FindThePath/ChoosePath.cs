@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChoosePath : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ChoosePath : MonoBehaviour
         if (correctPath)
         {
             Debug.Log("You found the correct path. Congrats !");
+            DialogueManager.Instance.currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + 4);
+            SceneManager.LoadScene(0);
         }
         else
         {

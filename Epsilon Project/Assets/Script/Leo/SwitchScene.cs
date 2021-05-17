@@ -18,7 +18,7 @@ public class SwitchScene : MonoBehaviour
 
     public void SwitchGame()
     {
-        SetNextDIalogue((TextAsset)Resources.Load("Tables\\2a"));
+        SetNextDIalogue((TextAsset)Resources.Load("Tables\\2"));
         SceneManager.LoadScene("Game");
     }
 
