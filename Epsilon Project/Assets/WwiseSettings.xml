@@ -9,8 +9,8 @@
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
-  <WwiseInstallationPathWindows>A:\Program Files\Audiokinetic/Wwise 2021.1.1.7601</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../Epsilon Project_WwiseProject/Epsilon Project_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2021.1.1.7601</WwiseInstallationPathWindows>
+  <WwiseProjectPath>../../Epsilon Project/Epsilon Project_WwiseProject/Epsilon Project_WwiseProject.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
