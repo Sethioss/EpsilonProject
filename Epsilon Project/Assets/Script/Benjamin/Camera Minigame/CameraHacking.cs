@@ -9,7 +9,6 @@ public class CameraHacking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -21,9 +20,7 @@ public class CameraHacking : MonoBehaviour
     public void DeactivateCamera(GameObject target)
     {
         target.SetActive(false);
-        hackingMenu.SetActive(false);
-        Time.timeScale = 1;
-        
+        ReactivateCamera(target);
     }
 
     public void LoadNextScene(int sceneID)
@@ -31,8 +28,17 @@ public class CameraHacking : MonoBehaviour
         SceneManager.LoadScene(sceneID);
     }
 
+    
+
     public void SetNextDIalogue(TextAsset data)
     {
         DialogueManager.Instance.currentDialogueFile = data;
     }
+
+    public IEnumerator ReactivateCamera(GameObject cameraHacked)
+    {
+        yield return new WaitForSeconds(3);
+        cameraHacked.SetActive(true);
+    }
+
 }
