@@ -1,0 +1,10 @@
+Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
+Second dialog coming up!;Finally!;Don't be an impatient one;;;;;
+;;;;;;;
+Let's step this up, alright?;Sure, let's do just this!;I'm glad to see you're pumped!;;;;;
+;Nah, don't wanna...;You lazy man;;;;;
+;;;;;;<SET>testSet +'358' ;
+Can we maybe go back to the first dialog?;Okay sure;Well I do what I want so we won't go back to the first branch;;;;;
+;No;We'll be stuck here then;;;;;
+;;;;;;;
+Okay then let's play game;Yeah good;Yeah;;;<SCENE>DeepWeb;;

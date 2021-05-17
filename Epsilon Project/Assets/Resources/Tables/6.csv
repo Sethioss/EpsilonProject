@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
+Woah, you finished all the minigames, you're amazingly good!;I know I know;I know too;;;;;
+;;;;;;;
+Wanna start again?;Yes;Okay, starting again;;;<BRANCH>1;;
+;No;Oh, okay;;;;;

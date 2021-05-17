@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DeepWeb : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class DeepWeb : MonoBehaviour
         if(inputText.text == correctAdress)
         {
             Debug.Log("You sent it to the correct person, congrats !");
+            DialogueManager.Instance.currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + 3);
+            SceneManager.LoadScene(0);
         }
         else
         {
