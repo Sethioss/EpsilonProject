@@ -26,8 +26,11 @@ public class TilesBehaviour : MonoBehaviour
         }
         else
         tileImage.color = Color.green;
-        
+    }
 
+    void GetInfected()
+    {
+        tileImage.color = Color.red;
     }
 
 }
