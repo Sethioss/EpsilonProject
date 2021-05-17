@@ -66,8 +66,22 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b15b5528120aba49a120490844304e8a
     GuidInternal: 
-    m_lastTime: -8585803647626245084
-    List: []
+    m_lastTime: -8585803436633076265
+    List:
+    - name: BankEpsilon
+      guid: 7e74a1e3461dc645a2af8bb85360fb87
+      id: 4060328087
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b15b5528120aba49a120490844304e8a
+      - ElementName: BankEpsilon
+        ObjectType: 7
+        guid: 7e74a1e3461dc645a2af8bb85360fb87
+      Path: SoundBanks\Default Work Unit\BankEpsilon
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -80,8 +94,25 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: fd6c1cf7d7c1664d98ecdd6952664f1c
     GuidInternal: 
-    m_lastTime: -8585803647626315060
-    List: []
+    m_lastTime: -8585803436632946843
+    List:
+    - name: Beep
+      guid: feabd559a049e842bb6048f74ddf737a
+      id: 1123068841
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: Beep
+        ObjectType: 3
+        guid: feabd559a049e842bb6048f74ddf737a
+      Path: Events\Default Work Unit\Beep
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -139,7 +170,7 @@ MonoBehaviour:
     m_lastTime: -8585803647626225090
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 010000000500000006000000090000000a0000000b000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0
