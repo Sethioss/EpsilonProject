@@ -247,6 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &339930989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &568195507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,6 +595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &968753054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1039185549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 1
 --- !u!114 &1253922688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,6 +1029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1597867391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,6 +1119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1687579359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &1996007410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3035e3cfcd19d4594d0c726876e64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInfected: 0
+  holdsVirus: 0
 --- !u!114 &2008681542
 MonoBehaviour:
   m_ObjectHideFlags: 0
