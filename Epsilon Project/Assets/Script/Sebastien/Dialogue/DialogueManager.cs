@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
+    [HideInInspector]
+    public bool onGameSceneEntered;
+
     #region Dialogue Manager Components
     private CSVReader reader;
     private DialogueDisplayer displayer;
@@ -19,19 +22,21 @@ public class DialogueManager : MonoBehaviour
     #region Debug
     [Header("Debugging tools")]
     [Tooltip("Sends debug messages for each command keyword found in the dialogue file")]
-    public bool debugReadCommandKeywords = true;
+    public bool debugReadCommandKeywords = false;
     [Tooltip("Sends debug messages for each function that is played when its call is made")]
     public bool debugExecutingFunction = false;
     [Tooltip("Waits autoModeWaitingTime between dialogues")]
     public bool autoMode = false;
+    [Header("Only set automode time to 00:00:00:00 for testing purposes, not for builds!")]
     public string autoModeWaitingTime = "00:00:00:01";
 
     [Tooltip("No messages will be sent in a certain period of time")]
     [Header("Deactivate auto mode for inactive periods to be active")]
     public bool inactivePeriods = true;
-    [Range(0, 24)]
+    [Header("0 = 00AM")]
+    [Range(0, 23)]
     public int inactivePeriodStartHour = 1;
-    [Range(0, 24)]
+    [Range(0, 23)]
     public int inactivePeriodEndHour = 7;
 
     private List<string> debugMessages { get; } = new List<string>();
@@ -72,18 +77,30 @@ public class DialogueManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(instance);
         }
-
-        if (this != instance)
+        else
         {
             Destroy(this.gameObject);
         }
+
+        StartDialogue();
     }
 
-    private void Start()
+    private void Update()
+    {
+        if (onGameSceneEntered)
+        {
+            StartDialogue();
+        }
+    }
+
+    public void StartDialogue()
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
+
+        CreateAndStartDialogue(currentDialogueFile);
+        onGameSceneEntered = false;
     }
 
     #region Debugging

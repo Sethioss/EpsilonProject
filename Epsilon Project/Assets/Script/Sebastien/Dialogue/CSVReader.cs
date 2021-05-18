@@ -19,7 +19,6 @@ public class CSVReader : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(instance);
         }
 
         if (this != instance)

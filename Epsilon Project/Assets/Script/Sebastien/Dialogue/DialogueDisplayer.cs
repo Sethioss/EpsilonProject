@@ -62,9 +62,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void Start()
     {
-        timeManager = DialogueManager.Instance.timeManager;
-        timeManager.currentlyWaiting = false;
-        DialogueManager.Instance.CreateAndStartDialogue(DialogueManager.Instance.currentDialogueFile);
+        DialogueManager.Instance.onGameSceneEntered = true;
     }
 
     private void Update()
@@ -75,6 +73,7 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 if (IsTimeToStartWriting())
                 {
+                    timeManager.ResetClock();
                     CreateMessageBubble();
                 }
             }
@@ -97,6 +96,8 @@ public class DialogueDisplayer : MonoBehaviour
     #region Dialogue starting methods
     private void Init()
     {
+        timeManager = DialogueManager.Instance.timeManager;
+        timeManager.currentlyWaiting = false;
         currentDialogueElementId = 0;
         if (currentDialogue != null)
         {
@@ -289,20 +290,16 @@ public class DialogueDisplayer : MonoBehaviour
     {
         System.TimeSpan typingTime = System.DateTime.MinValue.Subtract(writingTime);
         System.DateTime temp = timeManager.timeToReach.Add(typingTime);
+        Debug.Log(timeManager.timeToReach);
 
         if (temp < timeManager.currentTime)
         {
-            temp = timeManager.currentTime.AddSeconds(1);
+            temp = timeManager.currentTime;
         }
 
         Debug.Log("An empty bubble will start to appear at : " + temp);
 
         return temp;
-    }
-
-    private bool IsTimeToWrite()
-    {
-        return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
     }
 
     #endregion

@@ -113,7 +113,7 @@ public class TimeManager : MonoBehaviour
             {
                 int randomMinute = Random.Range(0, 3);
                 int randomSecond = Random.Range(0, 10);
-                System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day, inactiveEndHour.Hour, randomMinute, randomSecond);
+                System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day+1, inactiveEndHour.Hour, randomMinute, randomSecond);
 
                 storedTime = newTimeToStore;
 #if UNITY_EDITOR
