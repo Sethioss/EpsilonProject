@@ -14,7 +14,7 @@ And a fourth one;A fourth one? Whatever;You could act <s>a bit</s> more excited!
 ;;;;;;;
 A message with no possible answers;;;00:00:00:02;;;;
 ;;;;;;;
-Hey, do you want to go to the second branch?;Sure, why <u>not</u>?;;00:00:00:10;00:00:00:10;;<SCENE>SocialMediaMinigame;
-;No thanks;;;00:00:00:15;<BRANCH>badEnd1;;
+Hey, do you want to go to the second branch?;Sure, why <u>not</u>?;Okay, let's go!;00:00:00:10;00:00:00:10;<SCENE>SocialMediaMinigame 'Okay, let's go then';;
+;No thanks;Too bad;;00:00:00:15;<BRANCH>badEnd1;;
 ;;;;;;;
 Okay okay... Waiting...;;;00:00:00:10;;;;

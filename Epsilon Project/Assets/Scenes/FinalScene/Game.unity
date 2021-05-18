@@ -686,6 +686,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c80e73e2fdbb542b086646286c97eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDialogue:
+    id: 0
+    elements: []
+  currentDialogueElementId: 0
+  isInitialisation: 1
+  isWaitingForReply: 0
+  bubbleSpawned: 0
   messagePanel: {fileID: 2109942662}
   interlocutorBubblePrefab: {fileID: 8804392922517396649, guid: bbc586048fa654c41b47a0b699b75f5f, type: 3}
   playerBubblePrefab: {fileID: 6440456784370790435, guid: d4c003afff315734d8fca944459d2381, type: 3}
@@ -1075,11 +1082,11 @@ MonoBehaviour:
   dialogueList: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  autoMode: 0
+  autoMode: 1
   autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 1
-  inactivePeriodStartHour: 0
-  inactivePeriodEndHour: 13
+  inactivePeriodStartHour: 1
+  inactivePeriodEndHour: 7
   m_testSet: 45
   m_testSetFloat: 7
   username: Sebilol

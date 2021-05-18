@@ -17,8 +17,8 @@ public class DialogueDisplayer : MonoBehaviour
         }
     }
 
-    private Dialogue currentDialogue;
-    private int currentDialogueElementId = 0;
+    public Dialogue currentDialogue;
+    public int currentDialogueElementId = 0;
 
     #region Timing / Display des dialogues
 
@@ -28,9 +28,9 @@ public class DialogueDisplayer : MonoBehaviour
     private System.DateTime timeToStartWriting;
 
     //true = Initialisation Time, false = Reaction Time
-    private bool isInitialisation = true;
-    private bool isWaitingForReply = false;
-    private bool bubbleSpawned = false;
+    public bool isInitialisation = true;
+    public bool isWaitingForReply = false;
+    public bool bubbleSpawned = false;
     private string currentWaitingTime;
 
     private GameObject currentBubble;
@@ -103,6 +103,7 @@ public class DialogueDisplayer : MonoBehaviour
             StopDialogue(currentDialogue);
         }
         isInitialisation = true;
+        bubbleSpawned = false;
         isWaitingForReply = false;
     }
     public void StartDialogue(Dialogue dialogue)
@@ -112,6 +113,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
         timeManager.StartClock(currentWaitingTime);
+
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
     }
@@ -137,22 +139,29 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void DisplayMessage(GameObject currentBubble)
     {
-            GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-            TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+        GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
-            textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
-            isInitialisation = false;
-            bubbleSpawned = false;
+        if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        {
+            Button button = imageBg.GetComponent<Button>();
+            button.enabled = true;
+            button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].replies[0].replyEvent);
+        }
 
-            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
-            {
-                DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
-            }
-            else
-            {
-                GoToNextElement();
-            }
-            StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
+        textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
+        isInitialisation = false;
+        bubbleSpawned = false;
+
+        if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        {
+            DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
+        }
+        else
+        {
+            GoToNextElement();
+        }
+        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
     }
 
     void DisplayReaction(string reaction, GameObject bubbleObject)
@@ -221,29 +230,41 @@ public class DialogueDisplayer : MonoBehaviour
 
         writingTime = SetWritingTime(reply.reaction);
         timeToStartWriting = SetTimeToStartWriting();
-
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
     }
     private void GoToNextElement()
     {
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
-        isInitialisation = true;
-        bubbleSpawned = false;
-
         currentDialogueElementId++;
+
         if (currentDialogueElementId >= currentDialogue.elements.Count)
         {
             StopDialogue(currentDialogue);
         }
         else
         {
+            isInitialisation = true;
+            bubbleSpawned = false;
+
             SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
             timeManager.StartClock(currentWaitingTime);
 
             writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
             timeToStartWriting = SetTimeToStartWriting();
         }
+    }
+
+    private void GoToElement(int index)
+    {
+        currentDialogueElementId = index;
+        bubbleSpawned = true;
+
+        SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+        timeManager.StartClock(currentWaitingTime);
+
+        writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+        timeToStartWriting = SetTimeToStartWriting();
+
     }
     IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg, GameObject panel)
     {
@@ -328,6 +349,45 @@ public class DialogueDisplayer : MonoBehaviour
         return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
     }
     #endregion
+
+    public void CreateElement(string sceneToChangeTo, string inviteMessage)
+    {
+        string message = "";
+
+        if (inviteMessage != "")
+        {
+            message = inviteMessage + "\n" + GenerateRandomLink();
+        }
+        else
+        {
+            message = GenerateRandomLink();
+        }
+
+        UnityAction changeSceneAction = null;
+        changeSceneAction += delegate { GameManager.Instance.GoToScene(sceneToChangeTo); };
+        Reply newReply = new Reply("", "", 0, "00:00:00:00", changeSceneAction);
+
+        DialogueElement newElement = new DialogueElement(message, newReply, currentDialogue.elements.Count,
+            currentDialogue.elements[currentDialogueElementId].initiationTime, null, true);
+        newElement.AddReply(newReply);
+
+        currentDialogue.AddDialogueElement(newElement);
+        GoToElement(currentDialogue.elements.Count - 2);
+    }
+    private string GenerateRandomLink()
+    {
+        string randomLinkStart = "<color=blue><u>https://";
+        string randomLetterChain = "";
+        string randomLinkEnd = ".xyz</u></color>";
+
+        for (int i = 0; i < 34; i++)
+        {
+            int randomNumber = Random.Range(65, 122);
+            randomLetterChain += (char)randomNumber;
+        }
+
+        return randomLinkStart + randomLetterChain + randomLinkEnd;
+    }
 
     #region SaveWriting
     public int second;

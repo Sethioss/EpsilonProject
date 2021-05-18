@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class DialogueManager : MonoBehaviour
 {
     [HideInInspector]
-    public bool onGameSceneEntered;
+    public bool onGameSceneEntered = false;
 
     #region Dialogue Manager Components
     private CSVReader reader;
@@ -81,8 +81,6 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        StartDialogue();
     }
 
     private void Update()
@@ -489,10 +487,9 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region SCENE Keyword
-    public void ChangeScene(string sceneToChangeTo)
+    public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
     {
-        string sceneName = sceneToChangeTo;
-        timeManager.ResetClock();
+        displayer.CreateElement(sceneToChangeTo, inviteMessage);
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";
@@ -500,7 +497,6 @@ public class DialogueManager : MonoBehaviour
         AddToDebugFunctionMessage(colorCodeStart + "Going to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
         DebugElement(debugMessages.ToArray());
 #endif
-        SceneManager.LoadScene(sceneName.Trim());
     }
     #endregion    
 }

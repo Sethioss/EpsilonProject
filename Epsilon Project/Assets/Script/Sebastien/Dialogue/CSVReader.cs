@@ -339,8 +339,51 @@ public class CSVReader : MonoBehaviour
                 case "SCENE":
 
                     string sceneToChangeTo = "";
+                    string inviteMessage = "";
                     sceneToChangeTo = tagArea[i + 1];
-                    events += delegate { DialogueManager.Instance.ChangeScene(sceneToChangeTo); };
+
+                    //Find if there's a message to go with the link
+                    try
+                    {
+                        //Get invite message
+                        inviteMessage = tagArea[i + 2];
+                        int messageStartId = i + 2;
+                        char firstLetterOfMessage = inviteMessage[0];
+                        int messageEndId = messageStartId;
+
+                        if (firstLetterOfMessage == '\'')
+                        {
+                            string tempMessage = tagArea[messageStartId];
+                            while (tempMessage[tempMessage.Length - 1] != '\'')
+                            {
+                                tempMessage = tagArea[messageEndId];
+                                messageEndId++;
+                                tempMessage = tagArea[messageEndId];
+                            }
+
+                            tempMessage = "";
+
+                            for (int j = messageStartId; j <= messageEndId; j++)
+                            {
+                                if (j == messageStartId)
+                                {
+                                    tempMessage += tagArea[j];
+                                }
+                                else
+                                {
+                                    tempMessage += " " + tagArea[j];
+                                }
+                            }
+                            inviteMessage = tempMessage.Trim('\'');
+
+                        }
+                    }
+                    catch
+                    {
+                        Debug.LogWarning("No message has been set in the scene keyword. The invite message will just be the link");
+                    }
+
+                    events += delegate { DialogueManager.Instance.InviteToMinigame(sceneToChangeTo, inviteMessage); };
                     jump = 2;
 
                     //The event takes place right as it is read, used for check functions
@@ -484,7 +527,6 @@ public class CSVReader : MonoBehaviour
         return events;
     }
     #endregion
-
     private float GetFloat(string stringValue, float defaultValue)
     {
         float result = defaultValue;
@@ -494,7 +536,7 @@ public class CSVReader : MonoBehaviour
 
     private string GetTime(string cellContent)
     {
-        if(cellContent.Split(new char[] {':'}, System.StringSplitOptions.RemoveEmptyEntries).Length > 2)
+        if (cellContent.Split(new char[] { ':' }, System.StringSplitOptions.RemoveEmptyEntries).Length > 2)
         {
             return cellContent;
         }

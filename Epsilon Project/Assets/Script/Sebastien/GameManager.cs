@@ -42,6 +42,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(gameSceneId);
     }
 
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     private void GetGameSceneId()
     {
         gameSceneId = SceneManager.GetSceneByName(gameSceneName).buildIndex;
