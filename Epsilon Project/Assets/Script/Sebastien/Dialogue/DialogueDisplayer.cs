@@ -73,7 +73,6 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 if (IsTimeToStartWriting())
                 {
-                    timeManager.ResetClock();
                     CreateMessageBubble();
                 }
             }
