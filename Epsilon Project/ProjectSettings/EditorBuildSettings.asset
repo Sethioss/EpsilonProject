@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene/DeepWeb.unity
     guid: 73e49e5050440e1459eca39b37f5158e
   - enabled: 1
-    path: Assets/Scenes/BenjaminScene/FindThePath.unity
+    path: Assets/Scenes/FinalScene/FindThePath.unity
     guid: 5be1b2cfa175a3f4f8bdcd9a579a5a31
   - enabled: 1
     path: Assets/Scenes/BenjaminScene/Virus.unity
