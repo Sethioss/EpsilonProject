@@ -1,0 +1,24 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Hey, il y'a quelqu'un ?;;;;;;;
+;;;;;;;
+Je sais que tu me lis.;Oui, Salut!;;;;;;
+;???;;;;;;
+;;;;;;;
+Merci d'avoir répondu.;;;;;;;
+;;;;;;;
+Je vais être bref.;;;;;;;
+;;;;;;;
+Tu n'as pas intérêt à désinstaller ce logiciel.;;;;;;;
+;;;;;;;
+Ou à ignorer mes messages à partir de maintenant.;T'es qui?!;Pour l'instant, mon identité n'a aucune importance.;;;;;
+;C'est une menace?;J'aurais aimé que ça n'en soit pas une;;;;;
+;;;;;;;
+Je sais que tu utilises un <DMODEL>;;;;;;;
+;;;;;;;
+Je sais beaucoup de choses. J'en contrôle beaucoup aussi;Tu crois que tu me fais peur ?;Écoute, j'admire les gens courageux ok ? Mais ici pour ton propre bien tu devrais vraiment éviter de l'être.;;;;;
+;Tu me veux quoi ?!;;;;;;
+;;;;;;;
+Je vais être direct, je ne veux pas t'extorquer d'argent ou te faire faire des choses dangereuses.;;;;;;;
+;;;;;;;
+J'ai juste besoin de ton aide.;Comment je peux t'aider ?!;;;;<BRANCH>Intro1a;;
+;Pourquoi moi ??;;;;<BRANCH>Intro1b;;

@@ -28,9 +28,10 @@ public class DialogueDisplayer : MonoBehaviour
     private System.DateTime timeToStartWriting;
 
     //true = Initialisation Time, false = Reaction Time
-    public bool isInitialisation = true;
-    public bool isWaitingForReply = false;
-    public bool bubbleSpawned = false;
+    private bool isInitialisation = true;
+    private bool isWaitingForReply = false;
+    private bool bubbleSpawned = false;
+    private bool jumpToMessage = true;
     private string currentWaitingTime;
 
     private GameObject currentBubble;
@@ -95,6 +96,11 @@ public class DialogueDisplayer : MonoBehaviour
     #region Dialogue starting methods
     private void Init()
     {
+        isInitialisation = true;
+        bubbleSpawned = false;
+        isWaitingForReply = true;
+        jumpToMessage = true;
+
         timeManager = DialogueManager.Instance.timeManager;
         timeManager.currentlyWaiting = false;
         currentDialogueElementId = 0;
@@ -212,7 +218,9 @@ public class DialogueDisplayer : MonoBehaviour
         //Display
         DeleteReplies();
 
-        GameObject messagePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
+        GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
+        GameObject messagePrefab = responsePrefab.transform.GetChild(0).gameObject;
+
         GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
         textInBubble.text = reply.replyText;
@@ -221,7 +229,7 @@ public class DialogueDisplayer : MonoBehaviour
         timeManager.StartClock(currentWaitingTime);
         isWaitingForReply = false;
 
-        if(reply.reaction == "" || reply.reaction == null)
+        if (reply.reaction == "" || reply.reaction == null)
         {
             GoToNextElement();
         }
@@ -230,8 +238,7 @@ public class DialogueDisplayer : MonoBehaviour
             awaitingReaction = reply.reaction;
         }
 
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
-
+        StartCoroutine(SetObjectHeightToBackground(responsePrefab, imageBg, messagePanel));
 
     }
     private void GoToNextElement()
@@ -259,8 +266,8 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void GoToElement(int index)
     {
-        currentDialogueElementId = index;
-        bubbleSpawned = true;
+        currentDialogueElementId = index - 1;
+        bubbleSpawned = false;
 
         SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
         timeManager.StartClock(currentWaitingTime);
@@ -313,14 +320,14 @@ public class DialogueDisplayer : MonoBehaviour
     {
         System.TimeSpan typingTime = System.DateTime.MinValue.Subtract(writingTime);
         System.DateTime temp = timeManager.timeToReach.Add(typingTime);
-        Debug.Log(timeManager.timeToReach);
+        //Debug.Log(timeManager.timeToReach);
 
         if (temp < timeManager.currentTime)
         {
             temp = timeManager.currentTime;
         }
 
-        Debug.Log("An empty bubble will start to appear at : " + temp);
+        //Debug.Log("An empty bubble will start to appear at : " + temp);
 
         return temp;
     }
@@ -353,6 +360,8 @@ public class DialogueDisplayer : MonoBehaviour
     }
     #endregion
 
+    #region ElementCreation
+
     public void CreateElement(string sceneToChangeTo, string inviteMessage)
     {
         string message = "";
@@ -375,7 +384,13 @@ public class DialogueDisplayer : MonoBehaviour
         newElement.AddReply(newReply);
 
         currentDialogue.AddDialogueElement(newElement);
-        GoToElement(currentDialogue.elements.Count - 2);
+
+        if (jumpToMessage)
+        {
+            GoToElement(currentDialogue.elements.Count - 1);
+            jumpToMessage = false;
+        }
+
     }
     private string GenerateRandomLink()
     {
@@ -391,6 +406,9 @@ public class DialogueDisplayer : MonoBehaviour
 
         return randomLinkStart + randomLetterChain + randomLinkEnd;
     }
+    #endregion
+
+
 
     #region SaveWriting
     public int second;

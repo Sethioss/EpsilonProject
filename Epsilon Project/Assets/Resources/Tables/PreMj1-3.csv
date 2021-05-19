@@ -1,0 +1,9 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Tu ne pourras regarder que sa page de réseau social, mais sur sa boite mail, tu pourras me soumettre un mail de ton choix.;;;;;;;
+;;;;;;;
+Tu ne pourras m'en envoyer qu'un, d'accord? Tu n'as qu'une chance.;OK, j'ai compris;;;;;;
+;Pourquoi seulement un mail?;Je veux lui faire peur en lui faisant croire que je connais précisément ses faiblesses. Je ne veux lui faire du chantage qu'avec un élèment.;;;;;
+;;;;;;;
+Quand c'est bon pour toi, je t'envoie les liens.;C'est bon.;;;;;;
+;;;;;;;
+Bien.;;;;;;<SCENE>SocialMediaMinigame 'Le lien vers le réseau social' <SCENE>SocialMediaMinigame 'Le lien vers la boite mail (Not working for now)';

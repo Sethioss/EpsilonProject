@@ -141,13 +141,18 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
         colorCodeStart = "<color=yellow>";
         AddToDebugFunctionMessage("=======BRANCH FUNCTION EXECUTING=======", debugMessages);
-        AddToDebugFunctionMessage(colorCodeStart + "Switching from branch " + currentDialogueFile.name + " to branch: " + dialogueFileName, debugMessages);
+        AddToDebugFunctionMessage("Switching from branch " + currentDialogueFile.name + " to branch: " + dialogueFileName, debugMessages);
 
         if (debugExecutingFunction)
         {
             DebugElement(debugMessages.ToArray());
         }
 #endif
+
+        reader = CSVReader.Instance;
+        displayer = DialogueDisplayer.Instance;
+        timeManager = FindObjectOfType<TimeManager>();
+
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load("Tables\\" + dialogueFileName));
         dialogueList.Add(dialogueToAdd);

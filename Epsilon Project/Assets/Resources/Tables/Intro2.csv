@@ -1,0 +1,4 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Ça dépendra de toi.;;;;;;;
+;;;;;;;
+J'ai l'impression que tu as compris. Je reviendrais vers toi d'ici 1 heure pour ta première tâche. Je serais injoignable tant que je ne lancerais pas la conversation, désolé pour ça.;;;;;;<BRANCH>PreMj1-1;

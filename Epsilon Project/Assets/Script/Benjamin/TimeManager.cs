@@ -40,7 +40,6 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(instance);
-        StartClock(02165846);
     }
 
     void Update()

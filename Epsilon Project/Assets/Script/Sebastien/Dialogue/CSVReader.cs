@@ -384,7 +384,7 @@ public class CSVReader : MonoBehaviour
                     }
 
                     events += delegate { DialogueManager.Instance.InviteToMinigame(sceneToChangeTo, inviteMessage); };
-                    jump = 2;
+                    jump = 3;
 
                     //The event takes place right as it is read, used for check functions
                     if (playRightAway)
@@ -541,6 +541,6 @@ public class CSVReader : MonoBehaviour
             return cellContent;
         }
         //The time isn't readable
-        return "00:00:00:15";
+        return "00:00:00:07";
     }
 }
