@@ -6,4 +6,4 @@ Tu ne pourras m'en envoyer qu'un, d'accord? Tu n'as qu'une chance.;OK, j'ai comp
 ;;;;;;;
 Quand c'est bon pour toi, je t'envoie les liens.;C'est bon.;;;;;;
 ;;;;;;;
-Bien.;;;;;;<SCENE>SocialMediaMinigame 'Le lien vers le réseau social' <SCENE>SocialMediaMinigame 'Le lien vers la boite mail (Not working for now)';
+Bien.;;;;;;<SCENE>SocialMediaMinigame 'Le lien vers le réseau social' <SCENE>Game 'Le lien vers la boite mail';
