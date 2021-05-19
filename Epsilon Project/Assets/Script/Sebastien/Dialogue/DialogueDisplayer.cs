@@ -209,27 +209,30 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void SendReply(Reply reply)
     {
+        //Display
         DeleteReplies();
 
         GameObject messagePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
-
         GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
-
         textInBubble.text = reply.replyText;
-
-        awaitingReaction = reply.reaction;
-
-        isWaitingForReply = false;
-
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
 
         SetWaitingTime(reply.reactionTime);
         timeManager.StartClock(currentWaitingTime);
+        isWaitingForReply = false;
 
-        writingTime = SetWritingTime(reply.reaction);
-        timeToStartWriting = SetTimeToStartWriting();
+        if(reply.reaction == "" || reply.reaction == null)
+        {
+            GoToNextElement();
+        }
+        else
+        {
+            awaitingReaction = reply.reaction;
+        }
+
+        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
+
+
     }
     private void GoToNextElement()
     {

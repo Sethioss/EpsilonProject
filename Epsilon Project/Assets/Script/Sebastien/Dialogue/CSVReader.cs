@@ -540,6 +540,7 @@ public class CSVReader : MonoBehaviour
         {
             return cellContent;
         }
+        //The time isn't readable
         return "00:00:00:15";
     }
 }

@@ -1083,7 +1083,7 @@ MonoBehaviour:
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:00
+  autoModeWaitingTime: 00:00:00:01
   inactivePeriods: 1
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7
