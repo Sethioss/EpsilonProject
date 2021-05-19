@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-
+    #region Save
     public static void SaveEvent (Event even)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -35,16 +35,28 @@ public static class SaveSystem
         stream.Close();
 
     }
-    public static void SaveTimeToStartWriting(DialogueDisplayer time)
+    public static void SaveTimeToStartWriting(DialogueDisplayer timeWriting)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/TimeWriting.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
-        TimeToStartWritingData timedata = new TimeToStartWritingData(time);
+        TimeToStartWritingData timedata = new TimeToStartWritingData(timeWriting);
         formatter.Serialize(stream, timedata);
         stream.Close();
 
     }
+    public static void SaveTakeIdentity(TakeIdentity identity)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Identity.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        TakeIdentityData identitydata = new TakeIdentityData(identity);
+        formatter.Serialize(stream, identitydata);
+        stream.Close();
+
+    }
+    #endregion
+    #region Load
     public static GPSData LoadGPS()
     {
         string path = Application.persistentDataPath + "/GPS.fun";
@@ -61,7 +73,6 @@ public static class SaveSystem
             return null;
         }
     }
-
     public static EventData LoadEvent()
     {
         string path = Application.persistentDataPath + "/event.fun";
@@ -110,5 +121,23 @@ public static class SaveSystem
             return null;
         }
     }
+    public static TakeIdentityData LoadIdentity()
+    {
+        string path = Application.persistentDataPath + "/Identity.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            TakeIdentityData identitydata = formatter.Deserialize(stream) as TakeIdentityData;
+            return identitydata;
+        }
+        else
+        {
+            Debug.LogError(" Save file not found in " + path);
+            return null;
+        }
+
+    }
+    #endregion
 }
 
