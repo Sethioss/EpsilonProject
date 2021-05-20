@@ -5,6 +5,6 @@ using UnityEngine.Events;
 
 public class MinigameManager : MonoBehaviour
 {
-    public TextAsset winNextDialogueFile;
-    public TextAsset loseNextDialogueFile;
+    public UnityEvent winAction;
+    public UnityEvent loseAction;
 }

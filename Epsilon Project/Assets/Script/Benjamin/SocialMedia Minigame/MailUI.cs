@@ -117,7 +117,7 @@ public class MailUI : MonoBehaviour
         {
             if((isMailToShareSpam && spamOpen == true)||(isMailToShareSpam == false && spamOpen == false)){ 
             Debug.Log("Yup this was the correct one");
-                GameManager.Instance.SetDialogueAndGoToGame(miniGame.winNextDialogueFile);
+                miniGame.winAction.Invoke();
             }
             else
             {

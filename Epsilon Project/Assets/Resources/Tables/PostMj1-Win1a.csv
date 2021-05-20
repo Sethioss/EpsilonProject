@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+J'apporte de bonnes nouvelles. Le mail que tu as choisis était le bon et j'ai pu lui faire du chantage.;Super !;;00:02:00:00;;;;
+;Je vois.;;;;;;
+;;;;;;;
+Il est contraint de démissioner. Pour le reste, on verra;Comment peux-tu être sûr qu'il démissionera?;;;;;<BRANCH>PostMj1-Win1c;
+;Le reste?;;;;<BRANCH>PostMj1-Win1b;;

@@ -34,6 +34,10 @@ public class DialogueDisplayer : MonoBehaviour
     private bool jumpToMessage = true;
     private string currentWaitingTime;
 
+    private bool newDialogue = true;
+    [HideInInspector]
+    public bool cameFromBranch = false;
+
     private GameObject currentBubble;
 
     [Header("Message Area")]
@@ -96,32 +100,36 @@ public class DialogueDisplayer : MonoBehaviour
     #region Dialogue starting methods
     private void Init()
     {
+        //Set dialogue state to the start of a new element
+        isWaitingForReply = true;
         isInitialisation = true;
         bubbleSpawned = false;
-        isWaitingForReply = true;
-        jumpToMessage = true;
 
         timeManager = DialogueManager.Instance.timeManager;
         timeManager.currentlyWaiting = false;
+
+        //Set the pointer to the first dialog element
         currentDialogueElementId = 0;
         if (currentDialogue != null)
         {
             StopDialogue(currentDialogue);
         }
-        isInitialisation = true;
-        bubbleSpawned = false;
-        isWaitingForReply = false;
+
     }
     public void StartDialogue(Dialogue dialogue)
     {
         Init();
         currentDialogue = dialogue;
+        isWaitingForReply = false;
+        newDialogue = true;
 
+        //Set clock and writing time to the initiation time of the current element
         SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
         timeManager.StartClock(currentWaitingTime);
 
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
+
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
@@ -138,6 +146,7 @@ public class DialogueDisplayer : MonoBehaviour
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = "...";
+        //Current bubble = The bubble which text is gonna get changed
         currentBubble = messagePrefab;
         bubbleSpawned = true;
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
@@ -148,6 +157,7 @@ public class DialogueDisplayer : MonoBehaviour
         GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
+        //If it's a message sent with a <SCENE> keyword, minigameInvite is set to true
         if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
         {
             Button button = imageBg.GetComponent<Button>();
@@ -159,6 +169,9 @@ public class DialogueDisplayer : MonoBehaviour
         isInitialisation = false;
         bubbleSpawned = false;
 
+        newDialogue = false;
+
+        //Display replies if there are
         if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
         {
             DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
@@ -167,30 +180,12 @@ public class DialogueDisplayer : MonoBehaviour
         {
             GoToNextElement();
         }
+
         StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
-    }
-
-    void DisplayReaction(string reaction, GameObject bubbleObject)
-    {
-        if (reaction.Length > 1)
-        {
-            GameObject imageBg = bubbleObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-            TextMeshProUGUI textInBubble = bubbleObject.GetComponentInChildren<TextMeshProUGUI>();
-
-            textInBubble.text = reaction;
-            isInitialisation = true;
-            bubbleSpawned = false;
-
-            StartCoroutine(SetObjectHeightToBackground(bubbleObject, imageBg, messagePanel));
-        }
-
-        GoToNextElement();
-
     }
     private void DisplayPossibleReplies(List<Reply> replies)
     {
-        isWaitingForReply = true;
-
+        //Create the buttons corresponding to each answer
         for (int i = 0; i < replies.Count; i++)
         {
             GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
@@ -199,25 +194,26 @@ public class DialogueDisplayer : MonoBehaviour
             Reply reply = replies[i];
 
             replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
+            replyButton.GetComponent<Button>().onClick.AddListener(delegate { SetNewDialogueToFalse(); });
 
             if (replies[i].replyEvent != null)
             {
                 replyButton.GetComponent<Button>().onClick.AddListener(replies[i].replyEvent);
             }
         }
+        isWaitingForReply = true;
     }
-    private void DeleteReplies()
+
+    private void SetNewDialogueToFalse()
     {
-        foreach (Transform child in repliesPanel.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        newDialogue = false;
     }
     private void SendReply(Reply reply)
     {
         //Display
         DeleteReplies();
 
+        //Create response bubble
         GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
         GameObject messagePrefab = responsePrefab.transform.GetChild(0).gameObject;
 
@@ -225,9 +221,10 @@ public class DialogueDisplayer : MonoBehaviour
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
         textInBubble.text = reply.replyText;
 
+        //Set clock to reaction time
+        isWaitingForReply = false;
         SetWaitingTime(reply.reactionTime);
         timeManager.StartClock(currentWaitingTime);
-        isWaitingForReply = false;
 
         if (reply.reaction == "" || reply.reaction == null)
         {
@@ -239,20 +236,55 @@ public class DialogueDisplayer : MonoBehaviour
         }
 
         StartCoroutine(SetObjectHeightToBackground(responsePrefab, imageBg, messagePanel));
+    }
+
+    private void DeleteReplies()
+    {
+        foreach (Transform child in repliesPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    void DisplayReaction(string reaction, GameObject bubbleObject)
+    {
+        GameObject imageBg = bubbleObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+        TextMeshProUGUI textInBubble = bubbleObject.GetComponentInChildren<TextMeshProUGUI>();
+
+        textInBubble.text = reaction;
+        StartCoroutine(SetObjectHeightToBackground(bubbleObject, imageBg, messagePanel));
+
+        isWaitingForReply = false;
+        isInitialisation = true;
+        bubbleSpawned = false;
+
+        GoToNextElement();
 
     }
+
     private void GoToNextElement()
     {
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
-        currentDialogueElementId++;
-
-        if (currentDialogueElementId >= currentDialogue.elements.Count)
+        if (currentDialogueElementId + 1 >= currentDialogue.elements.Count)
         {
             StopDialogue(currentDialogue);
         }
         else
         {
+            if (!cameFromBranch)
+            {
+                currentDialogueElementId++;
+            }
+            else if(!newDialogue && cameFromBranch)
+            {
+                currentDialogueElementId++;
+            }
+            else
+            {
+                cameFromBranch = false;
+            }
+
             isInitialisation = true;
             bubbleSpawned = false;
 
@@ -293,9 +325,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         if (action != null)
         {
-            UnityEvent endElementEvent = new UnityEvent();
-            endElementEvent.AddListener(action);
-            endElementEvent.Invoke();
+            action.Invoke();
         }
     }
     #endregion

@@ -204,7 +204,7 @@ public class CSVReader : MonoBehaviour
                 case "BRANCH":
                     string fileName = tagArea[i + 1].ToString();
 
-                    events += delegate { DialogueManager.Instance.CreateAndStartDialogue(fileName); };
+                    events += delegate { DialogueManager.Instance.Branch(fileName); };
                     jump = 2;
 
                     //The event takes place right as it is read, used for check functions

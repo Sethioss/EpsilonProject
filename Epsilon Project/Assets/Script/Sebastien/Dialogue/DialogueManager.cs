@@ -121,6 +121,13 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region BRANCH Command / Dialogue Initialisation
+
+    public void Branch(string dialogueFileName)
+    {
+        displayer.cameFromBranch = true;
+        CreateAndStartDialogue(dialogueFileName);
+    }
+
     //The text asset function executes for the starting file
     public void CreateAndStartDialogue(TextAsset dialogueFile)
     {
