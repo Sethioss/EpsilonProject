@@ -1,4 +1,4 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
 Désolé si ça te déçois mais je ne t'ai pas choisi toi en particulier, l'envoi du premier message s'est fait au hasard à plusieurs personnes.;;;;;;;
 ;;;;;;;
-Tu as été la première personne à me répondre alors je me suis dit que j'allais juste continuer avec toi.;Tu me dis que je n'aurais pas du répondre c'est ça?;;;;<BRANCH>Intro2;;
+Tu as été la première personne à me répondre alors je me suis dit que j'allais juste continuer avec toi.;Tu me dis que je n'aurais pas du répondre c'est ça?;Ça dépendra de toi.;;;;<BRANCH>Intro2;

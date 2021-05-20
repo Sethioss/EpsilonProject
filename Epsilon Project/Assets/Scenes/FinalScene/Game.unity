@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 49743786ce9695f40874be5a6d380958, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: de298b317faba5e4b8905c6ffb0291fc, type: 3}
   dialogueList: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 1
