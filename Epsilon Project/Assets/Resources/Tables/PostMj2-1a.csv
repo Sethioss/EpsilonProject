@@ -1,0 +1,15 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Il t'a dit quoi?;Que je devais me méfier de vous et trouver un moyen de fuir votre entreprise.;Je vois.;;;;;
+;Non rien, ce n'était pas important.;;;;<BRANCH>PostMj2-1b;;
+;;;;;;;
+Je vais te dire quelque chose.;;;;;;;
+;;;;;;;
+Je t'ai dis que je fais partie d'un groupe. C'est vrai.;;;;;;;
+;;;;;;;
+Que moi et mon groupe avons décidé de te contacter, c'est faux. Je suis la seule personne qui ait décidé de t'envoyer un message;;;;;;;
+;;;;;;;
+Mon groupe n'est pas au courant de nos conversations, je t'avoue que tu serais en danger s'ils le savaient;;;;;;;
+;;;;;;;
+Mais je te couvrirais, je prendrais mes responsabilités;;;;;;;
+;;;;;;;
+Si tu décides de tout arrêter, désinstalle l'application et je ne te ferais rien. Sinon reste connecté, je te recontacterais bientôt.;;;;;;;

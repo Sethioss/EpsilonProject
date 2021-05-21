@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("The name of the main chatting app scene")]
     public string gameSceneName;
     private int gameSceneId;
 

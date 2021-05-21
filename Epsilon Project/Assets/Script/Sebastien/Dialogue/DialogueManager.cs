@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     #region Dialogue Manager Components
     private CSVReader reader;
     private DialogueDisplayer displayer;
+    [HideInInspector]
     public TimeManager timeManager;
 
     [Header("Dialogue initialisation and list")]
@@ -498,15 +499,15 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-    #region SCENE Keyword
+    #region LINK Keyword
     public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
     {
         displayer.CreateElement(sceneToChangeTo, inviteMessage);
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";
-        AddToDebugFunctionMessage("=======SCENE FUNCTION EXECUTING=======", debugMessages);
-        AddToDebugFunctionMessage(colorCodeStart + "Going to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
+        AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
+        AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
         DebugElement(debugMessages.ToArray());
 #endif
     }

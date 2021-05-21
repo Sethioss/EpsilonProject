@@ -1,0 +1,12 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Alors?;Je pense avoir réussi.;Sérieusement? Super!;;;;;
+;;;;;;;
+Mais pourquoi tu ''penses'' ?;Je n'ai rien compris à ce qu'il disait…;;;;;;
+;Il faudra attendre un peu pour être sûr.;;;;;;
+;;;;;;;
+Il a dit qu'il nous contacterait au moins?;Oui;;;;;;
+;;;;;;;
+C'est bon alors! Bien joué!;;;;;;;
+;;;;;;;
+On t'a dit autre chose?;À vrai dire…;;;;<BRANCH>PostMj2-1a;;
+;Non, il ne m'a dit que ça;;;;<BRANCH>PostMj2-1b;;

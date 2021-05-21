@@ -336,7 +336,7 @@ public class CSVReader : MonoBehaviour
 
                     break;
 
-                case "SCENE":
+                case "LINK":
 
                     string sceneToChangeTo = "";
                     string inviteMessage = "";
@@ -399,8 +399,8 @@ public class CSVReader : MonoBehaviour
                         List<string> debugMessages = new List<string>();
                         debugMessages.Add("=======DISCOVERED A NEW EVENT=======");
                         colorCodeFirst = "<color=blue>";
-                        debugMessages.Add(colorCodeFirst + "SCENE :: Scene keyword detected " + colorCodeLast);
-                        debugMessages.Add(colorCodeFirst + "SCENE :: Going to scene : " + sceneToChangeTo + colorCodeLast);
+                        debugMessages.Add(colorCodeFirst + "LINK :: Link keyword detected " + colorCodeLast);
+                        debugMessages.Add(colorCodeFirst + "LINK :: Link leads to scene : " + sceneToChangeTo + colorCodeLast);
                         DialogueManager.Instance.DebugElement(debugMessages.ToArray());
                     }
 #endif
