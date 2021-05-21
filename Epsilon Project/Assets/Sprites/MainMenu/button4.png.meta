@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 391df7e9ee9b3374f93a872b4f4910bf
+guid: 6b0b2d42f0b423742b5ea90f04fa3f8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7068168602851981925
-    second: button register_0
+      213: 9144582269909938847
+    second: button4_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -47,10 +47,10 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.4535857, y: 0.61427915}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 1964, z: 156, w: 1115}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button register_0
+      name: button4_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 26
-        width: 769
-        height: 127
+        x: 146
+        y: 2008
+        width: 2028
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56abf8145ed271260800000000000000
-      internalID: 7068168602851981925
+      spriteID: f923159df1518ee70800000000000000
+      internalID: 9144582269909938847
       vertices: []
       indices: 
       edges: []

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 391df7e9ee9b3374f93a872b4f4910bf
+guid: 0e8b4ac99df85214eb30041b82c4eeba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7068168602851981925
-    second: button register_0
+      213: -5392434705830403424
+    second: bandeblanche2_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button register_0
+      name: bandeblanche2_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 26
-        width: 769
-        height: 127
+        x: 62
+        y: 0
+        width: 1080
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56abf8145ed271260800000000000000
-      internalID: 7068168602851981925
+      spriteID: 0a2ad7494393a25b0800000000000000
+      internalID: -5392434705830403424
       vertices: []
       indices: 
       edges: []
