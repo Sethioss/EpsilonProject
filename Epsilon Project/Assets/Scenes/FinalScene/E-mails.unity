@@ -5036,7 +5036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &585443099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16506,7 +16506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1768528778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20967,12 +20967,12 @@ MonoBehaviour:
   winAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6681529301092192989, guid: f0b8ff28b83b4ac48a020db149c21a71, type: 3}
+      - m_Target: {fileID: 12144110}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 84ddcaf1151a69a4fb3a9256e3e71622, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: 49743786ce9695f40874be5a6d380958, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -20981,7 +20981,19 @@ MonoBehaviour:
         m_CallState: 2
   loseAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 12144110}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SetDialogueAndGoToGame
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4900000, guid: 716399fd726bfc54ca1d2197d47fcae1, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &2092656843
 Transform:
   m_ObjectHideFlags: 0

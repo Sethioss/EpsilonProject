@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void GoToChatScene()
     {
-        SceneManager.LoadScene(gameSceneId);
+        SceneManager.LoadScene("Game");
     }
 
     public void GoToScene(string sceneName)

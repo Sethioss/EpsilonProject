@@ -123,11 +123,13 @@ public class MailUI : MonoBehaviour
             else
             {
                 Debug.Log("Noooo ! This is not correct");
+                miniGame.loseAction.Invoke();
             }
         }
         else
         {
             Debug.Log("Noooo ! This is not correct");
+            miniGame.loseAction.Invoke();
         }
     }
 }
