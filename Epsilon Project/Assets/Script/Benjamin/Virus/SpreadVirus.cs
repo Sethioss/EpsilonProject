@@ -6,27 +6,32 @@ using UnityEngine.UI;
 public class SpreadVirus : MonoBehaviour
 {
     public int virusCoordX, virusCoordY;
+    public int numberOfColumns, numberOfRows;
+    public int hackFrequency = 3;
+    public static bool reachedGoal;
     int tracker = 0;
     public GameObject[] allTiles;
-    GameObject[,] tiles = new GameObject[3, 3];
+    GameObject[,] tiles = new GameObject[20, 20];
     public GameObject testTile;
+    bool canHack = true;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         //tiles[0][0] = testTile;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numberOfRows - 1; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < numberOfColumns-1; j++)
             {
                 tiles[i, j] = allTiles[i + j];
             }
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numberOfRows; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < numberOfColumns; j++)
             {
 
                 tiles[i, j] = allTiles[tracker];
@@ -37,25 +42,32 @@ public class SpreadVirus : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numberOfRows; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < numberOfColumns; j++)
             {
                 if (tiles[i, j].GetComponent<TilesBehaviour>().holdsVirus == true)
                 {
                     //Debug.Log("Virus located in " + i + "," + j);
-                    StartCoroutine(StartSpreading(i, j));
+                    StartCoroutine(StartSpreading(i, j,2f));
                 }
             }
         }
+
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (reachedGoal)
+            Debug.Log("Goal Reached, congrats");
+        if (canHack == true && reachedGoal == false)
+            StartCoroutine(HackingProcess());
     }
+
+    
 
     public IEnumerator StartTagging(GameObject target, int waitTime)
     {
@@ -63,110 +75,159 @@ public class SpreadVirus : MonoBehaviour
         target.GetComponent<TilesBehaviour>().TagTile();
     }
 
-    public IEnumerator StartSpreading(int coordY, int coordX)
+    public IEnumerator HackingProcess()
     {
-        Debug.Log("StartSpreading");
-        yield return new WaitForSeconds(2f);
+        canHack = false;
+        yield return new WaitForSeconds(hackFrequency);
+        HackRandom();
+        
+    }
+
+    void HackRandom()
+    {
+        int randomColumn = Random.Range(0, numberOfColumns);
+        int randomRow = Random.Range(0, numberOfRows);
+        if(tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isInfected == false && tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isBlocked == false && tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked == false)
+        {
+            tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked = true;
+            canHack = true;
+        }
+        else
+        {
+            HackRandom();
+        }
+    }
+
+    public IEnumerator StartSpreading(int coordY, int coordX, float timeToWait)
+    {
+        //Debug.Log("StartSpreading");
+        yield return new WaitForSeconds(timeToWait);
+        
+        if (reachedGoal == false) { 
         CheckSurroundings(coordY, coordX);
+        }
 
     }
 
     void CheckSurroundings(int coordY, int coordX)
     {
-        int direction = Random.Range(1, 5);
-        switch (direction)
+        
+        if (reachedGoal == false)
         {
-            case 1:
-                if (coordX > 0)
-                {
-                    if(tiles[coordY, coordX - 1].GetComponent<TilesBehaviour>().isInfected == false) { 
-                    Debug.Log("Looking left");
-                    tiles[coordY, coordX].GetComponent<TilesBehaviour>().holdsVirus = false;
-                    tiles[coordY, coordX - 1].GetComponent<TilesBehaviour>().holdsVirus = true;
-                    StartCoroutine(StartSpreading(coordX - 1, coordY));
+            Debug.Log("We are at Y " + coordY + " X " + coordX);
+            GameObject currentTile = tiles[coordX, coordY];
+            TilesBehaviour currentTileBhv = currentTile.GetComponent<TilesBehaviour>();
+            int direction = Random.Range(1,5);
+            switch (direction)
+            {
+                
+                case 1:
+                        Debug.Log("Initalizing Research");
+                    if (coordX > 0)
+                    {
+                        GameObject tileLeft = tiles[coordY, coordX-1];
+                        TilesBehaviour tileLeftBhv = tileLeft.GetComponent<TilesBehaviour>();
+                        if (tileLeftBhv.isInfected == false && tileLeftBhv.isBlocked == false && tileLeftBhv.isHacked == false)
+                        {
+                            Debug.Log("Looking left");
+                            currentTileBhv.holdsVirus = false;
+                            tileLeftBhv.holdsVirus = true;
+                            
+                            StartCoroutine(StartSpreading(coordY, coordX - 1,2f));
+                        }
+                        else
+                        {
+                            //Debug.Log("Can't look left");
+                            StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
+                        }
                     }
                     else
                     {
                         //Debug.Log("Can't look left");
-                        CheckSurroundings(coordY, coordX - 1);
+                        StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
                     }
-                }
-                else
-                {
-                    //Debug.Log("Can't look left");
-                    CheckSurroundings(coordY, coordX - 1);
-                }
-                break;
+                    break;
 
-            case 2:
-                Debug.Log(coordX);
-                if (coordX < 2)
-                {
-                    if (tiles[coordY, coordX + 1].GetComponent<TilesBehaviour>().isInfected == false) { 
-                    Debug.Log("Looking Right");
-                    tiles[coordY, coordX].GetComponent<TilesBehaviour>().holdsVirus = false;
-                    tiles[coordY, coordX + 1].GetComponent<TilesBehaviour>().holdsVirus = true;
-                    StartCoroutine(StartSpreading(coordX + 1,coordY));
+                case 2:
+                        Debug.Log("Initalizing Research");
+                    if (coordX + 1 <= numberOfColumns-1)
+                    {
+                        GameObject tileRight = tiles[coordY, coordX+1];
+                        TilesBehaviour tileRightBhv = tileRight.GetComponent<TilesBehaviour>();
+                        if (tileRightBhv.isInfected == false && tileRightBhv.isBlocked == false && tileRightBhv.isHacked == false)
+                        {
+                            Debug.Log("Looking Right");
+                            currentTileBhv.holdsVirus = false;
+                            tileRightBhv.holdsVirus = true;
+                            StartCoroutine(StartSpreading(coordY, coordX + 1, 2f));
+                        }
+                        else
+                        {
+                            //Debug.Log("Can't look left");
+                            StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
+                        }
                     }
                     else
                     {
                         //Debug.Log("Can't look left");
-                        CheckSurroundings(coordY, coordX + 1);
+                        StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
                     }
-                }
-                else
-                {
-                    //Debug.Log("Can't look left");
-                    CheckSurroundings(coordY, coordX +1);
-                }
-                break;
+                    break;
 
-            case 3:
-                if (coordY > 0)
-                {
-                    Debug.Log("Looking up, current Y coord is" + coordY);
-                    if (tiles[coordY - 1, coordX].GetComponent<TilesBehaviour>().isInfected == false) { 
-                    Debug.Log("Looking Up");
-                    tiles[coordY, coordX].GetComponent<TilesBehaviour>().holdsVirus = false;
-                    tiles[coordY - 1, coordX].GetComponent<TilesBehaviour>().holdsVirus = true;
-                    StartCoroutine(StartSpreading(coordX, coordY - 1));
+                case 3:
+                        Debug.Log("Initalizing Research");
+                    if (coordY > 0)
+                    {
+                        GameObject tileUp = tiles[coordY - 1, coordX];
+                        TilesBehaviour tileUpBhv = tileUp.GetComponent<TilesBehaviour>();
+
+                        if (tileUpBhv.isInfected == false && tileUpBhv.isBlocked == false && tileUpBhv.isHacked == false)
+                        {
+                            Debug.Log("Looking Up");
+                            currentTileBhv.holdsVirus = false;
+                            tileUpBhv.holdsVirus = true;
+                            StartCoroutine(StartSpreading(coordY - 1, coordX,2f));
+                        }
+                        else
+                        {
+                            //Debug.Log("Can't look Up");
+                            StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
+                        }
                     }
                     else
                     {
                         //Debug.Log("Can't look Up");
-                        CheckSurroundings(coordY - 1, coordX);
+                        StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
                     }
-                }
-                else
-                {
-                    //Debug.Log("Can't look Up");
-                    CheckSurroundings(coordY - 1, coordX);
-                }
-                break;
+                    break;
 
-            case 4:
-                Debug.Log(coordY);
-                if (coordY < 2)
-                {
-                    if (tiles[coordY + 1, coordX].GetComponent<TilesBehaviour>().isInfected == false) { 
-                    Debug.Log("Looking Down");
-                    tiles[coordY, coordX].GetComponent<TilesBehaviour>().holdsVirus = false;
-                    tiles[coordY + 1, coordX].GetComponent<TilesBehaviour>().holdsVirus = true;
-                    StartCoroutine(StartSpreading(coordX,coordY + 1));
+                case 4:
+                    //Debug.Log(coordY);Debug.Log("Initalizing Research");
+                    if (coordY < numberOfRows-1)
+                    {Debug.Log("Initalizing Research");
+                        GameObject tileDown = tiles[coordY + 1, coordX];
+                        TilesBehaviour tileDownBhv = tileDown.GetComponent<TilesBehaviour>();
+                        if (tileDownBhv.isInfected == false && tileDownBhv.isBlocked == false && tileDownBhv.isHacked == false)
+                        {
+                            Debug.Log("Looking Down");
+                            currentTileBhv.holdsVirus = false;
+                            tileDownBhv.holdsVirus = true;
+                            StartCoroutine(StartSpreading(coordY + 1, coordX,2f));
+                        }
+                        else
+                        {
+                            //Debug.Log("Can't look Down");
+                            StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
+                        }
                     }
                     else
                     {
                         //Debug.Log("Can't look Down");
-                        CheckSurroundings(coordY + 1, coordX);
+                        StartCoroutine(StartSpreading(coordY, coordX, 0.05f));
                     }
-                }
-                else
-                {
-                    //Debug.Log("Can't look Down");
-                    CheckSurroundings(coordY +1, coordX);
-                }
-                break;
+                    break;
 
+            }
         }
     }
 }

@@ -20,7 +20,6 @@ public class CameraHacking : MonoBehaviour
     public void DeactivateCamera(GameObject target)
     {
         target.SetActive(false);
-        ReactivateCamera(target);
     }
 
     public void LoadNextScene(int sceneID)
@@ -35,10 +34,12 @@ public class CameraHacking : MonoBehaviour
         DialogueManager.Instance.currentDialogueFile = data;
     }
 
-    public IEnumerator ReactivateCamera(GameObject cameraHacked)
+    public void ReactivateCamera(GameObject cameraHacked)
     {
-        yield return new WaitForSeconds(3);
         cameraHacked.SetActive(true);
+        cameraHacked.transform.position = cameraHacked.GetComponent<CameraData>().originalPosition;
+        cameraHacked.transform.rotation= cameraHacked.GetComponent<CameraData>().originalRotation;
+
     }
 
 }
