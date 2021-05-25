@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+.onion? Ils nous font une blague ou quoi…;C'est quoi?;Le .onion est un nom de domaine utilisé pour les sites présents sur le deep web.;;;;;
+;Ça ne me dit rien qui vaille…;En effet, tout porte à croire qu'ils nous ont juste envoyé des liens de sites du deep web.;;;;;
+;;;;;;;
+Tu sais ce que c'est?;Oui;Bien, ça m'épargne au moins ça.;;;;<BRANCH>PreMj2-4;
+;Non;;;;<BRANCH>PreMj2-3a;;

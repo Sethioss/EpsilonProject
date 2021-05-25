@@ -93,7 +93,7 @@ public class TimeManager : MonoBehaviour
         System.DateTime inactiveStartHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, DialogueManager.Instance.inactivePeriodStartHour, 0, 0);
         System.DateTime inactiveEndHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, DialogueManager.Instance.inactivePeriodEndHour, 0, 0);
 
-        if(inactiveStartHour.Hour <= inactiveEndHour.Hour)
+        if (inactiveStartHour.Hour <= inactiveEndHour.Hour)
         {
             if ((storedTime.Hour >= inactiveStartHour.Hour && storedTime.Hour < inactiveEndHour.Hour) && !DialogueManager.Instance.autoMode && DialogueManager.Instance.inactivePeriods)
             {
@@ -113,7 +113,7 @@ public class TimeManager : MonoBehaviour
             {
                 int randomMinute = Random.Range(0, 3);
                 int randomSecond = Random.Range(0, 10);
-                System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day, inactiveEndHour.Hour, randomMinute, randomSecond);
+                System.DateTime newTimeToStore = new System.DateTime(currentTime.Year, currentTime.Month, storedTime.Day + 1, inactiveEndHour.Hour, randomMinute, randomSecond);
 
                 storedTime = newTimeToStore;
 #if UNITY_EDITOR
@@ -177,7 +177,48 @@ public class TimeManager : MonoBehaviour
         StartWaiting(timeToStore);
     }
 
-    
+    public void StartClock(int input)
+    {
+        //Parse the data into a readable DateTime object format
+
+        //MinValue initializes day at 1. Accounted for in the "StartWaiting" function
+        System.DateTime timeToStore = System.DateTime.MinValue;
+        int[] intList = GetIntToArray(input);
+
+        //Int list to DateTime object conversion
+        timeToStore = timeToStore.AddDays(intList[0]);
+        timeToStore = timeToStore.AddHours(intList[1]);
+        timeToStore = timeToStore.AddMinutes(intList[2]);
+        timeToStore = timeToStore.AddSeconds(intList[3]);
+        //Debug.Log("Time stored : " + (timeToStore.Day - 1) + ":" + timeToStore.Hour + ":" + timeToStore.Minute + ":" + timeToStore.Second);
+
+        //StartWaiting(timeToStore);
+    }
+
+    private int[] GetIntToArray(int input)
+    {
+        //If 0 is the first digit, it will not be included in the .ToString(), so we check if it's the case to know whether we should add it or not
+        int firstDigit = input / 10000000;
+        string stringInput = "";
+        if (firstDigit == 0)
+        {
+            stringInput = firstDigit.ToString() + input.ToString();
+        }
+        else
+        {
+            stringInput = input.ToString();
+        }
+
+        //[0] = Days, [1] = Hours, [2] = Minutes, [3] = Seconds
+        List<int> intList = new List<int>();
+        for (int i = 0; i < stringInput.Length; i += 2)
+        {
+            intList.Add(int.Parse(stringInput.Substring(i, 2)));
+        }
+
+        return intList.ToArray();
+    }
+
     #region Save Time To Reach
     public int second;
     public int minute;

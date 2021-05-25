@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Alors? Tu peux retourner sur le lien si tu as manqué quelque chose.;Je suis arrivé sur une page avec plusieurs liens.;;;;;;
+;;;;;;;
+Des liens? Ils se terminaient par quoi?;.gouv;;;;<BRANCH>PreMj2-2a;;
+;.onion;;;;<BRANCH>PreMj2-3;;

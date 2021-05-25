@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+On va dire que tu vas m'assister.;T'assister à quoi??;;;;;;
+;;;;;;;
+Je ne peux pas te le dire pour l'instant;Dis-moi ce que tu veux que je fasse au moins !;;;;<BRANCH>Intro2;;
+;Ok soit, mais alors, pourquoi tu m'as choisi moi en particulier ??;;;;<BRANCH>Intro1b;;

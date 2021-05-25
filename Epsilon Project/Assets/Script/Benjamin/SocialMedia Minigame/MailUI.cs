@@ -6,6 +6,8 @@ using TMPro;
 
 public class MailUI : MonoBehaviour
 {
+    private MinigameManager miniGame;
+
     public Text switchButtonText;
     public GameObject zoomedHUD;
     public TMP_Text zoomedSender;
@@ -32,6 +34,7 @@ public class MailUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        miniGame = GameObject.FindObjectOfType<MinigameManager>();
         SwitchInbox();
         zoomedHUD.SetActive(false);
     }
@@ -114,7 +117,7 @@ public class MailUI : MonoBehaviour
         {
             if((isMailToShareSpam && spamOpen == true)||(isMailToShareSpam == false && spamOpen == false)){ 
             Debug.Log("Yup this was the correct one");
-                switchScene.SwitchGame();
+                miniGame.winAction.Invoke();
             }
             else
             {

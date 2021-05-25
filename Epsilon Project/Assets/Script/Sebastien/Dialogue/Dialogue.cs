@@ -32,10 +32,11 @@ public class DialogueElement
     public int index;
     public string initiationTime;
     public string message;
+    public bool minigameInvite = false;
     public List<Reply> replies = new List<Reply>();
     public UnityAction elementAction;
 
-    public DialogueElement(string message, Reply reply, int index, string initiationTime, UnityAction elementAction)
+    public DialogueElement(string message, Reply reply, int index, string initiationTime, UnityAction elementAction, bool isInvite = false)
     {
         if (message != "")
         {
@@ -50,6 +51,7 @@ public class DialogueElement
         this.index = index;
         this.initiationTime = initiationTime;
         this.elementAction = elementAction;
+        this.minigameInvite = isInvite;
     }
 
     public DialogueElement() { }

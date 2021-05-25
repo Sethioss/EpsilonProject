@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
+    [HideInInspector]
+    public bool onGameSceneEntered = false;
+
     #region Dialogue Manager Components
     private CSVReader reader;
     private DialogueDisplayer displayer;
+    [HideInInspector]
     public TimeManager timeManager;
 
     [Header("Dialogue initialisation and list")]
@@ -19,19 +23,21 @@ public class DialogueManager : MonoBehaviour
     #region Debug
     [Header("Debugging tools")]
     [Tooltip("Sends debug messages for each command keyword found in the dialogue file")]
-    public bool debugReadCommandKeywords = true;
+    public bool debugReadCommandKeywords = false;
     [Tooltip("Sends debug messages for each function that is played when its call is made")]
     public bool debugExecutingFunction = false;
     [Tooltip("Waits autoModeWaitingTime between dialogues")]
     public bool autoMode = false;
+    [Header("Only set automode time to 00:00:00:00 for testing purposes, not for builds!")]
     public string autoModeWaitingTime = "00:00:00:01";
 
     [Tooltip("No messages will be sent in a certain period of time")]
     [Header("Deactivate auto mode for inactive periods to be active")]
     public bool inactivePeriods = true;
-    [Range(0, 24)]
+    [Header("0 = 00AM")]
+    [Range(0, 23)]
     public int inactivePeriodStartHour = 1;
-    [Range(0, 24)]
+    [Range(0, 23)]
     public int inactivePeriodEndHour = 7;
 
     private List<string> debugMessages { get; } = new List<string>();
@@ -72,18 +78,28 @@ public class DialogueManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(instance);
         }
-
-        if (this != instance)
+        else
         {
             Destroy(this.gameObject);
         }
     }
 
-    private void Start()
+    private void Update()
+    {
+        if (onGameSceneEntered)
+        {
+            StartDialogue();
+        }
+    }
+
+    public void StartDialogue()
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
+
+        CreateAndStartDialogue(currentDialogueFile);
+        onGameSceneEntered = false;
     }
 
     #region Debugging
@@ -106,6 +122,13 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region BRANCH Command / Dialogue Initialisation
+
+    public void Branch(string dialogueFileName)
+    {
+        displayer.cameFromBranch = true;
+        CreateAndStartDialogue(dialogueFileName);
+    }
+
     //The text asset function executes for the starting file
     public void CreateAndStartDialogue(TextAsset dialogueFile)
     {
@@ -126,13 +149,18 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
         colorCodeStart = "<color=yellow>";
         AddToDebugFunctionMessage("=======BRANCH FUNCTION EXECUTING=======", debugMessages);
-        AddToDebugFunctionMessage(colorCodeStart + "Switching from branch " + currentDialogueFile.name + " to branch: " + dialogueFileName, debugMessages);
+        AddToDebugFunctionMessage("Switching from branch " + currentDialogueFile.name + " to branch: " + dialogueFileName, debugMessages);
 
         if (debugExecutingFunction)
         {
             DebugElement(debugMessages.ToArray());
         }
 #endif
+
+        reader = CSVReader.Instance;
+        displayer = DialogueDisplayer.Instance;
+        timeManager = FindObjectOfType<TimeManager>();
+
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load("Tables\\" + dialogueFileName));
         dialogueList.Add(dialogueToAdd);
@@ -471,19 +499,17 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-    #region SCENE Keyword
-    public void ChangeScene(string sceneToChangeTo)
+    #region LINK Keyword
+    public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
     {
-        string sceneName = sceneToChangeTo;
-        timeManager.ResetClock();
+        displayer.CreateElement(sceneToChangeTo, inviteMessage);
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";
-        AddToDebugFunctionMessage("=======SCENE FUNCTION EXECUTING=======", debugMessages);
-        AddToDebugFunctionMessage(colorCodeStart + "Going to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
+        AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
+        AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
         DebugElement(debugMessages.ToArray());
 #endif
-        SceneManager.LoadScene(sceneName.Trim());
     }
     #endregion    
 }
