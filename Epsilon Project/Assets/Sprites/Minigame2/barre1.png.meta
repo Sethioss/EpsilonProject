@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1c374d5792276584ca5b7fda59e44fee
+guid: a3865a4299bb3974a901c47e5aabb5c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1158139023881752780
-    second: UI mail icone_0
+      213: -4377717968447884575
+    second: barre1_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,22 +106,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI mail icone_0
+      name: barre1_0
       rect:
         serializedVersion: 2
-        x: 13
+        x: 152
         y: 8
-        width: 90
-        height: 60
+        width: 2285
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc05dfe5e49821010800000000000000
-      internalID: 1158139023881752780
+      spriteID: 1e2b1dba3b83f33c0800000000000000
+      internalID: -4377717968447884575
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: f92d7bf2a3f0c4a4e90ab957fcdf03bf
     internalID: 0
     vertices: []
     indices: 

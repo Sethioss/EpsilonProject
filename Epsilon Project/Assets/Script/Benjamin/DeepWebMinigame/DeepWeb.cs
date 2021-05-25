@@ -9,17 +9,7 @@ public class DeepWeb : MonoBehaviour
     public GameObject sendMailUI;
     public Text inputText;
     public string correctAdress;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void OpenURL(GameObject pageToOpen)
     {
@@ -46,8 +36,8 @@ public class DeepWeb : MonoBehaviour
         if(inputText.text == correctAdress)
         {
             Debug.Log("You sent it to the correct person, congrats !");
-            DialogueManager.Instance.currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + 3);
-            SceneManager.LoadScene(0);
+            MinigameManager.Instance.winAction.Invoke();
+            
         }
         else
         {
