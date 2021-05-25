@@ -22,8 +22,7 @@ public class ChoosePath : MonoBehaviour
         if (correctPath)
         {
             Debug.Log("You found the correct path. Congrats !");
-            DialogueManager.Instance.currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + 4);
-            SceneManager.LoadScene(0);
+            MinigameManager.Instance.winAction.Invoke();
         }
         else
         {

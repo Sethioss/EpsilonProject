@@ -77,14 +77,15 @@ public class MailUI : MonoBehaviour
             }
         }
         spamOpen = !spamOpen;
-        if(spamOpen == true)
-        {
-            switchButtonText.text = "Main inbox";
-        }
-        else
-        {
-            switchButtonText.text = "Spam";
-        }
+        //if(spamOpen == true)
+        //{
+        //    switchButtonText.text = "Main inbox";
+        //}
+        //else
+        //{
+        //    switchButtonText.text = "Spam";
+
+        //}
 
     }
 

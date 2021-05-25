@@ -29,7 +29,7 @@ public class CharacterBehaviour : MonoBehaviour
         }
         if (other.CompareTag("Goal"))
         {
-            winScreen.SetActive(true);
+            MinigameManager.Instance.winAction.Invoke();
         }
     }
 }

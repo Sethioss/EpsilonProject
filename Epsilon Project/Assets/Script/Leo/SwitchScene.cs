@@ -16,9 +16,13 @@ public class SwitchScene : MonoBehaviour
         SceneManager.LoadScene("E Mails");
     }
 
-    public void SwitchGame()
+    public void SwitchDialogueGame(string resource)
     {
-        SetNextDIalogue((TextAsset)Resources.Load("Tables\\2"));
+        SetNextDIalogue((TextAsset)Resources.Load(resource));
+        SceneManager.LoadScene("Game");
+    }
+    public void SwitchSceneGame()
+    {
         SceneManager.LoadScene("Game");
     }
 
