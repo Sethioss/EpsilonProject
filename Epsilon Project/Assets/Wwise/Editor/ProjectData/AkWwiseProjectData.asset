@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b15b5528120aba49a120490844304e8a
     GuidInternal: 
-    m_lastTime: -8585803408777592940
+    m_lastTime: -8585803352745013667
     List:
     - name: BankEpsilon
       guid: 7e74a1e3461dc645a2af8bb85360fb87
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: fd6c1cf7d7c1664d98ecdd6952664f1c
     GuidInternal: 
-    m_lastTime: -8585803408777752500
+    m_lastTime: -8585803352747325865
     List:
     - name: Beep
       guid: feabd559a049e842bb6048f74ddf737a
