@@ -33,6 +33,7 @@ public class DialogueDisplayer : MonoBehaviour
     private bool bubbleSpawned = false;
     private bool jumpToMessage = true;
     private string currentWaitingTime;
+    private bool readingDialogue = true;
 
     private bool newDialogue = true;
     [HideInInspector]
@@ -44,6 +45,7 @@ public class DialogueDisplayer : MonoBehaviour
     public GameObject messagePanel;
     public GameObject interlocutorBubblePrefab;
     public GameObject playerBubblePrefab;
+    public GameObject leaveMessagePrefab;
 
     [Header("Reply area")]
     public GameObject repliesPanel;
@@ -72,7 +74,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void Update()
     {
-        if (!isWaitingForReply)
+        if (!isWaitingForReply && readingDialogue)
         {
             if (!bubbleSpawned)
             {
@@ -121,6 +123,7 @@ public class DialogueDisplayer : MonoBehaviour
         Init();
         currentDialogue = dialogue;
         isWaitingForReply = false;
+        readingDialogue = true;
         newDialogue = true;
 
         //Set clock and writing time to the initiation time of the current element
@@ -133,7 +136,9 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
+        timeManager.ResetClock();
         InvokeEvent(dialogueToStop.endDialogueAction);
+        readingDialogue = false;
     }
 
     #endregion
@@ -213,29 +218,32 @@ public class DialogueDisplayer : MonoBehaviour
         //Display
         DeleteReplies();
 
-        //Create response bubble
-        GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
-        GameObject messagePrefab = responsePrefab.transform.GetChild(0).gameObject;
-
-        GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
-        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
-        textInBubble.text = reply.replyText;
-
-        //Set clock to reaction time
-        isWaitingForReply = false;
-        SetWaitingTime(reply.reactionTime);
-        timeManager.StartClock(currentWaitingTime);
-
-        if (reply.reaction == "" || reply.reaction == null)
+        if (!reply.isLeaveMessage)
         {
-            GoToNextElement();
-        }
-        else
-        {
-            awaitingReaction = reply.reaction;
-        }
+            //Create response bubble
+            GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
+            GameObject messagePrefab = responsePrefab.transform.GetChild(0).gameObject;
 
-        StartCoroutine(SetObjectHeightToBackground(responsePrefab, imageBg, messagePanel));
+            GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+            TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+            textInBubble.text = reply.replyText;
+
+            //Set clock to reaction time
+            isWaitingForReply = false;
+            SetWaitingTime(reply.reactionTime);
+            timeManager.StartClock(currentWaitingTime);
+
+            if (reply.reaction == "" || reply.reaction == null)
+            {
+                GoToNextElement();
+            }
+            else
+            {
+                awaitingReaction = reply.reaction;
+            }
+
+            StartCoroutine(SetObjectHeightToBackground(responsePrefab, imageBg, messagePanel));
+        }
     }
 
     private void DeleteReplies()
@@ -276,7 +284,7 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 currentDialogueElementId++;
             }
-            else if(!newDialogue && cameFromBranch)
+            else if (!newDialogue && cameFromBranch)
             {
                 currentDialogueElementId++;
             }
@@ -308,15 +316,15 @@ public class DialogueDisplayer : MonoBehaviour
         timeToStartWriting = SetTimeToStartWriting();
 
     }
-    IEnumerator SetObjectHeightToBackground(GameObject message, GameObject imageBg, GameObject panel)
+    IEnumerator SetObjectHeightToBackground(GameObject messagePrefab, GameObject imageBg, GameObject panel)
     {
         yield return new WaitForEndOfFrame();
 
         panel.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
+            new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
 
-        message.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(message.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
+        messagePrefab.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
     }
     #endregion
 
@@ -392,7 +400,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     #region ElementCreation
 
-    public void CreateElement(string sceneToChangeTo, string inviteMessage)
+    public void CreateLinkElement(string sceneToChangeTo, string inviteMessage)
     {
         string message = "";
 
@@ -435,6 +443,22 @@ public class DialogueDisplayer : MonoBehaviour
         }
 
         return randomLinkStart + randomLetterChain + randomLinkEnd;
+    }
+
+    public void CreateLeaveElement()
+    {
+        GameObject leavePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+        GameObject imageBg = leavePrefab.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+
+        StartCoroutine(SetObjectHeightToBackground(leavePrefab, imageBg, messagePanel));
+
+        UnityAction leaveActions = null;
+        leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
+        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions, true);
+
+        DisplayPossibleReplies(new List<Reply> { leaveReply });
+        StopDialogue(currentDialogue);
     }
     #endregion
 

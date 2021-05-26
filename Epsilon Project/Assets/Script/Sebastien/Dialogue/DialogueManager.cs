@@ -499,10 +499,10 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-    #region LINK Keyword
+    #region LINK Command
     public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
     {
-        displayer.CreateElement(sceneToChangeTo, inviteMessage);
+        displayer.CreateLinkElement(sceneToChangeTo, inviteMessage);
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";
@@ -511,5 +511,25 @@ public class DialogueManager : MonoBehaviour
         DebugElement(debugMessages.ToArray());
 #endif
     }
-    #endregion    
+    #endregion
+
+    #region SCENE Command
+
+    public void ChangeScene(string sceneToChangeTo)
+    {
+        if(sceneToChangeTo == "")
+        {
+            sceneToChangeTo = GameManager.Instance.gameSceneName;
+        }
+
+        SceneManager.LoadScene(sceneToChangeTo);
+    }
+    #endregion
+
+    #region LEAVE command
+    public void SendLeaveMessage()
+    {
+        displayer.CreateLeaveElement();
+    }
+    #endregion
 }

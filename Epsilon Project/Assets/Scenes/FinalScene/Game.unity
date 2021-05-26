@@ -635,6 +635,7 @@ MonoBehaviour:
   messagePanel: {fileID: 2109942662}
   interlocutorBubblePrefab: {fileID: 8804392922517396649, guid: bbc586048fa654c41b47a0b699b75f5f, type: 3}
   playerBubblePrefab: {fileID: 5995672859292386976, guid: 5b306112afd8b5a4cbec9fd728405337, type: 3}
+  leaveMessagePrefab: {fileID: 2779018404497212492, guid: 8cb4ba1be2795a943821bd1e293701b5, type: 3}
   repliesPanel: {fileID: 1341360253}
   replyButtonPrefab: {fileID: 6342958404133415085, guid: 524741b7ef3aa454fbec555ce14cd8b5, type: 3}
   second: 0
@@ -1006,10 +1007,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: 065b5d822f13e9b43b45f3ec7bb8f914, type: 3}
   dialogueList: []
-  debugReadCommandKeywords: 1
-  debugExecutingFunction: 1
+  debugReadCommandKeywords: 0
+  debugExecutingFunction: 0
   autoMode: 1
   autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 1
