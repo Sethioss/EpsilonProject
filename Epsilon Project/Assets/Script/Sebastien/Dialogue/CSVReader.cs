@@ -439,8 +439,8 @@ public class CSVReader : MonoBehaviour
                         DialogueManager.Instance.DebugElement(debugMessages.ToArray());
                     }
 
+#endif
                     break;
-#endif 
                 #endregion
 
                 #region LEAVE

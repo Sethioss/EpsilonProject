@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Hey, how are you <i>doing</i>? I know you're using a <DMODEL> btw;Doing okay, what about you?;;00:00:00:04;00:00:00:10;<CHECK>testSet = '4 8' ? :  ! <CHECK>testSet = '4 7' ? <SET>testSet 'J'ai découvert la vie'  : <SET>testSetFloat 54 !;;
+Hey, how are you <i>doing</i>? I know you're using a <DMODEL> btw;Doing okay, what about you?;;00:00:00:04;00:00:00:10;<CHECK>testSet = '4 8' ? :  ! <CHECK>testSet = '4 7' ? <SET>testSet 'J'ai dÃ©couvert la vie'  : <SET>testSetFloat 54 !;;
 ;Not very good, sorry...;Oh, what's wrong <USERNAME>?;;00:00:00:20;<SET>testSet '2 8a 5' ;;
 ;Third response;A third response? I see huh;;00:00:00:8;;;
 ;;;;;;;
