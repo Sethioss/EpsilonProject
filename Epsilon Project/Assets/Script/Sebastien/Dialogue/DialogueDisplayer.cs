@@ -147,7 +147,7 @@ public class DialogueDisplayer : MonoBehaviour
     private void CreateMessageBubble()
     {
         GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
-        GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+        GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = "...";
@@ -159,7 +159,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void DisplayMessage(GameObject currentBubble)
     {
-        GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+        GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
         TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
 
         //If it's a message sent with a <SCENE> keyword, minigameInvite is set to true
@@ -224,7 +224,7 @@ public class DialogueDisplayer : MonoBehaviour
             GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
             GameObject messagePrefab = responsePrefab.transform.GetChild(0).gameObject;
 
-            GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+            GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
             TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
             textInBubble.text = reply.replyText;
 
@@ -256,7 +256,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     void DisplayReaction(string reaction, GameObject bubbleObject)
     {
-        GameObject imageBg = bubbleObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject;
+        GameObject imageBg = bubbleObject.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
         TextMeshProUGUI textInBubble = bubbleObject.GetComponentInChildren<TextMeshProUGUI>();
 
         textInBubble.text = reaction;
