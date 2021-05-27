@@ -14,7 +14,9 @@ public class TakeIdentity : MonoBehaviour
 
     public void TakeNewidentity()
     {
-        Nickname = TextNickname.ToString();
-        Password = TextPassword.ToString(); 
+        Nickname = TextNickname.text;
+        Password = TextPassword.text;
+        Debug.Log("c'est : " + Nickname);
+        Debug.Log("c'est : " + Password);
     }
 }
