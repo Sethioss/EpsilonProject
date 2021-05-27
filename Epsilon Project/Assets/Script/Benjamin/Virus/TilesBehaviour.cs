@@ -9,65 +9,48 @@ public class TilesBehaviour : MonoBehaviour
     public bool holdsVirus, isGoal;
     public bool isBlocked = true;
     public bool isHacked;
-    Image tileImage;
-    // Start is called before the first frame update
-    void Start()
-    {
-        tileImage = gameObject.GetComponent<Image>();
-    }
+    public Renderer cubeRend;
+    public Material orangeMat, yellowMat, redMat, blueMat, greenMat, greyMat;
+    public GameObject virus;
+    public Animator virusAnim;
 
-    // Update is called once per frame
     void Update()
     {
         if (holdsVirus) { 
             isInfected = true;
             isBlocked = false;
-            tileImage.color = Color.black;
+            cubeRend.material = orangeMat;
+            virus.SetActive(true);
         }
-        if (isInfected && holdsVirus == false)
-            tileImage.color = Color.red;
+        if (isInfected && holdsVirus == false) { 
+            cubeRend.material = redMat;
+            virus.SetActive(false);
+        }
 
         if (isBlocked)
-            tileImage.color = Color.grey;
+            cubeRend.material = greyMat;
+
+        if (!isBlocked && !isInfected)
+            cubeRend.material = greenMat;
+
         if (isGoal)
-            tileImage.color = Color.yellow;
+            cubeRend.material = yellowMat;
         if (isHacked)
-            tileImage.color = Color.blue;
+            cubeRend.material = blueMat;
 
        if(isGoal && isInfected)
         {
-            SpreadVirus.reachedGoal = true;
+            VirusBehaviour.reachedGoal = true;
         }
     }
 
-    public void UnHack(TilesBehaviour targetTile)
+    void OnMouseDown()
     {
         if (isHacked)
         {
             isHacked=false;
-            Debug.Log("Something clicked");
-            tileImage.color = Color.green;
+            cubeRend.material = greenMat;
         }
-    }
-
-    public void TagTile()
-    {
-        if (tileImage.color == Color.green)
-        {
-            tileImage.color = Color.blue;
-        }
-        else
-        tileImage.color = Color.green;
-    }
-
-    void GetInfected()
-    {
-        tileImage.color = Color.red;
-    }
-
-    public void DebugYellow()
-    {
-        tileImage.color = Color.yellow;
     }
 
 }
