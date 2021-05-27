@@ -6,23 +6,17 @@ using UnityEngine.UI;
 public class TakeIdentity : MonoBehaviour
 {
     public string Nickname;
+    public string Password;
 
     public Text TextNickname;
-
-    public int day;
-    public int month;
-    public int year;
-
-    public Text TextDay;
-    public Text TextMonth;
-    public Text TextYear;
+    public Text TextPassword;
 
 
     public void TakeNewidentity()
     {
-        Nickname = TextNickname.ToString();
-        //day = TextDay;
-        //month = TextMonth;
-        //year = TextYear;
+        Nickname = TextNickname.text;
+        Password = TextPassword.text;
+        Debug.Log("c'est : " + Nickname);
+        Debug.Log("c'est : " + Password);
     }
 }
