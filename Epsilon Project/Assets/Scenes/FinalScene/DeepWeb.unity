@@ -1513,7 +1513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &583892608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3958,14 +3958,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6681529301092192989, guid: f0b8ff28b83b4ac48a020db149c21a71, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDialogueAndGoToGame
-        m_Mode: 2
+        m_MethodName: GoToScene
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 065b5d822f13e9b43b45f3ec7bb8f914, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MjChatScene
           m_BoolArgument: 0
         m_CallState: 2
   loseAction:
@@ -5878,7 +5878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2122822547}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1726003106}
+        m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
+        m_MethodName: ActivateWinAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2122822547
 MonoBehaviour:
   m_ObjectHideFlags: 0

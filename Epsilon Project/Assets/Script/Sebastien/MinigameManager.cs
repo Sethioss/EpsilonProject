@@ -30,4 +30,16 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
+    public void ActivateWinAction()
+    {
+        winAction.Invoke();
+    }
+    public void ActivateLoseAction()
+    {
+        loseAction.Invoke();
+    }
+    public void ActivateLeaveGameAction()
+    {
+        leaveGameAction.Invoke();
+    }
 }
