@@ -37,7 +37,7 @@ public class VirusBehaviour : MonoBehaviour
             {
                 if (tiles[i, j].GetComponent<TilesBehaviour>().holdsVirus == true)
                 {
-                    StartCoroutine(StartSpreading(i, j, 2f));
+                    StartCoroutine(StartSpreading(i, j, 4f));
                 }
             }
         }
@@ -81,7 +81,7 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileLeftBhv.holdsVirus = true;
-                            StartCoroutine(StartSpreading(coordY, coordX - 1, 2f));
+                            StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
                         }
                         else
                         {
@@ -103,7 +103,7 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileRightBhv.holdsVirus = true;
-                            StartCoroutine(StartSpreading(coordY, coordX + 1, 2f));
+                            StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
                         }
                         else
                         {
@@ -125,7 +125,7 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileUpBhv.holdsVirus = true;
-                            StartCoroutine(StartSpreading(coordY - 1, coordX, 2f));
+                            StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
                         }
                         else
                         {
@@ -147,7 +147,7 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileDownBhv.holdsVirus = true;
-                            StartCoroutine(StartSpreading(coordY + 1, coordX, 2f));
+                            StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
                         }
                         else
                         {

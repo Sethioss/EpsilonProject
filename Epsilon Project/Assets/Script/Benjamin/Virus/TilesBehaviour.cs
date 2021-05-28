@@ -13,6 +13,15 @@ public class TilesBehaviour : MonoBehaviour
     public Material orangeMat, yellowMat, redMat, blueMat, greenMat, greyMat;
     public GameObject virus;
     public Animator virusAnim;
+    public Animation cubeAnim;
+
+    void Start()
+    {
+        if (isBlocked)
+        {
+            cubeAnim.Stop();
+        }
+    }
 
     void Update()
     {

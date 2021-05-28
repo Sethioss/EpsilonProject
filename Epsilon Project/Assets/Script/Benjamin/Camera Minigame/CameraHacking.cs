@@ -36,10 +36,16 @@ public class CameraHacking : MonoBehaviour
 
     public void ReactivateCamera(GameObject cameraHacked)
     {
-        cameraHacked.SetActive(true);
+        StartCoroutine(CameraFlicker(cameraHacked));
         cameraHacked.transform.position = cameraHacked.GetComponent<CameraData>().originalPosition;
         cameraHacked.transform.rotation= cameraHacked.GetComponent<CameraData>().originalRotation;
 
+    }
+
+    IEnumerator CameraFlicker(GameObject cameraHacked)
+    {
+        yield return new WaitForSeconds(.5f);
+        cameraHacked.SetActive(true);
     }
 
 }
