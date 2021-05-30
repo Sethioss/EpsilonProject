@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 8850385344815565063}
   - component: {fileID: 5532217064967409726}
   m_Layer: 5
-  m_Name: RealReplyButton
+  m_Name: ReplyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
