@@ -9620,9 +9620,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -15230,67 +15230,95 @@ MonoBehaviour:
   - {fileID: 1827442909}
   - {fileID: 1776688420}
   mailContent:
-  - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla felis
-    non sem bibendum feugiat. Sed feugiat euismod ante. Nunc quis ligula vel arcu
-    tempor porttitor in et est. Donec et bibendum felis, quis condimentum lacus.
-    Duis lectus sem, condimentum id elit id, tristique volutpat sem.
-  - Cras efficitur tempus leo quis maximus. Praesent convallis dolor ut sapien facilisis
-    efficitur. Etiam faucibus posuere massa, eget pulvinar odio sollicitudin in.
-  - This mail is kinda suspicious
-  - Fusce dapibus, sapien vitae blandit aliquet, magna odio mollis est, non efficitur
-    justo leo a urna. Aliquam dictum vulputate congue. Proin at efficitur turpis.
-  - Etiam vehicula orci sed libero imperdiet, nec tempor lorem luctus. Integer massa
-    ligula, placerat id turpis eget, congue pretium nisl.
-  - Etiam dignissim ornare magna at maximus. In facilisis quam a est placerat, quis
-    cursus nulla dignissim. Mauris sed libero urna. Curabitur dui augue, faucibus
-    non lacus et, mattis laoreet turpis.
-  - Morbi fermentum hendrerit nisi sit amet condimentum. Duis pharetra in enim sed
-    semper. Quisque dignissim viverra eros vel condimentum. Fusce ac efficitur lectus.
-    Proin et elementum metus, a eleifend quam.
-  - Cras auctor eros lorem, eget congue lacus mattis eget. Pellentesque gravida justo
-    tincidunt ligula viverra, vitae auctor ipsum hendrerit. Aenean nec ultrices sapien.
-    Donec at tincidunt est, ac imperdiet ante. Interdum et malesuada fames ac ante
-    ipsum primis in faucibus. Ut tempor sem posuere, luctus mauris et, tincidunt
-    justo.
-  - Donec bibendum, lectus non egestas dapibus, est erat vulputate massa, nec vestibulum
-    nulla neque porta velit. Nam sed arcu et risus iaculis pellentesque sed non quam.
-    Etiam velit est, viverra vitae tincidunt vel, scelerisque vitae elit.
-  - Morbi fermentum hendrerit nisi sit amet condimentum. Duis pharetra in enim sed
-    semper. Quisque dignissim viverra eros vel condimentum. Fusce ac efficitur lectus.
-    Proin et elementum metus, a eleifend quam.
-  - Etiam dignissim ornare magna at maximus. In facilisis quam a est placerat, quis
-    cursus nulla dignissim. Mauris sed libero urna. Curabitur dui augue, faucibus
-    non lacus et, mattis laoreet turpis.
-  - Fusce dapibus, sapien vitae blandit aliquet, magna odio mollis est, non efficitur
-    justo leo a urna. Aliquam dictum vulputate congue. Proin at efficitur turpis.
-  - Donec bibendum, lectus non egestas dapibus, est erat vulputate massa, nec vestibulum
-    nulla neque porta velit. Nam sed arcu et risus iaculis pellentesque sed non quam.
-    Etiam velit est, viverra vitae tincidunt vel, scelerisque vitae elit.
-  - Cras auctor eros lorem, eget congue lacus mattis eget. Pellentesque gravida justo
-    tincidunt ligula viverra, vitae auctor ipsum hendrerit. Aenean nec ultrices sapien.
-    Donec at tincidunt est, ac imperdiet ante. Interdum et malesuada fames ac ante
-    ipsum primis in faucibus. Ut tempor sem posuere, luctus mauris et, tincidunt
-    justo.
-  - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla felis
-    non sem bibendum feugiat. Sed feugiat euismod ante. Nunc quis ligula vel arcu
-    tempor porttitor in et est. Donec et bibendum felis, quis condimentum lacus.
-    Duis lectus sem, condimentum id elit id, tristique volutpat sem.
+  - "Vous avez gagn\xE9! F\xE9licitationsThomas, vous avez \xE9t\xE9 s\xE9lectionn\xE9
+    pour tenter de gagner IPhone X!  Tournez la roue et amassez vos gains! *Le lien
+    a \xE9t\xE9 detect\xE9 comme frauduleux et n'est \xE0 pr\xE9sent plus disponible*"
+  - "Votre re\xE7u Forbidden Apple MII4658234  Merci pour votre achat sur Forbidden
+    Apple! Votre colis est en route vers votre point relais.  N\xB0 de facture: F235845
+    (Veuillez garder une copie de ce re\xE7u pour r\xE9f\xE9rence.)  INFORMATIONS
+    SUR VOTRE COMMANDE  N\xB0 de commande: MII4658234 Factur\xE9e \xE0: pierretocan@bluebox.com
+    Origine: Forbidden Apple"
+  - "A propos d'hier... Je sais qu'on en avait d\xE9ja parl\xE9 hier, et tu m'as
+    bien fait comprendre que c'\xE9tait un sujet sensible, mais je te le redemande,
+    au risque de t'\xE9nerver \xE0 nouveau. Il faut que tu quittes Nathalie.  Ca
+    commence s\xE9rieusement \xE0 me mettre mal \xE0 l'aise de voir des photos d'elle
+    \xE0 c\xF4t\xE9 du lit quand on fait l'amour,  \xE7a me fait me sentir... Horrible.
+    Je sais que tu t'es mari\xE9 avec elle pour le travail, que ton entreprise risque
+    de vendre moins sans elle, tout \xE7a tu me l'as r\xE9p\xE9t\xE9 encore et encore,
+    mais il faut en finir pour de bon avec elle.  Je ne te demande pas \xE7a pour
+    moi, mais pour toi. Ton entreprise s'en remettra, pas la sienne. R\xE9fl\xE9chis-y, 
+    elle ne te sers plus \xE0 rien et elle te rend malheureux.  Il est temps d'avancer,
+    Pierre. J'ai pris deux semaines de vacances le mois prochain, \xE7a correspond
+    au d\xE9part  de Nathalie pour son voyage d'affaire selon ce que tu m'as dis.
+    On en reparlera quand je serais l\xE0.  Et je t'en prie... Ne t'\xE9nerve pas. 
+    Je t'aime, mon coeur."
+  - "Pierre, profitez des soldes incroyables sur les joggings et v\xEAtements de
+    sports!  Pr\xEAts \xE0 bouger? Les soldes sp\xE9ciales \"Bougeons-nous\" sont
+    l\xE0! Les soldes \"Bougeons-nous\", c'est jusqu'\xE0 60% de r\xE9duction sur
+    notre meilleure s\xE9lection de pantalons de sports, jogging, baskets et accessoires
+    sportifs, parmi une s\xE9lection de plus de 1000 produits!  Alors qu'attendez-vous?
+    Mettez-vous au sport avec Sodaxa!"
+  - "DOSSIER SPECIAL: Les cit\xE9s terrorris\xE9es par les exc\xE8s de violence 
+    De plus en plus d'affaires de crimes impliquant des jeunes (Bien souvent mineurs)
+    sont trait\xE9es dans les banlieues de la France enti\xE8re. Alors que le gouvernement
+    est d\xE9pass\xE9 par cette furie croissante, le ministre de l'\xE9conomie promet
+    de nouvelles mesures contre la d\xE9linquance dans les rues et... Lire la suite
+    sur BFM.com  *Le lien a \xE9t\xE9 detect\xE9 comme frauduleux et n'est \xE0 pr\xE9sent
+    plus disponible*"
+  - "R\xE9compenses exclusives pour vous!  R\xE9cup\xE9rez votre IPad en cliquant
+    sur le lien: *Le lien a \xE9t\xE9 d\xE9tect\xE9 comme frauduleux et n'est \xE0
+    pr\xE9sent plus disponible*"
+  - "Votre bon de r\xE9duction arrive bient\xF4t \xE0 sa fin, d\xE9p\xEAchez-vous!
+    -50\u20AC pour l'achat d'une cuisini\xE8re de la marque Samocha, \xE7a ne se
+    refuse pas! Vous avez jusqu'au 08/07/21 pour utiliser votre coupon sur comfortcuisine.com"
+  - "4 personnes ont lik\xE9 votre post  Paul Leroy, Romain Arid, Soulaymane Guidon
+    et Tinah Rhason ont lik\xE9 votre post \"Petit barbecue en fami...\" Envoyez-leur
+    un message de remerciement!"
+  - "Blague quotidienne : Qu'est-ce qu'un bonbon Haribo qui ne sait pas \xE9crire
+    son nom?  Un haricot! Plus de blagues et d'humour poilant sur Le Site du Fun!"
+  - "De nouveaux documents sont disponibles sur votre espace client!  Acc\xE9dez
+    \xE0 votre espace client et d\xE9couvrez nos nouvelles offres!"
+  - "Nous voulons votre avis!  La satisfaction de nos clients est notre priorit\xE9
+    principale. C'est pour cela que nous proposons \xE0 nos clients de remplir un
+    formulaire de satisfaction afin d'am\xE9liorer nos services! Nous \xE9coutons
+    tous les retours envoy\xE9s par nos clients.  Votre avis importe, alors nous
+    vous invitons \xE0 remplir ce formulaire d'une dizaine de questions.  Nous esp\xE9rons
+    vous revoir!"
+  - "Confirmation de paiement  Bonjour, L'Institut de la M\xE9decine et du Management
+    a le plaisir de vous confirmer le paiement de 9900\u20AC pour l'ann\xE9e scolaire
+    2021-2022 de votre enfant Ga\xEBl Tocan. Nous avons h\xE2te d'accueillir cet
+    \xE9l\xE8ve dans nos locaux et de lui transmettre les connaissances n\xE9cessaires
+    au succ\xE8s de son parcours professionnel!"
+  - "Blague quotidienne : Que font les dinosaures quand ils n'arrivent pas \xE0 se
+    mettre d'accord?  Un tyragosaure! Plus de blagues et d'humour poilant sur Le
+    Site du Fun!"
+  - "2Go de donn\xE9es mobiles par mois \xE0 seulement 7.99\u20AC/mois  Profitez-en!
+    A l'occasion de son 8\xE8me anniversaire, Cheap fait tomber les prix! Le forfait
+    ultimate, 2Go de donn\xE9es mobiles par mois + appels illimit\xE9s sur tous les
+    pays d'Europe pour 7.99\u20AC au lieu de 14.99\u20AC"
+  - "\"Alors que le miroir montrera votre dilemme, vous regretterez vos errances
+    pass\xE9es et pr\xE9sentes. Le terreau vengeur tranchera vos ailes, tandis que
+    les \xE9toiles tournent la t\xEAte. Les portes du bonheur s'ouvriront peut-\xEAtre
+    si vous naviguez vers le nouvel horizon.\"  Intrigu\xE9? Curieux? Amus\xE9? Que
+    vous le vouliez ou non, ces phrases d\xE9crivent votre avenir. Alors autant y
+    \xEAtre  pr\xE9par\xE9 un maximum. Abonnez-vous \xE0 notre service et recevez
+    des divinations pr\xE9cises, \xE0 la demande."
   mailSenders:
-  - Jacques
-  - Barbara
-  - Pierre
-  - Annie
-  - Charles
-  - "Herv\xE9"
-  - Paul
-  - "Agn\xE8s"
-  - Cassie
-  - Annie
-  - "Agn\xE8s"
-  - Barbara
-  - Pierre
-  - Charles
-  - Paul
+  - _microsoftt
+  - Forbidden Apple
+  - Lydia Holbert
+  - Sodaxa
+  - BFM newsletter
+  - IPad Pro
+  - Comfort Cuisine
+  - Bluebox
+  - Le Site du Fun !
+  - BNQ Parapa
+  - Cure thermale Lana del Sol
+  - IMM
+  - Le Site du Fun !
+  - Cheap
+  - "La Constellation Dor\xE9e"
   spamContent: []
   spamSenders: []
   mailToShare: 2
@@ -18775,6 +18803,7 @@ GameObject:
   - component: {fileID: 1867053395}
   - component: {fileID: 1867053397}
   - component: {fileID: 1867053394}
+  - component: {fileID: 1867053398}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18875,6 +18904,38 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!114 &1867053398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867053393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1890276050
 GameObject:
   m_ObjectHideFlags: 0
