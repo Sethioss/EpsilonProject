@@ -1,4 +1,4 @@
 Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
 I'm starting to get dry on my creative juices;Drink some water;Haha very funny;00:00:00:03;;;;
 ;;;;;;;
-Let's just play the fourth game;Okay;;;;;<LINK>CameraMiniGame;
+Let's just play the fourth game;Okay;;;;;<LINK>StealthMinigame;

@@ -49,6 +49,7 @@ public class VirusBehaviour : MonoBehaviour
         if (reachedGoal && !gameEnded)
         {
             Debug.Log("Goal Reached, congrats");
+            MinigameManager.Instance.winAction.Invoke();
             gameEnded = true;
         }
         if (canHack == true && reachedGoal == false)
