@@ -89,7 +89,7 @@ public class OptionMenu : MonoBehaviour
 
     private void UpdateMinMaxTimeSliderText()
     {
-        sliderText.text = "You're available to receive messages from : \n" + GetPmAm(sliderMinTimeValue) + " to " + GetPmAm(sliderMaxTimeValue);
+        sliderText.text = "I don't want to receive messages between \n" + GetPmAm(sliderMinTimeValue) + " and " + GetPmAm(sliderMaxTimeValue);
     }
 
     private void UpdateMinMaxToggle()
