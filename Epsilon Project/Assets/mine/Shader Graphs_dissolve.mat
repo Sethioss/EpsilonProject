@@ -31,6 +31,18 @@ Material:
         m_Texture: {fileID: 2800000, guid: 7a3280a6b45ba474ab178169a859919d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _albedo:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _metallic:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -46,7 +58,11 @@ Material:
     m_Floats:
     - Vector1_6b3fb48b285a4c37a397c727a3d3c2f3: 0
     - Vector1_87c379b9ead4474e93ccfa205d3074a9: 0.02
+    - _dissolve: 0
+    - _edgewidth: 1
     m_Colors:
     - Color_9c13b30c060944d4ba1efb6505cbec51: {r: 114.0758, g: 20.903942, b: 0, a: 0}
     - Color_a011755ef34a43e6acc3356e0e25573a: {r: 1, g: 0.40448418, b: 0, a: 0}
+    - _color: {r: 1, g: 0.37730834, b: 0.058823526, a: 0}
+    - _edgecolor: {r: 1, g: 0.22151303, b: 0, a: 0}
   m_BuildTextureStacks: []

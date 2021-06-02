@@ -12,6 +12,7 @@ public class TilesBehaviour : MonoBehaviour
     public Renderer cubeRend;
     public Material orangeMat, yellowMat, redMat, blueMat, greenMat, greyMat;
     public GameObject virus;
+    public GameObject shield;
     public Animator virusAnim;
     public Animation cubeAnim;
 
@@ -44,10 +45,16 @@ public class TilesBehaviour : MonoBehaviour
 
         if (isGoal)
             cubeRend.material = yellowMat;
-        if (isHacked)
+        if (isHacked) { 
             cubeRend.material = blueMat;
+            shield.SetActive(true);
+        }
+        if (!isHacked)
+        {
+            shield.SetActive(false);
+        }
 
-       if(isGoal && isInfected)
+        if (isGoal && isInfected)
         {
             VirusBehaviour.reachedGoal = true;
         }

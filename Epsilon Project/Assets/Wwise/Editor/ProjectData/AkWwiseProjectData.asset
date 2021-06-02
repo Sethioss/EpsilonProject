@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b15b5528120aba49a120490844304e8a
     GuidInternal: 
-    m_lastTime: -8585803352745013667
+    m_lastTime: -8585789826669542000
     List:
     - name: BankEpsilon
       guid: 7e74a1e3461dc645a2af8bb85360fb87
@@ -82,6 +82,20 @@ MonoBehaviour:
         ObjectType: 7
         guid: 7e74a1e3461dc645a2af8bb85360fb87
       Path: SoundBanks\Default Work Unit\BankEpsilon
+    - name: Shield
+      guid: 22ad823e0673d4438e7f1e66de315e4a
+      id: 1161967626
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b15b5528120aba49a120490844304e8a
+      - ElementName: Shield
+        ObjectType: 7
+        guid: 22ad823e0673d4438e7f1e66de315e4a
+      Path: SoundBanks\Default Work Unit\Shield
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -170,7 +184,7 @@ MonoBehaviour:
     m_lastTime: -8585803409920798391
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 010000000500000006000000090000000a0000000b000000
+  ExpandedWaapiItemIds: 010000000500000006000000090000000a0000000b0000000c000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

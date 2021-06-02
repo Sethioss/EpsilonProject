@@ -11,6 +11,7 @@ public class VirusBehaviour : MonoBehaviour
     bool canHack = true;
     public GameObject[] allTiles;
     GameObject[,] tiles = new GameObject[20, 20];
+    bool gameEnded;
 
     void Start()
     {
@@ -45,8 +46,11 @@ public class VirusBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (reachedGoal)
+        if (reachedGoal && !gameEnded)
+        {
             Debug.Log("Goal Reached, congrats");
+            gameEnded = true;
+        }
         if (canHack == true && reachedGoal == false)
             StartCoroutine(HackingProcess());
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4480272, g: 0.49803334, b: 0.5755149, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -156,35 +156,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8126664
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25579023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -192,11 +192,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -391,35 +395,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6873337
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.24421
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -427,11 +431,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -474,35 +482,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8126664
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2442098
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -510,11 +518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -614,13 +626,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280136903}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.3686169, y: -0.22544523, z: 0.12736246, w: 0.8927905}
+  m_LocalPosition: {x: -0.03764844, y: 2.791639, z: -0.20385265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 45.694, y: -26.225, z: 5.027}
 --- !u!1001 &285822645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -804,35 +816,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6873337
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25579023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -840,11 +852,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -883,35 +899,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6873337
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7442098
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -919,11 +935,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -966,35 +986,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3126664
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2442098
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1002,11 +1022,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -1045,35 +1069,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3126664
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25579023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1081,11 +1105,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -1531,7 +1559,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.16981131, g: 0.16564612, b: 0.16564612, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1547,8 +1575,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 5.47
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1572,7 +1600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798515408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.12, y: 0.54, z: -10}
+  m_LocalPosition: {x: 0.767, y: 1, z: -10.835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1657,35 +1685,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8126663
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25579023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1693,11 +1721,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -1736,35 +1768,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6873337
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2442098
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1772,11 +1804,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -2341,35 +2377,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8126664
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7442098
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2377,11 +2413,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -2743,35 +2783,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8126663
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7442098
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2779,11 +2819,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -2928,35 +2972,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3126664
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7442098
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2964,11 +3008,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -3113,35 +3161,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8126663
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.24421
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3149,11 +3197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -3196,35 +3248,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3126664
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.24421
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3232,11 +3284,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -3519,35 +3575,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8126663
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2442098
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3555,11 +3611,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
@@ -3598,35 +3658,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8126664
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.24421
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.71507406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99886185
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.046971902
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.00038923393
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008277094
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -5.385
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3634,11 +3694,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
       propertyPath: m_Name
       value: VirusCube (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830501178661591983, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8902bfa63d0649a20298874709ce3, type: 3}

@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\Cours\Projet Agence\EpsilonProject\Epsilon Project\Epsilon Project_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Cours\Projet Agence\EpsilonProject\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Cours\Projet Agence\EpsilonProject\Epsilon Project\Epsilon Project_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Cours\Projet Agence\EpsilonProject\Epsilon Project\Epsilon Project_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
+		<SoundBank Id="1161967626" Language="SFX" Hash="666189162">
+			<ObjectPath>\SoundBanks\Default Work Unit\Shield</ObjectPath>
+			<ShortName>Shield</ShortName>
+			<Path>Shield.bnk</Path>
+		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="4060328087" Language="SFX" Hash="813035519">
+		<SoundBank Id="4060328087" Language="SFX">
 			<ObjectPath>\SoundBanks\Default Work Unit\BankEpsilon</ObjectPath>
 			<ShortName>BankEpsilon</ShortName>
 			<Path>BankEpsilon.bnk</Path>
