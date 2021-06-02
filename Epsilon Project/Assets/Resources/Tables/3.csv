@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
 Third dialog !;I like the third one;DaMIEN;00:00:00:03;;;;
-;Three is a bad number;Three is a gret number, bettre than five;;;;;
+;Three is a bad number;Three is a great number, better than five;;;;;
 ;;;;;;;
-Anyway, you want to play another minigame?;Sure, let's go!;Okay, here's the game:;;;<SCENE>FindThePath;;
+Anyway, you want to play another minigame?;Sure, let's go!;Okay, here's the game:;;;<LINK>FindThePath;;
