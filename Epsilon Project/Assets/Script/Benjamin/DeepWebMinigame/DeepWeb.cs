@@ -3,45 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System.Net.Cache;
+using TMPro;
 public class DeepWeb : MonoBehaviour
 {
-    public GameObject sendMailUI;
-    public Text inputText;
-    public string correctAdress;
     
+    public TMP_Text UrlContainer;
+    public TMP_Text[] UrlText;
+    public GameObject[] UrlUI;
 
-    public void OpenURL(GameObject pageToOpen)
+    void Awake() 
     {
-        pageToOpen.SetActive(true);
+        UrlContainer.text = ("http//hackeur-pour-les-nuls.quelque-part");
     }
+    public void OpenURL(int UrlNumber)
+    {
+        switch (UrlNumber)
+        {
+            case 0:
+                UrlContainer.text = UrlText[0].text;
+                UrlUI[0].SetActive(true);
+                break;
+            case 1:
+                UrlContainer.text = UrlText[1].text;
+                UrlUI[1].SetActive(true);
+                break;
+            case 2:
+                UrlContainer.text = UrlText[2].text;
+                UrlUI[2].SetActive(true);
+                break;
+            case 3:
+                UrlContainer.text = UrlText[3].text;
+                UrlUI[3].SetActive(true);
+                break;
+        }
+        
 
+    }
+    
     public void CloseURL(GameObject pageToClose)
     {
+        UrlContainer.text = ("http//hackeur-pour-les-nuls.quelque-part");
         pageToClose.SetActive(false);
     }
 
-    public void SendMail()
-    {
-        sendMailUI.SetActive(true);
-    }
-
-    public void CloseMail()
-    {
-        sendMailUI.SetActive(false);
-    }
-
-    public void ForwardMail()
-    {
-        if(inputText.text == correctAdress)
-        {
-            Debug.Log("You sent it to the correct person, congrats !");
-            MinigameManager.Instance.winAction.Invoke();
-            
-        }
-        else
-        {
-            Debug.Log("This was not the correct adress you dummy");
-        }
-    }
+   
 }

@@ -1,11 +1,11 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Hey, how are you <i>doing</i>? I know you're using a <DMODEL> btw;Doing okay, what about you?;I'm doing fine as well, glad to hear you're okay! <LAT> <LONG>;00:00:00:04;00:00:00:10;<CHECK>testSet = '4 8' ? :  ! <CHECK>testSet = '4 7' ? <SET>testSet 'J'ai découvert la vie'  : <SET>testSetFloat 54 !;;
+Hey, how are you <i>doing</i>? I know you're using a <DMODEL> btw;Doing okay, what about you?;;00:00:00:04;00:00:00:10;<CHECK>testSet = '4 8' ? :  ! <CHECK>testSet = '4 7' ? <SET>testSet 'J'ai dÃ©couvert la vie'  : <SET>testSetFloat 54 !;;
 ;Not very good, sorry...;Oh, what's wrong <USERNAME>?;;00:00:00:20;<SET>testSet '2 8a 5' ;;
 ;Third response;A third response? I see huh;;00:00:00:8;;;
 ;;;;;;;
 Okay, you remember that game from our childhood?;Yeah, I remember, it was a great game!;I know right?! <sprite=0>;00:00:01:00;00:00:01:04;<SET>testSetFloat +400,6;<SET>testSet +'358' ;
 ;Yeah, it was a <u>shitty</u> game...;You're kidding? It was fucking awesome!;;00:00:00:08;;;
-;What now?;Oh, you don't remember it? I see...;;00:00:00:03;;;
+;What now?;Oh, you don't remember it? I see...;;00:00:00:03;<LEAVE>;;
 ;;;;;;;
 I'm adding a new message;A new message? Sweet!;Heh, I'm glad you like it :);00:00:00:08;00:00:01:04;<SET>testSet '285' <SET>testSetFloat 800;;
 ;Fuck new messages;Woah, you're so <b>rude</b> wtf!;;00:00:02:20;;;

@@ -11,16 +11,18 @@ public class Reply
     public string reactionTime;
     public string replyText;
     public string reaction;
+    public bool isLeaveMessage = false;
 
     public UnityAction replyEvent = null;
 
-    public Reply(string reply, string reaction, int index, string reactionTime, UnityAction actions)
+    public Reply(string reply, string reaction, int index, string reactionTime, UnityAction actions, bool isLeaveMessage = false)
     {
         this.replyText = reply;
         this.reaction = reaction;
         this.index = index;
         this.reactionTime = reactionTime;
         this.replyEvent = actions;
+        this.isLeaveMessage = isLeaveMessage;
     }
 }
 #endregion
@@ -33,6 +35,7 @@ public class DialogueElement
     public string initiationTime;
     public string message;
     public bool minigameInvite = false;
+    public bool leaveConversationMessage = false;
     public List<Reply> replies = new List<Reply>();
     public UnityAction elementAction;
 

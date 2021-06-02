@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("The name of the main chatting app scene")]
+    public int gameSceneId;
+    [HideInInspector]
     public string gameSceneName;
-    private int gameSceneId;
 
     private static GameManager instance;
     public static GameManager Instance
@@ -30,17 +31,17 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
-        GetGameSceneId();
+        GetGameSceneName();
     }
 
-    private void SetDialogue(TextAsset textToSet)
+    public void SetDialogue(TextAsset textToSet)
     {
         DialogueManager.Instance.currentDialogueFile = textToSet;
     }
 
     private void GoToChatScene()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(gameSceneId);
     }
 
     public void GoToScene(string sceneName)
@@ -48,14 +49,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    private void GetGameSceneId()
+    private void GetGameSceneName()
     {
-        gameSceneId = SceneManager.GetSceneByName(gameSceneName).buildIndex;
+        gameSceneName = SceneManager.GetSceneByBuildIndex(gameSceneId).name;
 
         if (gameSceneId == -1)
         {
-            Debug.Log("Couldn't find the scene of name " + gameSceneName + ". Index will be set to 0 by default, but can lead to exceptions.");
-            gameSceneId = 0;
+            Debug.Log("Couldn't find the scene of name " + gameSceneName + ". Index will be set to Game by default, but can lead to exceptions.");
+            gameSceneName = "Game";
         }
     }
 

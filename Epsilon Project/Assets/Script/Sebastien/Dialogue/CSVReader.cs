@@ -201,6 +201,7 @@ public class CSVReader : MonoBehaviour
         {
             switch (tagArea[i])
             {
+                #region BRANCH
                 case "BRANCH":
                     string fileName = tagArea[i + 1].ToString();
 
@@ -226,7 +227,9 @@ public class CSVReader : MonoBehaviour
                     }
 #endif
                     break;
+                #endregion
 
+                #region SET
                 case "SET":
 
                     string parameterVariable = tagArea[i + 1];
@@ -335,7 +338,9 @@ public class CSVReader : MonoBehaviour
                     }
 
                     break;
+                #endregion
 
+                #region LINK
                 case "LINK":
 
                     string sceneToChangeTo = "";
@@ -405,7 +410,50 @@ public class CSVReader : MonoBehaviour
                     }
 #endif
                     break;
+                #endregion
 
+                #region SCENE
+                case "SCENE":
+
+                    string sceneChange = "";
+                    sceneChange = tagArea[i + 1];
+
+                    events += delegate { DialogueManager.Instance.ChangeScene(sceneChange); };
+                    jump = 2;
+
+                    //The event takes place right as it is read, used for check functions
+                    if (playRightAway)
+                    {
+                        Debug.Log(jump);
+                        events.Invoke();
+                    }
+#if UNITY_EDITOR
+                    if (!playRightAway && DialogueManager.Instance.debugReadCommandKeywords)
+                    {
+                        //Debug
+                        List<string> debugMessages = new List<string>();
+                        debugMessages.Add("=======DISCOVERED A NEW EVENT=======");
+                        colorCodeFirst = "<color=blue>";
+                        debugMessages.Add(colorCodeFirst + "SCENE :: Scene keyword detected " + colorCodeLast);
+                        debugMessages.Add(colorCodeFirst + "SCENE :: Scene leads to scene : " + sceneChange + colorCodeLast);
+                        DialogueManager.Instance.DebugElement(debugMessages.ToArray());
+                    }
+
+#endif
+                    break;
+                #endregion
+
+                #region LEAVE
+                case "LEAVE":
+
+                    events += delegate { DialogueManager.Instance.SendLeaveMessage(); };
+
+
+                    jump = 1;
+                    break;
+                #endregion
+
+                #region CHECK
                 case "CHECK":
 
                     string valueToCheck = tagArea[i + 1];
@@ -517,6 +565,7 @@ public class CSVReader : MonoBehaviour
                     }
 #endif
                     break;
+                #endregion
 
                 default:
                     jump = 1;

@@ -1,4 +1,4 @@
 Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
 The fifth dialog that leads to the fifth minigame;Hooray;Hooray indeed;;;;;
 ;;;;;;;
-Fifth game coming!;Yes;;;;<SCENE>Virus;;
+Fifth game coming!;Yes;;;;<LINK>Virus;;
