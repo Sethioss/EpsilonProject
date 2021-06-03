@@ -4922,12 +4922,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 49743786ce9695f40874be5a6d380958, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: 8ee0b81f490bf174ba7874d71cccc0a6, type: 3}
   dialogueList: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:02
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 1
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7

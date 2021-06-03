@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Epsilon Project
+  companyName: Epsilon Games
+  productName: BlackBox
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -57,9 +57,9 @@ PlayerSettings:
   iosUseCustomAppBackgroundBehavior: 0
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 1
-  allowedAutorotateToLandscapeRight: 1
-  allowedAutorotateToLandscapeLeft: 1
+  allowedAutorotateToPortraitUpsideDown: 0
+  allowedAutorotateToLandscapeRight: 0
+  allowedAutorotateToLandscapeLeft: 0
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   preserveFramebufferAlpha: 0
@@ -159,6 +159,28 @@ PlayerSettings:
   - {fileID: 4900000, guid: 2fe44389d6f4f8a4aaec807fda48dbbd, type: 3}
   - {fileID: 4900000, guid: c2d276d751f01c8499bce5f010d67c05, type: 3}
   - {fileID: 4900000, guid: eade5ba7dc189124987b8826ccfb5d23, type: 3}
+  - {fileID: 4900000, guid: 2f2bd46b13cd1b247b50c1a2ff5169e2, type: 3}
+  - {fileID: 4900000, guid: c04de557031e47e44813bbec6aa6eacc, type: 3}
+  - {fileID: 4900000, guid: 0ce4d02d253c0b440aba8b93d7f485fa, type: 3}
+  - {fileID: 4900000, guid: b3ba5742c591e4a4389852192e3e36be, type: 3}
+  - {fileID: 4900000, guid: a82d3b533af642149a74cebbab626864, type: 3}
+  - {fileID: 4900000, guid: 635ef3d6d379c1d4a840cdc22c27ee26, type: 3}
+  - {fileID: 4900000, guid: 611851a88d59d8c4abbc672af2a122c9, type: 3}
+  - {fileID: 4900000, guid: d1b186d0f84a1414292b1f591521af18, type: 3}
+  - {fileID: 4900000, guid: 2abe25a7238582043a57987a85c34cef, type: 3}
+  - {fileID: 4900000, guid: 220917f0b3195a9478aa3a7def28a18d, type: 3}
+  - {fileID: 4900000, guid: a1d738021a7dd6043ad242dd096d13e1, type: 3}
+  - {fileID: 4900000, guid: 2cd8bedcd0270b04b99e000a460d2c95, type: 3}
+  - {fileID: 4900000, guid: c93f9ba7eda72d24d9ac9bcbddc0e666, type: 3}
+  - {fileID: 4900000, guid: 43c3ab1dc543e4a428a2b95a85d3cca0, type: 3}
+  - {fileID: 4900000, guid: 7ea548e4d6e065549af19578d1f1ca88, type: 3}
+  - {fileID: 4900000, guid: d0951c150a7e52f44b945a4fab9abd94, type: 3}
+  - {fileID: 4900000, guid: b94c2c128898fe74c85d26ba18006aca, type: 3}
+  - {fileID: 4900000, guid: 1f8ad8f99f40b014798013e00ebbed58, type: 3}
+  - {fileID: 4900000, guid: 6a8a3f1196dd5404e825c05479876b90, type: 3}
+  - {fileID: 4900000, guid: 8ee0b81f490bf174ba7874d71cccc0a6, type: 3}
+  - {fileID: 4900000, guid: 855ee2657c0443b489fe6b23c11c82b2, type: 3}
+  - {fileID: 4900000, guid: 79e76a56026c05c4895e457deca09dce, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -176,7 +198,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.EpsilonProject
+    Android: com.EpsilonGames.BlackBox
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -287,7 +309,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 0b747886624bf7340803cbf1099d7fde, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:

@@ -1,0 +1,14 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+C'est simple. Au moment où j'aurais infiltré le bâtiment, tu devras m'aider;;;;;;;
+;;;;;;;
+Je suis en train de coder de quoi te permettre de désactiver les caméras dudit bâtiment;;;;;;;
+;;;;;;;
+J'ai pensé à désactiver toutes les caméras mais ça alerterait la sécurité beaucoup trop rapidement.;;;;;;;
+;;;;;;;
+À la place, tu devras désactiver les caméras une par une dès que je passerais en dessous;Pourquoi tes compagnons ne s'en chargent pas?;;;;;;
+;;;;;;;
+J'ai juste de sérieux doutes sur leurs intentions;Comment ça?;;;;;;
+;C’est-à-dire?;;;;;;
+;;;;;;;
+Je ne sais pas s'ils ne comptent pas juste me sacrifier…;Qu'est-ce qui te fais dire ça?;;;;<BRANCH>PostMj3-3a;;
+;Tu devrais fuir alors!;;;;<BRANCH>PostMj3-3b;;

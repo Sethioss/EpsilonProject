@@ -1,0 +1,14 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Si tu savais comme je suis contente d'enfin pouvoir te parler!;Tu vas bien?!;;01:00:00:00;;;;
+;Content…e ? Je veux dire, tu vas bien?!;;;;;;
+;;;;;;;
+Je vais bien, oui… Il y'a fort à parier que je n'ai pas été vu aux caméras, et c'est grâce à toi! Du moins, je crois...;Tu crois?;Oui, d'après mes compagnons, j'ai été couvert par leur soin… Mais je n'ai aucun moyen de vérifier ce qu'ils avancent.;;;;;
+;Tant mieux…;D'après mes compagnons, j'ai été couvert par leur soin… Mais je n'ai aucun moyen de vérifier ce qu'ils avancent.;;;;;
+;;;;;;;
+Pour moi, c'est toi qui m'a aidé, et je ferais mieux de ne pas compter sur eux.;J'en suis ravi!;;;;<BRANCH>PostMj4-Win2;;
+;Et ça s'est passé comment?;;;;;;
+;;;;;;;
+Je t'avoue que c'était vraiment stressant. J'ai failli tout faire foirer quand quelqu'un m'a abordé mais…;Mais?;Mais mes compagnons ont su rattraper le coup. Ils ont su détourner l'attention de ce type.;;;;;
+;;;;;;;
+Par contre, ce n'est pas pour autant que je leur fais confiance. Ils voulaient juste que je réussisse, pas que je m'en sorte.;Je vois.;;;;<BRANCH>PostMj4-Win2;;
+;Peut-être que tu devrais leur faire plus confience.;;;;<BRANCH>PostMj4-Win1a;;

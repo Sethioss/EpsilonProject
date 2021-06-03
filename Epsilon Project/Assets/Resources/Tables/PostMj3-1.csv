@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Bien, je te recontacte d'ici peu!;;;;;;;
+;;;;;;;
+Bien, écoute. La prochaine étape est d'une importance cruciale.;Encore une préparation pour l'infiltration?;;00:02:00:00;;<BRANCH>PostMj3-1a;;
+;L'infiltration en elle-même?;;;;<BRANCH>PostMj3-2;;

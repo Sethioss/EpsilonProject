@@ -1,0 +1,4 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+C'est moi qui ai commencé à agir de façon suspecte.;;;;;;;
+;;;;;;;
+Ça me va au final, d'être au centre de la mission. Peut-être que je pourrais réussir à regagner leur confiance.;Et comment comptent-ils te piéger?;;;;<BRANCH>PostMj3-4;;
