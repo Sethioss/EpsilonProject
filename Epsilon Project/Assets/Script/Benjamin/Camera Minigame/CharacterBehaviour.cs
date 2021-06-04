@@ -34,7 +34,7 @@ public class CharacterBehaviour : MonoBehaviour
         if (other.CompareTag("Camera"))
         {
             Debug.Log("You were spotted");
-            //loseScreen.SetActive(true);
+            MinigameManager.Instance.loseAction.Invoke();
         }
         if (other.CompareTag("Goal"))
         {
