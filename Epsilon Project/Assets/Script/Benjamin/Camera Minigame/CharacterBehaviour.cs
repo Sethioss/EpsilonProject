@@ -42,7 +42,7 @@ public class CharacterBehaviour : MonoBehaviour
             switch (NumberGoal)
             {
                 case 1:
-                    cameraManager.Glitch();
+                    //cameraManager.Glitch();
                     AllCameraTop[0].SetActive(false);
                     AllCameraTop[1].SetActive(true);
                     this.gameObject.SetActive(false);
