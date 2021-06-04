@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 431566361731239168}
   - component: {fileID: 1047553102336414728}
   m_Layer: 5
-  m_Name: Circle (2)
+  m_Name: Profile Picture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,6 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7324099468972562348}
+  - component: {fileID: 576558024688722553}
   m_Layer: 5
   m_Name: PlayerBubble
   m_TagString: Untagged
@@ -557,6 +558,21 @@ RectTransform:
   m_AnchoredPosition: {x: 135.66437, y: 16.810303}
   m_SizeDelta: {x: 271.3287, y: 89.0367}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &576558024688722553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995672859292386976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34220e9ba8a8de43b2bea2dfe3dd8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBackground: {fileID: 1970339521499332534}
+  profilePictureTransform: {fileID: 8221150751887927113}
+  message: {fileID: 3446869258362968813}
 --- !u!1 &7316272194042769211
 GameObject:
   m_ObjectHideFlags: 0

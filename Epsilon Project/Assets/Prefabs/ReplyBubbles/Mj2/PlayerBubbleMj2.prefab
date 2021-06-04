@@ -289,6 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7324099468972562348}
+  - component: {fileID: 7119502385930039709}
   m_Layer: 5
   m_Name: PlayerBubbleMj2
   m_TagString: Untagged
@@ -316,6 +317,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 89.0367}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &7119502385930039709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995672859292386976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34220e9ba8a8de43b2bea2dfe3dd8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBackground: {fileID: 1970339521499332534}
+  profilePicture: {fileID: 0}
+  message: {fileID: 3446869258362968813}
 --- !u!1 &7289208128030975162
 GameObject:
   m_ObjectHideFlags: 0

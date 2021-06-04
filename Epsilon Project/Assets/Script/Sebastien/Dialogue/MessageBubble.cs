@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MessageBubble
+public class MessageBubble : MonoBehaviour
 {
-    public Image textBackground;
-    public Image profilePicture;
+    public GameObject textBackground;
+    public Transform profilePictureTransform;
     public TextMeshProUGUI message;
 }

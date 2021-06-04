@@ -6,11 +6,13 @@ using TMPro;
 
 public class OptionMenu : MonoBehaviour
 {
+    public Image[] profilePictureTransforms;
     public TextMeshProUGUI sliderText;
     public Slider sliderMinTime;
     public Slider sliderMaxTime;
     public Toggle inactivePeriodsToggle;
     public Toggle autoModeToggle;
+    public TMP_Dropdown languageDropdown;
 
     private int sliderMinTimeValue = 1;
     private int sliderMaxTimeValue = 7;
@@ -22,8 +24,25 @@ public class OptionMenu : MonoBehaviour
         Init();
     }
 
-    private void Init()
+    public void HandleInputData(int val)
     {
+        if(val == (int)DialogueManager.Language.FR)
+        {
+            DialogueManager.Instance.language = DialogueManager.Language.FR;
+        }
+        else if (val == (int)DialogueManager.Language.EN)
+        {
+            DialogueManager.Instance.language = DialogueManager.Language.EN;
+        }
+    }
+
+    public void Init()
+    {
+        foreach (Image image in profilePictureTransforms)
+        {
+            image.sprite = DialogueManager.Instance.profilePicture;
+        }
+
         sliderMinTimeValue = DialogueManager.Instance.inactivePeriodStartHour;
         sliderMaxTimeValue = DialogueManager.Instance.inactivePeriodEndHour;
 
@@ -34,17 +53,21 @@ public class OptionMenu : MonoBehaviour
         UpdateMinMaxTime();
     }
 
-    private void UpdateAutoMode()
+    private void UpdateMenu()
     {
-        DialogueManager.Instance.autoMode = autoModeToggleValue;
-        autoModeToggle.isOn = autoModeToggleValue;
-
-        UpdateAutoModeInManager();
-    }
-
-    private void UpdateAutoModeInManager()
-    {
-        DialogueManager.Instance.autoMode = autoModeToggleValue;
+        if(autoModeToggle.isOn && inactivePeriodsToggle.isOn)
+        {
+            inactivePeriodsToggle.isOn = false;
+            inactivePeriodsToggle.interactable = false;
+            SetMinMaxTimeToToggle();
+        }
+        else
+        {
+            if (!inactivePeriodsToggle.interactable)
+            {
+                inactivePeriodsToggle.interactable = true;
+            }
+        }
     }
 
     public void SetSliderMinTime()
@@ -59,26 +82,42 @@ public class OptionMenu : MonoBehaviour
         UpdateMinMaxTime();
     }
 
-    public void EnableMinMaxTime()
+    public void SetMinMaxTimeToToggle()
     {
        inactiveToggleValue = inactivePeriodsToggle.isOn;
        UpdateMinMaxTime();
     }
 
-    public void EnableAutoMode()
+    private void DisableMinMaxTime()
+    {
+        inactivePeriodsToggle.isOn = false;
+        SetMinMaxTimeToToggle();
+    }
+
+    public void SetAutoModeToToggle()
     {
         autoModeToggleValue = autoModeToggle.isOn;
         UpdateAutoMode();
+    }
+    private void UpdateAutoMode()
+    {
+        DialogueManager.Instance.autoMode = autoModeToggleValue;
+        autoModeToggle.isOn = autoModeToggleValue;
+
+        UpdateAutoModeInManager();
+        UpdateMenu();
     }
 
     private void UpdateMinMaxTime()
     {
         sliderMinTime.value = sliderMinTimeValue;
         sliderMaxTime.value = sliderMaxTimeValue;
+        DialogueManager.Instance.inactivePeriods = inactiveToggleValue;
+        inactivePeriodsToggle.isOn = inactiveToggleValue;
 
-        UpdateMinMaxToggle();
         UpdateMinMaxTimeInManager();
         UpdateMinMaxTimeSliderText();
+        UpdateMenu();
     }
 
     private void UpdateMinMaxTimeInManager()
@@ -92,10 +131,9 @@ public class OptionMenu : MonoBehaviour
         sliderText.text = "I don't want to receive messages between \n" + GetPmAm(sliderMinTimeValue) + " and " + GetPmAm(sliderMaxTimeValue);
     }
 
-    private void UpdateMinMaxToggle()
+    private void UpdateAutoModeInManager()
     {
-        DialogueManager.Instance.inactivePeriods = inactiveToggleValue;
-        inactivePeriodsToggle.isOn = inactiveToggleValue;
+        DialogueManager.Instance.autoMode = autoModeToggleValue;
     }
 
     private string GetPmAm(int value)

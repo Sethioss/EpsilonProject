@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class DialogueManager : MonoBehaviour
     public int inactivePeriodStartHour = 1;
     [Range(0, 23)]
     public int inactivePeriodEndHour = 7;
+
+    public Sprite profilePicture;
+
+    public enum Language {FR = 0, EN = 1};
+
+    public Language language;
 
     private List<string> debugMessages { get; } = new List<string>();
     private string colorCodeStart = "";

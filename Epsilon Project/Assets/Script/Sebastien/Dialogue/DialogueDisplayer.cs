@@ -147,30 +147,29 @@ public class DialogueDisplayer : MonoBehaviour
     private void CreateMessageBubble()
     {
         GameObject messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
-        GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
-        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+        MessageBubble messageBubble = messagePrefab.GetComponent<MessageBubble>();
 
-        textInBubble.text = "...";
+        messageBubble.message.text = "...";
+
         //Current bubble = The bubble which text is gonna get changed
         currentBubble = messagePrefab;
         bubbleSpawned = true;
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, imageBg, messagePanel));
+        StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
 
     }
     private void DisplayMessage(GameObject currentBubble)
     {
-        GameObject imageBg = currentBubble.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
-        TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
+        MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
 
         //If it's a message sent with a <SCENE> keyword, minigameInvite is set to true
         if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
         {
-            Button button = imageBg.GetComponent<Button>();
+            Button button = messageBubble.textBackground.GetComponent<Button>();
             button.enabled = true;
             button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].replies[0].replyEvent);
         }
 
-        textInBubble.text = currentDialogue.elements[currentDialogueElementId].message;
+        messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
         isInitialisation = false;
         bubbleSpawned = false;
 
@@ -186,7 +185,7 @@ public class DialogueDisplayer : MonoBehaviour
             GoToNextElement();
         }
 
-        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
+        StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
     }
     private void DisplayPossibleReplies(List<Reply> replies)
     {
@@ -222,11 +221,14 @@ public class DialogueDisplayer : MonoBehaviour
         {
             //Create response bubble
             GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
-            GameObject messagePrefab = responsePrefab.transform.GetChild(0).gameObject;
+            MessageBubble messageBubble = responsePrefab.GetComponent<MessageBubble>();
 
-            GameObject imageBg = messagePrefab.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
-            TextMeshProUGUI textInBubble = imageBg.GetComponentInChildren<TextMeshProUGUI>();
-            textInBubble.text = reply.replyText;
+            messageBubble.message.text = reply.replyText;
+
+            if(messageBubble.profilePictureTransform != null)
+            {
+                messageBubble.profilePictureTransform.GetComponent<Image>().sprite = DialogueManager.Instance.profilePicture;
+            }
 
             //Set clock to reaction time
             isWaitingForReply = false;
@@ -242,7 +244,7 @@ public class DialogueDisplayer : MonoBehaviour
                 awaitingReaction = reply.reaction;
             }
 
-            StartCoroutine(SetObjectHeightToBackground(responsePrefab, imageBg, messagePanel));
+            StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
         }
     }
 
@@ -256,8 +258,10 @@ public class DialogueDisplayer : MonoBehaviour
 
     void DisplayReaction(string reaction, GameObject bubbleObject)
     {
-        GameObject imageBg = bubbleObject.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject;
-        TextMeshProUGUI textInBubble = bubbleObject.GetComponentInChildren<TextMeshProUGUI>();
+        MessageBubble messageBubble = bubbleObject.GetComponent<MessageBubble>();
+
+        GameObject imageBg = messageBubble.textBackground;
+        TextMeshProUGUI textInBubble = messageBubble.message;
 
         textInBubble.text = reaction;
         StartCoroutine(SetObjectHeightToBackground(bubbleObject, imageBg, messagePanel));
