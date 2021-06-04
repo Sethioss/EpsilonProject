@@ -3125,7 +3125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &332791696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4373,7 +4373,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "De Nathalie :  15 ans ensemble\u2026. Et on s\u2019aime comme au premier
     jour\u2026. Pas un pas de travers pas une seule grosse bourde\u2026. Je t\u2019aime
-    tellement mon loulou < 3\r\nenvie de mourir en \xE9crivant tout ca"
+    tellement mon loulou <sprite index=2>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4400,7 +4400,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.3
+  m_fontSize: 44.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4436,7 +4436,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -11.246956}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5563,7 +5563,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "15 ans ensemble\u2026. Et on s\u2019aime comme au premier jour\u2026.
     Pas un pas de travers pas une seule grosse bourde\u2026. Je t\u2019aime tellement
-    mon loulou :heart: :heart:\r\n"
+    mon loulou <sprite index=2> <sprite index=2>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10404,7 +10404,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "A comment\xE9 \u2013 Le 13 / 06\r\nSuper nouvelle !! Passez \xE0 la maison
-    !! Barbecue in coming :wink:"
+    !! Barbecue in coming <sprite index=1>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10431,7 +10431,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
+  m_fontSize: 60.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10538,7 +10538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Arthur : Dessin du petit mat\xE9o, il fait des progr\xE8s :heart_eyes:\r\n"
+  m_text: "Arthur : Dessin du petit mat\xE9o, il fait des progr\xE8s <sprite index=2>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20155,7 +20155,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Arthur : 10 ans de mariage f\xEAt\xE9 dignement aux maldives ! Pendant
-    que les enfants sont chez tonton :joy: :joy:"
+    que les enfants sont chez tonton <sprite index=0> <sprite index=0>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20182,7 +20182,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.1
+  m_fontSize: 51.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
