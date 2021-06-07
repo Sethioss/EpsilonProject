@@ -22,6 +22,8 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    private UserSettings userSettings;
+
     private void Awake()
     {
         currentTime = System.DateTime.UtcNow.ToLocalTime();
@@ -40,6 +42,7 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(instance);
+        userSettings = UserSettings.Instance;
     }
 
     void Update()
@@ -90,12 +93,12 @@ public class TimeManager : MonoBehaviour
         storedTime = storedTime.AddMinutes(timeToWait.Minute);
         storedTime = storedTime.AddSeconds(timeToWait.Second);
 
-        System.DateTime inactiveStartHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, DialogueManager.Instance.inactivePeriodStartHour, 0, 0);
-        System.DateTime inactiveEndHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, DialogueManager.Instance.inactivePeriodEndHour, 0, 0);
+        System.DateTime inactiveStartHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, userSettings.inactivePeriodStartHour, 0, 0);
+        System.DateTime inactiveEndHour = new System.DateTime(currentTime.Year, currentTime.Month, currentTime.Day, userSettings.inactivePeriodEndHour, 0, 0);
 
         if (inactiveStartHour.Hour <= inactiveEndHour.Hour)
         {
-            if ((storedTime.Hour >= inactiveStartHour.Hour && storedTime.Hour < inactiveEndHour.Hour) && !DialogueManager.Instance.autoMode && DialogueManager.Instance.inactivePeriods)
+            if ((storedTime.Hour >= inactiveStartHour.Hour && storedTime.Hour < inactiveEndHour.Hour) && !userSettings.autoMode && userSettings.inactivePeriods)
             {
                 int randomMinute = Random.Range(0, 3);
                 int randomSecond = Random.Range(0, 10);
@@ -109,7 +112,7 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            if ((storedTime.Hour >= inactiveStartHour.Hour || storedTime.Hour < inactiveEndHour.Hour) && !DialogueManager.Instance.autoMode && DialogueManager.Instance.inactivePeriods)
+            if ((storedTime.Hour >= inactiveStartHour.Hour || storedTime.Hour < inactiveEndHour.Hour) && !userSettings.autoMode && userSettings.inactivePeriods)
             {
                 int randomMinute = Random.Range(0, 3);
                 int randomSecond = Random.Range(0, 10);

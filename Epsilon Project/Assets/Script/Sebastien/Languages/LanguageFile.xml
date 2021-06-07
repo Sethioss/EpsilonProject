@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<languages>
+
+  <language>
+    <Name>Français</Name>
+    <Prefix>FR</Prefix>
+    
+    <settings>Paramètres</settings>
+    <usernamePlaceholder>Pseudo...</usernamePlaceholder>
+    <passwordPlaceholder>Mot de passe...</passwordPlaceholder>
+    <mainMenuMails>0 nouveaux messages, 0 nouveaux mails</mainMenuMails>
+    
+    <interlocutor1>Inconnu</interlocutor1>
+    <autoModeTitle>Mode automatique</autoModeTitle>
+    <autoModeDesc>Envoie les messages avec un temps d'attente réduit (Uniquement disponible après une partie)</autoModeDesc>
+    <inactiveTitle>Périodes d'inactivité</inactiveTitle>
+    <inactiveDesc>Si activé, vos interlocuteurs ne vous enverront des messages que pendant une période que vous avez défini (Désactivé si le mode automatique est actif)</inactiveDesc>
+    <inactivePeriodSet>Je ne veux pas recevoir de messages entre {0}h et {1}h.</inactivePeriodSet>
+    <languageTitle>Langue</languageTitle>
+    <languageDesc>Changer la langue du jeu</languageDesc>
+    <profilePictureText>Changer l'image de profil</profilePictureText>
+
+    <mj2MessagePanel>0 nouveux messages</mj2MessagePanel>
+  </language>
+
+  <language>
+    <Name>English</Name>
+    <Prefix>EN</Prefix>
+    
+    <settings>Settings</settings>
+    <usernamePlaceholder>Username...</usernamePlaceholder>
+    <passwordPlaceholder>Password...</passwordPlaceholder>
+    <mainMenuMails>0 new messages, 0 new mails</mainMenuMails>
+    
+    <interlocutor1>Unknown</interlocutor1>
+    <autoModeTitle>Automatic mode</autoModeTitle>
+    <autoModeDesc>Messages are sent without any waiting time (Available after your first run of the game)</autoModeDesc>
+    <inactiveTitle>Inactivity periods</inactiveTitle>
+    <inactiveDesc>If active, your interlocutors will only send messages between the selected time frame (Isn't active when automatic mode is on)</inactiveDesc>
+    <inactivePeriodSet>I don't want to receive messages between {0} and {1}.</inactivePeriodSet>
+    <languageTitle>Language</languageTitle>
+    <languageDesc>Change the game's language</languageDesc>
+    <profilePictureText>Change your profile picture</profilePictureText>
+
+    <mj2MessagePanel>0 new messages</mj2MessagePanel>
+  
+</language>
+
+</languages>

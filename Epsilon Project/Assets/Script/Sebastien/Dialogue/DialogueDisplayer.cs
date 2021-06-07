@@ -52,6 +52,7 @@ public class DialogueDisplayer : MonoBehaviour
     public GameObject replyButtonPrefab;
 
     TimeManager timeManager;
+    UserSettings userSettings;
 
     #endregion
 
@@ -109,6 +110,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         timeManager = DialogueManager.Instance.timeManager;
         timeManager.currentlyWaiting = false;
+        userSettings = UserSettings.Instance;
 
         //Set the pointer to the first dialog element
         currentDialogueElementId = 0;
@@ -227,7 +229,7 @@ public class DialogueDisplayer : MonoBehaviour
 
             if(messageBubble.profilePictureTransform != null)
             {
-                messageBubble.profilePictureTransform.GetComponent<Image>().sprite = DialogueManager.Instance.profilePicture;
+                messageBubble.profilePictureTransform.GetComponent<Image>().sprite = userSettings.profilePicture;
             }
 
             //Set clock to reaction time
@@ -379,9 +381,9 @@ public class DialogueDisplayer : MonoBehaviour
     #region ChronoTime
     private void SetWaitingTime(string waitingTime)
     {
-        if (DialogueManager.Instance.autoMode)
+        if (userSettings.autoMode)
         {
-            currentWaitingTime = DialogueManager.Instance.autoModeWaitingTime;
+            currentWaitingTime = userSettings.autoModeWaitingTime;
         }
         else
         {

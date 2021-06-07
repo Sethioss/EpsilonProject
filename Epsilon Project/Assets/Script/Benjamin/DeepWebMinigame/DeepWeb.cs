@@ -36,6 +36,10 @@ public class DeepWeb : MonoBehaviour
                 UrlContainer.text = UrlText[3].text;
                 UrlUI[3].SetActive(true);
                 break;
+            case 4:
+                UrlContainer.text = UrlText[4].text;
+                UrlUI[4].SetActive(true);
+                break;
         }
         
 
@@ -43,7 +47,7 @@ public class DeepWeb : MonoBehaviour
     
     public void CloseURL(GameObject pageToClose)
     {
-        UrlContainer.text = ("http//hackeur-pour-les-nuls.quelque-part");
+        UrlContainer.text = ("http//mirror-11d269e3.onion/");
         pageToClose.SetActive(false);
     }
 

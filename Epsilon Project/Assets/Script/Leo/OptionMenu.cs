@@ -19,35 +19,33 @@ public class OptionMenu : MonoBehaviour
     private bool inactiveToggleValue = true;
     private bool autoModeToggleValue = true;
 
+    private UserSettings userSettings;
+
     private void Start()
     {
         Init();
     }
 
-    public void HandleInputData(int val)
+    public void SetLanguage()
     {
-        if(val == (int)DialogueManager.Language.FR)
-        {
-            DialogueManager.Instance.language = DialogueManager.Language.FR;
-        }
-        else if (val == (int)DialogueManager.Language.EN)
-        {
-            DialogueManager.Instance.language = DialogueManager.Language.EN;
-        }
+        userSettings.language = (UserSettings.Language)languageDropdown.value;
+        XMLManager.Instance.SwitchLanguage();
     }
 
     public void Init()
     {
+        userSettings = UserSettings.Instance;
+
         foreach (Image image in profilePictureTransforms)
         {
-            image.sprite = DialogueManager.Instance.profilePicture;
+            image.sprite = userSettings.profilePicture;
         }
 
-        sliderMinTimeValue = DialogueManager.Instance.inactivePeriodStartHour;
-        sliderMaxTimeValue = DialogueManager.Instance.inactivePeriodEndHour;
+        sliderMinTimeValue = userSettings.inactivePeriodStartHour;
+        sliderMaxTimeValue = userSettings.inactivePeriodEndHour;
 
-        inactiveToggleValue = DialogueManager.Instance.inactivePeriods;
-        autoModeToggleValue = DialogueManager.Instance.autoMode;
+        inactiveToggleValue = userSettings.inactivePeriods;
+        autoModeToggleValue = userSettings.autoMode;
 
         UpdateAutoMode();
         UpdateMinMaxTime();
@@ -101,7 +99,7 @@ public class OptionMenu : MonoBehaviour
     }
     private void UpdateAutoMode()
     {
-        DialogueManager.Instance.autoMode = autoModeToggleValue;
+        userSettings.autoMode = autoModeToggleValue;
         autoModeToggle.isOn = autoModeToggleValue;
 
         UpdateAutoModeInManager();
@@ -112,40 +110,24 @@ public class OptionMenu : MonoBehaviour
     {
         sliderMinTime.value = sliderMinTimeValue;
         sliderMaxTime.value = sliderMaxTimeValue;
-        DialogueManager.Instance.inactivePeriods = inactiveToggleValue;
+        userSettings.inactivePeriods = inactiveToggleValue;
         inactivePeriodsToggle.isOn = inactiveToggleValue;
 
         UpdateMinMaxTimeInManager();
-        UpdateMinMaxTimeSliderText();
+        XMLManager.Instance.UpdateHour();
         UpdateMenu();
     }
 
     private void UpdateMinMaxTimeInManager()
     {
-        DialogueManager.Instance.inactivePeriodStartHour = sliderMinTimeValue;
-        DialogueManager.Instance.inactivePeriodEndHour = sliderMaxTimeValue;
-    }
-
-    private void UpdateMinMaxTimeSliderText()
-    {
-        sliderText.text = "I don't want to receive messages between \n" + GetPmAm(sliderMinTimeValue) + " and " + GetPmAm(sliderMaxTimeValue);
+        userSettings.inactivePeriodStartHour = sliderMinTimeValue;
+        userSettings.inactivePeriodEndHour = sliderMaxTimeValue;
     }
 
     private void UpdateAutoModeInManager()
     {
-        DialogueManager.Instance.autoMode = autoModeToggleValue;
+        userSettings.autoMode = autoModeToggleValue;
     }
 
-    private string GetPmAm(int value)
-    {
-        string hour;
-        hour = value + ".00AM";
 
-        if(value > 12)
-        {
-            hour = (value % 12) + ".00PM";
-        }
-
-        return hour;
-    }
 }
