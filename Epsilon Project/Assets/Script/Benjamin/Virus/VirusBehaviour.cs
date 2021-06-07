@@ -7,6 +7,7 @@ public class VirusBehaviour : MonoBehaviour
     public int numberOfColumns, numberOfRows;
     public int hackFrequency = 3;
     int tracker = 0;
+    public int timeToFade;
     public static bool reachedGoal;
     bool canHack = true;
     public GameObject[] allTiles;
@@ -86,7 +87,10 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileLeftBhv.holdsVirus = true;
+                            (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            StopCoroutine(StartFading());
                             StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
+                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -102,13 +106,18 @@ public class VirusBehaviour : MonoBehaviour
                 case 2:
                     if (coordX + 1 <= numberOfColumns - 1)
                     {
+                        currentTile = tiles[coordY, coordX];
+                        currentTileBhv = currentTile.GetComponent<TilesBehaviour>();
                         GameObject tileRight = tiles[coordY, coordX + 1];
                         TilesBehaviour tileRightBhv = tileRight.GetComponent<TilesBehaviour>();
                         if (tileRightBhv.isInfected == false && tileRightBhv.isBlocked == false && tileRightBhv.isHacked == false)
                         {
                             currentTileBhv.holdsVirus = false;
                             tileRightBhv.holdsVirus = true;
+                            StopCoroutine(StartFading());
+                            (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
+                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -130,7 +139,10 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileUpBhv.holdsVirus = true;
+                            StopCoroutine(StartFading());
+                            (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
+                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -152,7 +164,10 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileDownBhv.holdsVirus = true;
+                            StopCoroutine(StartFading());
+                            (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
+                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -188,6 +203,13 @@ public class VirusBehaviour : MonoBehaviour
         {
             HackRandom();
         }
+    }
+
+    public IEnumerator StartFading()
+    {
+        yield return new WaitForSeconds(timeToFade);
+        Debug.Log("You loose");
+        MinigameManager.Instance.loseAction.Invoke();
     }
 
 }
