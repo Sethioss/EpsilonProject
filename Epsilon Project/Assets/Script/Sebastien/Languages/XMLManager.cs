@@ -31,7 +31,9 @@ public class XMLManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+#if !UNITY_EDITOR
             DontDestroyOnLoad(instance);
+#endif
         }
         else
         {
@@ -59,7 +61,7 @@ public class XMLManager : MonoBehaviour
         }
     }
 
-    private void CreateDictionary()
+    public void CreateDictionary()
     {
         XmlDocument doc = new XmlDocument();
         doc.LoadXml(languageFile.text);

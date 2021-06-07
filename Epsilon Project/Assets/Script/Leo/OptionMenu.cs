@@ -47,6 +47,8 @@ public class OptionMenu : MonoBehaviour
         inactiveToggleValue = userSettings.inactivePeriods;
         autoModeToggleValue = userSettings.autoMode;
 
+        languageDropdown.value = (int)userSettings.language;
+
         UpdateAutoMode();
         UpdateMinMaxTime();
     }
