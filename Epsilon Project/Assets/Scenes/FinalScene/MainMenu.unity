@@ -3535,8 +3535,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 273, y: -473}
-  m_SizeDelta: {x: 200, y: 36.2546}
+  m_AnchoredPosition: {x: 288, y: -473}
+  m_SizeDelta: {x: 160.47, y: 36.2546}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &568488359
 GameObject:
@@ -3781,7 +3781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 0
-  autoModeWaitingTime: 00:00:00:01
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 0
   inactivePeriodStartHour: 5
   inactivePeriodEndHour: 10

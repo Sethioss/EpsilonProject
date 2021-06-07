@@ -31,9 +31,7 @@ public class XMLManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-#if !UNITY_EDITOR
             DontDestroyOnLoad(instance);
-#endif
         }
         else
         {

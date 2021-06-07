@@ -52,9 +52,9 @@ public class UserSettings : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-#if !UNITY_EDITOR
+
             DontDestroyOnLoad(instance);
-#else
+#if UNITY_EDITOR
             ResetElements();
 #endif
         }
