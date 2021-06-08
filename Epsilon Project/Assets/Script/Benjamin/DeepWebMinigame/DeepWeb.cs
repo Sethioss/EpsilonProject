@@ -36,6 +36,10 @@ public class DeepWeb : MonoBehaviour
                 UrlContainer.text = UrlText[3].text;
                 UrlUI[3].SetActive(true);
                 break;
+            case 4:
+                UrlContainer.text = UrlText[4].text;
+                UrlUI[4].SetActive(true);
+                break;
         }
         
 
