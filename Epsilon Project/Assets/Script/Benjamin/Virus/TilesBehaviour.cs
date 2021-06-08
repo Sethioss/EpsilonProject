@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TilesBehaviour : MonoBehaviour
 {
@@ -19,9 +20,9 @@ public class TilesBehaviour : MonoBehaviour
     public Animation cubeAnim;
     public GameObject hackUI;
     public string hackString;
-    public Text hackText;
-    public InputField hackField;
-    public Text hackFieldText;
+    public TMP_Text hackText;
+    public TMP_InputField hackField;
+    public TMP_Text hackFieldText;
     bool UIActive;
 
 
@@ -69,7 +70,7 @@ public class TilesBehaviour : MonoBehaviour
             VirusBehaviour.reachedGoal = true;
         }
 
-        if(hackText.text == hackFieldText.text && UIActive == true)
+        if(hackText.text == hackField.text && UIActive == true)
         {
             Debug.Log("Deactivating");
             hackUI.SetActive(false);

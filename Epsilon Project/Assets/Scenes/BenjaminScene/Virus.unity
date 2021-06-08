@@ -2737,6 +2737,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8198784041982001429, guid: fde8902bfa63d0649a20298874709ce3, type: 3}
   m_PrefabInstance: {fileID: 844517056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &854426620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854426622}
+  - component: {fileID: 854426621}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &854426621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854426620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ead04e35fcf0094183f0e5da6da5ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameSceneEntered: 0
+  timeManager: {fileID: 0}
+  currentDialogueFile: {fileID: 0}
+  dialogueList: []
+  debugReadCommandKeywords: 0
+  debugExecutingFunction: 0
+  autoMode: 1
+  autoModeWaitingTime: 00:00:00:01
+  inactivePeriods: 1
+  inactivePeriodStartHour: 1
+  inactivePeriodEndHour: 7
+  m_testSet: 
+  m_testSetFloat: 0
+  username: Sebilol
+--- !u!4 &854426622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854426620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -98.65119, y: 685.5923, z: -3120.8962}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &890223234
 PrefabInstance:
   m_ObjectHideFlags: 0
