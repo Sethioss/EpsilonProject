@@ -175,7 +175,8 @@ GameObject:
   - component: {fileID: 470902850455171687}
   - component: {fileID: 470902850455171689}
   - component: {fileID: 470902850455171686}
-  m_Layer: 0
+  - component: {fileID: 4712799706207569371}
+  m_Layer: 3
   m_Name: Object001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,6 +246,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4712799706207569371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470902850455171684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: daaf302fcef120e4c95eb7765817b47e, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &470902850573548995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1235,7 @@ GameObject:
   - component: {fileID: 8549141814542190094}
   - component: {fileID: 1204817488462098831}
   - component: {fileID: 867226746686549601}
+  - component: {fileID: 4117397420599487468}
   m_Layer: 0
   m_Name: Line001
   m_TagString: Untagged
@@ -1287,6 +1306,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &4117397420599487468
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473769711333348789}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75583edbc97dd02459e3290cc379ebcc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8830501178661591983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1375,8 @@ MonoBehaviour:
   holdsVirus: 0
   isGoal: 0
   isBlocked: 1
+  textArray: []
+  useRandomText: 0
   isHacked: 0
   cubeRend: {fileID: 470902850455171686}
   orangeMat: {fileID: 2100000, guid: 9408a4e65d5dd2f40bf6dd7c2aef8cbd, type: 2}
@@ -1349,6 +1389,11 @@ MonoBehaviour:
   shield: {fileID: 4293992422691430968}
   virusAnim: {fileID: 3514494418539712833}
   cubeAnim: {fileID: 470902849424022327}
+  hackUI: {fileID: 0}
+  hackString: 
+  hackText: {fileID: 0}
+  hackField: {fileID: 0}
+  hackFieldText: {fileID: 0}
 --- !u!65 &4604199066744927853
 BoxCollider:
   m_ObjectHideFlags: 0
