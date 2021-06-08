@@ -31,10 +31,12 @@ public class MailUI : MonoBehaviour
     int currentMail;
 
     public SwitchScene switchScene;
+    private XMLManager xmlManager;
     // Start is called before the first frame update
     void Start()
     {
         miniGame = GameObject.FindObjectOfType<MinigameManager>();
+        xmlManager = XMLManager.Instance;
         SwitchInbox();
         zoomedHUD.SetActive(false);
     }
@@ -42,7 +44,12 @@ public class MailUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(xmlManager.languageSwitchTrigger)
+        {
+            zoomedSender.text = myMailSenders[currentMail].text;
+            zoomedContent.text = myMails[currentMail].text;
+            xmlManager.languageSwitchTrigger = false;
+        }
     }
     public void SwitchInbox()
     {
@@ -95,13 +102,13 @@ public class MailUI : MonoBehaviour
         currentMail = mailID;
         if (spamOpen == false)
         {
-            zoomedSender.text = mailSenders[mailID];
-            zoomedContent.text = mailContent[mailID];
+            zoomedSender.text = myMailSenders[mailID].text;
+            zoomedContent.text = myMails[mailID].text;
             //if()
         }
         else
         {
-            zoomedSender.text = spamSenders[mailID];
+            zoomedSender.text = myMailSenders[mailID].text;
             zoomedContent.text = spamContent[mailID];
         }
     }

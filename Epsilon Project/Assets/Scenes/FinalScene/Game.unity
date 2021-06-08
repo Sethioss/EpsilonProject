@@ -3146,8 +3146,8 @@ RectTransform:
   m_Father: {fileID: 214206289}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.3043478, y: 0}
+  m_AnchorMax: {x: 0.3043478, y: 1}
   m_AnchoredPosition: {x: -5, y: -0.069999695}
   m_SizeDelta: {x: 15, y: -4.5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3573,8 +3573,8 @@ RectTransform:
   m_Father: {fileID: 1469700751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.04347826, y: 0}
+  m_AnchorMax: {x: 0.04347826, y: 1}
   m_AnchoredPosition: {x: -5, y: -0.069999695}
   m_SizeDelta: {x: 15, y: -4.5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4046,37 +4046,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionName: 
   tagList:
   - tagTxtObject: {fileID: 151938476}
     tagName: settings
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 5085282}
     tagName: interlocutor1
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1258630847}
     tagName: autoModeTitle
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 474815823}
     tagName: autoModeDesc
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1088608936}
     tagName: inactiveTitle
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 144675942}
     tagName: inactiveDesc
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1696536178}
     tagName: inactivePeriodSet
     dynamicID: 1
+    customParameters: []
   - tagTxtObject: {fileID: 1372091383}
     tagName: languageTitle
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1738470057}
     tagName: languageDesc
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1913830456}
     tagName: profilePictureText
     dynamicID: 0
+    customParameters: []
 --- !u!4 &1271215399
 Transform:
   m_ObjectHideFlags: 0
@@ -6665,7 +6676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1763417742
 RectTransform:
   m_ObjectHideFlags: 0

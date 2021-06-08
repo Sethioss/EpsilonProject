@@ -26,6 +26,9 @@ public class XMLManager : MonoBehaviour
         }
     }
 
+    [HideInInspector]
+    public bool languageSwitchTrigger = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -82,6 +85,7 @@ public class XMLManager : MonoBehaviour
 
     public void SwitchLanguage()
     {
+        languageSwitchTrigger = true;
         int languageId = (int)UserSettings.Instance.language;
         dictionary[languageId].TryGetValue("Prefix", out UserSettings.Instance.languagePrefix);
 
