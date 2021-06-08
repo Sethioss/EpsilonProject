@@ -22,6 +22,22 @@
     <profilePictureText>Changer l'image de profil</profilePictureText>
 
     <mj2MessagePanel>0 nouveux messages</mj2MessagePanel>
+    <mj2BasicPostTitle>{0} a posté - le {1}/{2}</mj2BasicPostTitle>
+    <mj2CommentTitle>{0} a commenté - le {1}/{2}</mj2CommentTitle>
+    
+    <mj2Post1Content>Nos vacances à Fuerteventura… Un petit coin de paradis perdu au milieu de l’atlantique et proches des côtes marocaines… Fantastique…</mj2Post1Content>
+    <mj2Post2Comment1>Super pierrick !! Passez à la maison !</mj2Post2Comment1>
+    <mj2Post2Comment2>Samuel a eu son bac S avec mention Bien... Fierté!</mj2Post2Comment2>   
+    <mj2Post3Content>Petit barbecue en famille! Ca faisait longtemps</mj2Post3Content>    
+    <mj2Post4Content>Nouvelle photo de profil!</mj2Post4Content>
+    <mj2Post4Comment1>Super nouvelle !! Passez à la maison !! Barbecue in coming {0}</mj2Post4Comment1>
+    <mj2Post4Comment2>10 ans de mariage fêté dignement aux maldives! Pendant que les enfants sont chez tonton {0}{0}</mj2Post4Comment2>
+    <mj2Post5Content>Dessin du petit Mattis, il fait des progrès {0} </mj2Post5Content>
+    <mj2Post6Title>Chez-nous! - Le {0}/{1}</mj2Post6Title>
+    <mj2Post6Content>Un mort de plus… Nos frontière sont ouverte depuis trop longtemps et nous commençons a en subir les conséquences !</mj2Post6Content>
+    <mj2Post7Content>15 ans ensemble…. Et on s’aime comme au premier jour…. Pas un pas de travers pas une seule grosse bourde…. Je t’aime tellement mon loulou {0}{0}</mj2Post7Content>
+    <mj2Post7Comment1>Moi aussi je t’aime ma chérie ! 15 ans ça fait long mais mes sentiments restent inchangés ! tu es vraiment la femme de ma vie !! </mj2Post7Comment1>
+    
   </language>
 
   <language>
@@ -44,7 +60,22 @@
     <profilePictureText>Change your profile picture</profilePictureText>
 
     <mj2MessagePanel>0 new messages</mj2MessagePanel>
-  
+    <mj2BasicPostTitle>{0} posted - {2}/{1}</mj2BasicPostTitle>
+    <mj2CommentTitle>{0} commented - {1}/{2}</mj2CommentTitle>
+    
+    <mj2Post1Content>Our trip to Fuerteventura... A heavenly place lost in the middle of the atlantic and close to moroccan shores... Beautiful...</mj2Post1Content>
+    <mj2Post2Comment1>That's great !! You should come by our place!</mj2Post2Comment1>
+    <mj2Post2Comment2>Samuel graduated with honors... So proud of him!</mj2Post2Comment2>  
+    <mj2Post3Content>Barbecue with the family! It's been a while!</mj2Post3Content>
+    <mj2Post4Content>New profile picture!</mj2Post4Content>
+    <mj2Post4Comment1>Great news !! You should pass by !! Barbecue incoming {0}</mj2Post4Comment1>
+    <mj2Post4Comment2>Celebrating our 10 years together in the maldives! The kids are at their uncle's, life is good {0}{0}</mj2Post4Comment2>
+    <mj2Post5Content>New art piece from my Mattis, he's making progess! {0} </mj2Post5Content>
+    <mj2Post6Title>Right at our doors! - {1}/{0}</mj2Post6Title>
+    <mj2Post6Content>Another death... Our borders have been open for way too long, and we're starting to face the consequences!</mj2Post6Content>
+    <mj2Post7Content>15 years together... And our love is still there like the first day... No misstep, no screw-ups... I love you so much sweetheart! {0}{0}</mj2Post7Content>
+    <mj2Post7Comment1>And I love you so much too! 15 years is a long time, but not long enough to break us apart! You are the sunshine of my life !!</mj2Post7Comment1>
+
 </language>
 
 </languages>

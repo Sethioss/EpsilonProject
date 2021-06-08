@@ -89,6 +89,7 @@ public class XMLManager : MonoBehaviour
         {
             switch ((int)xmlTag.dynamicID)
             {
+                //Static
                 case 0:
                     try
                     {
@@ -100,6 +101,7 @@ public class XMLManager : MonoBehaviour
                     }
                     break;
 
+                //inactivePeriodSet
                 case 1:
                     try
                     {
@@ -113,6 +115,64 @@ public class XMLManager : MonoBehaviour
                     }
 
                     break;
+
+                //customString
+                case 2:
+                    {
+                        try
+                        {
+                            string initialStr = dictionary[languageId][xmlTag.tagName];
+                            xmlTag.tagTxtObject.text = string.Format(initialStr, xmlTag.customParameters[0]);
+                        }
+                        catch
+                        {
+                            Debug.Log(xmlTag.tagName + " Couldn't find its textMeshPro component. If there are none in the scene, please consider removing it from XMLTagList");
+                        }
+                        break;
+                    }
+
+                //mj2PostHeader
+                case 3:
+                    {
+                        try
+                        {
+                            string initialStr = dictionary[languageId][xmlTag.tagName];
+                            xmlTag.tagTxtObject.text = string.Format(initialStr, xmlTag.customParameters[0], xmlTag.customParameters[1], xmlTag.customParameters[2]);
+                        }
+                        catch
+                        {
+                            Debug.Log(xmlTag.tagName + " Couldn't find its textMeshPro component. If there are none in the scene, please consider removing it from XMLTagList");
+                        }
+                        break;
+                    }
+
+                case 4:
+                    {
+                        try
+                        {
+                            string initialStr = dictionary[languageId][xmlTag.tagName];
+                            xmlTag.tagTxtObject.text = string.Format(initialStr, xmlTag.customParameters[0], xmlTag.customParameters[1]);
+                        }
+                        catch
+                        {
+                            Debug.Log(xmlTag.tagName + " Couldn't find its textMeshPro component. If there are none in the scene, please consider removing it from XMLTagList");
+                        }
+                        break;
+                    }
+
+                case 5:
+                    {
+                        try
+                        {
+                            string initialStr = dictionary[languageId][xmlTag.tagName];
+                            xmlTag.tagTxtObject.text = string.Format(initialStr, xmlTag.customParameters[0]);
+                        }
+                        catch
+                        {
+                            Debug.Log(xmlTag.tagName + " Couldn't find its textMeshPro component. If there are none in the scene, please consider removing it from XMLTagList");
+                        }
+                        break;
+                    }
             }
         }
     }
