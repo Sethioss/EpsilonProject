@@ -71,6 +71,10 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        reader = CSVReader.Instance;
+        displayer = DialogueDisplayer.Instance;
+        timeManager = TimeManager.Instance;
     }
 
     private void Update()
@@ -116,6 +120,20 @@ public class DialogueManager : MonoBehaviour
     {
         displayer.cameFromBranch = true;
         CreateAndStartDialogue(dialogueFileName);
+    }
+
+    public void CreateDialogue(string dialogueFileName)
+    {
+        reader = CSVReader.Instance;
+        displayer = DialogueDisplayer.Instance;
+        timeManager = TimeManager.Instance;
+
+        currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
+        Dialogue dialogueToAdd = reader.CreateDialogueFromData(currentDialogueFile);
+        dialogueToAdd.id = dialogueList.Count - 1;
+        dialogueList.Add(dialogueToAdd);
+
+        displayer.DisplayDialogueData();
     }
 
     //The text asset function executes for the starting file

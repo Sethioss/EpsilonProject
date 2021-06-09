@@ -12,25 +12,30 @@ public class DialogueData : MonoBehaviour
     public int Initialisation;
     public int WaitSent;
 
-    public DialogueData(DialogueDisplayer dialogueDisplayer,DialogueManager dialogueManager)
+    public DialogueData()
     {
         int i;
         int j;
 
-        ElementText = dialogueDisplayer.currentDialogueElementId;
+        Debug.Log(DialogueManager.Instance);
+        Debug.Log(DialogueManager.Instance.displayer);
+        DialogueManager manager = DialogueManager.Instance;
+        DialogueDisplayer displayer = DialogueManager.Instance.displayer;
 
-        for (i = 0; i < dialogueManager.dialogueList.Count; i++)
+        ElementText = displayer.currentDialogueElementId;
+
+        for (i = 0; i < manager.dialogueList.Count; i++)
         {
-            PreviousText[i] = dialogueManager.dialogueList[i].FileName;
+            PreviousText[i] = manager.dialogueList[i].FileName;
 
-            for (j = 0; j < dialogueManager.dialogueList[i].elements.Count; j++)
+            for (j = 0; j < manager.dialogueList[i].elements.Count; j++)
             {
                 int index = i + j;
-                Choice[index] = dialogueManager.dialogueList[i].elements[j].ChosenReplyIndex;
+                Choice[index] = manager.dialogueList[i].elements[j].ChosenReplyIndex;
             }
         }
 
-        if(dialogueDisplayer.isInitialisation == true)
+        if (displayer.isInitialisation == true)
         {
             Initialisation = 1;
         }
@@ -39,7 +44,7 @@ public class DialogueData : MonoBehaviour
             Initialisation = 0;
         }
 
-        if (dialogueDisplayer.isWaitingForReply == true)
+        if (displayer.isWaitingForReply == true)
         {
             WaitSent = 1;
         }
@@ -47,6 +52,5 @@ public class DialogueData : MonoBehaviour
         {
             WaitSent = 0;
         }
-        
     }
 }
