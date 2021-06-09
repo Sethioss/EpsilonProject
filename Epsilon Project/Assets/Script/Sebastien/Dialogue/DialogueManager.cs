@@ -12,7 +12,8 @@ public class DialogueManager : MonoBehaviour
 
     #region Dialogue Manager Components
     private CSVReader reader;
-    private DialogueDisplayer displayer;
+    [HideInInspector]
+    public DialogueDisplayer displayer;
     [HideInInspector]
     public TimeManager timeManager;
 

@@ -20,6 +20,13 @@ public class DialogueDisplayer : MonoBehaviour
     public Dialogue currentDialogue;
     public int currentDialogueElementId = 0;
 
+    public void SaveDialogue()
+    {
+
+        SaveSystem.SaveDialogue(DialogueManager.Instance.displayer,DialogueManager.Instance);
+
+
+    }
     #region Timing / Display des dialogues
 
     private string awaitingReaction;
@@ -28,8 +35,10 @@ public class DialogueDisplayer : MonoBehaviour
     private System.DateTime timeToStartWriting;
 
     //true = Initialisation Time, false = Reaction Time
-    private bool isInitialisation = true;
-    private bool isWaitingForReply = false;
+    [HideInInspector]
+    public bool isInitialisation = true;
+    [HideInInspector]
+    public bool isWaitingForReply = false;
     private bool bubbleSpawned = false;
     private bool jumpToMessage = true;
     private string currentWaitingTime;
@@ -217,6 +226,7 @@ public class DialogueDisplayer : MonoBehaviour
     private void SendReply(Reply reply)
     {
         //Display
+        currentDialogue.elements[currentDialogueElementId].ChosenReplyIndex = reply.index;
         DeleteReplies();
 
         if (!reply.isLeaveMessage)
@@ -244,10 +254,13 @@ public class DialogueDisplayer : MonoBehaviour
             else
             {
                 awaitingReaction = reply.reaction;
+                SaveDialogue();
             }
 
             StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
         }
+
+        
     }
 
     private void DeleteReplies()
@@ -278,6 +291,8 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void GoToNextElement()
     {
+
+        
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
         if (currentDialogueElementId + 1 >= currentDialogue.elements.Count)
@@ -308,10 +323,13 @@ public class DialogueDisplayer : MonoBehaviour
             writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
             timeToStartWriting = SetTimeToStartWriting();
         }
+        SaveDialogue();
     }
 
     private void GoToElement(int index)
     {
+
+       
         currentDialogueElementId = index - 1;
         bubbleSpawned = false;
 
@@ -320,7 +338,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
-
+        SaveDialogue();
     }
     IEnumerator SetObjectHeightToBackground(GameObject messagePrefab, GameObject imageBg, GameObject panel)
     {

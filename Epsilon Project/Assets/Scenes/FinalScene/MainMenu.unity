@@ -1468,16 +1468,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionName: 
   tagList:
   - tagTxtObject: {fileID: 2091424274}
     tagName: usernamePlaceholder
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 343425263}
     tagName: passwordPlaceholder
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1475170944}
     tagName: mainMenuMails
     dynamicID: 0
+    customParameters: []
 --- !u!4 &334574053
 Transform:
   m_ObjectHideFlags: 0
@@ -1504,34 +1508,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectionName: 
   tagList:
   - tagTxtObject: {fileID: 704009963}
     tagName: settings
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 337186862}
     tagName: autoModeTitle
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1468189116}
     tagName: autoModeDesc
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 40881018}
     tagName: inactiveTitle
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 406980194}
     tagName: inactiveDesc
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 554764643}
     tagName: inactivePeriodSet
     dynamicID: 1
+    customParameters: []
   - tagTxtObject: {fileID: 177239376}
     tagName: languageTitle
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 957786374}
     tagName: languageDesc
     dynamicID: 0
+    customParameters: []
   - tagTxtObject: {fileID: 1688147457}
     tagName: profilePictureText
     dynamicID: 0
+    customParameters: []
 --- !u!1 &337186860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &496564790
@@ -7382,6 +7396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
+  displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
   dialogueList: []
@@ -9834,6 +9849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   languageFile: {fileID: 4900000, guid: 1fb43bfb1661a5441ae7e2ebd2a69807, type: 3}
+  languageSwitchTrigger: 0
 --- !u!4 &1938270990
 Transform:
   m_ObjectHideFlags: 0

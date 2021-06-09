@@ -31,6 +31,7 @@ public class Reply
 [System.Serializable]
 public class DialogueElement
 {
+    public int ChosenReplyIndex = -1;
     public int index;
     public string initiationTime;
     public string message;
@@ -76,6 +77,7 @@ public class DialogueElement
 public class Dialogue
 {
     public int id;
+    public string FileName;
     [SerializeField]
     public List<DialogueElement> elements = new List<DialogueElement>();
     public UnityAction endDialogueAction;
