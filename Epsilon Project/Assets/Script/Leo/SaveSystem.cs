@@ -55,6 +55,16 @@ public static class SaveSystem
         stream.Close();
 
     }
+    public static void SaveDialogue(DialogueDisplayer dialogueDisplayer,DialogueManager dialogueManager)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Dialogue.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        DialogueData dialoguedata = new DialogueData(dialogueDisplayer, dialogueManager);
+        formatter.Serialize(stream, dialoguedata);
+        stream.Close();
+
+    }
     #endregion
     #region Load
     public static GPSData LoadGPS()
@@ -121,7 +131,7 @@ public static class SaveSystem
             return null;
         }
     }
-    public static TakeIdentityData LoadIdentity()
+    public static TakeIdentityData LoadTakeIdentity()
     {
         string path = Application.persistentDataPath + "/Identity.fun";
         if (File.Exists(path))
@@ -130,6 +140,23 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
             TakeIdentityData identitydata = formatter.Deserialize(stream) as TakeIdentityData;
             return identitydata;
+        }
+        else
+        {
+            Debug.LogError(" Save file not found in " + path);
+            return null;
+        }
+
+    }
+    public static DialogueData LoadDialogue()
+    {
+        string path = Application.persistentDataPath + "/Dialogue.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            DialogueData dialoguedata = formatter.Deserialize(stream) as DialogueData;
+            return dialoguedata;
         }
         else
         {
