@@ -21,31 +21,31 @@
     <languageDesc>Changer la langue du jeu</languageDesc>
     <profilePictureText>Changer l'image de profil</profilePictureText>
 
-    <mj2MessagePanel>0 nouveux messages</mj2MessagePanel>
-    <mj2BasicPostTitle>{0} a posté - le {1}/{2}</mj2BasicPostTitle>
-    <mj2CommentTitle>{0} a commenté - le {1}/{2}</mj2CommentTitle>
+    <mj1MessagePanel>0 nouveux messages</mj1MessagePanel>
+    <mj1BasicPostTitle>{0} a posté - le {1}/{2}</mj1BasicPostTitle>
+    <mj1CommentTitle>{0} a commenté - le {1}/{2}</mj1CommentTitle>
 
-    <mj2Post1Content>Nos vacances à Fuerteventura… Un petit coin de paradis perdu au milieu de l’atlantique et proches des côtes marocaines… Fantastique…</mj2Post1Content>
-    <mj2Post2Comment1>Super pierrick !! Passez à la maison !</mj2Post2Comment1>
-    <mj2Post2Comment2>Samuel a eu son bac S avec mention Bien... Fierté!</mj2Post2Comment2>
-    <mj2Post3Content>Petit barbecue en famille! Ca faisait longtemps</mj2Post3Content>
-    <mj2Post4Content>Nouvelle photo de profil!</mj2Post4Content>
-    <mj2Post4Comment1>Super nouvelle !! Passez à la maison !! Barbecue in coming {0}</mj2Post4Comment1>
-    <mj2Post4Comment2>10 ans de mariage fêté dignement aux maldives! Pendant que les enfants sont chez tonton {0}{0}</mj2Post4Comment2>
-    <mj2Post5Content>Dessin du petit Mattis, il fait des progrès {0} </mj2Post5Content>
-    <mj2Post6Title>Chez-nous! - Le {0}/{1}</mj2Post6Title>
-    <mj2Post6Content>Un mort de plus… Nos frontière sont ouverte depuis trop longtemps et nous commençons a en subir les conséquences !</mj2Post6Content>
-    <mj2Post7Content>15 ans ensemble…. Et on s’aime comme au premier jour…. Pas un pas de travers pas une seule grosse bourde…. Je t’aime tellement mon loulou {0}{0}</mj2Post7Content>
-    <mj2Post7Comment1>Moi aussi je t’aime ma chérie ! 15 ans ça fait long mais mes sentiments restent inchangés ! tu es vraiment la femme de ma vie !! </mj2Post7Comment1>
-
-    <mj2MailSender>De : {0}</mj2MailSender>
-    <mj2Mail1Content>Vous avez gagné!
+    <mj1Post1Content>Nos vacances à Fuerteventura… Un petit coin de paradis perdu au milieu de l’atlantique et proches des côtes marocaines… Fantastique…</mj1Post1Content>
+    <mj1Post2Comment1>Super pierrick !! Passez à la maison !</mj1Post2Comment1>
+    <mj1Post2Comment2>Samuel a eu son bac S avec mention Bien... Fierté!</mj1Post2Comment2>
+    <mj1Post3Content>Petit barbecue en famille! Ca faisait longtemps</mj1Post3Content>
+    <mj1Post4Content>Nouvelle photo de profil!</mj1Post4Content>
+    <mj1Post4Comment1>Super nouvelle !! Passez à la maison !! Barbecue in coming {0}</mj1Post4Comment1>
+    <mj1Post4Comment2>10 ans de mariage fêté dignement aux maldives! Pendant que les enfants sont chez tonton {0}{0}</mj1Post4Comment2>
+    <mj1Post5Content>Dessin du petit Mattis, il fait des progrès {0} </mj1Post5Content>
+    <mj1Post6Title>Chez-nous! - Le {0}/{1}</mj1Post6Title>
+    <mj1Post6Content>Un mort de plus… Nos frontière sont ouverte depuis trop longtemps et nous commençons a en subir les conséquences !</mj1Post6Content>
+    <mj1Post7Content>15 ans ensemble…. Et on s’aime comme au premier jour…. Pas un pas de travers pas une seule grosse bourde…. Je t’aime tellement mon loulou {0}{0}</mj1Post7Content>
+    <mj1Post7Comment1>Moi aussi je t’aime ma chérie ! 15 ans ça fait long mais mes sentiments restent inchangés ! tu es vraiment la femme de ma vie !! </mj1Post7Comment1>
+       1
+    <mj1MailSender>De : {0}</mj1MailSender>
+    <mj1Mail1Content>Vous avez gagné!
 
       FélicitationsPierre, vous avez été slectionné pour tenté de gagner IPhone X! Tourne la roue et amassez vos gains!
 
       *Le lien a été detecté comme frauduleux et n'est à présent plus disponible*
-    </mj2Mail1Content>
-    <mj2Mail2Content>Votre reçu Forbidden Apple MII4658234
+    </mj1Mail1Content>
+    <mj1Mail2Content>Votre reçu Forbidden Apple MII4658234
 
       Merci pour votre achat sur Forbidden Apple! Votre colis est en route vers votre point relais.  N° de facture: F235845 (Veuillez garder une copie de ce reçu pour référence.)
 
@@ -54,8 +54,8 @@
       N° de commande: MII4658234
       Facturée à: pierretocan@bluebox.com
       Origine: Forbidden Apple
-    </mj2Mail2Content>
-    <mj2Mail3Content>A propos d'hier...
+    </mj1Mail2Content>
+    <mj1Mail3Content>A propos d'hier...
 
     Je sais qu'on en avait déja parlé hier, et tu m'as bien fait comprendre que c'était un sujet sensible, mais je te le redemande, au risque de t'énerver à nouveau. 
     
@@ -64,70 +64,70 @@
     Je ne te demande pas ça pour moi, mais pour toi. Ton entreprise s'en remettra, pas la sienne. Réfléchis-y,  elle ne te sers plus à rien et elle te rend malheureux. Il est temps d'avancer, Pierre. J'ai pris deux semaines de vacances le mois prochain, ça correspond au départ  de Nathalie pour son voyage d'affaire selon ce que tu m'as dis. On en reparlera quand je serais là.  Et je t'en prie... Ne t'énerve pas.  
     
     Je t'aime, mon loulou.
-    </mj2Mail3Content>
-    <mj2Mail4Content>Pierre, profitez des soldes incroyables sur les joggings et vêtements de sports!  
+    </mj1Mail3Content>
+    <mj1Mail4Content>Pierre, profitez des soldes incroyables sur les joggings et vêtements de sports!  
     
     Prêts à bouger? Les soldes spéciales "Bougeons-nous" sont là! Les soldes "Bougeons-nous", c'est jusqu'à 60% de réduction sur notre meilleure sélection de pantalons de sports, jogging, baskets et accessoires sportifs, parmi une sélection de plus de 1000 produits!  Alors qu'attendez-vous? Mettez-vous au sport avec Sodaxa!
-   </mj2Mail4Content>
-   <mj2Mail5Content>DOSSIER SPECIAL: 
+   </mj1Mail4Content>
+   <mj1Mail5Content>DOSSIER SPECIAL: 
   
   Les cités terrorrisées par les excès de violence  De plus en plus d'affaires de crimes impliquant des jeunes (Bien souvent mineurs) sont traitées dans les banlieues de la France entière. Alors que le gouvernement est dépassé par cette furie croissante, le ministre de l'économie promet de nouvelles mesures contre la délinquance dans les rues et... Lire la suite sur BFM.com  
   
   *Le lien a été detecté comme frauduleux et n'est à présent plus disponible*
-  </mj2Mail5Content>
-  <mj2Mail6Content>Récompenses exclusives pour vous!  
+  </mj1Mail5Content>
+  <mj1Mail6Content>Récompenses exclusives pour vous!  
     
   Récupérez votre IPad en cliquant sur le lien: 
   
   *Le lien a été détecté comme frauduleux et n'est à présent plus disponible*
-  </mj2Mail6Content>
-  <mj2Mail7Content>Votre bon de réduction arrive bientôt à sa fin, dépêchez-vous! -50€ pour l'achat d'une cuisinière de la marque Samocha, ça ne se refuse pas! 
+  </mj1Mail6Content>
+  <mj1Mail7Content>Votre bon de réduction arrive bientôt à sa fin, dépêchez-vous! -50€ pour l'achat d'une cuisinière de la marque Samocha, ça ne se refuse pas! 
     
-  Vous avez jusqu'au {0}/{1}/21 pour utiliser votre coupon sur comfortcuisine.com</mj2Mail7Content>
-  <mj2Mail8Content>4 personnes ont liké votre post. 
+  Vous avez jusqu'au {0}/{1}/21 pour utiliser votre coupon sur comfortcuisine.com</mj1Mail7Content>
+  <mj1Mail8Content>4 personnes ont liké votre post. 
   
   Paul Leroy, Romain Arid, Soulaymane Guidon et Tinah Rhason ont liké votre post "Petit barbecue en fami..." Envoyez-leur un message de remerciement!
-  </mj2Mail8Content>
-  <mj2Mail9Content>Votre blague quotidienne : 
+  </mj1Mail8Content>
+  <mj1Mail9Content>Votre blague quotidienne : 
   
   Qu'est-ce qu'un abricot dyslexique? 
   
   Un haricot! 
   
   Plus de blagues et d'humour poilant sur Just have fun !
-  </mj2Mail9Content>
-  <mj2Mail10Content>De nouveaux documents sont disponibles sur votre espace client!  Accédez à votre espace client et découvrez nos nouvelles offres!</mj2Mail10Content>
-  <mj2Mail11Content>Nous voulons votre avis!
+  </mj1Mail9Content>
+  <mj1Mail10Content>De nouveaux documents sont disponibles sur votre espace client!  Accédez à votre espace client et découvrez nos nouvelles offres!</mj1Mail10Content>
+  <mj1Mail11Content>Nous voulons votre avis!
   
   La satisfaction de nos clients est notre priorité principale. C'est pour cela que nous proposons à nos clients de remplir un formulaire de satisfaction afin d'améliorer nos services! Nous écoutons tous les retours envoyés par nos clients.  
   
   Votre avis importe, alors nous vous invitons à remplir ce formulaire d'une dizaine de questions.  
   
-  Nous espérons vous revoir!</mj2Mail11Content>
-  <mj2Mail12Content>Confirmation de paiement 
+  Nous espérons vous revoir!</mj1Mail11Content>
+  <mj1Mail12Content>Confirmation de paiement 
   
   Bonjour, L'Institut de la Médecine et du Management a le plaisir de vous confirmer le paiement de 18 499€ pour l'année scolaire 2021-2022 de votre enfant Gaël Tocan. 
   
-  Nous avons hâte d'accueillir cet élève dans nos locaux et de lui transmettre les connaissances nécessaires au succès de son parcours professionnel!</mj2Mail12Content>
-  <mj2Mail13Content>Blague quotidienne :
+  Nous avons hâte d'accueillir cet élève dans nos locaux et de lui transmettre les connaissances nécessaires au succès de son parcours professionnel!</mj1Mail12Content>
+  <mj1Mail13Content>Blague quotidienne :
     
   Que font les dinosaures quand ils n'arrivent pas à se mettre d'accord? 
   
   Un tyragosaure!
   
   Plus de blagues et d'humour poilant sur Le Site du Fun!
-</mj2Mail13Content>
-  <mj2Mail14Content>2Go de données mobiles par mois à seulement 7.99€/mois 
+</mj1Mail13Content>
+  <mj1Mail14Content>2Go de données mobiles par mois à seulement 7.99€/mois 
     
   Profitez-en! A l'occasion de son 8ème anniversaire, Cheap fait tomber les prix! 
   
   Le forfait ultimate, 2Go de données mobiles par mois + appels illimités sur tous les pays d'Europe pour 7.99€ au lieu de 14.99€
- </mj2Mail14Content>
-  <mj2Mail15Content>"Alors que le miroir montrera votre dilemme, vous regretterez vos errances passées et présentes. Le terreau vengeur tranchera vos ailes, tandis que les étoiles tournent la tête. Les portes du bonheur s'ouvriront peut-être si vous naviguez vers le nouvel horizon."  
+ </mj1Mail14Content>
+  <mj1Mail15Content>"Alors que le miroir montrera votre dilemme, vous regretterez vos errances passées et présentes. Le terreau vengeur tranchera vos ailes, tandis que les étoiles tournent la tête. Les portes du bonheur s'ouvriront peut-être si vous naviguez vers le nouvel horizon."  
   
   Intrigué? Curieux? Amusé? Que vous le vouliez ou non, ces phrases décrivent votre avenir. Alors autant y être préparé un maximum. Abonnez-vous à notre service et recevez des divinations précises, à la demande.
 
-   *Le lien a été detecté comme frauduleux et n'est à présent plus disponible*</mj2Mail15Content>
+   *Le lien a été detecté comme frauduleux et n'est à présent plus disponible*</mj1Mail15Content>
   </language>
 
   <language>
@@ -149,31 +149,31 @@
     <languageDesc>Change the game's language</languageDesc>
     <profilePictureText>Change your profile picture</profilePictureText>
 
-    <mj2MessagePanel>0 new messages</mj2MessagePanel>
-    <mj2BasicPostTitle>{0} posted - {2}/{1}</mj2BasicPostTitle>
-    <mj2CommentTitle>{0} commented - {2}/{1}</mj2CommentTitle>
-
-    <mj2Post1Content>Our trip to Fuerteventura... A heavenly place lost in the middle of the atlantic and close to moroccan shores... Beautiful...</mj2Post1Content>
-    <mj2Post2Comment1>That's great !! You should come by our place!</mj2Post2Comment1>
-    <mj2Post2Comment2>Samuel graduated with honors... So proud of him!</mj2Post2Comment2>
-    <mj2Post3Content>Barbecue with the family! It's been a while!</mj2Post3Content>
-    <mj2Post4Content>New profile picture!</mj2Post4Content>
-    <mj2Post4Comment1>Great news !! You should pass by !! Barbecue incoming {0}</mj2Post4Comment1>
-    <mj2Post4Comment2>Celebrating our 10 years together in the maldives! The kids are at their uncle's, life is good {0}{0}</mj2Post4Comment2>
-    <mj2Post5Content>New art piece from my Mattis, he's making progess! {0} </mj2Post5Content>
-    <mj2Post6Title>Right at our doors! - {1}/{0}</mj2Post6Title>
-    <mj2Post6Content>Another death... Our borders have been open for way too long, and we're starting to face the consequences!</mj2Post6Content>
-    <mj2Post7Content>15 years together... And our love is still there like the first day... No misstep, no screw-ups... I love you so much sweetheart! {0}{0}</mj2Post7Content>
-    <mj2Post7Comment1>And I love you so much too! 15 years is a long time, but not long enough to break us apart! You are the sunshine of my life !!</mj2Post7Comment1>
-
-    <mj2MailSender>From : {0}</mj2MailSender>
-    <mj2Mail1Content>You won!
+    <mj1MessagePanel>0 new messages</mj1MessagePanel>
+    <mj1BasicPostTitle>{0} posted - {2}/{1}</mj1BasicPostTitle>
+    <mj1CommentTitle>{0} commented - {2}/{1}</mj1CommentTitle>
+       1
+    <mj1Post1Content>Our trip to Fuerteventura... A heavenly place lost in the middle of the atlantic and close to moroccan shores... Beautiful...</mj1Post1Content>
+    <mj1Post2Comment1>That's great !! You should come by our place!</mj1Post2Comment1>
+    <mj1Post2Comment2>Samuel graduated with honors... So proud of him!</mj1Post2Comment2>
+    <mj1Post3Content>Barbecue with the family! It's been a while!</mj1Post3Content>
+    <mj1Post4Content>New profile picture!</mj1Post4Content>
+    <mj1Post4Comment1>Great news !! You should pass by !! Barbecue incoming {0}</mj1Post4Comment1>
+    <mj1Post4Comment2>Celebrating our 10 years together in the maldives! The kids are at their uncle's, life is good {0}{0}</mj1Post4Comment2>
+    <mj1Post5Content>New art piece from my Mattis, he's making progess! {0} </mj1Post5Content>
+    <mj1Post6Title>Right at our doors! - {1}/{0}</mj1Post6Title>
+    <mj1Post6Content>Another death... Our borders have been open for way too long, and we're starting to face the consequences!</mj1Post6Content>
+    <mj1Post7Content>15 years together... And our love is still there like the first day... No misstep, no screw-ups... I love you so much sweetheart! {0}{0}</mj1Post7Content>
+    <mj1Post7Comment1>And I love you so much too! 15 years is a long time, but not long enough to break us apart! You are the sunshine of my life !!</mj1Post7Comment1>
+       
+    <mj1MailSender>From : {0}</mj1MailSender>
+    <mj1Mail1Content>You won!
 
       CongratulationsPierre! You have been selcted to participate in free IPhone X raffle! Spin the whel and claim your prices!
 
       *The following link has been detected as fraudulent and has been removed*
-    </mj2Mail1Content>
-    <mj2Mail2Content>Your Forbidden receipt
+    </mj1Mail1Content>
+    <mj1Mail2Content>Your Forbidden receipt
     
       Thank you for your purchase at Forbidden Apple! Your package is on its way to your relay point. Invoice number: F235845 (Please save a copy of this receipt)
       
@@ -182,8 +182,8 @@
       Order number: MII4658234
       Billed to: pierretocan@bluebox.com
       Origin: Forbidden Apple
-    </mj2Mail2Content>
-    <mj2Mail3Content>About yesterday...
+    </mj1Mail2Content>
+    <mj1Mail3Content>About yesterday...
 
     I know we talked about it yesterday, and you made me understand that it was a touchy subject, but I'm asking you again, at the risk of angering you again. 
     
@@ -192,35 +192,35 @@
     I'm not asking that for me, but for you. Your company will get back on its feet, not hers. Think about it, she has become useless and she makes you unhappy. It's time to move on, Pierre. I took two weeks of vacation at the start of the month, that corresponds to your wife's business trip, as you've told me. We'll talk about it when I'll be there.  And please... Don't get angry.  
     
     I love you, sunshine.
-    </mj2Mail3Content>
-    <mj2Mail4Content>Pierre, enjoy the incredible sales on jogging suits and sportswear! 
+    </mj1Mail3Content>
+    <mj1Mail4Content>Pierre, enjoy the incredible sales on jogging suits and sportswear! 
     
     Ready to move? The special "Let's Move" sales are here!
     
     The "Let's Move" sale means up to 60% off our best selection of sports pants, jogging pants, sneakers and sports accessories, from a selection of over 1000 products!  So what are you waiting for? Get moving with Sodaxa!
-    </mj2Mail4Content>
-    <mj2Mail5Content>SPECIAL REPORT:
+    </mj1Mail4Content>
+    <mj1Mail5Content>SPECIAL REPORT:
     
     The suburbs are terrorized by the excess of violence as more and more cases of crimes involving young people (often minors) are being dealt with in the suburbs all over the US. While the government is overwhelmed by this growing fury, the Minister of Economy promises new measures against crime in the streets and... 
     
     Read more on BFM.com  
     
     *The following link has been detected as fraudulent and has been removed*
-    </mj2Mail5Content>
-    <mj2Mail6Content>Exclusive rewards for you!  
+    </mj1Mail5Content>
+    <mj1Mail6Content>Exclusive rewards for you!  
     
      Click on this link and get your IPad
   
       *The following link has been detected as fraudulent and has been removed*
-    </mj2Mail6Content>
-    <mj2Mail7Content>Your discount coupon is coming to an end soon, hurry up! -50$ for the purchase of a Samocha stove, you can't refuse! 
+    </mj1Mail6Content>
+    <mj1Mail7Content>Your discount coupon is coming to an end soon, hurry up! -50$ for the purchase of a Samocha stove, you can't refuse! 
     
-    You have until {1}/{0}/21 to use your coupon on comfortcuisine.com</mj2Mail7Content>
-    <mj2Mail8Content>4 people liked your post. 
+    You have until {1}/{0}/21 to use your coupon on comfortcuisine.com</mj1Mail7Content>
+    <mj1Mail8Content>4 people liked your post. 
   
   Paul Leroy, Romain Arid, Soulaymane Guidon and Tinah Rhason liked your post "Barbecue with the family! It's be..." Send them a thank you message!
-  </mj2Mail8Content>
-  <mj2Mail9Content>Your daily joke : 
+  </mj1Mail8Content>
+  <mj1Mail9Content>Your daily joke : 
   
   A man meets his friend at the park: 
   
@@ -228,9 +228,9 @@
   "Pleasantly surprising! I didn’t think the chiropractor could improve my posture... but I stand corrected."
   
   More jokes and funny humor on Just have fun !
-  </mj2Mail9Content>
-  <mj2Mail10Content>New documents are available in your customer area!  Access your customer area and discover our new offers!</mj2Mail10Content>
-  <mj2Mail11Content>We need your feedback!
+  </mj1Mail9Content>
+  <mj1Mail10Content>New documents are available in your customer area!  Access your customer area and discover our new offers!</mj1Mail10Content>
+  <mj1Mail11Content>We need your feedback!
   
   Our customers' satisfaction is of utmost importance to us. That's why we offer our customers to fill out a satisfaction form in order to improve our services! We listen to all the feedbacks sent by our customers.  
   
@@ -238,33 +238,33 @@
   
   *The following link has been detected as fraudulent and has been removed*
   
-  We hope to see you again!</mj2Mail11Content>
-  <mj2Mail12Content>Confirmation of payment 
+  We hope to see you again!</mj1Mail11Content>
+  <mj1Mail12Content>Confirmation of payment 
   
   The Institute of Medicine and Management is pleased to confirm the payment of 60 900$ for the 2021-2022 school year of your child Gaël Tocan. 
   
-  We look forward to welcoming this student to our premises and provide him with the knowledge necessary to succeed in his career!</mj2Mail12Content>
+  We look forward to welcoming this student to our premises and provide him with the knowledge necessary to succeed in his career!</mj1Mail12Content>
     
-  <mj2Mail13Content>Daily joke :
+  <mj1Mail13Content>Daily joke :
     
   An invisible man married an invisible woman. 
   
   Their kids were nothing to look at either. 
   
    More jokes and funny humor on Just have fun !
-   </mj2Mail13Content>
+   </mj1Mail13Content>
   
-  <mj2Mail14Content>2GB of mobile data per month for only 7.99$/month 
+  <mj1Mail14Content>2GB of mobile data per month for only 7.99$/month 
     
   Enjoy it! On the occasion of its 8th anniversary, Cheap drops the prices! 
   
   The ultimate package, 2GB of mobile data per month + unlimited calls outside the US for 7.99$ instead of 14.99$.
-  </mj2Mail14Content>
-  <mj2Mail15Content>"As the mirror shows your dilemma, you will regret your past and present wanderings. The vengeful ground will slice your wings, while the stars turn their heads. Perhaps the gates of happiness will open if you sail to the new horizon."  
+  </mj1Mail14Content>
+  <mj1Mail15Content>"As the mirror shows your dilemma, you will regret your past and present wanderings. The vengeful ground will slice your wings, while the stars turn their heads. Perhaps the gates of happiness will open if you sail to the new horizon."  
   
   Intrigued? Curious? Amused? Whether you like it or not, these phrases describe your future. So you might as well be as perpared to face it as possible. Subscribe to our service and receive accurate divinations on demand.
 
-  *The following link has been detected as fraudulent and has been removed*</mj2Mail15Content>
+  *The following link has been detected as fraudulent and has been removed*</mj1Mail15Content>
 
   </language>
 </languages>
