@@ -59,12 +59,7 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
-        Debug.Log("Bonjour les amis");
-
-        Debug.Log(path);
-
-        FileStream stream = new FileStream(path, FileMode.Open);
-        Debug.Log("Je suis pas mort wtf");
+        FileStream stream = File.Open(path, FileMode.Create);
         DialogueData dialoguedata = new DialogueData();
         formatter.Serialize(stream, dialoguedata);
         stream.Close();
@@ -160,17 +155,9 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            if (stream.Length == 0)
-            {
-                Debug.LogError("Load file is empty in " + path);
-
-                return null;
-            }
-            else
-            {
-                DialogueData dialoguedata = formatter.Deserialize(stream) as DialogueData;
-                return dialoguedata;
-            }
+            DialogueData data = (DialogueData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
         }
         else
         {

@@ -73,12 +73,19 @@ public class DialogueDisplayer : MonoBehaviour
     private void Start()
     {
         DialogueManager.Instance.onGameSceneEntered = true;
-        LoadDialogueData();
-        //SaveDialogueData();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SaveDialogueData();
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            LoadDialogueData();
+        }
+
         if (!isWaitingForReply && readingDialogue)
         {
             if (!bubbleSpawned)
@@ -111,21 +118,6 @@ public class DialogueDisplayer : MonoBehaviour
     public void LoadDialogueData()
     {
         DialogueData data = SaveSystem.LoadDialogue();
-
-        if (data == null)
-        {
-            Debug.Log("Problem while loading the dialogue data, load Data is empty, creating save Data");
-            data = new DialogueData();
-            SaveDialogueData();
-        }
-        else
-        {
-            //Chaque fichier
-            for (int i = 0; i < data.PreviousText.Length; i++)
-            {
-                DialogueManager.Instance.CreateDialogue(data.PreviousText[i]);
-            }
-        }
     }
 
     public void DisplayDialogueData()
@@ -290,7 +282,6 @@ public class DialogueDisplayer : MonoBehaviour
             else
             {
                 awaitingReaction = reply.reaction;
-                //SaveDialogueData();
             }
 
             StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
@@ -359,7 +350,6 @@ public class DialogueDisplayer : MonoBehaviour
             writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
             timeToStartWriting = SetTimeToStartWriting();
         }
-        //SaveDialogueData();
     }
 
     private void GoToElement(int index)
@@ -374,7 +364,6 @@ public class DialogueDisplayer : MonoBehaviour
 
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
-        //SaveDialogueData();
     }
     IEnumerator SetObjectHeightToBackground(GameObject messagePrefab, GameObject imageBg, GameObject panel)
     {
@@ -449,12 +438,26 @@ public class DialogueDisplayer : MonoBehaviour
     #region Flags
     private bool IsTimeOver()
     {
-        return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
+        try
+        {
+            return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private bool IsTimeToStartWriting()
     {
-        return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+        try
+        {
+            return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+        }
+        catch
+        {
+            return false;
+        }
     }
     #endregion
 

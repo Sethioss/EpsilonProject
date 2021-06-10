@@ -2,27 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueData : MonoBehaviour
+[System.Serializable]
+public class DialogueData
 {
     public static DialogueData Instance { set; get; }
-    public string[] PreviousText;
+    public List<string> PreviousText;
     public int ElementText;
-    public int[] Choice;
+    public List<int> Choice;
 
     public int Initialisation;
     public int WaitSent;
 
     public DialogueData()
     {
-        int i;
-        int j;
-
-        Debug.Log(DialogueManager.Instance);
-        Debug.Log(DialogueManager.Instance.displayer);
         DialogueManager manager = DialogueManager.Instance;
         DialogueDisplayer displayer = DialogueManager.Instance.displayer;
 
-        ElementText = displayer.currentDialogueElementId;
+        /*ElementText = displayer.currentDialogueElementId;
 
         for (i = 0; i < manager.dialogueList.Count; i++)
         {
@@ -33,7 +29,7 @@ public class DialogueData : MonoBehaviour
                 int index = i + j;
                 Choice[index] = manager.dialogueList[i].elements[j].ChosenReplyIndex;
             }
-        }
+        }*/
 
         if (displayer.isInitialisation == true)
         {
