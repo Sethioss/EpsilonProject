@@ -13,5 +13,5 @@ public class TakeIdentityData : MonoBehaviour
     {
         Nickname = takeIdentity.Nickname;
         Password = takeIdentity.Password;
-}
+    }
 }

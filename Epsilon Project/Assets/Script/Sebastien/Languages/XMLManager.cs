@@ -49,7 +49,6 @@ public class XMLManager : MonoBehaviour
         xmlTagLists = new List<XMLTagList>();
         xmlTextTags = new List<XMLTextTag>();
 
-        Debug.Log("Finding new XMLTags");
         List<XMLTagList> sceneTagLists = new List<XMLTagList>(GameObject.FindObjectsOfType<XMLTagList>());
         xmlTagLists = sceneTagLists;
 

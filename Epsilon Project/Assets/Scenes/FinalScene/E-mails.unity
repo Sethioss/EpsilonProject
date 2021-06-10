@@ -22090,10 +22090,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionName: mj2MessagePanel
+  collectionName: mj1MessagePanel
   tagList:
   - tagTxtObject: {fileID: 1509089641}
-    tagName: mj2MessagePanel
+    tagName: mj1MessagePanel
     dynamicID: 0
     customParameters: []
 --- !u!114 &1805620950
@@ -22168,51 +22168,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionName: mj2PostPanelInfos
+  collectionName: mj1PostPanelInfos
   tagList:
   - tagTxtObject: {fileID: 879727069}
-    tagName: mj2BasicPostTitle
+    tagName: mj1BasicPostTitle
     dynamicID: 3
     customParameters:
     - Sylvie
     - 20
     - 05
   - tagTxtObject: {fileID: 1284244092}
-    tagName: mj2BasicPostTitle
+    tagName: mj1BasicPostTitle
     dynamicID: 3
     customParameters:
     - Just have fun!
     - 18
     - 05
   - tagTxtObject: {fileID: 285975801}
-    tagName: mj2BasicPostTitle
+    tagName: mj1BasicPostTitle
     dynamicID: 3
     customParameters:
     - Pierre
     - 17
     - 06
   - tagTxtObject: {fileID: 1489162320}
-    tagName: mj2BasicPostTitle
+    tagName: mj1BasicPostTitle
     dynamicID: 3
     customParameters:
     - Pierre
     - 17
     - 06
   - tagTxtObject: {fileID: 1232077598}
-    tagName: mj2BasicPostTitle
+    tagName: mj1BasicPostTitle
     dynamicID: 3
     customParameters:
     - Arthur
     - 17
     - 06
   - tagTxtObject: {fileID: 662697750}
-    tagName: mj2Post6Title
+    tagName: mj1Post6Title
     dynamicID: 4
     customParameters:
     - 24
     - 05
   - tagTxtObject: {fileID: 1629327436}
-    tagName: mj2BasicPostTitle
+    tagName: mj1BasicPostTitle
     dynamicID: 3
     customParameters:
     - Nathalie
@@ -22230,32 +22230,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionName: mj2PostPanelContent
+  collectionName: mj1PostPanelContent
   tagList:
   - tagTxtObject: {fileID: 379654900}
-    tagName: mj2Post1Content
+    tagName: mj1Post1Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 17126310}
-    tagName: mj2Post3Content
+    tagName: mj1Post3Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 329159856}
-    tagName: mj2Post4Content
+    tagName: mj1Post4Content
     dynamicID: 0
     customParameters:
     - <sprite index=2>
   - tagTxtObject: {fileID: 1132479981}
-    tagName: mj2Post5Content
+    tagName: mj1Post5Content
     dynamicID: 5
     customParameters:
     - <sprite index=2>
   - tagTxtObject: {fileID: 51353880}
-    tagName: mj2Post6Content
+    tagName: mj1Post6Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 642559245}
-    tagName: mj2Post7Content
+    tagName: mj1Post7Content
     dynamicID: 5
     customParameters:
     - <sprite index=2>
@@ -22271,56 +22271,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionName: mj2PostPanelComments
+  collectionName: mj1PostPanelComments
   tagList:
   - tagTxtObject: {fileID: 1199439741}
-    tagName: mj2CommentTitle
+    tagName: mj1CommentTitle
     dynamicID: 3
     customParameters:
     - Leo
     - 13
     - 06
   - tagTxtObject: {fileID: 381270138}
-    tagName: mj2Post2Comment1
+    tagName: mj1Post2Comment1
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 852474362}
-    tagName: mj2CommentTitle
+    tagName: mj1CommentTitle
     dynamicID: 3
     customParameters:
     - Pierrick
     - 18
     - 06
   - tagTxtObject: {fileID: 31618617}
-    tagName: mj2Post2Comment2
+    tagName: mj1Post2Comment2
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1315100254}
-    tagName: mj2CommentTitle
+    tagName: mj1CommentTitle
     dynamicID: 3
     customParameters:
     - Mark
     - 13
     - 06
   - tagTxtObject: {fileID: 1118989012}
-    tagName: mj2Post4Comment1
+    tagName: mj1Post4Comment1
     dynamicID: 5
     customParameters:
     - <sprite index=1>
   - tagTxtObject: {fileID: 1198502572}
-    tagName: mj2CommentTitle
+    tagName: mj1CommentTitle
     dynamicID: 3
     customParameters:
     - Arthur
     - 13
     - 06
   - tagTxtObject: {fileID: 1997004764}
-    tagName: mj2Post4Comment2
+    tagName: mj1Post4Comment2
     dynamicID: 5
     customParameters:
     - <sprite index=0>
   - tagTxtObject: {fileID: 1099428992}
-    tagName: mj2Post7Comment1
+    tagName: mj1Post7Comment1
     dynamicID: 0
     customParameters: []
 --- !u!114 &1805620955
@@ -22335,80 +22335,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionName: mj2MailSenders
+  collectionName: mj1MailSenders
   tagList:
   - tagTxtObject: {fileID: 1635088937}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - _microsoftt
   - tagTxtObject: {fileID: 1839864688}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Forbidden Apple
   - tagTxtObject: {fileID: 862690817}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Lydia Holbert
   - tagTxtObject: {fileID: 537478979}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Sodaxa
   - tagTxtObject: {fileID: 79257436}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - BFM newsletter
   - tagTxtObject: {fileID: 1792442264}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - IPad Pro
   - tagTxtObject: {fileID: 347190137}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Comfort Cuisine
   - tagTxtObject: {fileID: 98637669}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Bluebox
   - tagTxtObject: {fileID: 1325448628}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Just have fun !
   - tagTxtObject: {fileID: 802639829}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - BNQ Parapa
   - tagTxtObject: {fileID: 721474298}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Lana Del Sol thermal cure
   - tagTxtObject: {fileID: 549482488}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - IMM
   - tagTxtObject: {fileID: 2083843657}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Just have fun !
   - tagTxtObject: {fileID: 1827442909}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Cheap
   - tagTxtObject: {fileID: 1776688420}
-    tagName: mj2MailSender
+    tagName: mj1MailSender
     dynamicID: 2
     customParameters:
     - Orion divination
@@ -22424,68 +22424,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectionName: mj2MailContent
+  collectionName: mj1MailContent
   tagList:
   - tagTxtObject: {fileID: 1048881452}
-    tagName: mj2Mail1Content
+    tagName: mj1Mail1Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1572777330}
-    tagName: mj2Mail2Content
+    tagName: mj1Mail2Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 312875453}
-    tagName: mj2Mail3Content
+    tagName: mj1Mail3Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 8978667}
-    tagName: mj2Mail4Content
+    tagName: mj1Mail4Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1112685700}
-    tagName: mj2Mail5Content
+    tagName: mj1Mail5Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1787691240}
-    tagName: mj2Mail6Content
+    tagName: mj1Mail6Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 598914643}
-    tagName: mj2Mail7Content
+    tagName: mj1Mail7Content
     dynamicID: 4
     customParameters:
     - 08
     - 07
   - tagTxtObject: {fileID: 1909094374}
-    tagName: mj2Mail8Content
+    tagName: mj1Mail8Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 958344507}
-    tagName: mj2Mail9Content
+    tagName: mj1Mail9Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1431148891}
-    tagName: mj2Mail10Content
+    tagName: mj1Mail10Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1800785823}
-    tagName: mj2Mail11Content
+    tagName: mj1Mail11Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 395926580}
-    tagName: mj2Mail12Content
+    tagName: mj1Mail12Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1695680721}
-    tagName: mj2Mail13Content
+    tagName: mj1Mail13Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 1753893599}
-    tagName: mj2Mail14Content
+    tagName: mj1Mail14Content
     dynamicID: 0
     customParameters: []
   - tagTxtObject: {fileID: 427580746}
-    tagName: mj2Mail15Content
+    tagName: mj1Mail15Content
     dynamicID: 0
     customParameters: []
 --- !u!1 &1807386489
