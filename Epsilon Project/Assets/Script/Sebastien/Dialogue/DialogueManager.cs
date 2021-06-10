@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
 {
     [HideInInspector]
     public bool onGameSceneEntered = false;
+    [HideInInspector]
+    public List<Dialogue> dialogueToSave;
 
     #region Dialogue Manager Components
     private CSVReader reader;
@@ -118,8 +120,12 @@ public class DialogueManager : MonoBehaviour
 
     public void Branch(string dialogueFileName)
     {
-        displayer.cameFromBranch = true;
-        CreateAndStartDialogue(dialogueFileName);
+        Debug.Log("Blocks the possibility to branch if dialogues are loading");
+        if (!displayer.isLoading)
+        {
+            displayer.cameFromBranch = true;
+            CreateAndStartDialogue(dialogueFileName);
+        }
     }
 
     public void CreateDialogue(string dialogueFileName)

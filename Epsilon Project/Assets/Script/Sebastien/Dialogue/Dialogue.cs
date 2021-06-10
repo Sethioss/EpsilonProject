@@ -31,7 +31,7 @@ public class Reply
 [System.Serializable]
 public class DialogueElement
 {
-    public int ChosenReplyIndex = -1;
+    public int chosenReplyIndex = -1;
     public int index;
     public string initiationTime;
     public string message;
@@ -58,8 +58,22 @@ public class DialogueElement
         this.minigameInvite = isInvite;
     }
 
-    public DialogueElement() { }
+    public DialogueElement(string message, Reply reply, string initiationTime, UnityAction elementAction, bool isInvite = false)
+    {
+        if (message != "")
+        {
+            this.SetMessage(message);
+        }
 
+        if (reply.replyText != "")
+        {
+            this.AddReply(reply);
+        }
+
+        this.initiationTime = initiationTime;
+        this.elementAction = elementAction;
+        this.minigameInvite = isInvite;
+    }
     private void SetMessage(string message)
     {
         this.message = message;

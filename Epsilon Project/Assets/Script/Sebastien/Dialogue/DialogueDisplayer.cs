@@ -19,6 +19,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     public Dialogue currentDialogue;
     public int currentDialogueElementId = 0;
+    public bool isLoading = false;
 
     #region Timing / Display des dialogues
 
@@ -117,6 +118,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     public void LoadDialogueData()
     {
+        //Create DialoguesToDisplay
         DialogueData data = SaveSystem.LoadDialogue();
     }
 
@@ -128,9 +130,9 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 CreateMessageBubble();
                 DisplayMessage(currentBubble);
-                if (element.ChosenReplyIndex != -1)
+                if (element.chosenReplyIndex != -1)
                 {
-                    SendReply(element.replies[element.ChosenReplyIndex]);
+                    SendReply(element.replies[element.chosenReplyIndex]);
                 }
                 DisplayReaction(awaitingReaction, currentBubble);
             }
@@ -253,7 +255,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void SendReply(Reply reply)
     {
-        currentDialogue.elements[currentDialogueElementId].ChosenReplyIndex = reply.index;
+        currentDialogue.elements[currentDialogueElementId].chosenReplyIndex = reply.index;
         //Display
         DeleteReplies();
 
@@ -286,8 +288,6 @@ public class DialogueDisplayer : MonoBehaviour
 
             StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
         }
-
-
     }
 
     private void DeleteReplies()
@@ -354,8 +354,6 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void GoToElement(int index)
     {
-
-
         currentDialogueElementId = index - 1;
         bubbleSpawned = false;
 
@@ -524,8 +522,6 @@ public class DialogueDisplayer : MonoBehaviour
         StopDialogue(currentDialogue);
     }
     #endregion
-
-
 
     #region SaveWriting
     public int second;
