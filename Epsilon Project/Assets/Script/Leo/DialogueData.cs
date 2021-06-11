@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class DialogueData : MonoBehaviour
 {
-    public static DialogueData Instance { set; get; }
-    public string[] PreviousText;
+    //public string[] PreviousText;
+    //public int[] Choice;
     public int ElementText;
-    public int[] Choice;
-
     public int Initialisation;
     public int WaitSent;
 
@@ -19,16 +17,16 @@ public class DialogueData : MonoBehaviour
 
         ElementText = dialogueDisplayer.currentDialogueElementId;
 
-        for (i = 0; i < dialogueManager.dialogueList.Count; i++)
-        {
-            PreviousText[i] = dialogueManager.dialogueList[i].FileName;
+        //for (i = 0; i < dialogueManager.dialogueList.Count; i++)
+        //{
+        //    PreviousText[i] = dialogueManager.dialogueList[i].FileName;
 
-            for (j = 0; j < dialogueManager.dialogueList[i].elements.Count; j++)
-            {
-                int index = i + j;
-                Choice[index] = dialogueManager.dialogueList[i].elements[j].ChosenReplyIndex;
-            }
-        }
+        //    for (j = 0; j < dialogueManager.dialogueList[i].elements.Count; j++)
+        //    {
+        //        int index = i + j;
+        //        Choice[index] = dialogueManager.dialogueList[i].elements[j].ChosenReplyIndex;
+        //    }
+        //}
 
         if(dialogueDisplayer.isInitialisation == true)
         {
