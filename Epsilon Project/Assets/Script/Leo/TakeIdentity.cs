@@ -28,6 +28,7 @@ public class TakeIdentity : MonoBehaviour
         Month = TextBirthDate[1].text;
         Year = TextBirthDate[2].text;
         Phone = TextPhone.text;
+        SaveIdentity();
     }
     public void LoadIdentity()
     {
@@ -43,4 +44,6 @@ public class TakeIdentity : MonoBehaviour
 
 
     }
+
+    
 }
