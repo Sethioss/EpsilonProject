@@ -19,14 +19,9 @@ public class DialogueDisplayer : MonoBehaviour
 
     public Dialogue currentDialogue;
     public int currentDialogueElementId = 0;
+    public bool isLoading = false;
+    public List<Dialogue> dialoguesToSave = new List<Dialogue>();
 
-    public void SaveDialogue()
-    {
-
-        SaveSystem.SaveDialogue(DialogueManager.Instance.displayer,DialogueManager.Instance);
-
-
-    }
     #region Timing / Display des dialogues
 
     private string awaitingReaction;
@@ -40,7 +35,8 @@ public class DialogueDisplayer : MonoBehaviour
     [HideInInspector]
     public bool isWaitingForReply = false;
     private bool bubbleSpawned = false;
-    private bool jumpToMessage = true;
+    [HideInInspector]
+    public bool jumpToMessage = false;
     private string currentWaitingTime;
     private bool readingDialogue = true;
 
@@ -63,6 +59,8 @@ public class DialogueDisplayer : MonoBehaviour
     TimeManager timeManager;
     UserSettings userSettings;
 
+    DialogueData data = new DialogueData();
+
     #endregion
 
     private void Awake()
@@ -84,29 +82,130 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void Update()
     {
-        if (!isWaitingForReply && readingDialogue)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (!bubbleSpawned)
+            LoadDialogueData();
+        }
+
+        if (!isLoading)
+        {
+            if (!isWaitingForReply && readingDialogue)
             {
-                if (IsTimeToStartWriting())
+                if (!bubbleSpawned)
                 {
-                    CreateMessageBubble();
+                    if (IsTimeToStartWriting())
+                    {
+                        CreateMessageBubble();
+                    }
+                }
+                if (IsTimeOver())
+                {
+                    timeManager.ResetClock();
+                    if (isInitialisation)
+                    {
+                        DisplayMessage(currentBubble);
+                    }
+                    else
+                    {
+                        DisplayReaction(awaitingReaction, currentBubble);
+                    }
+                }
+
+            }
+        }
+
+    }
+    public void SaveDialogueData()
+    {
+        SaveSystem.SaveDialogue();
+    }
+
+    public void LoadDialogueData()
+    {
+        isLoading = true;
+        data = SaveSystem.LoadDialogue();
+
+
+        //Création des dialogues de retour
+        DialogueManager.Instance.dialogueList = RecreateDialogueListFromData(data);
+
+        //DisplayDialogueData(data);
+    }
+
+    public void DisplayDialogueData(DialogueData data)
+    {
+        DialogueManager.Instance.dialogueList = new List<Dialogue>();
+        //Pour chaque dialogue
+        for (int i = 0; i < DialogueManager.Instance.dialogueList.Count; i++)
+        {
+            Dialogue currentlyReadDialogue = DialogueManager.Instance.dialogueList[i];
+            currentDialogue = currentlyReadDialogue;
+            for (int j = 0; j < data.numberOfElementsInDialogue[i]; j++)
+            {
+
+                DeleteReplies();
+
+                CreateMessageBubble();
+                DisplayMessageLog(currentBubble, currentlyReadDialogue.elements[j].message);
+                Debug.LogError(j);
+                if (currentlyReadDialogue.elements[j].chosenReplyIndex != -1)
+                {
+                    SendReply(currentlyReadDialogue.elements[j].replies[0]);
+
+                    if (currentlyReadDialogue.elements[j].replies[0].reaction != "")
+                    {
+                        CreateMessageBubble();
+                        DisplayMessageLog(currentBubble, currentlyReadDialogue.elements[j].replies[0].reaction);
+                    }
                 }
             }
-            if (IsTimeOver())
+        }
+    }
+
+    public List<Dialogue> RecreateDialogueListFromData(DialogueData data)
+    {
+        int processedGlobalElementId = 0;
+        List<Dialogue> toSave = new List<Dialogue>();
+
+        for (int i = 0; i < data.dialogueFileName.Count; i++)
+        {
+            Dialogue templateDialogue = DialogueManager.Instance.dialogueList[i];
+
+            Dialogue dialogue = new Dialogue();
+            dialogue.fileName = templateDialogue.fileName;
+            dialogue.id = templateDialogue.id;
+            dialogue.endDialogueAction = templateDialogue.endDialogueAction;
+
+            //Pour chaque élément
+            for (int j = 0; j < data.numberOfElementsInDialogue[i]; j++)
             {
-                timeManager.ResetClock();
-                if (isInitialisation)
+                //j = numéro de l'élément dans le dialogue
+                Reply reply = new Reply();
+                int chosenReplyId = data.chosenReplyId[processedGlobalElementId];
+                DialogueElement elementToAdd = new DialogueElement();
+                if (chosenReplyId != -1)
                 {
-                    DisplayMessage(currentBubble);
+                    Reply templateDialogueReplyInfos = templateDialogue.elements[j].replies[chosenReplyId];
+
+                    reply = new Reply(templateDialogueReplyInfos.replyText, templateDialogueReplyInfos.reaction, templateDialogueReplyInfos.index, templateDialogueReplyInfos.reactionTime,
+                        templateDialogueReplyInfos.replyEvent, templateDialogueReplyInfos.isLeaveMessage);
                 }
-                else
-                {
-                    DisplayReaction(awaitingReaction, currentBubble);
-                }
+
+                elementToAdd = new DialogueElement(templateDialogue.elements[j].message, reply, data.elementId[processedGlobalElementId],
+                templateDialogue.elements[j].initiationTime, templateDialogue.elements[j].elementAction, templateDialogue.elements[j].minigameInvite);
+
+
+                //elementToAdd.replies.Remove(reply);
+
+                dialogue.AddDialogueElement(elementToAdd);
+                dialogue.elements[j].chosenReplyIndex = chosenReplyId;
+                processedGlobalElementId++;
             }
 
+            toSave.Add(dialogue);
         }
+
+        return toSave;
     }
 
     #region Dialogue starting methods
@@ -144,6 +243,9 @@ public class DialogueDisplayer : MonoBehaviour
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
 
+        dialoguesToSave.Add(new Dialogue());
+        dialoguesToSave[dialoguesToSave.Count - 1].fileName = dialogue.fileName;
+
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
@@ -165,6 +267,8 @@ public class DialogueDisplayer : MonoBehaviour
         //Current bubble = The bubble which text is gonna get changed
         currentBubble = messagePrefab;
         bubbleSpawned = true;
+
+
         StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
 
     }
@@ -183,8 +287,19 @@ public class DialogueDisplayer : MonoBehaviour
         messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
         isInitialisation = false;
         bubbleSpawned = false;
-
         newDialogue = false;
+
+        //Adding new element to dialoguesToSave
+        Reply nullReply = new Reply("", "", 0, "00:00:00:00", null);
+
+        DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, nullReply, currentDialogue.elements[currentDialogueElementId].index,
+            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction, currentDialogue.elements[currentDialogueElementId].minigameInvite);
+        newElement.replies.Remove(nullReply);
+
+        dialoguesToSave[dialoguesToSave.Count - 1].AddDialogueElement(newElement);
+
+        SaveDialogueData();
+
 
         //Display replies if there are
         if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
@@ -198,6 +313,50 @@ public class DialogueDisplayer : MonoBehaviour
 
         StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
     }
+
+    private void DisplayMessageLog(GameObject currentBubble, string messageToSend)
+    {
+        MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
+
+        //If it's a message sent with a <SCENE> keyword, minigameInvite is set to true
+        if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        {
+            Button button = messageBubble.textBackground.GetComponent<Button>();
+            button.enabled = true;
+            button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].replies[0].replyEvent);
+            currentDialogue.elements[currentDialogueElementId].replies.Remove(currentDialogue.elements[currentDialogueElementId].replies[0]);
+        }
+
+        messageBubble.message.text = messageToSend;
+        isInitialisation = false;
+        bubbleSpawned = false;
+        newDialogue = false;
+
+        //Adding new element to dialoguesToSave
+        Reply nullReply = new Reply("", "", 0, "00:00:00:00", null);
+
+        DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, nullReply, currentDialogue.elements[currentDialogueElementId].index,
+            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction, currentDialogue.elements[currentDialogueElementId].minigameInvite);
+        newElement.replies.Remove(nullReply);
+
+        dialoguesToSave[dialoguesToSave.Count - 1].AddDialogueElement(newElement);
+
+        SaveDialogueData();
+
+
+        //Display replies if there are
+        if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        {
+            DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
+        }
+        else
+        {
+            GoToNextElement();
+        }
+
+        StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
+    }
+
     private void DisplayPossibleReplies(List<Reply> replies)
     {
         //Create the buttons corresponding to each answer
@@ -225,8 +384,15 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void SendReply(Reply reply)
     {
+        DialogueManager.Instance.dialogueList[DialogueManager.Instance.dialogueList.Count - 1].elements[currentDialogueElementId].chosenReplyIndex = reply.index;
+        currentDialogue.elements[currentDialogueElementId].chosenReplyIndex = reply.index;
+
+        DialogueElement tempElement = dialoguesToSave[dialoguesToSave.Count - 1].elements[dialoguesToSave[dialoguesToSave.Count - 1].elements.Count - 1];
+        tempElement.chosenReplyIndex = reply.index;
+
+        //Debug.LogError(dialoguesToSave[dialoguesToSave.Count - 1].elements[dialoguesToSave[dialoguesToSave.Count - 1].elements.Count - 1].chosenReplyIndex);
+
         //Display
-        currentDialogue.elements[currentDialogueElementId].ChosenReplyIndex = reply.index;
         DeleteReplies();
 
         if (!reply.isLeaveMessage)
@@ -237,10 +403,18 @@ public class DialogueDisplayer : MonoBehaviour
 
             messageBubble.message.text = reply.replyText;
 
-            if(messageBubble.profilePictureTransform != null)
+            if (messageBubble.profilePictureTransform != null)
             {
                 messageBubble.profilePictureTransform.GetComponent<Image>().sprite = userSettings.profilePicture;
             }
+
+            //Add reply to dialogueToSave
+            Reply newReply = new Reply(reply.replyText, reply.reaction, reply.index, reply.reactionTime, reply.replyEvent, reply.isLeaveMessage);
+
+            dialoguesToSave[dialoguesToSave.Count - 1].elements[dialoguesToSave[dialoguesToSave.Count - 1].elements.Count - 1].AddReply(newReply);
+            Debug.LogWarning("Saved successfully");
+
+            SaveDialogueData();
 
             //Set clock to reaction time
             isWaitingForReply = false;
@@ -254,13 +428,10 @@ public class DialogueDisplayer : MonoBehaviour
             else
             {
                 awaitingReaction = reply.reaction;
-                SaveDialogue();
             }
 
             StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
         }
-
-        
     }
 
     private void DeleteReplies()
@@ -291,8 +462,6 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void GoToNextElement()
     {
-
-        
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
         if (currentDialogueElementId + 1 >= currentDialogue.elements.Count)
@@ -323,13 +492,10 @@ public class DialogueDisplayer : MonoBehaviour
             writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
             timeToStartWriting = SetTimeToStartWriting();
         }
-        SaveDialogue();
     }
 
     private void GoToElement(int index)
     {
-
-       
         currentDialogueElementId = index - 1;
         bubbleSpawned = false;
 
@@ -338,7 +504,6 @@ public class DialogueDisplayer : MonoBehaviour
 
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
-        SaveDialogue();
     }
     IEnumerator SetObjectHeightToBackground(GameObject messagePrefab, GameObject imageBg, GameObject panel)
     {
@@ -413,12 +578,26 @@ public class DialogueDisplayer : MonoBehaviour
     #region Flags
     private bool IsTimeOver()
     {
-        return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
+        try
+        {
+            return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private bool IsTimeToStartWriting()
     {
-        return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+        try
+        {
+            return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+        }
+        catch
+        {
+            return false;
+        }
     }
     #endregion
 
@@ -447,12 +626,11 @@ public class DialogueDisplayer : MonoBehaviour
 
         currentDialogue.AddDialogueElement(newElement);
 
-        if (jumpToMessage)
+        if (jumpToMessage && !isLoading)
         {
             GoToElement(currentDialogue.elements.Count - 1);
             jumpToMessage = false;
         }
-
     }
     private string GenerateRandomLink()
     {
@@ -485,8 +663,6 @@ public class DialogueDisplayer : MonoBehaviour
         StopDialogue(currentDialogue);
     }
     #endregion
-
-
 
     #region SaveWriting
     public int second;

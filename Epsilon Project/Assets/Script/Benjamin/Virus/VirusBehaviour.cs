@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VirusBehaviour : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class VirusBehaviour : MonoBehaviour
     public int hackFrequency = 3;
     int tracker = 0;
     public int timeToFade;
+    public Image LoadingBar;
+    public float currentValue;
+    public float speed;
     public static bool reachedGoal;
     bool canHack = true;
     public GameObject[] allTiles;
     GameObject[,] tiles = new GameObject[20, 20];
     bool gameEnded;
+
 
     void Start()
     {
@@ -54,7 +59,13 @@ public class VirusBehaviour : MonoBehaviour
             gameEnded = true;
         }
         if (canHack == true && reachedGoal == false)
+        {
             StartCoroutine(HackingProcess());
+        }
+
+        currentValue -= speed * Time.deltaTime;
+
+        LoadingBar.fillAmount = currentValue / 100;
     }
 
     public IEnumerator StartSpreading(int coordY, int coordX, float timeToWait)
@@ -207,6 +218,7 @@ public class VirusBehaviour : MonoBehaviour
 
     public IEnumerator StartFading()
     {
+        currentValue = 100;
         yield return new WaitForSeconds(timeToFade);
         Debug.Log("You loose");
         MinigameManager.Instance.loseAction.Invoke();

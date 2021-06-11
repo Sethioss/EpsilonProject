@@ -37,7 +37,7 @@ public class CSVReader : MonoBehaviour
         //Split table in rows
         string[] rows = data.text.Split(new char[] { '\n' });
         Dialogue dialogue = new Dialogue();
-        dialogue.FileName = data.name;
+        dialogue.fileName = data.name;
         UnityAction tempDialogueEvents = null;
         DialogueElement dialogueElement;
 
@@ -71,7 +71,7 @@ public class CSVReader : MonoBehaviour
                     currentRow[h] = ProcessMessage(currentRow[h]);
                 }
 
-                Reply reply = new Reply(currentRow[1], currentRow[2], dialogue.elements.Count, GetTime(currentRow[4]), replyEvents);
+                Reply reply = new Reply(currentRow[1], currentRow[2], 0, GetTime(currentRow[4]), replyEvents);
 
                 dialogueElement = new DialogueElement(currentRow[0], reply, dialogue.elements.Count, GetTime(currentRow[3]), elementEvents);
 

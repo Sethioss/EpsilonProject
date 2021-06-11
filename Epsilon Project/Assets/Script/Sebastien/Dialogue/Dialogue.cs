@@ -24,6 +24,8 @@ public class Reply
         this.replyEvent = actions;
         this.isLeaveMessage = isLeaveMessage;
     }
+
+    public Reply() { }
 }
 #endregion
 
@@ -31,7 +33,7 @@ public class Reply
 [System.Serializable]
 public class DialogueElement
 {
-    public int ChosenReplyIndex = -1;
+    public int chosenReplyIndex = -1;
     public int index;
     public string initiationTime;
     public string message;
@@ -58,6 +60,25 @@ public class DialogueElement
         this.minigameInvite = isInvite;
     }
 
+    public DialogueElement(string message, Reply reply, string initiationTime, UnityAction elementAction, bool isInvite = false)
+    {
+
+        if (message != "")
+        {
+            this.SetMessage(message);
+        }
+
+        if (reply.replyText != "")
+        {
+            this.AddReply(reply);
+        }
+
+        this.initiationTime = initiationTime;
+        this.elementAction = elementAction;
+        this.minigameInvite = isInvite;
+
+    }
+
     public DialogueElement() { }
 
     private void SetMessage(string message)
@@ -77,7 +98,7 @@ public class DialogueElement
 public class Dialogue
 {
     public int id;
-    public string FileName;
+    public string fileName;
     [SerializeField]
     public List<DialogueElement> elements = new List<DialogueElement>();
     public UnityAction endDialogueAction;

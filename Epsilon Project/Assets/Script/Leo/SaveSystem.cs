@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
     #region Save
-    public static void SaveEvent (Event even)
+    public static void SaveEvent(Event even)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/event.fun";
@@ -13,7 +13,7 @@ public static class SaveSystem
         EventData data = new EventData(even);
         formatter.Serialize(stream, data);
         stream.Close();
-    
+
     }
     public static void SaveGPS(GPS gps)
     {
@@ -55,12 +55,13 @@ public static class SaveSystem
         stream.Close();
 
     }
-    public static void SaveDialogue(DialogueDisplayer dialogueDisplayer,DialogueManager dialogueManager)
+    public static void SaveDialogue()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
-        FileStream stream = new FileStream(path, FileMode.Create);
-        DialogueData dialoguedata = new DialogueData(dialogueDisplayer, dialogueManager);
+        FileStream stream = File.Open(path, FileMode.Create);
+        //DialogueManager.Instance.dialogueList = en attendant, remplacer par la dialogueList spécial
+        DialogueData dialoguedata = new DialogueData(DialogueDisplayer.Instance.dialoguesToSave);
         formatter.Serialize(stream, dialoguedata);
         stream.Close();
 
@@ -155,12 +156,13 @@ public static class SaveSystem
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
-            DialogueData dialoguedata = formatter.Deserialize(stream) as DialogueData;
-            return dialoguedata;
+            DialogueData data = (DialogueData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
         }
         else
         {
-            Debug.LogError(" Save file not found in " + path);
+            Debug.LogError("Load file not found in " + path);
             return null;
         }
 

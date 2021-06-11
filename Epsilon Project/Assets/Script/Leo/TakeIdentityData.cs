@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TakeIdentityData : MonoBehaviour
+public class TakeIdentityData
 {
-    public static TakeIdentityData Instance { set; get; }
     public string Username;
     public string Password;
     public string Day, Month, Year;
