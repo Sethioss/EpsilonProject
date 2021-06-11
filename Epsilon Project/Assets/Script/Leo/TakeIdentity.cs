@@ -6,26 +6,36 @@ using TMPro;
 
 public class TakeIdentity : MonoBehaviour
 {
-    public string Nickname;
+    public string Username;
     public string Password;
+
+    public string Day,Month,Year;
+
+    public string Phone;
 
     public TextMeshProUGUI TextNickname;
     public TextMeshProUGUI TextPassword;
 
+    public TextMeshProUGUI[] TextBirthDate;
 
+    public TextMeshProUGUI TextPhone;
     public void TakeNewidentity()
     {
-        Nickname = TextNickname.text;
-        Nickname = TextPassword.text;
-        Debug.Log("c'est : " + Nickname);
-        Debug.Log("c'est : " + Password);
+        Username = TextNickname.text;
+        Password = TextPassword.text;
+
+        Day = TextBirthDate[0].text;
+        Month = TextBirthDate[1].text;
+        Year = TextBirthDate[2].text;
+        Phone = TextPhone.text;
+        SaveIdentity();
     }
     public void LoadIdentity()
     {
         TakeIdentityData data = SaveSystem.LoadTakeIdentity();
 
-        Nickname = data.Nickname;
-        Nickname = data.Nickname;
+        Username = data.Username;
+        Password = data.Password;
     }
     public void SaveIdentity()
     {
@@ -34,4 +44,6 @@ public class TakeIdentity : MonoBehaviour
 
 
     }
+
+    
 }
