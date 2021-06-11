@@ -13,6 +13,7 @@ public class ProflleUpdate : MonoBehaviour
     public string Day, Month, Year;
     public string PhoneNumber;
 
+    
     void Update()
     {
         UsernameText.text = Username;
@@ -29,5 +30,10 @@ public class ProflleUpdate : MonoBehaviour
         Month = data.Month;
         Year = data.Year;
         PhoneNumber = data.Phone;
+    }
+    public void changeProfil()
+    {
+        NativeGallery.CanOpenSettings();
+        //NativeGallery.SaveImageToGallery(maTexture, "GalleryTest", "Mon img {0}.png");
     }
 }
