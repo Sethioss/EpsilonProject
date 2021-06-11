@@ -9,8 +9,6 @@ public class DialogueManager : MonoBehaviour
 {
     [HideInInspector]
     public bool onGameSceneEntered = false;
-    [HideInInspector]
-    public List<Dialogue> dialogueToSave;
 
     #region Dialogue Manager Components
     private CSVReader reader;
@@ -30,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     public bool debugReadCommandKeywords = false;
     [Tooltip("Sends debug messages for each function that is played when its call is made")]
     public bool debugExecutingFunction = false;
+    [Tooltip("Sends debug messages concerning the saving of dialogues")]
+    public bool dialogueSavingDebug = false;
 
     private List<string> debugMessages { get; } = new List<string>();
     private string colorCodeStart = "";
@@ -128,7 +128,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void CreateDialogue(string dialogueFileName)
+    public Dialogue CreateDialogue(string dialogueFileName)
     {
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
@@ -137,9 +137,9 @@ public class DialogueManager : MonoBehaviour
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(currentDialogueFile);
         dialogueToAdd.id = dialogueList.Count - 1;
-        dialogueList.Add(dialogueToAdd);
+        dialogueToAdd.fileName = dialogueFileName;
 
-        displayer.DisplayDialogueData();
+        return dialogueToAdd;
     }
 
     //The text asset function executes for the starting file
@@ -152,8 +152,9 @@ public class DialogueManager : MonoBehaviour
         currentDialogueFile = dialogueFile;
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
         dialogueList.Add(dialogueToAdd);
-        displayer.StartDialogue(dialogueToAdd);
         dialogueToAdd.id = dialogueList.Count - 1;
+        dialogueToAdd.fileName = dialogueFile.name;
+        displayer.StartDialogue(dialogueToAdd);
     }
     //The string function executes when a BRANCH command is called
     public void CreateAndStartDialogue(string dialogueFileName)
@@ -515,7 +516,9 @@ public class DialogueManager : MonoBehaviour
     #region LINK Command
     public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
     {
-        displayer.CreateLinkElement(sceneToChangeTo, inviteMessage);
+        if (!displayer.isLoading)
+        {
+            displayer.CreateLinkElement(sceneToChangeTo, inviteMessage);
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";
@@ -523,6 +526,8 @@ public class DialogueManager : MonoBehaviour
         AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
         DebugElement(debugMessages.ToArray());
 #endif
+        }
+
     }
     #endregion
 

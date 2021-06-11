@@ -24,6 +24,8 @@ public class Reply
         this.replyEvent = actions;
         this.isLeaveMessage = isLeaveMessage;
     }
+
+    public Reply() { }
 }
 #endregion
 
@@ -74,6 +76,7 @@ public class DialogueElement
         this.elementAction = elementAction;
         this.minigameInvite = isInvite;
     }
+
     private void SetMessage(string message)
     {
         this.message = message;
@@ -91,7 +94,7 @@ public class DialogueElement
 public class Dialogue
 {
     public int id;
-    public string FileName;
+    public string fileName;
     [SerializeField]
     public List<DialogueElement> elements = new List<DialogueElement>();
     public UnityAction endDialogueAction;
