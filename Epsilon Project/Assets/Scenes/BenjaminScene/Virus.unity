@@ -2065,7 +2065,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300012, guid: 0fd21678280ad9c47aa2d32baf438c5d, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3218,16 +3218,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
+  displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 0}
   dialogueList: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  autoMode: 1
-  autoModeWaitingTime: 00:00:00:01
-  inactivePeriods: 1
-  inactivePeriodStartHour: 1
-  inactivePeriodEndHour: 7
   m_testSet: 
   m_testSetFloat: 0
   username: Sebilol
@@ -3460,7 +3456,8 @@ MonoBehaviour:
   hackFrequency: 5
   timeToFade: 30
   LoadingBar: {fileID: 520599248}
-  speed: 0
+  currentValue: 100
+  speed: 4
   allTiles:
   - {fileID: 22610351}
   - {fileID: 510559157}
