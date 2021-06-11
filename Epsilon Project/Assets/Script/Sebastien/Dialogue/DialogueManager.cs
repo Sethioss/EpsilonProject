@@ -516,8 +516,6 @@ public class DialogueManager : MonoBehaviour
     #region LINK Command
     public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
     {
-        if (!displayer.isLoading)
-        {
             displayer.CreateLinkElement(sceneToChangeTo, inviteMessage);
 
 #if UNITY_EDITOR
@@ -526,7 +524,6 @@ public class DialogueManager : MonoBehaviour
         AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
         DebugElement(debugMessages.ToArray());
 #endif
-        }
 
     }
     #endregion

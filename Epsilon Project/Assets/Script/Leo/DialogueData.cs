@@ -16,6 +16,7 @@ public class DialogueData
     public int initialisation;
     public int waitSent;
 
+    public DialogueData() { }
     public DialogueData(List<Dialogue> dialogueToSave)
     {
         DialogueDisplayer displayer = DialogueManager.Instance.displayer;
@@ -28,22 +29,23 @@ public class DialogueData
         currentElement = displayer.currentDialogueElementId;
 
         //Fetch all dialogues
-        for(int i = 0; i < dialogueToSave.Count; i++)
+        for (int i = 0; i < dialogueToSave.Count; i++)
         {
             int elementsInDialogue = 0;
 
-            //Debug.LogWarning("Dialogue file name : " + dialogueToSave[i].fileName);
+            Debug.LogWarning("Dialogue file name : " + dialogueToSave[i].fileName);
             dialogueFileName.Add(dialogueToSave[i].fileName);
 
             //Fetch all elements
-            for(int j = 0; j < dialogueToSave[i].elements.Count; j++)
+            for (int j = 0; j < dialogueToSave[i].elements.Count; j++)
             {
-                //Debug.LogWarning("Current element : " + j);
+
+                Debug.LogWarning("Current element : " + j);
                 Debug.LogWarning("Current element message : " + dialogueToSave[i].elements[j].message);
                 elementsInDialogue++;
 
                 DialogueElement element = dialogueToSave[i].elements[j];
-                if(element.replies.Count > 0)
+                if (element.replies.Count > 0 && element.minigameInvite)
                 {
                     Debug.LogWarning("Chosen reply message : " + element.replies[0].replyText);
                     if (element.replies[0].reaction != "")
@@ -55,9 +57,10 @@ public class DialogueData
                 chosenReplyId.Add(element.chosenReplyIndex);
                 elementId.Add(element.index);
                 miniGameInvite.Add(element.minigameInvite);
+
             }
 
-            //Debug.LogWarning("This dialogue has " + elementsInDialogue + " elements in it");
+            Debug.LogWarning("This dialogue has " + elementsInDialogue + " elements in it");
             numberOfElementsInDialogue.Add(elementsInDialogue);
         }
 

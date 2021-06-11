@@ -62,6 +62,7 @@ public class DialogueElement
 
     public DialogueElement(string message, Reply reply, string initiationTime, UnityAction elementAction, bool isInvite = false)
     {
+
         if (message != "")
         {
             this.SetMessage(message);
@@ -75,7 +76,10 @@ public class DialogueElement
         this.initiationTime = initiationTime;
         this.elementAction = elementAction;
         this.minigameInvite = isInvite;
+
     }
+
+    public DialogueElement() { }
 
     private void SetMessage(string message)
     {
