@@ -225,7 +225,7 @@ public class DialogueDisplayer : MonoBehaviour
         }
 
         return toSave;
-    } 
+    }
     #endregion
 
     #region Dialogue starting methods
@@ -282,7 +282,49 @@ public class DialogueDisplayer : MonoBehaviour
         GameObject messagePrefab = null;
         MessageBubble messageBubble = null;
 
-        if (!currentDialogue.elements[currentDialogueElementId].leaveConversationMessage)
+        if(currentDialogue.elements[currentDialogueElementId].leaveConversationMessage)
+        {
+            if (canLaunchSpecialMessage)
+            {
+                Debug.Log("Creating leaving message bubble");
+                messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                messageBubble.message.text = "";
+                messagePrefab.SetActive(false);
+
+                currentBubble = messagePrefab;
+                bubbleSpawned = true;
+
+                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+            }
+            else
+            {
+                GoToNextElement();
+            }
+        }
+        else if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        {
+            if (canLaunchSpecialMessage)
+            {
+                messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                messageBubble.message.text = "...";
+
+                //Current bubble = The bubble which text is gonna get changed
+                currentBubble = messagePrefab;
+                bubbleSpawned = true;
+
+                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+            }
+            else
+            {
+                currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                GoToNextElement();
+            }
+        }
+        else
         {
             messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
             messageBubble = messagePrefab.GetComponent<MessageBubble>();
@@ -292,28 +334,17 @@ public class DialogueDisplayer : MonoBehaviour
             //Current bubble = The bubble which text is gonna get changed
             currentBubble = messagePrefab;
             bubbleSpawned = true;
+
+            StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
         }
-        else
-        {
-            messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
-            messageBubble = messagePrefab.GetComponent<MessageBubble>();
-
-            messageBubble.message.text = "";
-            messagePrefab.SetActive(false);
-
-            currentBubble = messagePrefab;
-            bubbleSpawned = true;
-        }
-
-        StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
 
     }
 
     private void DisplayLinkMessage(MessageBubble messageBubble)
     {
-
         if (canLaunchSpecialMessage)
         {
+            canLaunchSpecialMessage = false;
             Button button = messageBubble.textBackground.GetComponent<Button>();
             button.enabled = true;
             button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
@@ -340,6 +371,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         if (canLaunchSpecialMessage)
         {
+            canLaunchSpecialMessage = false;
             currentBubble.SetActive(true);
             messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
 
@@ -566,15 +598,6 @@ public class DialogueDisplayer : MonoBehaviour
         }
         else
         {
-            if (currentDialogue.elements[currentDialogueElementId + 1].minigameInvite || currentDialogue.elements[currentDialogueElementId + 1].leaveConversationMessage)
-            {
-                canLaunchSpecialMessage = true;
-            }
-            else
-            {
-                canLaunchSpecialMessage = false;
-            }
-
             if (!cameFromBranch)
             {
                 currentDialogueElementId++;

@@ -401,19 +401,19 @@ public class CSVReader : MonoBehaviour
 
                     }
 
-                    //Creation d'un nouvel élément
-                    CreateLinkElement(specialMessageElementBuffer, sceneToChangeTo, parameter);
-
                     events += delegate { DialogueManager.Instance.SpecialMessage(sceneToChangeTo); };
 
-                    jump = 3;
-
-                    //The event takes place right as it is read, used for check functions
                     if (playRightAway)
                     {
-                        Debug.Log(jump);
                         events.Invoke();
                     }
+                    else
+                    {
+                        //Creation d'un nouvel élément
+                        CreateLinkElement(specialMessageElementBuffer, sceneToChangeTo, parameter);
+                    }
+
+                    jump = 3;
 #if UNITY_EDITOR
                     if (!playRightAway && DialogueManager.Instance.debugReadCommandKeywords)
                     {
@@ -481,16 +481,16 @@ public class CSVReader : MonoBehaviour
                         nextDialogueToLaunch = "";
                     }
 
-                    CreateLeaveElement(specialMessageElementBuffer, nextDialogueToLaunch);
-
                     events += delegate { DialogueManager.Instance.SpecialMessage(null); };
 
                     if (playRightAway)
                     {
-                        Debug.Log(jump);
                         events.Invoke();
                     }
-
+                    else
+                    {
+                        CreateLeaveElement(specialMessageElementBuffer, nextDialogueToLaunch);
+                    }
 
                     break;
                 #endregion
@@ -547,9 +547,10 @@ public class CSVReader : MonoBehaviour
                     {
                         firstCommandStartID++;
                     }
+                    firstCommandStartID++;
 
                     //First command end
-                    int firstCommandEndID = firstCommandStartID;
+                    int firstCommandEndID = firstCommandStartID + 1;
                     while (tagArea[firstCommandEndID] != ":")
                     {
                         firstCommandEndID++;
@@ -598,16 +599,43 @@ public class CSVReader : MonoBehaviour
                                 finalValueToCheckWith += " " + tagArea[j];
                             }
                         }
-
-                        jump = secondCommandEndID - i;
-
-                        //CompareStringVariables contains the logic that plays the functions inside the commands with a recursive call
                         events += delegate { DialogueManager.Instance.CompareStringVariables(valueToCheck, finalValueToCheckWith, firstCommand, secondCommand, op); };
                     }
                     else
                     {
+                        finalValueToCheckWith = valueToCheckWith;
                         events += delegate { DialogueManager.Instance.CompareFloatVariables(valueToCheck, finalValueToCheckWith, firstCommand, secondCommand, op); };
                     }
+
+                    string[] brokenDownFirstCommand = firstCommand.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                    string[] brokenDownSecondCommand = secondCommand.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+                    if (brokenDownFirstCommand[0] == "LINK")
+                    {
+                        CreateLinkElement(specialMessageElementBuffer, brokenDownFirstCommand[1], brokenDownFirstCommand[2].Trim('\''));
+                    }
+                    else if (brokenDownFirstCommand[0] == "LEAVE")
+                    {
+                        CreateLeaveElement(specialMessageElementBuffer, brokenDownFirstCommand[1].Trim('\''));
+                    }
+
+                    if(brokenDownSecondCommand[0] == "LINK")
+                    {
+                        CreateLinkElement(specialMessageElementBuffer, brokenDownSecondCommand[1], brokenDownSecondCommand[2].Trim('\''));
+                    }
+                    else if (brokenDownSecondCommand[0] == "LEAVE")
+                    {
+                        CreateLeaveElement(specialMessageElementBuffer, brokenDownSecondCommand[1].Trim('\''));
+                    }
+
+                    else
+                    {
+                        //CompareStringVariables contains the logic that plays the functions inside the commands with a recursive call
+
+
+                    }
+
+                    jump = secondCommandEndID - i;
 
                     //The event takes place right as it is read, used for check functions
                     if (playRightAway)
@@ -627,7 +655,7 @@ public class CSVReader : MonoBehaviour
                         debugMessages.Add("\n");
                         debugMessages.Add(colorCodeFirst + "CHECK :: First command start : " + tagArea[firstCommandStartID] + " at " + firstCommandStartID + colorCodeLast);
                         debugMessages.Add(colorCodeFirst + "CHECK :: First command end ID : " + tagArea[firstCommandEndID] + " at " + firstCommandEndID + colorCodeLast);
-                        debugMessages.Add(colorCodeFirst + "CHECK :: IfTrue command : " + firstCommand + colorCodeLast);
+                        debugMessages.Add(colorCodeFirst + "CHECK :: First command : " + firstCommand + colorCodeLast);
                         debugMessages.Add("\n");
                         debugMessages.Add(colorCodeFirst + "CHECK :: Second command start : " + tagArea[secondCommandStartID] + " at " + secondCommandStartID + colorCodeLast);
                         debugMessages.Add(colorCodeFirst + "CHECK :: Second command end : " + tagArea[secondCommandEndID] + " at " + secondCommandEndID + colorCodeLast);
@@ -661,9 +689,8 @@ public class CSVReader : MonoBehaviour
         newElement.leaveConversationMessage = true;
 
         UnityAction leaveActions = null;
-        leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
 
-        if(branchToGoTo != "")
+        if (branchToGoTo != "")
         {
             leaveActions += delegate { DialogueManager.Instance.Branch(branchToGoTo); };
         }
@@ -671,6 +698,8 @@ public class CSVReader : MonoBehaviour
         {
             Debug.LogError("No dialogue to go to has been set");
         }
+
+        leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
 
         Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions, true);
         newElement.AddReply(leaveReply);
