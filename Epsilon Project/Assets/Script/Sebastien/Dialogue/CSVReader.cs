@@ -357,16 +357,16 @@ public class CSVReader : MonoBehaviour
                 case "LINK":
 
                     string sceneToChangeTo = "";
-                    string inviteMessage = "";
+                    string parameter = "";
                     sceneToChangeTo = tagArea[i + 1];
 
                     //Find if there's a message to go with the link
                     try
                     {
                         //Get invite message
-                        inviteMessage = tagArea[i + 2];
+                        parameter = tagArea[i + 2];
                         int messageStartId = i + 2;
-                        char firstLetterOfMessage = inviteMessage[0];
+                        char firstLetterOfMessage = parameter[0];
                         int messageEndId = messageStartId;
 
                         if (firstLetterOfMessage == '\'')
@@ -392,7 +392,7 @@ public class CSVReader : MonoBehaviour
                                     tempMessage += " " + tagArea[j];
                                 }
                             }
-                            inviteMessage = tempMessage.Trim('\'');
+                            parameter = tempMessage.Trim('\'');
 
                         }
                     }
@@ -402,7 +402,7 @@ public class CSVReader : MonoBehaviour
                     }
 
                     //Creation d'un nouvel élément
-                    CreateLinkElement(specialMessageElementBuffer, sceneToChangeTo, inviteMessage);
+                    CreateLinkElement(specialMessageElementBuffer, sceneToChangeTo, parameter);
 
                     events += delegate { DialogueManager.Instance.SpecialMessage(sceneToChangeTo); };
 
@@ -426,6 +426,72 @@ public class CSVReader : MonoBehaviour
                         DialogueManager.Instance.DebugElement(debugMessages.ToArray());
                     }
 #endif
+                    break;
+                #endregion
+
+                #region LEAVE
+                case "LEAVE":
+
+                    jump = 1;
+
+                    string nextDialogueToLaunch = "";
+
+                    try
+                    {
+                        parameter = tagArea[i + 1];
+                        int parameterNumber = i + 1;
+                        char firstLetterOfMessage = parameter[0];
+                        int messageEndId = parameterNumber;
+
+                        if (firstLetterOfMessage == '\'')
+                        {
+                            string tempMessage = tagArea[parameterNumber];
+                            while (tempMessage[tempMessage.Length - 1] != '\'')
+                            {
+                                tempMessage = tagArea[messageEndId];
+                                messageEndId++;
+                                tempMessage = tagArea[messageEndId];
+                            }
+
+                            tempMessage = "";
+
+                            for (int j = parameterNumber; j <= messageEndId; j++)
+                            {
+                                if (j == parameterNumber)
+                                {
+                                    tempMessage += tagArea[j];
+                                }
+                                else
+                                {
+                                    tempMessage += " " + tagArea[j];
+                                }
+                            }
+
+                            parameter = tempMessage.Trim('\'');
+                        }
+                        else
+                        {
+                            parameter = "";
+                        }
+                        nextDialogueToLaunch = parameter;
+                        jump = 2;
+                    }
+                    catch
+                    {
+                        nextDialogueToLaunch = "";
+                    }
+
+                    CreateLeaveElement(specialMessageElementBuffer, nextDialogueToLaunch);
+
+                    events += delegate { DialogueManager.Instance.SpecialMessage(null); };
+
+                    if (playRightAway)
+                    {
+                        Debug.Log(jump);
+                        events.Invoke();
+                    }
+
+
                     break;
                 #endregion
 
@@ -457,33 +523,6 @@ public class CSVReader : MonoBehaviour
                     }
 
 #endif
-                    break;
-                #endregion
-
-                #region LEAVE
-                case "LEAVE":
-
-                    jump = 1;
-
-                    string nextDialogueToLaunch = "";
-
-                    if(tagArea[i+1] != "")
-                    {
-                        nextDialogueToLaunch = tagArea[i + 1];
-                        jump = 2;
-                    }
-
-                    CreateLeaveElement(specialMessageElementBuffer, nextDialogueToLaunch);
-
-                    events += delegate { DialogueManager.Instance.SpecialMessage(null); };
-
-                    if (playRightAway)
-                    {
-                        Debug.Log(jump);
-                        events.Invoke();
-                    }
-
-
                     break;
                 #endregion
 
@@ -623,7 +662,15 @@ public class CSVReader : MonoBehaviour
 
         UnityAction leaveActions = null;
         leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
-        leaveActions += delegate { DialogueManager.Instance.Branch(branchToGoTo); };
+
+        if(branchToGoTo != "")
+        {
+            leaveActions += delegate { DialogueManager.Instance.Branch(branchToGoTo); };
+        }
+        else
+        {
+            Debug.LogError("No dialogue to go to has been set");
+        }
 
         Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions, true);
         newElement.AddReply(leaveReply);
@@ -644,7 +691,7 @@ public class CSVReader : MonoBehaviour
         }
 
         UnityAction changeSceneAction = null;
-        changeSceneAction += delegate { GameManager.Instance.GoToScene(sceneToChangeTo); };
+        changeSceneAction += delegate { DialogueManager.Instance.ChangeScene(sceneToChangeTo); };
 
         DialogueElement newElement = new DialogueElement(message, tempDialogue.elements.Count,
             "00:00:00:07", changeSceneAction, true);
