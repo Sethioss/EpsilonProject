@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class CSVReader : MonoBehaviour
 {
+    private Dialogue tempDialogue;
+    private List<DialogueElement> specialMessageElementBuffer;
+
     private static CSVReader instance;
     public static CSVReader Instance
     {
@@ -36,8 +39,11 @@ public class CSVReader : MonoBehaviour
     {
         //Split table in rows
         string[] rows = data.text.Split(new char[] { '\n' });
-        Dialogue dialogue = new Dialogue();
-        dialogue.fileName = data.name;
+
+        tempDialogue = new Dialogue();
+        specialMessageElementBuffer = new List<DialogueElement>();
+
+        tempDialogue.fileName = data.name;
         UnityAction tempDialogueEvents = null;
         DialogueElement dialogueElement;
 
@@ -60,7 +66,7 @@ public class CSVReader : MonoBehaviour
                 //This is the start of a new dialogue
 
                 int dialogueStart = i;
-                int index = dialogueStart + 1;
+                int jumpIndex = dialogueStart + 1;
 
                 //PROCESSING FIRST REPLY AND ELEMENT EVENT
                 UnityAction replyEvents = SetEvents(currentRow[5]);
@@ -73,10 +79,10 @@ public class CSVReader : MonoBehaviour
 
                 Reply reply = new Reply(currentRow[1], currentRow[2], 0, GetTime(currentRow[4]), replyEvents);
 
-                dialogueElement = new DialogueElement(currentRow[0], reply, dialogue.elements.Count, GetTime(currentRow[3]), elementEvents);
+                dialogueElement = new DialogueElement(currentRow[0], reply, tempDialogue.elements.Count, GetTime(currentRow[3]), elementEvents);
 
                 //Iterate through the rows in a nested loop until it finds a new dialogue element
-                for (int j = index; j < rows.Length - 1; j++)
+                for (int j = jumpIndex; j < rows.Length - 1; j++)
                 {
                     currentRow = rows[j].Split(new char[] { ';' });
 
@@ -99,7 +105,7 @@ public class CSVReader : MonoBehaviour
                             reply = new Reply(currentRow[1], currentRow[2], dialogueElement.replies.Count, GetTime(currentRow[4]), replyEvents);
                             dialogueElement.AddReply(reply);
                         }
-                        index++;
+                        jumpIndex++;
                     }
                     else
                     {
@@ -107,12 +113,18 @@ public class CSVReader : MonoBehaviour
                     }
                 }
 
-                jump = index - dialogueStart;
-                dialogue.AddDialogueElement(dialogueElement);
+                jump = jumpIndex - dialogueStart;
+                tempDialogue.AddDialogueElement(dialogueElement);
+                foreach (DialogueElement element in specialMessageElementBuffer)
+                {
+                    element.index = tempDialogue.elements.Count;
+                    tempDialogue.AddDialogueElement(element);
+                }
+                specialMessageElementBuffer = new List<DialogueElement>();
             }
         }
-        dialogue.endDialogueAction = tempDialogueEvents;
-        return dialogue;
+        tempDialogue.endDialogueAction = tempDialogueEvents;
+        return tempDialogue;
     }
     #endregion
 
@@ -386,10 +398,14 @@ public class CSVReader : MonoBehaviour
                     }
                     catch
                     {
-                        Debug.LogWarning("No message has been set in the scene keyword. The invite message will just be the link");
+
                     }
 
-                    events += delegate { DialogueManager.Instance.InviteToMinigame(sceneToChangeTo, inviteMessage); };
+                    //Creation d'un nouvel élément
+                    CreateLinkElement(specialMessageElementBuffer, sceneToChangeTo, inviteMessage);
+
+                    events += delegate { DialogueManager.Instance.SpecialMessage(sceneToChangeTo); };
+
                     jump = 3;
 
                     //The event takes place right as it is read, used for check functions
@@ -447,10 +463,27 @@ public class CSVReader : MonoBehaviour
                 #region LEAVE
                 case "LEAVE":
 
-                    events += delegate { DialogueManager.Instance.SendLeaveMessage(); };
-
-
                     jump = 1;
+
+                    string nextDialogueToLaunch = "";
+
+                    if(tagArea[i+1] != "")
+                    {
+                        nextDialogueToLaunch = tagArea[i + 1];
+                        jump = 2;
+                    }
+
+                    CreateLeaveElement(specialMessageElementBuffer, nextDialogueToLaunch);
+
+                    events += delegate { DialogueManager.Instance.SpecialMessage(null); };
+
+                    if (playRightAway)
+                    {
+                        Debug.Log(jump);
+                        events.Invoke();
+                    }
+
+
                     break;
                 #endregion
 
@@ -577,6 +610,63 @@ public class CSVReader : MonoBehaviour
         return events;
     }
     #endregion
+
+    private void CreateLeaveElement(List<DialogueElement> elementBuffer, string branchToGoTo, string leaveMessage = null)
+    {
+        if (leaveMessage == null)
+        {
+            leaveMessage = "The user has left the chat";
+        }
+
+        DialogueElement newElement = new DialogueElement(leaveMessage, tempDialogue.elements.Count, "00:00:00:01", null);
+        newElement.leaveConversationMessage = true;
+
+        UnityAction leaveActions = null;
+        leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
+        leaveActions += delegate { DialogueManager.Instance.Branch(branchToGoTo); };
+
+        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions, true);
+        newElement.AddReply(leaveReply);
+
+        elementBuffer.Add(newElement);
+    }
+    private void CreateLinkElement(List<DialogueElement> elementBuffer, string sceneToChangeTo, string inviteMessage)
+    {
+        string message = "";
+
+        if (inviteMessage != "")
+        {
+            message = inviteMessage + "\n" + GenerateRandomLink();
+        }
+        else
+        {
+            message = GenerateRandomLink();
+        }
+
+        UnityAction changeSceneAction = null;
+        changeSceneAction += delegate { GameManager.Instance.GoToScene(sceneToChangeTo); };
+
+        DialogueElement newElement = new DialogueElement(message, tempDialogue.elements.Count,
+            "00:00:00:07", changeSceneAction, true);
+
+        elementBuffer.Add(newElement);
+    }
+
+    private string GenerateRandomLink()
+    {
+        string randomLinkStart = "<color=blue><u>https://";
+        string randomLetterChain = "";
+        string randomLinkEnd = ".xyz</u></color>";
+
+        for (int i = 0; i < 34; i++)
+        {
+            int randomNumber = Random.Range(65, 122);
+            randomLetterChain += (char)randomNumber;
+        }
+
+        return randomLinkStart + randomLetterChain + randomLinkEnd;
+    }
+
     private float GetFloat(string stringValue, float defaultValue)
     {
         float result = defaultValue;

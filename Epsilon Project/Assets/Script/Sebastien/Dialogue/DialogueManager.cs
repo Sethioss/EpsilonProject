@@ -120,11 +120,13 @@ public class DialogueManager : MonoBehaviour
 
     public void Branch(string dialogueFileName)
     {
-        Debug.Log("Blocks the possibility to branch if dialogues are loading");
         if (!displayer.isLoading)
         {
             displayer.cameFromBranch = true;
-            CreateAndStartDialogue(dialogueFileName);
+            if(dialogueFileName != "")
+            {
+                CreateAndStartDialogue(dialogueFileName);
+            }
         }
     }
 
@@ -151,9 +153,9 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogueFile = dialogueFile;
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
-        dialogueList.Add(dialogueToAdd);
         dialogueToAdd.id = dialogueList.Count - 1;
         dialogueToAdd.fileName = dialogueFile.name;
+        dialogueList.Add(dialogueToAdd);
         displayer.StartDialogue(dialogueToAdd);
     }
     //The string function executes when a BRANCH command is called
@@ -361,7 +363,7 @@ public class DialogueManager : MonoBehaviour
                     AddToDebugFunctionMessage("Executing second command : " + secondCommand, debugMessages);
                     DebugElement(debugMessages.ToArray());
 #endif
-                    eventToTrigger += delegate { CSVReader.Instance.SetEvents(secondCommand, true); };
+                    eventToTrigger += delegate { CSVReader.Instance.SetEvents(secondCommand,  true); };
                     break;
                 }
 
@@ -513,18 +515,17 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-    #region LINK Command
-    public void InviteToMinigame(string sceneToChangeTo, string inviteMessage)
+    #region LINK and LEAVE Command
+    public void SpecialMessage(string sceneToChangeTo)
     {
-            displayer.CreateLinkElement(sceneToChangeTo, inviteMessage);
+            displayer.canLaunchSpecialMessage = true;
 
 #if UNITY_EDITOR
-        colorCodeStart = "<color=blue>";
-        AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
-        AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
-        DebugElement(debugMessages.ToArray());
+            colorCodeStart = "<color=blue>";
+            AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
+            AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
+            DebugElement(debugMessages.ToArray());
 #endif
-
     }
     #endregion
 
@@ -532,19 +533,15 @@ public class DialogueManager : MonoBehaviour
 
     public void ChangeScene(string sceneToChangeTo)
     {
-        if(sceneToChangeTo == "")
+        if (!DialogueDisplayer.Instance.isLoading)
         {
-            sceneToChangeTo = GameManager.Instance.gameSceneName;
-        }
+            if (sceneToChangeTo == "")
+            {
+                sceneToChangeTo = GameManager.Instance.gameSceneName;
+            }
 
-        SceneManager.LoadScene(sceneToChangeTo);
-    }
-    #endregion
-
-    #region LEAVE command
-    public void SendLeaveMessage()
-    {
-        displayer.CreateLeaveElement();
+            SceneManager.LoadScene(sceneToChangeTo);
+        }      
     }
     #endregion
 }

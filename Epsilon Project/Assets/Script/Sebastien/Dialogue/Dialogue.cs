@@ -79,6 +79,20 @@ public class DialogueElement
 
     }
 
+    public DialogueElement(string message, int index, string initiationTime, UnityAction elementAction, bool isInvite = false)
+    {
+
+        if (message != "")
+        {
+            this.SetMessage(message);
+        }
+
+        this.initiationTime = initiationTime;
+        this.elementAction = elementAction;
+        this.minigameInvite = isInvite;
+
+    }
+
     public DialogueElement() { }
 
     private void SetMessage(string message)

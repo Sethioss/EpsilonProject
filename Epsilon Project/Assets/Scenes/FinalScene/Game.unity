@@ -6167,11 +6167,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentDialogue:
     id: 0
-    FileName: 
+    fileName: 
     elements: []
   currentDialogueElementId: 0
+  canLaunchSpecialMessage: 0
+  isLoading: 0
+  dialoguesToSave: []
   isInitialisation: 1
   isWaitingForReply: 0
+  jumpToMessage: 0
   cameFromBranch: 0
   messagePanel: {fileID: 2109942662}
   interlocutorBubblePrefab: {fileID: 8804392922517396649, guid: bbc586048fa654c41b47a0b699b75f5f, type: 3}
@@ -8133,52 +8137,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738470055}
   m_CullTransparentMesh: 1
---- !u!1 &1739123651
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1739123653}
-  - component: {fileID: 1739123652}
-  m_Layer: 0
-  m_Name: DialogueData
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1739123652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739123651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e4dc2be59bf354c880ce7e54f73e11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ElementText: 0
-  Initialisation: 0
-  WaitSent: 0
---- !u!4 &1739123653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739123651}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 554.8284, y: 966.0927, z: -277.13318}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746176675
 GameObject:
   m_ObjectHideFlags: 0
@@ -9073,10 +9031,11 @@ MonoBehaviour:
   onGameSceneEntered: 0
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 8ee0b81f490bf174ba7874d71cccc0a6, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: 5323994ccc522cb4ab112f127fd89ee6, type: 3}
   dialogueList: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
+  dialogueSavingDebug: 0
   m_testSet: 45
   m_testSetFloat: 7
   username: Sebilol
