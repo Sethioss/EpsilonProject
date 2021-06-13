@@ -6165,14 +6165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c80e73e2fdbb542b086646286c97eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowedType: 0
   currentDialogue:
     id: 0
     fileName: 
     elements: []
   currentDialogueElementId: 0
-  canLaunchSpecialMessage: 0
   isLoading: 0
-  dialoguesToSave: []
   isInitialisation: 1
   isWaitingForReply: 0
   jumpToMessage: 0
@@ -9033,11 +9032,12 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: d0de5bb94f699f74286b1690adb6f907, type: 3}
   dialogueList: []
+  dialoguesToSave: []
   debugReadCommandKeywords: 0
-  debugExecutingFunction: 1
+  debugExecutingFunction: 0
   dialogueSavingDebug: 0
   m_testSet: 20
-  m_testSetFloat: 50
+  m_testSetFloat: 25
   username: Sebilol
 --- !u!4 &1863533797
 Transform:

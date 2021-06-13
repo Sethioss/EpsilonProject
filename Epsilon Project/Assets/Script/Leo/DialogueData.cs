@@ -9,7 +9,6 @@ public class DialogueData
     public List<string> dialogueFileName;
     public List<int> chosenReplyId;
     public List<int> elementId;
-    public List<bool> miniGameInvite;
     public List<int> numberOfElementsInDialogue;
     public int currentElement;
 
@@ -24,7 +23,6 @@ public class DialogueData
         dialogueFileName = new List<string>();
         chosenReplyId = new List<int>();
         elementId = new List<int>();
-        miniGameInvite = new List<bool>();
         numberOfElementsInDialogue = new List<int>();
         currentElement = displayer.currentDialogueElementId;
 
@@ -42,10 +40,11 @@ public class DialogueData
 
                 Debug.LogWarning("Current element : " + j);
                 Debug.LogWarning("Current element message : " + dialogueToSave[i].elements[j].message);
+                elementId.Add(dialogueToSave[i].elements[j].index);
                 elementsInDialogue++;
 
                 DialogueElement element = dialogueToSave[i].elements[j];
-                if (element.replies.Count > 0 && element.minigameInvite)
+                if (element.replies.Count > 0 && element.messageType == DialogueElement.MessageType.LINK)
                 {
                     Debug.LogWarning("Chosen reply message : " + element.replies[0].replyText);
                     if (element.replies[0].reaction != "")
@@ -55,8 +54,6 @@ public class DialogueData
                 }
 
                 chosenReplyId.Add(element.chosenReplyIndex);
-                elementId.Add(element.index);
-                miniGameInvite.Add(element.minigameInvite);
 
             }
 

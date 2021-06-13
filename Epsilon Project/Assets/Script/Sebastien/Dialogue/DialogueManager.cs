@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     public List<Dialogue> dialogueList;
     #endregion
 
+    public List<Dialogue> dialoguesToSave = new List<Dialogue>();
+
     #region Debug
     [Header("Debugging tools")]
     [Tooltip("Sends debug messages for each command keyword found in the dialogue file")]
@@ -153,7 +155,7 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogueFile = dialogueFile;
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
-        dialogueToAdd.id = dialogueList.Count - 1;
+        dialogueToAdd.id = dialogueList.Count;
         dialogueToAdd.fileName = dialogueFile.name;
         dialogueList.Add(dialogueToAdd);
         displayer.StartDialogue(dialogueToAdd);
@@ -516,9 +518,9 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region LINK and LEAVE Command
-    public void SpecialMessage(string sceneToChangeTo)
+    public void SpecialMessage(string sceneToChangeTo, int allowedType)
     {
-        displayer.canLaunchSpecialMessage = true;
+        displayer.allowedType = (DialogueDisplayer.AllowedMessageType)allowedType;
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=blue>";

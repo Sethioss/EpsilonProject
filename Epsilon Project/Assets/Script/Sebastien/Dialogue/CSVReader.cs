@@ -114,6 +114,7 @@ public class CSVReader : MonoBehaviour
                 }
 
                 jump = jumpIndex - dialogueStart;
+                dialogueElement.messageType = DialogueElement.MessageType.NORMAL;
                 tempDialogue.AddDialogueElement(dialogueElement);
                 foreach (DialogueElement element in specialMessageElementBuffer)
                 {
@@ -401,7 +402,7 @@ public class CSVReader : MonoBehaviour
 
                     }
 
-                    events += delegate { DialogueManager.Instance.SpecialMessage(sceneToChangeTo); };
+                    events += delegate { DialogueManager.Instance.SpecialMessage(sceneToChangeTo, (int)DialogueElement.MessageType.LINK); };
 
                     if (playRightAway)
                     {
@@ -481,7 +482,7 @@ public class CSVReader : MonoBehaviour
                         nextDialogueToLaunch = "";
                     }
 
-                    events += delegate { DialogueManager.Instance.SpecialMessage(null); };
+                    events += delegate { DialogueManager.Instance.SpecialMessage(null, (int)DialogueElement.MessageType.LEAVE); };
 
                     if (playRightAway)
                     {
@@ -686,7 +687,6 @@ public class CSVReader : MonoBehaviour
         }
 
         DialogueElement newElement = new DialogueElement(leaveMessage, tempDialogue.elements.Count, "00:00:00:01", null);
-        newElement.leaveConversationMessage = true;
 
         UnityAction leaveActions = null;
 
@@ -701,8 +701,9 @@ public class CSVReader : MonoBehaviour
 
         leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
 
-        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions, true);
+        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions);
         newElement.AddReply(leaveReply);
+        newElement.messageType = DialogueElement.MessageType.LEAVE;
 
         elementBuffer.Add(newElement);
     }
@@ -723,7 +724,9 @@ public class CSVReader : MonoBehaviour
         changeSceneAction += delegate { DialogueManager.Instance.ChangeScene(sceneToChangeTo); };
 
         DialogueElement newElement = new DialogueElement(message, tempDialogue.elements.Count,
-            "00:00:00:07", changeSceneAction, true);
+            "00:00:00:07", changeSceneAction);
+
+        newElement.messageType = DialogueElement.MessageType.LINK;
 
         elementBuffer.Add(newElement);
     }

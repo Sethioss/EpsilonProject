@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public static class SaveSystem
 {
@@ -55,13 +56,13 @@ public static class SaveSystem
         stream.Close();
 
     }
-    public static void SaveDialogue()
+    public static void SaveDialogue(List<Dialogue> dialogueListToSaveTo)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
         FileStream stream = File.Open(path, FileMode.Create);
         //DialogueManager.Instance.dialogueList = en attendant, remplacer par la dialogueList spécial
-        DialogueData dialoguedata = new DialogueData(DialogueDisplayer.Instance.dialoguesToSave);
+        DialogueData dialoguedata = new DialogueData(dialogueListToSaveTo);
         formatter.Serialize(stream, dialoguedata);
         stream.Close();
 

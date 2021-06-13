@@ -16,15 +16,22 @@ public class DialogueDisplayer : MonoBehaviour
         }
     }
 
+    #region Display Variables
+    [SerializeField]
+    public enum AllowedMessageType { NORMAL = 0, LINK = 1, LEAVE = 2 };
+    public AllowedMessageType allowedType;
+
     public Dialogue currentDialogue;
     public int currentDialogueElementId = 0;
-    //[HideInInspector]
-    public bool canLaunchSpecialMessage = false;
     [HideInInspector]
-    public bool isLoading = false;
-    public List<Dialogue> dialoguesToSave = new List<Dialogue>();
+    public bool isLoading = false; 
+    #endregion
 
-    #region Timing / Display des dialogues
+    #region Cached variables
+    private DialogueManager cachedDialogueManager;
+    #endregion
+
+    #region Dialogues timing / display variables
 
     private string awaitingReaction;
 
@@ -80,8 +87,8 @@ public class DialogueDisplayer : MonoBehaviour
     private void Start()
     {
         DialogueManager.Instance.onGameSceneEntered = true;
+        cachedDialogueManager = DialogueManager.Instance;
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -119,9 +126,9 @@ public class DialogueDisplayer : MonoBehaviour
     }
 
     #region Save/Load
-    public void SaveDialogueData()
+    public void SaveDialogueData(List<Dialogue> dialogueListToSaveTo)
     {
-        //SaveSystem.SaveDialogue();
+        SaveSystem.SaveDialogue(dialogueListToSaveTo);
     }
 
     public void LoadDialogueData()
@@ -159,25 +166,6 @@ public class DialogueDisplayer : MonoBehaviour
         {
             Dialogue currentlyReadDialogue = DialogueManager.Instance.dialogueList[i];
             currentDialogue = currentlyReadDialogue;
-            for (int j = 0; j < data.numberOfElementsInDialogue[i]; j++)
-            {
-
-                DeleteReplies();
-
-                CreateMessageBubble();
-                DisplayMessageLog(currentBubble, currentlyReadDialogue.elements[j].message);
-                Debug.LogError(j);
-                if (currentlyReadDialogue.elements[j].chosenReplyIndex != -1)
-                {
-                    SendReply(currentlyReadDialogue.elements[j].replies[0]);
-
-                    if (currentlyReadDialogue.elements[j].replies[0].reaction != "")
-                    {
-                        CreateMessageBubble();
-                        DisplayMessageLog(currentBubble, currentlyReadDialogue.elements[j].replies[0].reaction);
-                    }
-                }
-            }
         }
     }
 
@@ -207,11 +195,11 @@ public class DialogueDisplayer : MonoBehaviour
                     Reply templateDialogueReplyInfos = templateDialogue.elements[j].replies[chosenReplyId];
 
                     reply = new Reply(templateDialogueReplyInfos.replyText, templateDialogueReplyInfos.reaction, templateDialogueReplyInfos.index, templateDialogueReplyInfos.reactionTime,
-                        templateDialogueReplyInfos.replyEvent, templateDialogueReplyInfos.isLeaveMessage);
+                        templateDialogueReplyInfos.replyEvent);
                 }
 
-                elementToAdd = new DialogueElement(templateDialogue.elements[j].message, reply, data.elementId[processedGlobalElementId],
-                templateDialogue.elements[j].initiationTime, templateDialogue.elements[j].elementAction, templateDialogue.elements[j].minigameInvite);
+                elementToAdd = new DialogueElement(templateDialogue.elements[j].message, reply,
+                templateDialogue.elements[j].initiationTime, templateDialogue.elements[j].elementAction);
 
 
                 //elementToAdd.replies.Remove(reply);
@@ -263,8 +251,8 @@ public class DialogueDisplayer : MonoBehaviour
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
 
-        dialoguesToSave.Add(new Dialogue());
-        dialoguesToSave[dialoguesToSave.Count - 1].fileName = dialogue.fileName;
+        cachedDialogueManager.dialoguesToSave.Add(new Dialogue());
+        cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].fileName = dialogue.fileName;
 
     }
     private void StopDialogue(Dialogue dialogueToStop)
@@ -282,9 +270,9 @@ public class DialogueDisplayer : MonoBehaviour
         GameObject messagePrefab = null;
         MessageBubble messageBubble = null;
 
-        if(currentDialogue.elements[currentDialogueElementId].leaveConversationMessage)
+        if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LEAVE)
         {
-            if (canLaunchSpecialMessage)
+            if (allowedType == AllowedMessageType.LEAVE)
             {
                 Debug.Log("Creating leaving message bubble");
                 messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
@@ -303,9 +291,9 @@ public class DialogueDisplayer : MonoBehaviour
                 GoToNextElement();
             }
         }
-        else if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
         {
-            if (canLaunchSpecialMessage)
+            if (allowedType == AllowedMessageType.LINK)
             {
                 messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                 messageBubble = messagePrefab.GetComponent<MessageBubble>();
@@ -342,9 +330,8 @@ public class DialogueDisplayer : MonoBehaviour
 
     private void DisplayLinkMessage(MessageBubble messageBubble)
     {
-        if (canLaunchSpecialMessage)
+        if (allowedType == AllowedMessageType.LINK)
         {
-            canLaunchSpecialMessage = false;
             Button button = messageBubble.textBackground.GetComponent<Button>();
             button.enabled = true;
             button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
@@ -355,11 +342,12 @@ public class DialogueDisplayer : MonoBehaviour
             newDialogue = false;
 
             DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
-        currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction, currentDialogue.elements[currentDialogueElementId].minigameInvite);
+            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
 
-            dialoguesToSave[dialoguesToSave.Count - 1].AddDialogueElement(newElement);
+            newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
+            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].AddDialogueElement(newElement);
 
-            SaveDialogueData();
+            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
         }
 
         currentDialogue.elements[currentDialogueElementId].elementAction = null;
@@ -369,9 +357,8 @@ public class DialogueDisplayer : MonoBehaviour
     private void DisplayLeaveMessage(MessageBubble messageBubble)
     {
 
-        if (canLaunchSpecialMessage)
+        if (allowedType == AllowedMessageType.LEAVE)
         {
-            canLaunchSpecialMessage = false;
             currentBubble.SetActive(true);
             messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
 
@@ -382,15 +369,14 @@ public class DialogueDisplayer : MonoBehaviour
             StopDialogue(currentDialogue);
 
             DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
-        currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction, currentDialogue.elements[currentDialogueElementId].minigameInvite);
+             currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
 
-            dialoguesToSave[dialoguesToSave.Count - 1].AddDialogueElement(newElement);
-
-            SaveDialogueData();
+            newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
+            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].AddDialogueElement(newElement);
 
 
             //Display replies if there are
-            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
+            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.LINK)
             {
                 DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
             }
@@ -406,30 +392,34 @@ public class DialogueDisplayer : MonoBehaviour
         MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
 
         //If it's a message sent with a <SCENE> keyword, minigameInvite is set to true
-        if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
+        if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
         {
             DisplayLinkMessage(messageBubble);
         }
-        else if (currentDialogue.elements[currentDialogueElementId].leaveConversationMessage)
+        else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LEAVE)
         {
             DisplayLeaveMessage(messageBubble);
         }
         else
         {
+            allowedType = AllowedMessageType.NORMAL;
+
             messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
             isInitialisation = false;
             bubbleSpawned = false;
             newDialogue = false;
 
+
             DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
-            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction, currentDialogue.elements[currentDialogueElementId].minigameInvite);
+            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
+            
+            newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
+            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].AddDialogueElement(newElement);
 
-            dialoguesToSave[dialoguesToSave.Count - 1].AddDialogueElement(newElement);
-
-            SaveDialogueData();
+            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
 
             //Display replies if there are
-            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
+            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.LINK)
             {
                 DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
             }
@@ -437,49 +427,6 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 GoToNextElement();
             }
-        }
-
-        StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
-    }
-
-    private void DisplayMessageLog(GameObject currentBubble, string messageToSend)
-    {
-        MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
-
-        //If it's a message sent with a <SCENE> keyword, minigameInvite is set to true
-        if (currentDialogue.elements[currentDialogueElementId].minigameInvite)
-        {
-            Button button = messageBubble.textBackground.GetComponent<Button>();
-            button.enabled = true;
-            button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
-            currentDialogue.elements[currentDialogueElementId].elementAction = null;
-        }
-
-        messageBubble.message.text = messageToSend;
-        isInitialisation = false;
-        bubbleSpawned = false;
-        newDialogue = false;
-
-        //Adding new element to dialoguesToSave
-        Reply nullReply = new Reply("", "", 0, "00:00:00:00", null);
-
-        DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, nullReply, currentDialogue.elements[currentDialogueElementId].index,
-            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction, currentDialogue.elements[currentDialogueElementId].minigameInvite);
-        newElement.replies.Remove(nullReply);
-
-        dialoguesToSave[dialoguesToSave.Count - 1].AddDialogueElement(newElement);
-
-        SaveDialogueData();
-
-
-        //Display replies if there are
-        if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && !currentDialogue.elements[currentDialogueElementId].minigameInvite)
-        {
-            DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
-        }
-        else
-        {
-            GoToNextElement();
         }
 
         StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
@@ -502,64 +449,63 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 replyButton.GetComponent<Button>().onClick.AddListener(replies[i].replyEvent);
             }
+
+            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].elements[cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].elements.Count - 1].AddReply(replies[i]);
         }
         isWaitingForReply = true;
     }
 
-    private void SetNewDialogueToFalse()
-    {
-        newDialogue = false;
-    }
     private void SendReply(Reply reply)
     {
-        DialogueManager.Instance.dialogueList[DialogueManager.Instance.dialogueList.Count - 1].elements[currentDialogueElementId].chosenReplyIndex = reply.index;
-        currentDialogue.elements[currentDialogueElementId].chosenReplyIndex = reply.index;
-
-        DialogueElement tempElement = dialoguesToSave[dialoguesToSave.Count - 1].elements[dialoguesToSave[dialoguesToSave.Count - 1].elements.Count - 1];
-        tempElement.chosenReplyIndex = reply.index;
-
-        //Debug.LogError(dialoguesToSave[dialoguesToSave.Count - 1].elements[dialoguesToSave[dialoguesToSave.Count - 1].elements.Count - 1].chosenReplyIndex);
-
         //Display
         DeleteReplies();
 
-        if (!reply.isLeaveMessage)
+        //Create response bubble
+        GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
+        MessageBubble messageBubble = responsePrefab.GetComponent<MessageBubble>();
+
+        messageBubble.message.text = reply.replyText;
+
+        if (messageBubble.profilePictureTransform != null)
         {
-            //Create response bubble
-            GameObject responsePrefab = GameObject.Instantiate(playerBubblePrefab, playerBubblePrefab.transform.position, Quaternion.identity, messagePanel.transform);
-            MessageBubble messageBubble = responsePrefab.GetComponent<MessageBubble>();
-
-            messageBubble.message.text = reply.replyText;
-
-            if (messageBubble.profilePictureTransform != null)
-            {
-                messageBubble.profilePictureTransform.GetComponent<Image>().sprite = userSettings.profilePicture;
-            }
-
-            //Add reply to dialogueToSave
-            Reply newReply = new Reply(reply.replyText, reply.reaction, reply.index, reply.reactionTime, reply.replyEvent, reply.isLeaveMessage);
-
-            dialoguesToSave[dialoguesToSave.Count - 1].elements[dialoguesToSave[dialoguesToSave.Count - 1].elements.Count - 1].AddReply(newReply);
-            //Debug.LogWarning("Saved successfully");
-
-            SaveDialogueData();
-
-            //Set clock to reaction time
-            isWaitingForReply = false;
-            SetWaitingTime(reply.reactionTime);
-            timeManager.StartClock(currentWaitingTime);
-
-            if (reply.reaction == "" || reply.reaction == null)
-            {
-                GoToNextElement();
-            }
-            else
-            {
-                awaitingReaction = reply.reaction;
-            }
-
-            StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
+            messageBubble.profilePictureTransform.GetComponent<Image>().sprite = userSettings.profilePicture;
         }
+
+        //Create element, remove the element created in DisplayMessage, and adds the new one
+        Reply newReply = new Reply(reply.replyText, reply.reaction, reply.index, reply.reactionTime, reply.replyEvent);
+
+        DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, newReply, currentDialogue.elements[currentDialogueElementId].index,
+            currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
+
+
+        //Apply goodReplyIndex to the dialogues
+        int goodReplyIndex = reply.index;
+
+        DialogueManager.Instance.dialogueList[currentDialogue.id].elements[currentDialogueElementId].chosenReplyIndex = goodReplyIndex;
+        currentDialogue.elements[currentDialogueElementId].chosenReplyIndex = goodReplyIndex;
+        newElement.chosenReplyIndex = goodReplyIndex;
+
+        //Saving
+        DialogueManager.Instance.dialoguesToSave[currentDialogue.id].AddDialogueElement(newElement);
+        DialogueManager.Instance.dialoguesToSave[currentDialogue.id].elements.RemoveAt(currentDialogueElementId);
+
+        SaveDialogueData(DialogueManager.Instance.dialoguesToSave);
+
+        //Set clock to reaction time
+        isWaitingForReply = false;
+        SetWaitingTime(reply.reactionTime);
+        timeManager.StartClock(currentWaitingTime);
+
+        if (reply.reaction == "" || reply.reaction == null)
+        {
+            GoToNextElement();
+        }
+        else
+        {
+            awaitingReaction = reply.reaction;
+        }
+
+        StartCoroutine(SetObjectHeightToBackground(responsePrefab, messageBubble.textBackground, messagePanel));
     }
 
     private void DeleteReplies()
@@ -588,6 +534,9 @@ public class DialogueDisplayer : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region Dialogue navigation
     private void GoToNextElement()
     {
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
@@ -633,16 +582,7 @@ public class DialogueDisplayer : MonoBehaviour
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
     }
-    IEnumerator SetObjectHeightToBackground(GameObject messagePrefab, GameObject imageBg, GameObject panel)
-    {
-        yield return new WaitForEndOfFrame();
 
-        panel.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
-
-        messagePrefab.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
-    }
     #endregion
 
     #region Invoke element and dialogue event
@@ -753,6 +693,23 @@ public class DialogueDisplayer : MonoBehaviour
         SaveSystem.SaveTimeToStartWriting(this);
 
 
+    }
+    #endregion
+
+    #region Misc
+    IEnumerator SetObjectHeightToBackground(GameObject messagePrefab, GameObject imageBg, GameObject panel)
+    {
+        yield return new WaitForEndOfFrame();
+
+        panel.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
+
+        messagePrefab.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
+    }
+    private void SetNewDialogueToFalse()
+    {
+        newDialogue = false;
     }
     #endregion
 }

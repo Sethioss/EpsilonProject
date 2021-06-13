@@ -11,18 +11,16 @@ public class Reply
     public string reactionTime;
     public string replyText;
     public string reaction;
-    public bool isLeaveMessage = false;
 
     public UnityAction replyEvent = null;
 
-    public Reply(string reply, string reaction, int index, string reactionTime, UnityAction actions, bool isLeaveMessage = false)
+    public Reply(string reply, string reaction, int index, string reactionTime, UnityAction actions)
     {
         this.replyText = reply;
         this.reaction = reaction;
         this.index = index;
         this.reactionTime = reactionTime;
         this.replyEvent = actions;
-        this.isLeaveMessage = isLeaveMessage;
     }
 
     public Reply() { }
@@ -37,12 +35,13 @@ public class DialogueElement
     public int index;
     public string initiationTime;
     public string message;
-    public bool minigameInvite = false;
-    public bool leaveConversationMessage = false;
+    public enum MessageType { NORMAL = 0, LINK = 1, LEAVE = 2};
+    public MessageType messageType;
+
     public List<Reply> replies = new List<Reply>();
     public UnityAction elementAction;
 
-    public DialogueElement(string message, Reply reply, int index, string initiationTime, UnityAction elementAction, bool isInvite = false)
+    public DialogueElement(string message, Reply reply, int index, string initiationTime, UnityAction elementAction)
     {
         if (message != "")
         {
@@ -57,10 +56,9 @@ public class DialogueElement
         this.index = index;
         this.initiationTime = initiationTime;
         this.elementAction = elementAction;
-        this.minigameInvite = isInvite;
     }
 
-    public DialogueElement(string message, Reply reply, string initiationTime, UnityAction elementAction, bool isInvite = false)
+    public DialogueElement(string message, Reply reply, string initiationTime, UnityAction elementAction)
     {
 
         if (message != "")
@@ -75,11 +73,10 @@ public class DialogueElement
 
         this.initiationTime = initiationTime;
         this.elementAction = elementAction;
-        this.minigameInvite = isInvite;
 
     }
 
-    public DialogueElement(string message, int index, string initiationTime, UnityAction elementAction, bool isInvite = false)
+    public DialogueElement(string message, int index, string initiationTime, UnityAction elementAction)
     {
 
         if (message != "")
@@ -87,9 +84,9 @@ public class DialogueElement
             this.SetMessage(message);
         }
 
+        this.index = index;
         this.initiationTime = initiationTime;
         this.elementAction = elementAction;
-        this.minigameInvite = isInvite;
 
     }
 
