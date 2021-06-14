@@ -561,7 +561,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
-        if (currentDialogueElementId + 1 >= currentDialogue.elements.Count && !cameFromBranch)
+        if (currentDialogueElementId + 1 >= currentDialogue.elements.Count)
         {
             StopDialogue(currentDialogue);
         }
