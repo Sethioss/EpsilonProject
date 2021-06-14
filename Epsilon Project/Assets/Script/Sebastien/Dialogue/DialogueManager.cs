@@ -157,9 +157,10 @@ public class DialogueManager : MonoBehaviour
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
         dialogueToAdd.id = dialogueList.Count;
         dialogueToAdd.fileName = dialogueFile.name;
-        dialogueList.Add(dialogueToAdd);
-        displayer.StartDialogue(dialogueToAdd);
+        AddDialogueToDialogueList(dialogueToAdd);
+        StartDialogue(dialogueToAdd);
     }
+
     //The string function executes when a BRANCH command is called
     public void CreateAndStartDialogue(string dialogueFileName)
     {
@@ -181,11 +182,20 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load("Tables\\" + dialogueFileName));
-        dialogueList.Add(dialogueToAdd);
-        displayer.StartDialogue(dialogueToAdd);
         dialogueToAdd.id = dialogueList.Count - 1;
+        AddDialogueToDialogueList(dialogueToAdd);
+        StartDialogue(dialogueToAdd);
     }
     #endregion
+
+    private void AddDialogueToDialogueList(Dialogue dialogueToAdd)
+    {
+        dialogueList.Add(dialogueToAdd);
+    }
+    private void StartDialogue(Dialogue dialogueToStart)
+    {
+        displayer.StartDialogue(dialogueToStart);
+    }
 
     #region CHECK Command
     public void CompareFloatVariables(string variableToCompare, string variableComparedWith, string firstCommand, string secondCommand, string op)

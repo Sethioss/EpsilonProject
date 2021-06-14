@@ -696,7 +696,7 @@ public class CSVReader : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No dialogue to go to has been set");
+            Debug.LogError("LEAVE :: No dialogue to go to has been set");
         }
 
         leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };

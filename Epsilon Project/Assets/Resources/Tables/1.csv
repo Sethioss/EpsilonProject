@@ -5,7 +5,7 @@ Hey, how are you <i>doing</i>? I know you're using a <DMODEL> btw;Doing okay, wh
 ;;;;;;;
 Okay, you remember that game from our childhood?;Yeah, I remember, it was a great game!;I know right?! <sprite=0>;00:00:01:00;00:00:01:04;<SET>testSetFloat +400,6;<SET>testSet +'358' ;
 ;Yeah, it was a <u>shitty</u> game...;You're kidding? It was fucking awesome!;;00:00:00:08;;;
-;What now?;Oh, you don't remember it? I see...;;00:00:00:03;<LEAVE>;;
+;What now?;Oh, you don't remember it? I see...;;00:00:00:03;;;
 ;;;;;;;
 I'm adding a new message;A new message? Sweet!;Heh, I'm glad you like it :);00:00:00:08;00:00:01:04;<SET>testSet '285' <SET>testSetFloat 800;;
 ;Fuck new messages;Woah, you're so <b>rude</b> wtf!;;00:00:02:20;;;
@@ -14,7 +14,7 @@ And a fourth one;A fourth one? Whatever;You could act <s>a bit</s> more excited!
 ;;;;;;;
 A message with no possible answers;;;00:00:00:02;;;;
 ;;;;;;;
-Hey, do you want to go to the second branch?;Sure, why <u>not</u>?;Okay, let's go!;00:00:00:10;00:00:00:10;<SCENE>SocialMediaMinigame 'Okay, let's go then';;
+Hey, do you want to go to the second branch?;Sure, why <u>not</u>?;Okay, let's go!;00:00:00:10;00:00:00:10;<LINK>SocialMediaMinigame 'Okay, let's go then';;
 ;No thanks;Too bad;;00:00:00:15;<BRANCH>badEnd1;;
 ;;;;;;;
 Okay okay... Waiting...;;;00:00:00:10;;;;

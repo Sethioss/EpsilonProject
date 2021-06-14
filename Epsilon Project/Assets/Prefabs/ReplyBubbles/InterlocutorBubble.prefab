@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBackground: {fileID: 6069068702826285853}
-  profilePicture: {fileID: 0}
+  profilePictureTransform: {fileID: 0}
   message: {fileID: 6968222953841880646}
 --- !u!1 &8870134095437883816
 GameObject:
