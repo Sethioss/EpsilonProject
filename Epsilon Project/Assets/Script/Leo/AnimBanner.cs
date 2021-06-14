@@ -14,12 +14,12 @@ public class AnimBanner : MonoBehaviour
     {
         if (Open == false)
         {
-            anim.SetBool("Opning", true);
+            anim.SetBool("Open", true);
             Open = true;
         }
         else
         {
-            anim.SetBool("Opning", false);
+            anim.SetBool("Open", false);
             Open = false;
         }
     }
