@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene/MjChatScene.unity
     guid: 6a78a27446a9d304da749f152b1a87aa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LeoScene/LeoTest.unity
     guid: db040492d245cb84e86c93a5ff2fb4f8
   m_configObjects: {}

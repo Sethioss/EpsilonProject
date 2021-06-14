@@ -2688,16 +2688,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
+  displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 49743786ce9695f40874be5a6d380958, type: 3}
   dialogueList: []
+  dialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  autoMode: 1
-  autoModeWaitingTime: 00:00:00:00
-  inactivePeriods: 1
-  inactivePeriodStartHour: 1
-  inactivePeriodEndHour: 7
+  dialogueSavingDebug: 0
   m_testSet: 45
   m_testSetFloat: 7
   username: Sebilol
@@ -3692,7 +3690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &583892608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7212,8 +7210,8 @@ MonoBehaviour:
     your energy from your  body, to the Tree God. This is by far the most vital step
     for it is how you will be able to join the
 
-    Tree God at the end of this
-    world, and be reborn as a superior being once the new age starts.'
+    Tree God at the end of this world,
+    and be reborn as a superior being once the new age starts.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7475,7 +7473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -827.49994}
+  m_AnchoredPosition: {x: 0, y: -827.5001}
   m_SizeDelta: {x: 800, y: 1655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278162320
@@ -8229,7 +8227,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -104}
-  m_SizeDelta: {x: 800, y: 1496}
+  m_SizeDelta: {x: 800, y: 1318.2}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1432113493
 MonoBehaviour:
