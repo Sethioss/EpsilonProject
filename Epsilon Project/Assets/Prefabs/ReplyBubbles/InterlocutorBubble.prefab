@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3241228590548129333}
   - component: {fileID: 5729471819845240039}
   m_Layer: 5
-  m_Name: Texture
+  m_Name: Pfp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBackground: {fileID: 6069068702826285853}
-  profilePictureTransform: {fileID: 0}
+  profilePictureTransform: {fileID: 3405532696687035865}
   message: {fileID: 6968222953841880646}
 --- !u!1 &8870134095437883816
 GameObject:

@@ -13,7 +13,7 @@ public class DialogueData
     public int currentElement;
 
     public int initialisation;
-    public int waitSent;
+    public int waitForReply;
 
     public DialogueData() { }
     public DialogueData(List<Dialogue> dialogueToSave)
@@ -72,11 +72,11 @@ public class DialogueData
 
         if (displayer.isWaitingForReply == true)
         {
-            waitSent = 1;
+            waitForReply = 1;
         }
         else
         {
-            waitSent = 0;
+            waitForReply = 0;
         }
     }
 }

@@ -182,7 +182,7 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load("Tables\\" + dialogueFileName));
-        dialogueToAdd.id = dialogueList.Count - 1;
+        dialogueToAdd.id = dialogueList.Count;
         AddDialogueToDialogueList(dialogueToAdd);
         StartDialogue(dialogueToAdd);
     }

@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:01
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 1
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7
@@ -9030,14 +9030,14 @@ MonoBehaviour:
   onGameSceneEntered: 0
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 029e902d75aec7d4d8c25957ac7876d4, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: 58e8c0923d9632b4e977a36f89a23712, type: 3}
   dialogueList: []
   dialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
   dialogueSavingDebug: 0
   m_testSet: 20
-  m_testSetFloat: 10
+  m_testSetFloat: 60
   username: Sebilol
 --- !u!4 &1863533797
 Transform:
