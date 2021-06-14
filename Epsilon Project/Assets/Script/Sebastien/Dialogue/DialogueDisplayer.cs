@@ -52,7 +52,8 @@ public class DialogueDisplayer : MonoBehaviour
     [HideInInspector]
     public bool cameFromBranch = false;
 
-    private GameObject currentBubble;
+    [HideInInspector]
+    public GameObject currentBubble;
 
     [Header("Message Area")]
     public GameObject messagePanel;
@@ -95,8 +96,6 @@ public class DialogueDisplayer : MonoBehaviour
             LoadDialogueData();
         }
 
-        if (!isLoading)
-        {
             if (!isWaitingForReply)
             {
                 if (!bubbleSpawned)
@@ -120,7 +119,6 @@ public class DialogueDisplayer : MonoBehaviour
                 }
 
             }
-        }
     }
 
     #region Save/Load
@@ -312,7 +310,7 @@ public class DialogueDisplayer : MonoBehaviour
     #endregion
 
     #region Element display methods
-    private void CreateMessageBubble()
+    public void CreateMessageBubble()
     {
         GameObject messagePrefab = null;
         MessageBubble messageBubble = null;
@@ -561,7 +559,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
-        if (currentDialogueElementId + 1 >= currentDialogue.elements.Count && !cameFromBranch)
+        if (currentDialogueElementId + 1 >= currentDialogue.elements.Count)
         {
             StopDialogue(currentDialogue);
         }
