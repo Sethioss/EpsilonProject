@@ -17,7 +17,7 @@ public class ProflleUpdate : MonoBehaviour
     void Update()
     {
         UsernameText.text = Username;
-        BirthDateText.text = Day + Month + Year;
+        BirthDateText.text = Day + "/" +  Month + "/" +  Year;
         PhoneNumberText.text = PhoneNumber;
     }
 
