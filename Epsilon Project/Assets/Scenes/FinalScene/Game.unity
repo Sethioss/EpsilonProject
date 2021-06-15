@@ -1459,8 +1459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoMode: 0
-  autoModeWaitingTime: 00:00:00:01
+  autoMode: 1
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 1
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
@@ -6172,9 +6172,10 @@ MonoBehaviour:
     elements: []
   currentDialogueElementId: 0
   isLoading: 0
+  tempWaitingForReply: 0
+  tempIsInitialisation: 0
   isInitialisation: 1
   isWaitingForReply: 0
-  jumpToMessage: 0
   cameFromBranch: 0
   currentBubble: {fileID: 0}
   messagePanel: {fileID: 2109942662}

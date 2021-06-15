@@ -124,11 +124,14 @@ public class DialogueManager : MonoBehaviour
     {
         if (!displayer.isLoading)
         {
-            displayer.cameFromBranch = true;
-            if (dialogueFileName != "")
+            if (!displayer.cameFromBranch)
             {
-                CreateAndStartDialogue(dialogueFileName);
-            }
+                displayer.cameFromBranch = true;
+                if (dialogueFileName != "")
+                {
+                    dialogueList.Insert(dialogueList.Count, CreateDialogue(dialogueFileName));
+                }
+            }            
         }
     }
 
@@ -140,7 +143,7 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(currentDialogueFile);
-        dialogueToAdd.id = dialogueList.Count - 1;
+        dialogueToAdd.id = dialogueList.Count;
         dialogueToAdd.fileName = dialogueFileName;
 
         return dialogueToAdd;

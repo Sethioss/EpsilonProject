@@ -12,10 +12,10 @@ public class DialogueData
     public List<int> numberOfElementsInDialogue;
     public int currentElement;
 
-    public int initialisation;
-    public int waitForReply;
+    public int initialisation = 0;
+    public int waitForReply = 0;
 
-    public DialogueData() { }
+    //public DialogueData() { }
     public DialogueData(List<Dialogue> dialogueToSave)
     {
         DialogueDisplayer displayer = DialogueManager.Instance.displayer;
@@ -26,25 +26,28 @@ public class DialogueData
         numberOfElementsInDialogue = new List<int>();
         currentElement = displayer.currentDialogueElementId;
 
+        //Debug.LogWarning("========= New save call ==========");
         //Fetch all dialogues
         for (int i = 0; i < dialogueToSave.Count; i++)
         {
+            //Debug.LogWarning("i = " + i);
             int elementsInDialogue = 0;
 
-            //Debug.LogWarning("Dialogue file name : " + dialogueToSave[i].fileName);
             dialogueFileName.Add(dialogueToSave[i].fileName);
+            //Debug.LogWarning("Dialogue file name : " + dialogueToSave[i].fileName);
 
             //Fetch all elements
             for (int j = 0; j < dialogueToSave[i].elements.Count; j++)
             {
-
                 //Debug.LogWarning("Current element : " + j);
                 //Debug.LogWarning("Current element message : " + dialogueToSave[i].elements[j].message);
                 elementId.Add(dialogueToSave[i].elements[j].index);
                 elementsInDialogue++;
 
                 DialogueElement element = dialogueToSave[i].elements[j];
-                if (element.replies.Count > 0 && element.messageType == DialogueElement.MessageType.LINK)
+
+                //Debug.LogWarning("Chosen reply index : " + element.chosenReplyIndex);
+                if (element.replies.Count > 0)
                 {
                     //Debug.LogWarning("Chosen reply message : " + element.replies[0].replyText);
                     if (element.replies[0].reaction != "")
@@ -52,31 +55,24 @@ public class DialogueData
                         //Debug.LogWarning("Chosen reply reaction : " + element.replies[0].reaction);
                     }
                 }
-
                 chosenReplyId.Add(element.chosenReplyIndex);
-
             }
 
             //Debug.LogWarning("This dialogue has " + elementsInDialogue + " elements in it");
             numberOfElementsInDialogue.Add(elementsInDialogue);
         }
 
-        if (displayer.isInitialisation == true)
+        if (displayer.tempIsInitialisation)
         {
             initialisation = 1;
         }
-        else
-        {
-            initialisation = 0;
-        }
+        //Debug.LogError("isInitialisation = " + initialisation);
 
-        if (displayer.isWaitingForReply == true)
+        if (displayer.tempWaitingForReply)
         {
             waitForReply = 1;
         }
-        else
-        {
-            waitForReply = 0;
-        }
+        //Debug.LogError("isWaitingForReply = " + waitForReply);
+
     }
 }

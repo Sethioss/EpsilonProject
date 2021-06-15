@@ -61,7 +61,6 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
         FileStream stream = File.Open(path, FileMode.Create);
-        //DialogueManager.Instance.dialogueList = en attendant, remplacer par la dialogueList spécial
         DialogueData dialoguedata = new DialogueData(dialogueListToSaveTo);
         formatter.Serialize(stream, dialoguedata);
         stream.Close();
