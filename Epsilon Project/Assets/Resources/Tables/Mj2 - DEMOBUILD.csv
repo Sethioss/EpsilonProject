@@ -1,13 +1,13 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
 Vous avez apprécié mon petit jeu?;;;;;;;
 ;;;;;;;
-Attend;;;;;;;
+Attends.;;;;;;;
 ;;;;;;;
 T'es qui?;;;;;;;
 ;;;;;;;
 T'es lié à eux?;Je pense, oui?;;;;;;
 ;;;;;;;
-Tu sais dans quoi tu rentre?;Oui, je sais.;Si tu sais c'est bien.;;;;;
+Tu sais dans quoi tu t'engages?;Oui, je sais.;Si tu sais c'est bien.;;;;;
 ;Je suis forcé de faire ce que je fais, je comprend rien à vos histoires!;Je vois ce qu'ils font.;;;;;
 ;;;;;;;
 Un conseil, trouve un moyen de t'éloigner de tout ça.;;;;;;;

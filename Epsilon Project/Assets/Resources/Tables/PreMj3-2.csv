@@ -1,21 +1,21 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-C'est simple. Disons qu'on vit tous d'une façon assez confortable;;;;;;;
+C'est simple. Disons que l'on vit tous d'une façon assez confortable.;;;;;;;
 ;;;;;;;
-Et qu'on ne se soit jamais réellement questionné sur ce mode de vie.;Questionné sur quoi?;;;;;;
+Et qu'on ne se soit jamais réellement questionnés sur ce mode de vie.;Questionnés sur quoi?;;;;;;
 ;Va droit au but!;;;;;;
 ;;;;;;;
-On s'est habitué à notre train de vie actuel;;;;;;;
+On s'est habitués à notre train de vie actuel.;;;;;;;
 ;;;;;;;
 Sans jamais se poser la question…;;;;;;;
 ;;;;;;;
-Est-ce un mode de vie viable?;Dans le temps?;Oui;;;;;
-;Je vis plutôt confortablement personnellement;Pas dans ce sens…;;;;;
+Est-ce un mode de vie viable?;Dans le temps?;Oui.;;;;;
+;Je vis plutôt confortablement personnellement.;Pas dans ce sens…;;;;;
 ;;;;;;;
 Est-ce qu'on peut se permettre de vivre ainsi encore très longtemps?;;;;;;;
 ;;;;;;;
 Est-ce qu'on peut continuer de s'appuyer sur nos ressources limitées plus longtemps?;;;;;;;
 ;;;;;;;
-Tu t'en doutes, mais la réponse est non;;;;;;;
+Tu t'en doutes, mais la réponse est non.;;;;;;;
 ;;;;;;;
-L'humain court tout simplement à sa propre perte;Ah…;;;;<BRANCH>PreMj3-3;;
+L'�tre humain court tout simplement à sa propre perte.;Ah…;;;;<BRANCH>PreMj3-3;;
 ;C'est si grave?;;;;<BRANCH>PreMj3-2a;;

@@ -1,19 +1,19 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
 Tu es là?;Oui;;00:12:00:00;;;;
 ;;;;;;;
-Bien, je suis prêt à infiltrer le bâtiment, je vais te briefer rapidement puis je vais te laisser directement le lien;;;;;;;
+Bien, je suis prêt à infiltrer le bâtiment, je vais te briefer rapidement, puis je vais te laisser directement le lien.;;;;;;;
 ;;;;;;;
-Tu devras attendre 5 minutes avant que je ne sois dans le bâtiment et que tu puisses faire quoique ce soit;;;;;;;
+Tu devras attendre 5 minutes avant que je sois dans le bâtiment et que tu puisses faire quoique ce soit.;;;;;;;
 ;;;;;;;
-Je t'explique donc;Ok;;;;;;
+Je t'explique donc.;Ok;;;;;;
 ;;;;;;;
-Tu auras une sorte de plan du bâtiment. Moi, je serais représenté par une capsule jaune. Les caméras et leur champ de vision par un cône;;;;;;;
+Tu auras une sorte de plan du bâtiment. Moi, je serais représenté par une capsule jaune. Les caméras et leurs champs de vision par des cônes.;;;;;;;
 ;;;;;;;
 Tu devras t'assurer que je ne passe pas dans les cônes de vision tout le long de l'infiltration.;;;;;;;
 ;;;;;;;
-Tu auras juste à sélectionner les caméras une par une. Elles seront ''désactivées'' pendant quelques instants. Ça sera suffisant pour que je puisse passer en dessous si tu te foires pas trop sur le timing;;;;;;;
+Tu auras juste à sélectionner les caméras une par une. Elles seront ''désactivées'' pendant quelques instants. Ça sera suffisant pour que je puisse passer en dessous si tu ne te foires pas trop sur le timing.;;;;;;;
 ;;;;;;;
-Dis-moi quand tu es prêt, je t'enverrai le lien quand je serais entré dans le bâtiment, d'accord?;C'est compris;;;;;;
+Dis-moi quand tu es prêt, je t'enverrai le lien quand je serai entré dans le bâtiment, d'accord?;C'est compris;;;;;;
 ;Je suis pas sûr d'avoir compris…;On a plus le temps, relis les messages et attend que je t'envoie le lien;;;;;
 ;;;;;;;
 Je compte sur toi.;;;;;;<LINK>StealthMinigame;

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using TMPro;
 
 public class CharacterBehaviour : MonoBehaviour
 {
@@ -18,6 +20,10 @@ public class CharacterBehaviour : MonoBehaviour
     public GameObject winScreen, loseScreen;
     public int NumberGoal = 0;
     private CameraManager cameraManager;
+    public GameObject textBox;
+    public TMP_Text textBoxText;
+    public string[] stopTexts;
+    bool textHasToChange = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +49,12 @@ public class CharacterBehaviour : MonoBehaviour
 
     public IEnumerator WaitAround(float waitTime)
     {
+        if(textHasToChange == true) { 
+        int dialogueNumber = Random.Range(0, stopTexts.Length);
+        textBoxText.text = stopTexts[dialogueNumber];
+            textHasToChange = false;
+        textBox.SetActive(true);
+        }
         yield return new WaitForSeconds(waitTime);
         if (teleportDestinations[step] != 0)
         {
@@ -65,6 +77,8 @@ public class CharacterBehaviour : MonoBehaviour
                     break;
             }
         }
+        textBox.SetActive(false);
+        textHasToChange = true;
         agent.SetDestination(destinations[step].transform.position);
             step++;
     }
