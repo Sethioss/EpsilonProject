@@ -13,6 +13,7 @@ public class OptionMenu : MonoBehaviour
     public Toggle inactivePeriodsToggle;
     public Toggle autoModeToggle;
     public TMP_Dropdown languageDropdown;
+    bool audioMuted;
 
     private int sliderMinTimeValue = 1;
     private int sliderMaxTimeValue = 7;
@@ -131,5 +132,20 @@ public class OptionMenu : MonoBehaviour
         userSettings.autoMode = autoModeToggleValue;
     }
 
-
+    private void MuteAudio()
+    {
+        if (!audioMuted)
+            SetAudioMute(false);
+        else if (audioMuted)
+            SetAudioMute(true);
+    }
+    private void SetAudioMute(bool mute)
+    {
+        AudioSource[] sources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        for (int index = 0; index < sources.Length; ++index)
+        {
+            sources[index].mute = mute;
+        }
+        audioMuted = mute;
+    }
 }
