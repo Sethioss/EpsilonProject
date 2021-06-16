@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:00
+  autoModeWaitingTime: 00:00:00:02
   inactivePeriods: 1
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20

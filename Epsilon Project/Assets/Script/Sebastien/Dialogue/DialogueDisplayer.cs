@@ -178,6 +178,7 @@ public class DialogueDisplayer : MonoBehaviour
         if (data != null)
         {
             isLoading = true;
+
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
             DisplayLoadedDialogue(cachedDialogueManager.dialogueList);
@@ -259,9 +260,16 @@ public class DialogueDisplayer : MonoBehaviour
         }
         return toLoad;
     }
-
     public void DisplayLoadedDialogue(List<Dialogue> loadedDialogues)
     {
+        isInitialisation = true;
+        isWaitingForReply = false;
+        bubbleSpawned = false;
+
+        Destroy(currentBubble);
+        currentBubble = null;
+        awaitingReaction = null;
+
         //Chaque dialogue
         for (int i = 0; i < loadedDialogues.Count; i++)
         {
@@ -275,7 +283,6 @@ public class DialogueDisplayer : MonoBehaviour
                 //Chaque élément
                 for (int j = 0; j < loadedDialogues[i].elements.Count; j++)
                 {
-                    allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
                     CreateMessageBubble();
                     DisplayMessage();
                     if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
@@ -292,7 +299,7 @@ public class DialogueDisplayer : MonoBehaviour
             else
             {
                 //Chaque élément
-                for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count; j++)
+                for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count - 1; j++)
                 {
                     allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
                     CreateMessageBubble();
@@ -367,7 +374,6 @@ public class DialogueDisplayer : MonoBehaviour
         GameObject messagePrefab = null;
         MessageBubble messageBubble = null;
 
-
         if (isLoading)
         {
             if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LEAVE)
@@ -383,9 +389,6 @@ public class DialogueDisplayer : MonoBehaviour
                 bubbleSpawned = true;
 
                 StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
-                GoToNextElement();
-
-                currentDialogue.elements[currentDialogueElementId].elementAction = null;
             }
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
@@ -401,8 +404,6 @@ public class DialogueDisplayer : MonoBehaviour
                 bubbleSpawned = true;
 
                 StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
-                currentDialogue.elements[currentDialogueElementId].elementAction = null;
-                GoToNextElement();
 
             }
             else
@@ -425,7 +426,6 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 if (allowedType == AllowedMessageType.LEAVE)
                 {
-                    Debug.Log("Creating leaving message bubble");
                     messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                     messageBubble = messagePrefab.GetComponent<MessageBubble>();
 
@@ -436,18 +436,17 @@ public class DialogueDisplayer : MonoBehaviour
                     bubbleSpawned = true;
 
                     StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+                    currentDialogue.elements[currentDialogueElementId].elementAction = null;
                 }
                 else
                 {
                     GoToNextElement();
                 }
-                currentDialogue.elements[currentDialogueElementId].elementAction = null;
             }
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
                 if (allowedType == AllowedMessageType.LINK)
                 {
-                    Debug.Log("Creating link bubble");
                     messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                     messageBubble = messagePrefab.GetComponent<MessageBubble>();
 
@@ -483,7 +482,43 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void DisplayMessage()
     {
-        if (!isLoading)
+        if (isLoading)
+        {
+            //Tous les types de message
+            MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
+            DialogueElement newElement = new DialogueElement();
+
+            messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
+
+            isInitialisation = false;
+            bubbleSpawned = false;
+
+            if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
+            {
+                allowedType = AllowedMessageType.LINK;
+                newElement = CreateLinkMessageElement(messageBubble);
+            }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LEAVE)
+            {
+                allowedType = AllowedMessageType.LEAVE;
+                newElement = CreateLeaveMessageElement(messageBubble);
+            }
+            else
+            {
+                allowedType = AllowedMessageType.NORMAL;
+
+                newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
+                currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
+                newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
+            }
+
+            if (currentDialogue.elements[currentDialogueElementId].replies.Count < 1)
+            {
+                GoToNextElement();
+            }
+
+        }
+        else
         {
             //Tous les types de message
             MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
@@ -527,39 +562,6 @@ public class DialogueDisplayer : MonoBehaviour
 
             StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
         }
-        else
-        {
-            //Tous les types de message
-            MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
-            DialogueElement newElement = new DialogueElement();
-
-            messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
-
-            isInitialisation = false;
-            bubbleSpawned = false;
-
-            if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
-            {
-                newElement = CreateLinkMessageElement(messageBubble);
-            }
-            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LEAVE)
-            {
-                newElement = CreateLeaveMessageElement(messageBubble);
-            }
-            else
-            {
-                allowedType = AllowedMessageType.NORMAL;
-
-                newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
-                currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
-                newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
-            }
-
-            if (currentDialogue.elements[currentDialogueElementId].replies.Count < 1)
-            {
-                GoToNextElement();
-            }
-        }
 
 
 
@@ -581,8 +583,6 @@ public class DialogueDisplayer : MonoBehaviour
     private DialogueElement CreateLeaveMessageElement(MessageBubble messageBubble)
     {
         currentBubble.SetActive(true);
-
-        StopDialogue(currentDialogue);
 
         DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
          currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
@@ -650,9 +650,7 @@ public class DialogueDisplayer : MonoBehaviour
             //Create element, remove the element created in DisplayMessage, and adds the new one
             Reply newReply = new Reply(reply.replyText, reply.reaction, goodReplyIndex, reply.reactionTime, reply.replyEvent);
 
-            DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, newReply, currentDialogue.elements[currentDialogueElementId].index,
-                currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
-            newElement.chosenReplyIndex = goodReplyIndex;
+            DialogueElement newElement = currentDialogue.elements[currentDialogueElementId];
 
             isWaitingForReply = false;
 

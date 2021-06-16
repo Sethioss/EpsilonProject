@@ -12,6 +12,8 @@ public class Reply
     public string replyText;
     public string reaction;
 
+    public bool reactionSent;
+
     public UnityAction replyEvent = null;
 
     public Reply(string reply, string reaction, int index, string reactionTime, UnityAction actions)
