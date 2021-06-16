@@ -120,14 +120,18 @@ public class OptionMenu : MonoBehaviour
         userSettings.inactivePeriods = inactiveToggleValue;
         inactivePeriodsToggle.isOn = inactiveToggleValue;
 
-        UpdateMinMaxTimeInManager();
         XMLManager.Instance.UpdateHour();
-        if(DialogueManager.Instance.displayer.currentBubble == null)
+        if (inactivePeriodsToggle.isOn)
         {
-            DialogueManager.Instance.displayer.CreateMessageBubble();
-        }
-        DialogueManager.Instance.timeManager.ResetClock();
-        DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
+            if (DialogueManager.Instance.displayer.currentBubble == null)
+            {
+                DialogueManager.Instance.displayer.CreateMessageBubble();
+            }
+            DialogueManager.Instance.timeManager.ResetClock();
+            DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
+        }       
+
+        UpdateMinMaxTimeInManager();
         UpdateMenu();
     }
 

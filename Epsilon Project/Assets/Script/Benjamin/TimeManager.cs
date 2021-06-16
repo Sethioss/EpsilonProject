@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(instance);
+            //DontDestroyOnLoad(instance);
         }
 
         if (this != instance)
@@ -41,7 +41,7 @@ public class TimeManager : MonoBehaviour
     }
     private void Start()
     {
-        DontDestroyOnLoad(instance);
+        //DontDestroyOnLoad(instance);
         userSettings = UserSettings.Instance;
     }
 

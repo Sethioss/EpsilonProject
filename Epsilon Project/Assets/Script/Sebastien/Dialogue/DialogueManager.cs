@@ -555,6 +555,7 @@ public class DialogueManager : MonoBehaviour
                 sceneToChangeTo = GameManager.Instance.gameSceneName;
             }
 
+            DialogueManager.Instance.timeManager.ResetClock();
             SceneManager.LoadScene(sceneToChangeTo);
         }
     }

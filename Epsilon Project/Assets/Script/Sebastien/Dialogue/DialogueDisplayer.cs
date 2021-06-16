@@ -91,6 +91,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         DialogueManager.Instance.onGameSceneEntered = true;
         cachedDialogueManager = DialogueManager.Instance;
+
     }
     private void Update()
     {
@@ -189,58 +190,60 @@ public class DialogueDisplayer : MonoBehaviour
     }
     public List<Dialogue> RecreateDialogueListFromData(DialogueData data)
     {
-        int processedGlobalElementId = 0;
+        int processedGlobalElement = 0;
         List<Dialogue> toLoad = new List<Dialogue>();
 
         //Pour chaque dialogue
         for (int i = 0; i < data.dialogueFileName.Count; i++)
         {
-            Debug.LogError("Checking dialogue " + data.dialogueFileName[i]);
+            //Debug.LogError("Checking dialogue " + data.dialogueFileName[i]);
             Dialogue templateDialogue = cachedDialogueManager.CreateDialogue(data.dialogueFileName[i]);
             Dialogue dialogueToCreate = new Dialogue();
             dialogueToCreate.fileName = data.dialogueFileName[i];
             dialogueToCreate.id = templateDialogue.id;
-            //Debug.LogWarning("Number of elements in dialogue " + data.numberOfElementsInDialogue[i]);
 
+            //Debug.LogWarning("Number of elements in dialogue " + data.numberOfElementsInDialogue[i]);
             dialogueToCreate.id = i;
+
             //Pour chaque élément
             for (int j = 0; j < templateDialogue.elements.Count; j++)
             {
-
-                //Debug.LogError("Checking element " + data.elementId[processedGlobalElementId]);
+                //Debug.LogError(processedGlobalElement);
+                //Debug.LogError("Checking element " + currentDialogue.elements[j].index);
                 //If the save data indicates that the player has already passed this element
                 if (templateDialogue.elements[j].index < data.numberOfElementsInDialogue[i])
                 {
-                    //Only keeps the element if the saved element and dialogue element id match (Some cases cause the dialogues to skip one element, this if statement is here to mitigate errors)
-                    //Debug.LogError("Checking if it's a dialogue element of the save or the og dialogue");
-                    if (templateDialogue.elements[j].index == data.elementId[processedGlobalElementId])
+                    //Checks if the element ID exists in the save dialogue
+                    for (int h = 0; h < data.numberOfElementsInDialogue[i]; h++)
                     {
+                        //Debug.LogWarning("Data element ID " + data.elementId[h]);
+                        //Debug.LogWarning("Template dialogue element ID " + templateDialogue.elements[j].index);
 
-                        //Debug.LogError("Creating the new element");
-                        DialogueElement element = new DialogueElement(templateDialogue.elements[j].message,
-                            templateDialogue.elements[j].index, templateDialogue.elements[j].initiationTime, null);
-                        element.chosenReplyIndex = data.chosenReplyId[processedGlobalElementId];
+                        int globalElementInLoop = h + processedGlobalElement;
 
-                        element.messageType = templateDialogue.elements[j].messageType;
-
-                        //Debug.LogError("Knowing if the player has replied");
-                        //Has the player answered the element (Also checks if the element has replies)
-                        if (templateDialogue.elements[j].replies.Count > 0 && templateDialogue.elements[j].chosenReplyIndex != -1)
+                        if (data.elementId[globalElementInLoop] == templateDialogue.elements[j].index)
                         {
-                            //Debug.LogError("The player has replied with the index : " + element.chosenReplyIndex);
-                            element.AddReply(templateDialogue.elements[j].replies[data.chosenReplyId[processedGlobalElementId]]);
-                        }
-                        else
-                        {
+                            //Debug.LogError("Creating the new element");
+                            DialogueElement element = new DialogueElement(templateDialogue.elements[j].message,
+                                templateDialogue.elements[j].index, templateDialogue.elements[j].initiationTime, templateDialogue.elements[j].elementAction);
+                            element.chosenReplyIndex = data.chosenReplyId[globalElementInLoop];
+
+                            element.messageType = templateDialogue.elements[j].messageType;
+
+                            //Debug.LogError("Knowing if the player has replied");
+                            //Has the player answered the element (Also checks if the element has replies)
+                            //Debug.LogError("Creating the reply");
                             //Debug.LogError("The player hasn't replied");
                             foreach (Reply replyInTemplate in templateDialogue.elements[j].replies)
                             {
                                 element.AddReply(replyInTemplate);
                             }
-                        }
 
-                        //Adds the created element
-                        dialogueToCreate.AddDialogueElement(element);
+                            //Adds the created element
+                            dialogueToCreate.AddDialogueElement(element);
+                            //Debug.LogError("The element was created successfully!");
+                            break;
+                        }
                     }
                 }
                 else
@@ -249,10 +252,9 @@ public class DialogueDisplayer : MonoBehaviour
                     newElement.messageType = templateDialogue.elements[j].messageType;
                     dialogueToCreate.AddDialogueElement(templateDialogue.elements[j]);
                 }
-
-                processedGlobalElementId++;
             }
 
+            processedGlobalElement += data.numberOfElementsInDialogue[i];
             toLoad.Add(dialogueToCreate);
         }
         return toLoad;
@@ -290,18 +292,18 @@ public class DialogueDisplayer : MonoBehaviour
             else
             {
                 //Chaque élément
-                for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count - 1; j++)
+                for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count; j++)
                 {
                     allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
                     CreateMessageBubble();
                     DisplayMessage();
                     if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
                     {
-                        SendReply(loadedDialogues[i].elements[j].replies[0]);
-                        if (loadedDialogues[i].elements[j].replies[0].reaction != "")
+                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
                         {
                             CreateMessageBubble();
-                            DisplayReaction(loadedDialogues[i].elements[j].replies[0].reaction);
+                            DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
                         }
                     }
                 }

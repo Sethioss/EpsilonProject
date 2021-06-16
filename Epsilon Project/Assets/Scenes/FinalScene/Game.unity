@@ -9032,14 +9032,14 @@ MonoBehaviour:
   onGameSceneEntered: 0
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: 298df11f7dc57124397a464a789b3599, type: 3}
   dialogueList: []
   dialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
   dialogueSavingDebug: 0
   m_testSet: 20
-  m_testSetFloat: 60
+  m_testSetFloat: 20
   username: Sebilol
 --- !u!4 &1863533797
 Transform:
