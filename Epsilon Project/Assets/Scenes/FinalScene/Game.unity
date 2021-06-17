@@ -6175,9 +6175,11 @@ MonoBehaviour:
   tempWaitingForReply: 0
   tempIsInitialisation: 0
   tempHasReplied: 0
+  tempHasReacted: 0
   isInitialisation: 1
   isWaitingForReply: 0
   hasReplied: 0
+  hasReacted: 1
   cameFromBranch: 0
   currentBubble: {fileID: 0}
   messagePanel: {fileID: 2109942662}

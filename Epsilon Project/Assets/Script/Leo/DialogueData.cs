@@ -15,6 +15,7 @@ public class DialogueData
     public int initialisation = 0;
     public int waitForReply = 0;
     public int replied = 0;
+    public int reacted = 0;
 
     //public DialogueData() { }
     public DialogueData(List<Dialogue> dialogueToSave)
@@ -78,6 +79,11 @@ public class DialogueData
         if (displayer.tempHasReplied)
         {
             replied = 1;
+        }
+
+        if (displayer.tempHasReacted)
+        {
+            reacted = 1;
         }
 
     }
