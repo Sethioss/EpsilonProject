@@ -21,6 +21,7 @@ public class AnimCamera : MonoBehaviour
             
         
     }
+
     public void ChangeAnim()
     {
         if (Desactive == true)
