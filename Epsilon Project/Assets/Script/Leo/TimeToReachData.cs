@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TimeToReachData : MonoBehaviour
+public class TimeToReachData
 {
     public static TimeToReachData Instance { set; get; }
     public int sec;
@@ -11,11 +11,11 @@ public class TimeToReachData : MonoBehaviour
     public int hour;
     public int day;
 
-    public TimeToReachData(TimeManager timeToReach)
+    public TimeToReachData(TimeManager timeManager)
     {
-        sec = timeToReach.second;
-        min = timeToReach.minute;
-        hour = timeToReach.hour;
-        day = timeToReach.day;
+        sec = timeManager.timeToReach.Second;
+        min = timeManager.timeToReach.Minute;
+        hour = timeManager.timeToReach.Hour;
+        day = timeManager.timeToReach.Day;
     }
 }

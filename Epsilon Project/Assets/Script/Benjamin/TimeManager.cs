@@ -9,6 +9,7 @@ public class TimeManager : MonoBehaviour
     public System.DateTime storedTime;
     public System.DateTime currentTime;
     public System.DateTime timeToReach;
+
     public bool currentlyWaiting = false;
     public float timeValue = 60;
     public Text timerText;
@@ -53,6 +54,7 @@ public class TimeManager : MonoBehaviour
             Debug.Log("The wait is over");
             //currentlyWaiting = false;
         }
+
         //Calcule le temps en temps réél quand l'appli est ouverte
         //if(timeValue > 0) { 
         //timeValue -= Time.deltaTime;
@@ -67,18 +69,39 @@ public class TimeManager : MonoBehaviour
 
     }
 
-    public void StartWaiting(float secondsToWait)
+    public void SetClockGoal(string input)
     {
-        storedTime = System.DateTime.UtcNow.ToLocalTime();
-        Debug.Log("The wait started at " + storedTime.ToString("HH:mm:ss"));
-        timeToReach = storedTime.AddSeconds(secondsToWait);
-        Debug.Log("You will have to wait until " + timeToReach.ToString("HH:mm:ss"));
-        currentlyWaiting = true;
-        notificationScript.SendNotification(secondsToWait);
-        //timeToReach = storedTime.AddDays(values[0]);
-        //timeToReach = timeToReach.AddHours(values[1]);
-        //timeToReach = timeToReach.AddMinutes(values[2]);
-        //timeToReach = timeToReach.AddSeconds(values[3]);
+        //Parse the data into a readable DateTime object format
+        //Converts each string into an int that corresponds (stringToDate[0] = Days ... -> stringToDate[3] = Seconds), then to a DateTime object
+
+        //MinValue initializes day at 1. Accounted for in the "StartWaiting" function
+        System.DateTime timeToStore = System.DateTime.MinValue;
+
+        string[] splitInput = input.Split(new char[] { ':' }, System.StringSplitOptions.RemoveEmptyEntries);
+        int[] stringToInt = new int[splitInput.Length];
+
+        //String array to int array conversion
+        for (int i = 0; i < splitInput.Length; i++)
+        {
+            int convertedString;
+            convertedString = int.Parse(splitInput[i]);
+            stringToInt[i] = convertedString;
+        }
+
+        //Int array to DateTime object conversion
+        timeToStore = timeToStore.AddDays(stringToInt[0]);
+        timeToStore = timeToStore.AddHours(stringToInt[1]);
+        timeToStore = timeToStore.AddMinutes(stringToInt[2]);
+        timeToStore = timeToStore.AddSeconds(stringToInt[3]);
+
+        SetClockGoal();
+    }
+
+    private void SetClockGoal()
+    {
+        System.TimeSpan waitTimeSpan = storedTime.Subtract(currentTime);
+        //Debug.LogError("Wait time is " + waitTimeSpan.Days + ":" + waitTimeSpan.Hours + ":" + waitTimeSpan.Minutes + ":" + waitTimeSpan.Seconds);
+        StartWaiting(System.DateTime.MinValue.Add(waitTimeSpan).AddSeconds(1));
     }
 
     private void StartWaiting(System.DateTime timeToWait)
@@ -128,7 +151,7 @@ public class TimeManager : MonoBehaviour
 
         Debug.Log("You will have to wait until " + timeToReach.ToString("dd:HH:mm:ss"));
         currentlyWaiting = true;
-
+        SaveSystem.SaveTimeToReach(this);
 
         //notificationScript.SendNotification(secondsToWait);
     }
@@ -146,7 +169,7 @@ public class TimeManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    public void ResetClock()
+    public void StopClock()
     {
         currentlyWaiting = false;
     }
@@ -182,10 +205,11 @@ public class TimeManager : MonoBehaviour
 
     public void StartClock(int input)
     {
-        //Parse the data into a readable DateTime object format
+        //Parses the data into a readable DateTime object format
 
         //MinValue initializes day at 1. Accounted for in the "StartWaiting" function
         System.DateTime timeToStore = System.DateTime.MinValue;
+
         int[] intList = GetIntToArray(input);
 
         //Int list to DateTime object conversion
@@ -195,7 +219,7 @@ public class TimeManager : MonoBehaviour
         timeToStore = timeToStore.AddSeconds(intList[3]);
         //Debug.Log("Time stored : " + (timeToStore.Day - 1) + ":" + timeToStore.Hour + ":" + timeToStore.Minute + ":" + timeToStore.Second);
 
-        //StartWaiting(timeToStore);
+        StartWaiting(timeToStore);
     }
 
     private int[] GetIntToArray(int input)
@@ -221,31 +245,4 @@ public class TimeManager : MonoBehaviour
 
         return intList.ToArray();
     }
-
-    #region Save Time To Reach
-    public int second;
-    public int minute;
-    public int hour;
-    public int day;
-    public void LoadTimeToReachData()
-    {
-        TimeToReachData data = SaveSystem.LoadTimeToReach();
-
-        second = data.sec;
-        minute = data.min;
-        hour = data.hour;
-        day = data.day;
-    }
-    public void SaveTimeToReachData()
-    {
-        second = timeToReach.Second;
-        minute = timeToReach.Minute;
-        hour = timeToReach.Hour;
-        day = timeToReach.Day;
-        SaveSystem.SaveTimeToReach(this);
-
-
-    }
-    #endregion
-
 }

@@ -58,7 +58,7 @@ public class OptionMenu : MonoBehaviour
     {
         if (autoModeToggle.isOn)
         {
-            DialogueManager.Instance.timeManager.ResetClock();
+            DialogueManager.Instance.timeManager.StopClock();
             DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
         }
         if(autoModeToggle.isOn && inactivePeriodsToggle.isOn)
@@ -128,7 +128,7 @@ public class OptionMenu : MonoBehaviour
             {
                 DialogueManager.Instance.displayer.CreateMessageBubble();
             }
-            DialogueManager.Instance.timeManager.ResetClock();
+            DialogueManager.Instance.timeManager.StopClock();
             DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
         }       
 

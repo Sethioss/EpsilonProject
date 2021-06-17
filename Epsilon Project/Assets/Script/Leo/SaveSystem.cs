@@ -108,6 +108,7 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             TimeToReachData timedata = formatter.Deserialize(stream) as TimeToReachData;
+            stream.Close();
             return timedata;
         }
         else
@@ -124,6 +125,7 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             TimeToStartWritingData timedata = formatter.Deserialize(stream) as TimeToStartWritingData;
+            stream.Close();
             return timedata;
         }
         else
