@@ -1460,10 +1460,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:10
-  inactivePeriods: 1
+  autoModeWaitingTime: 00:00:00:02
+  inactivePeriods: 0
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
+  activateClockRecalibration: 1
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
@@ -1700,10 +1701,6 @@ MonoBehaviour:
   currentlyWaiting: 0
   timeValue: 60
   timerText: {fileID: 0}
-  second: 0
-  minute: 0
-  hour: 0
-  day: 0
 --- !u!4 &335444748
 Transform:
   m_ObjectHideFlags: 0
@@ -6179,7 +6176,7 @@ MonoBehaviour:
   isInitialisation: 1
   isWaitingForReply: 0
   hasReplied: 0
-  hasReacted: 1
+  reacting: 1
   cameFromBranch: 0
   currentBubble: {fileID: 0}
   messagePanel: {fileID: 2109942662}
@@ -9036,14 +9033,14 @@ MonoBehaviour:
   onGameSceneEntered: 0
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: d0de5bb94f699f74286b1690adb6f907, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: 298df11f7dc57124397a464a789b3599, type: 3}
   dialogueList: []
   dialoguesToSave: []
   debugReadCommandKeywords: 0
-  debugExecutingFunction: 0
+  debugExecutingFunction: 1
   dialogueSavingDebug: 0
   m_testSet: 20
-  m_testSetFloat: 20
+  m_testSetFloat: 60
   username: Sebilol
 --- !u!4 &1863533797
 Transform:

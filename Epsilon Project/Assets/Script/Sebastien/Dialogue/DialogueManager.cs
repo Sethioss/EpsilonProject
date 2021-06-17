@@ -536,10 +536,20 @@ public class DialogueManager : MonoBehaviour
         displayer.allowedType = (DialogueDisplayer.AllowedMessageType)allowedType;
 
 #if UNITY_EDITOR
-        colorCodeStart = "<color=blue>";
-        AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
-        AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
-        DebugElement(debugMessages.ToArray());
+        if(displayer.allowedType == DialogueDisplayer.AllowedMessageType.LINK)
+        {
+            colorCodeStart = "<color=blue>";
+            AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
+            AddToDebugFunctionMessage(colorCodeStart + "Sending a link that goes to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
+            DebugElement(debugMessages.ToArray());
+        }
+        else if (displayer.allowedType == DialogueDisplayer.AllowedMessageType.LEAVE)
+        {
+            colorCodeStart = "<color=blue>";
+            AddToDebugFunctionMessage("=======LEAVE FUNCTION EXECUTING=======", debugMessages);
+            AddToDebugFunctionMessage(colorCodeStart + "Sending a leave message that leads to Dialogue " + sceneToChangeTo + colorCodeEnd, debugMessages);
+            DebugElement(debugMessages.ToArray());
+        }
 #endif
     }
     #endregion

@@ -29,6 +29,7 @@ public class UserSettings : MonoBehaviour
     [Range(0, 23)]
     public int inactivePeriodEndHour = 7;
 
+    public bool activateClockRecalibration;
     public enum Language { Français = 0, English = 1 };
     public Language language;
 

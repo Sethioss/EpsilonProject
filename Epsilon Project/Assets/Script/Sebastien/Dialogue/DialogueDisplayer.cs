@@ -48,14 +48,14 @@ public class DialogueDisplayer : MonoBehaviour
     [HideInInspector]
     public bool tempHasReacted;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isInitialisation = true;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isWaitingForReply = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool hasReplied = false;
-    [HideInInspector]
-    public bool hasReacted = true;
+    //[HideInInspector]
+    public bool reacting = true;
 
     private bool bubbleSpawned = false;
     private string currentWaitingTime;
@@ -147,7 +147,7 @@ public class DialogueDisplayer : MonoBehaviour
         tempWaitingForReply = isWaitingForReply;
         tempIsInitialisation = isInitialisation;
         tempHasReplied = hasReplied;
-        tempHasReacted = hasReacted;
+        tempHasReacted = reacting;
 
         SaveDialogueData(cachedDialogueManager.dialoguesToSave);
     }
@@ -193,26 +193,37 @@ public class DialogueDisplayer : MonoBehaviour
         {
             isLoading = true;
 
-            if (!isWaitingForReply && !userSettings.autoMode)
-            {
-                //Load the current time to reach
-                TimeToReachData timeToReachData = SaveSystem.LoadTimeToReach();
-                second = timeToReachData.sec;
-                minute = timeToReachData.min;
-                hour = timeToReachData.hour;
-                day = timeToReachData.day;
-
-                timeManager.SetClockGoal(currentWaitingTime);
-                SetWaitingTime(day.ToString() + ":" + hour.ToString() + ":" + minute.ToString() + ":" + second.ToString());
-            }
-
             isInitialisation = BoolToInt(data.initialisation);
             isWaitingForReply = BoolToInt(data.waitForReply);
             hasReplied = BoolToInt(data.replied);
+            reacting = BoolToInt(data.reacted);
 
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
             DisplayLoadedDialogue(cachedDialogueManager.dialogueList);
+
+            if (!isWaitingForReply)
+            {
+                try
+                {
+                    //Load the current time to reach
+                    TimeToReachData timeToReachData = SaveSystem.LoadTimeToReach();
+                    second = timeToReachData.sec;
+                    minute = timeToReachData.min;
+                    hour = timeToReachData.hour;
+                    day = timeToReachData.day;
+
+                    SetWaitingTime(day.ToString() + ":" + hour.ToString() + ":" + minute.ToString() + ":" + second.ToString());
+                    timeManager.SetClockGoal(currentWaitingTime);
+                }
+                catch
+                {
+                    Debug.LogError("Time couldn't be reset. Setting time to autoModeTime");
+                    SetWaitingTime(userSettings.autoModeWaitingTime);
+                    timeManager.StartClock(currentWaitingTime);
+                }
+
+            }
 
             isLoading = false;
         }
@@ -303,9 +314,12 @@ public class DialogueDisplayer : MonoBehaviour
             //Chaque dialogue jusqu'au dernier (Partagent le même comportement)
             if (i != loadedDialogues.Count - 1)
             {
+                Debug.LogError("PAS dernier dialogue sauvegardé");
                 //Chaque élément
                 for (int j = 0; j < loadedDialogues[i].elements.Count; j++)
                 {
+                    Debug.LogError(j);
+                    currentDialogueElementId = j;
                     CreateMessageBubble();
                     DisplayMessage();
                     if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
@@ -322,9 +336,12 @@ public class DialogueDisplayer : MonoBehaviour
             //Dernier dialogue, donc index de sauvegarde différents
             else
             {
+                Debug.LogError("Dernier dialogue sauvegardé");
                 //Chaque élément
                 for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count; j++)
                 {
+                    currentDialogueElementId = j;
+                    Debug.LogError(j);
                     if (j != cachedDialogueManager.dialoguesToSave[i].elements.Count - 1)
                     {
                         allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
@@ -343,10 +360,30 @@ public class DialogueDisplayer : MonoBehaviour
                     //Dernier élément de la sauvegarde
                     else
                     {
-                        //Un comportement spécifique pour chaque état
-                        if (isInitialisation)
+                        if(!isInitialisation && !isWaitingForReply && !reacting && !hasReplied)
                         {
-                            if (hasReacted)
+                            Debug.LogWarning("Loading :: The dialogue is finished");
+
+                            CreateMessageBubble();
+                            DisplayMessage();
+                            if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                            {
+                                SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                                if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != ""
+                                    || loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                {
+                                    Debug.Log("Sending the message's reaction");
+                                    CreateMessageBubble();
+                                    DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                }
+                            }
+
+                            bubbleSpawned = false;
+                        }
+                        //Un comportement spécifique pour chaque état
+                        else if (isInitialisation)
+                        {
+                            if (reacting)
                             {
                                 Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a message pending, but the \"...\" bubble isn't sent yet");
 
@@ -394,14 +431,15 @@ public class DialogueDisplayer : MonoBehaviour
                         }
                         else
                         {
-                            if (hasReplied && !hasReacted)
+                            if (hasReplied && !reacting)
                             {
                                 Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a reaction pending, but the \"...\" bubble isn't sent yet");
                                 //Attente de la réaction
+                                bubbleSpawned = false;
+
                                 CreateMessageBubble();
                                 DisplayMessage();
 
-                                bubbleSpawned = false;
 
                                 if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
                                 {
@@ -466,11 +504,7 @@ public class DialogueDisplayer : MonoBehaviour
     #region Dialogue starting methods
     private void Init()
     {
-        //Set dialogue state to the start of a new element
-        isWaitingForReply = true;
-        isInitialisation = true;
-        bubbleSpawned = false;
-        cameFromBranch = false;
+        UpdateDialogueState();
 
         timeManager = cachedDialogueManager.timeManager;
         timeManager.currentlyWaiting = false;
@@ -483,12 +517,19 @@ public class DialogueDisplayer : MonoBehaviour
             StopDialogue(currentDialogue);
         }
 
+        //Set dialogue state to the start of a new element
+        isWaitingForReply = false;
+        isInitialisation = true;
+        bubbleSpawned = false;
+        cameFromBranch = false;
+        hasReplied = false;
+        reacting = false;
+
     }
     public void StartDialogue(Dialogue dialogue)
     {
         Init();
         currentDialogue = dialogue;
-        isWaitingForReply = false;
 
         AddDialogueToSave(new Dialogue());
         cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].fileName = dialogue.fileName;
@@ -505,6 +546,18 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void StopDialogue(Dialogue dialogueToStop)
     {
+        isWaitingForReply = false;
+        isInitialisation = false;
+        bubbleSpawned = false;
+        cameFromBranch = false;
+        hasReplied = false;
+        reacting = false;
+
+        UpdateDialogueState();
+        if (currentBubble != null)
+        {
+            currentBubble = null;
+        }
         timeManager.StopClock();
         InvokeEvent(dialogueToStop.endDialogueAction);
     }
@@ -572,11 +625,11 @@ public class DialogueDisplayer : MonoBehaviour
         {
             if (isInitialisation)
             {
-                hasReacted = false;
+                reacting = false;
             }
             else
             {
-                hasReacted = true;
+                reacting = true;
             }
 
             DialogueElement newElement = new DialogueElement();
@@ -601,9 +654,12 @@ public class DialogueDisplayer : MonoBehaviour
                         newElement = CreateLeaveMessageBubble(messageBubble);
                         AddElementToSave(newElement);
                     }
+                    else
+                    {
+                        currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                    }
 
                     StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
-                    currentDialogue.elements[currentDialogueElementId].elementAction = null;
                 }
                 else
                 {
@@ -649,6 +705,8 @@ public class DialogueDisplayer : MonoBehaviour
                 currentBubble = messagePrefab;
                 bubbleSpawned = true;
 
+                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+
                 if (isInitialisation)
                 {
                     newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
@@ -656,7 +714,6 @@ public class DialogueDisplayer : MonoBehaviour
 
                     AddElementToSave(newElement);
                 }
-                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
             }
         }
 
@@ -712,7 +769,9 @@ public class DialogueDisplayer : MonoBehaviour
 
             isInitialisation = false;
             bubbleSpawned = false;
+            UpdateDialogueState();
 
+            StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
 
             //Display replies if there are
             if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
@@ -723,8 +782,6 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 GoToNextElement();
             }
-
-            StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
         }
     }
     private DialogueElement CreateLinkMessageBubble(MessageBubble messageBubble)
@@ -760,6 +817,10 @@ public class DialogueDisplayer : MonoBehaviour
                 Reply reply = replies[i];
 
                 replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
+
+                //Save
+                cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].
+                    elements[cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].elements.Count - 1].AddReply(replies[i]);
             }
         }
         else
@@ -773,17 +834,12 @@ public class DialogueDisplayer : MonoBehaviour
                 Reply reply = replies[i];
 
                 replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
-
-                //Save
-                cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].
-                    elements[cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].elements.Count - 1].AddReply(replies[i]);
             }
 
             isWaitingForReply = true;
             isInitialisation = false;
             UpdateDialogueState();
-        }
-
+        }       
     }
     private void DeleteReplies()
     {
@@ -857,8 +913,6 @@ public class DialogueDisplayer : MonoBehaviour
 
             if (reply.reaction == "" || reply.reaction == null)
             {
-                hasReacted = true;
-                UpdateDialogueState();
                 GoToNextElement();
             }
             else
@@ -880,8 +934,6 @@ public class DialogueDisplayer : MonoBehaviour
 
             textInBubble.text = reaction;
             StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
-
-            GoToNextElement();
         }
         else
         {
@@ -895,8 +947,8 @@ public class DialogueDisplayer : MonoBehaviour
 
             isWaitingForReply = false;
             isInitialisation = true;
+            hasReplied = false;
             bubbleSpawned = false;
-            hasReacted = true;
             UpdateDialogueState();
 
             GoToNextElement();
@@ -928,7 +980,6 @@ public class DialogueDisplayer : MonoBehaviour
 
                 isInitialisation = true;
                 bubbleSpawned = false;
-
                 isWaitingForReply = false;
                 UpdateDialogueState();
 
@@ -937,18 +988,6 @@ public class DialogueDisplayer : MonoBehaviour
 
                 writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
                 timeToStartWriting = SetTimeToStartWriting();
-            }
-        }
-        else
-        {
-            if (currentDialogueElementId + 1 >= currentDialogue.elements.Count)
-            {
-                StopDialogue(currentDialogue);
-            }
-            else
-            {
-                //Debug.LogError("Incrementing DialogueElementId");
-                currentDialogueElementId++;
             }
         }
     }
