@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:02
+  autoModeWaitingTime: 00:00:00:10
   inactivePeriods: 1
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
@@ -6174,8 +6174,10 @@ MonoBehaviour:
   isLoading: 0
   tempWaitingForReply: 0
   tempIsInitialisation: 0
+  tempHasReplied: 0
   isInitialisation: 1
   isWaitingForReply: 0
+  hasReplied: 0
   cameFromBranch: 0
   currentBubble: {fileID: 0}
   messagePanel: {fileID: 2109942662}
@@ -9032,7 +9034,7 @@ MonoBehaviour:
   onGameSceneEntered: 0
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
-  currentDialogueFile: {fileID: 4900000, guid: 298df11f7dc57124397a464a789b3599, type: 3}
+  currentDialogueFile: {fileID: 4900000, guid: d0de5bb94f699f74286b1690adb6f907, type: 3}
   dialogueList: []
   dialoguesToSave: []
   debugReadCommandKeywords: 0

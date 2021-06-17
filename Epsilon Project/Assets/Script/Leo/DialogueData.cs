@@ -14,6 +14,7 @@ public class DialogueData
 
     public int initialisation = 0;
     public int waitForReply = 0;
+    public int replied = 0;
 
     //public DialogueData() { }
     public DialogueData(List<Dialogue> dialogueToSave)
@@ -73,6 +74,11 @@ public class DialogueData
             waitForReply = 1;
         }
         //Debug.LogError("isWaitingForReply = " + waitForReply);
+
+        if (displayer.tempHasReplied)
+        {
+            replied = 1;
+        }
 
     }
 }

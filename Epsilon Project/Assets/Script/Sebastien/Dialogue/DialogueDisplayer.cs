@@ -43,11 +43,14 @@ public class DialogueDisplayer : MonoBehaviour
     public bool tempWaitingForReply;
     [HideInInspector]
     public bool tempIsInitialisation;
+    [HideInInspector]
+    public bool tempHasReplied;
 
     //[HideInInspector]
     public bool isInitialisation = true;
     //[HideInInspector]
     public bool isWaitingForReply = false;
+    public bool hasReplied = false;
 
     private bool bubbleSpawned = false;
     private string currentWaitingTime;
@@ -88,8 +91,9 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private void Start()
     {
-        DialogueManager.Instance.onGameSceneEntered = true;
+        //Load les dialogues précédents
         cachedDialogueManager = DialogueManager.Instance;
+        cachedDialogueManager.onGameSceneEntered = true;
 
     }
     private void Update()
@@ -137,6 +141,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         tempWaitingForReply = isWaitingForReply;
         tempIsInitialisation = isInitialisation;
+        tempHasReplied = hasReplied;
 
         SaveDialogueData(cachedDialogueManager.dialoguesToSave);
     }
@@ -182,8 +187,9 @@ public class DialogueDisplayer : MonoBehaviour
         {
             isLoading = true;
 
-            isWaitingForReply = BoolToInt(data.waitForReply);
             isInitialisation = BoolToInt(data.initialisation);
+            isWaitingForReply = BoolToInt(data.waitForReply);
+            hasReplied = BoolToInt(data.replied);
 
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
@@ -266,6 +272,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     public void DisplayLoadedDialogue(List<Dialogue> loadedDialogues)
     {
+        timeManager.ResetClock();
 
         //Chaque dialogue
         for (int i = 0; i < loadedDialogues.Count; i++)
@@ -322,10 +329,19 @@ public class DialogueDisplayer : MonoBehaviour
                         if (isInitialisation)
                         {
                             //Attente du message
+                            Debug.LogWarning("Loading :: The dialogue is currently in a state where the message bubble has spawned but the message hasn't been written yet");
+                            CreateMessageBubble();
+
+                            SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+                            timeManager.StartClock(currentWaitingTime);
+
+                            writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+                            timeToStartWriting = SetTimeToStartWriting();
 
                         }
                         else if (isWaitingForReply)
                         {
+                            Debug.LogWarning("Loading :: The dialogue is currently in a state where it's waiting for a reply");
                             //Attente de la réponse
                             CreateMessageBubble();
                             DisplayMessage();
@@ -333,13 +349,28 @@ public class DialogueDisplayer : MonoBehaviour
                         }
                         else
                         {
+                            Debug.LogWarning("Loading :: The dialogue is currently in a state where the reaction bubble has spawned but the reaction hasn't been written yet");
                             //Attente de la réaction
                             CreateMessageBubble();
                             DisplayMessage();
                             if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
                             {
                                 SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-                                loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+
+                                if(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" || 
+                                    loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                {
+                                    CreateMessageBubble();
+                                    SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
+                                    timeManager.StartClock(currentWaitingTime);
+
+                                    writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                    timeToStartWriting = SetTimeToStartWriting();
+                                }
+                                if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
+                                {
+                                    loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+                                }
                             }
                         }
                     }
@@ -409,12 +440,13 @@ public class DialogueDisplayer : MonoBehaviour
         {
             if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LEAVE)
             {
+                allowedType = AllowedMessageType.LEAVE;
                 Debug.Log("Creating leaving message bubble");
                 messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                 messageBubble = messagePrefab.GetComponent<MessageBubble>();
 
                 messageBubble.message.text = "";
-                messagePrefab.SetActive(false);
+                messageBubble.gameObject.SetActive(false);
 
                 currentBubble = messagePrefab;
                 bubbleSpawned = true;
@@ -423,6 +455,7 @@ public class DialogueDisplayer : MonoBehaviour
             }
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
+                allowedType = AllowedMessageType.LINK;
                 messagePrefab = GameObject.Instantiate(interlocutorBubblePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                 messageBubble = messagePrefab.GetComponent<MessageBubble>();
                 Button button = messageBubble.textBackground.GetComponent<Button>();
@@ -466,7 +499,7 @@ public class DialogueDisplayer : MonoBehaviour
                     messageBubble = messagePrefab.GetComponent<MessageBubble>();
 
                     messageBubble.message.text = "";
-                    messagePrefab.SetActive(false);
+                    messagePrefab.gameObject.SetActive(false);
 
                     currentBubble = messagePrefab;
                     bubbleSpawned = true;
@@ -475,7 +508,7 @@ public class DialogueDisplayer : MonoBehaviour
 
                     if (isInitialisation)
                     {
-                        newElement = CreateLeaveMessageElement(messageBubble);
+                        newElement = CreateLeaveMessageBubble(messageBubble);
                         AddElementToSave(newElement);
                     }
 
@@ -503,7 +536,7 @@ public class DialogueDisplayer : MonoBehaviour
 
                     if (isInitialisation)
                     {
-                        newElement = CreateLinkMessageElement(messageBubble);
+                        newElement = CreateLinkMessageBubble(messageBubble);
                         AddElementToSave(newElement);
                     }
 
@@ -544,15 +577,22 @@ public class DialogueDisplayer : MonoBehaviour
         {
             //Tous les types de message
             MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
+            if(currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
+            {
+                Button button = messageBubble.textBackground.GetComponent<Button>();
+                button.enabled = true;
+                button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+                currentDialogue.elements[currentDialogueElementId].elementAction = null;
+            }
+
             DialogueElement newElement = new DialogueElement();
 
+            messageBubble.gameObject.SetActive(true);
             messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
-
-            isInitialisation = false;
-            bubbleSpawned = false;
 
             if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
             {
+                Debug.LogWarning("Loading replies");
                 DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
             }
             else
@@ -565,7 +605,18 @@ public class DialogueDisplayer : MonoBehaviour
         {
             //Tous les types de message
             MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
+
+            if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
+            {
+                Button button = messageBubble.textBackground.GetComponent<Button>();
+                button.enabled = true;
+                button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+                currentDialogue.elements[currentDialogueElementId].elementAction = null;
+            }
+
             DialogueElement newElement = new DialogueElement();
+
+            messageBubble.gameObject.SetActive(true);
 
             messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
 
@@ -586,13 +637,8 @@ public class DialogueDisplayer : MonoBehaviour
             StartCoroutine(SetObjectHeightToBackground(currentBubble, messageBubble.textBackground, messagePanel));
         }
     }
-    private DialogueElement CreateLinkMessageElement(MessageBubble messageBubble)
+    private DialogueElement CreateLinkMessageBubble(MessageBubble messageBubble)
     {
-        Button button = messageBubble.textBackground.GetComponent<Button>();
-        button.enabled = true;
-        button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
-        currentDialogue.elements[currentDialogueElementId].elementAction = null;
-
         DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
         currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
 
@@ -600,10 +646,8 @@ public class DialogueDisplayer : MonoBehaviour
 
         return newElement;
     }
-    private DialogueElement CreateLeaveMessageElement(MessageBubble messageBubble)
+    private DialogueElement CreateLeaveMessageBubble(MessageBubble messageBubble)
     {
-        currentBubble.SetActive(true);
-
         DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
          currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
 
@@ -615,25 +659,41 @@ public class DialogueDisplayer : MonoBehaviour
     {
         DeleteReplies();
 
-        //Create the buttons corresponding to each answer
-        for (int i = 0; i < replies.Count; i++)
+        if (isLoading)
         {
-            GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
-            replyButton.GetComponentInChildren<TextMeshProUGUI>().text = replies[i].replyText;
-
-            Reply reply = replies[i];
-
-            replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
-
-            //Save
-            if (!isLoading)
+            //Create the buttons corresponding to each answer
+            for (int i = 0; i < replies.Count; i++)
             {
+                GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
+                replyButton.GetComponentInChildren<TextMeshProUGUI>().text = replies[i].replyText;
+
+                Reply reply = replies[i];
+
+                replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
+            }
+        }
+        else
+        {
+            //Create the buttons corresponding to each answer
+            for (int i = 0; i < replies.Count; i++)
+            {
+                GameObject replyButton = Instantiate(replyButtonPrefab, repliesPanel.transform);
+                replyButton.GetComponentInChildren<TextMeshProUGUI>().text = replies[i].replyText;
+
+                Reply reply = replies[i];
+
+                replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
+
+                //Save
                 cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].
                     elements[cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].elements.Count - 1].AddReply(replies[i]);
             }
+
+            isWaitingForReply = true;
+            isInitialisation = false;
+            UpdateDialogueState();
         }
-        isWaitingForReply = true;
-        UpdateDialogueState();
+
     }
     private void DeleteReplies()
     {
@@ -660,7 +720,6 @@ public class DialogueDisplayer : MonoBehaviour
                 messageBubble.profilePictureTransform.GetComponent<Image>().sprite = userSettings.profilePicture;
             }
         }
-
         else
         {
             //Display
@@ -684,14 +743,15 @@ public class DialogueDisplayer : MonoBehaviour
 
             DialogueElement newElement = currentDialogue.elements[currentDialogueElementId];
 
-            isWaitingForReply = false;
-
             //Save
             EditLastSavedElement(newElement);
 
             //Clock
             SetWaitingTime(reply.reactionTime);
             timeManager.StartClock(currentWaitingTime);
+
+            writingTime = SetWritingTime(reply.reaction);
+            timeToStartWriting = SetTimeToStartWriting();
 
             if (currentDialogue.elements[currentDialogueElementId].chosenReplyIndex != -1)
             {
@@ -700,6 +760,10 @@ public class DialogueDisplayer : MonoBehaviour
                     currentDialogue.elements[currentDialogueElementId].replies[currentDialogue.elements[currentDialogueElementId].chosenReplyIndex].replyEvent.Invoke();
                 }
             }
+
+            hasReplied = true;
+            isWaitingForReply = false;
+            UpdateDialogueState();
         }
 
         if (reply.reaction == "" || reply.reaction == null)
@@ -715,19 +779,35 @@ public class DialogueDisplayer : MonoBehaviour
     }
     void DisplayReaction(string reaction)
     {
-        MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
+        if (isLoading)
+        {
+            MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
 
-        GameObject imageBg = messageBubble.textBackground;
-        TextMeshProUGUI textInBubble = messageBubble.message;
+            GameObject imageBg = messageBubble.textBackground;
+            TextMeshProUGUI textInBubble = messageBubble.message;
 
-        textInBubble.text = reaction;
-        StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
+            textInBubble.text = reaction;
+            StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
 
-        isWaitingForReply = false;
-        isInitialisation = true;
-        bubbleSpawned = false;
+            GoToNextElement();
+        }
+        else
+        {
+            MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
 
-        GoToNextElement();
+            GameObject imageBg = messageBubble.textBackground;
+            TextMeshProUGUI textInBubble = messageBubble.message;
+
+            textInBubble.text = reaction;
+            StartCoroutine(SetObjectHeightToBackground(currentBubble, imageBg, messagePanel));
+
+            isWaitingForReply = false;
+            isInitialisation = true;
+            bubbleSpawned = false;
+            UpdateDialogueState();
+
+            GoToNextElement();
+        }
     }
     #endregion
 
@@ -736,6 +816,8 @@ public class DialogueDisplayer : MonoBehaviour
     {
         if (!isLoading)
         {
+            hasReplied = false;
+
             InvokeEvent(currentDialogue.elements[currentDialogueElementId].elementAction);
 
             if (cameFromBranch)
@@ -753,6 +835,9 @@ public class DialogueDisplayer : MonoBehaviour
 
                 isInitialisation = true;
                 bubbleSpawned = false;
+
+                isWaitingForReply = false;
+                UpdateDialogueState();
 
                 SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
                 timeManager.StartClock(currentWaitingTime);
