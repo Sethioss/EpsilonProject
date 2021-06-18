@@ -4,36 +4,36 @@ using UnityEngine;
 
 public class UseGalery : MonoBehaviour
 {
-	void Update()
-	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			if (Input.mousePosition.x < Screen.width / 3)
-			{
-				// Take a screenshot and save it to Gallery/Photos
-				StartCoroutine(TakeScreenshotAndSave());
-			}
-			else
-			{
-				// Don't attempt to pick media from Gallery/Photos if
-				// another media pick operation is already in progress
-				if (NativeGallery.IsMediaPickerBusy())
-					return;
+	//void Update()
+	//{
+	//	if (Input.GetMouseButtonDown(0))
+	//	{
+	//		if (Input.mousePosition.x < Screen.width / 3)
+	//		{
+	//			// Take a screenshot and save it to Gallery/Photos
+	//			StartCoroutine(TakeScreenshotAndSave());
+	//		}
+	//		else
+	//		{
+	//			// Don't attempt to pick media from Gallery/Photos if
+	//			// another media pick operation is already in progress
+	//			if (NativeGallery.IsMediaPickerBusy())
+	//				return;
 
-				if (Input.mousePosition.x < Screen.width * 2 / 3)
-				{
-					// Pick a PNG image from Gallery/Photos
-					// If the selected image's width and/or height is greater than 512px, down-scale the image
-					PickImage(512);
-				}
-				else
-				{
-					// Pick a video from Gallery/Photos
-					PickVideo();
-				}
-			}
-		}
-	}
+	//			if (Input.mousePosition.x < Screen.width * 2 / 3)
+	//			{
+	//				// Pick a PNG image from Gallery/Photos
+	//				// If the selected image's width and/or height is greater than 512px, down-scale the image
+	//				PickImage(512);
+	//			}
+	//			else
+	//			{
+	//				// Pick a video from Gallery/Photos
+	//				PickVideo();
+	//			}
+	//		}
+	//	}
+	//}
 
 	private IEnumerator TakeScreenshotAndSave()
 	{
