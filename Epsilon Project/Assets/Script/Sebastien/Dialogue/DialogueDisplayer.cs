@@ -968,11 +968,11 @@ public class DialogueDisplayer : MonoBehaviour
                 Reply newReply = new Reply(reply.replyText, reply.reaction, goodReplyIndex, reply.reactionTime, reply.replyEvent);
 
                 DialogueElement newElement = currentDialogue.elements[currentDialogueElementId];
-                Debug.LogError("Set new element");
+                //Debug.LogError("Set new element");
 
                 //Save
                 EditLastSavedElement(newElement);
-                Debug.LogError("EditedElement");
+                //Debug.LogError("EditedElement");
 
                 //Clock
                 SetWaitingTime(reply.reactionTime);
