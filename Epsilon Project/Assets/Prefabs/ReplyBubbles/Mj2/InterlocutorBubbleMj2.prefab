@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4291150007
+  m_fontColor: {r: 0.71885014, g: 0.75341946, b: 0.7735849, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,14 +92,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -161,7 +161,7 @@ RectTransform:
   m_GameObject: {fileID: 4102208415658351182}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.0000032633543}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.46, y: 0.3267564, z: 0.3267564}
+  m_LocalScale: {x: -0.052049033, y: 0.021868166, z: 0.021868166}
   m_Children: []
   m_Father: {fileID: 7898526532722970518}
   m_RootOrder: 0
@@ -170,7 +170,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: -0.75, y: -0.03}
+  m_Pivot: {x: -0.03, y: -0.005}
 --- !u!222 &1550934166429910012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1ecafcfb1ac9b9e469744f4acdafe617, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79a5564a2d81eef4e8b69da2d3e61c15, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 12
-    m_Right: 12
+    m_Left: 50
+    m_Right: 2
     m_Top: 0
     m_Bottom: 2
   m_ChildAlignment: 3
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBackground: {fileID: 6069068702826285853}
-  profilePicture: {fileID: 0}
+  profilePictureTransform: {fileID: 0}
   message: {fileID: 6968222953841880646}
 --- !u!1 &8870134095437883816
 GameObject:
