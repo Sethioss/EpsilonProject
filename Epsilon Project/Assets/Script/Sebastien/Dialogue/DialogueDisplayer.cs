@@ -47,6 +47,8 @@ public class DialogueDisplayer : MonoBehaviour
     public bool tempHasReplied;
     [HideInInspector]
     public bool tempHasReacted;
+    [HideInInspector]
+    public bool tempIsFinished;
 
     //[HideInInspector]
     public bool isInitialisation = true;
@@ -56,8 +58,11 @@ public class DialogueDisplayer : MonoBehaviour
     public bool hasReplied = false;
     //[HideInInspector]
     public bool reacting = true;
+    //[HideInInspector]
+    public bool isFinished = false;
 
     private bool bubbleSpawned = false;
+
     private string currentWaitingTime;
 
     [HideInInspector]
@@ -110,28 +115,35 @@ public class DialogueDisplayer : MonoBehaviour
 
         if (!isLoading)
         {
-            if (!isWaitingForReply)
+            if (!isFinished)
             {
-                if (!bubbleSpawned)
+                if (!isWaitingForReply)
                 {
-                    if (IsTimeToStartWriting())
+                    if (!bubbleSpawned)
                     {
-                        CreateMessageBubble();
+                        if (IsTimeToStartWriting())
+                        {
+                            CreateMessageBubble();
+                        }
                     }
+                    if (IsTimeOver())
+                    {
+                        timeManager.StopClock();
+                        if (isInitialisation)
+                        {
+                            DisplayMessage();
+                        }
+                        else
+                        {
+                            DisplayReaction(awaitingReaction);
+                        }
+                    }
+
                 }
-                if (IsTimeOver())
+                else
                 {
                     timeManager.StopClock();
-                    if (isInitialisation)
-                    {
-                        DisplayMessage();
-                    }
-                    else
-                    {
-                        DisplayReaction(awaitingReaction);
-                    }
                 }
-
             }
             else
             {
@@ -148,6 +160,7 @@ public class DialogueDisplayer : MonoBehaviour
         tempIsInitialisation = isInitialisation;
         tempHasReplied = hasReplied;
         tempHasReacted = reacting;
+        tempIsFinished = isFinished;
 
         SaveDialogueData(cachedDialogueManager.dialoguesToSave);
     }
@@ -200,6 +213,9 @@ public class DialogueDisplayer : MonoBehaviour
 
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
+            cachedDialogueManager.dialoguesToSave = RestoreSavedDialogues(cachedDialogueManager.dialogueList, data);
+            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+
             DisplayLoadedDialogue(cachedDialogueManager.dialogueList);
 
             if (!isWaitingForReply)
@@ -299,9 +315,32 @@ public class DialogueDisplayer : MonoBehaviour
         }
         return toLoad;
     }
+    private List<Dialogue> RestoreSavedDialogues(List<Dialogue> originalDialogues, DialogueData data)
+    {
+        List<Dialogue> dialogueListToReturn = new List<Dialogue>();
+
+        for (int i = 0; i < originalDialogues.Count; i++)
+        {
+            Dialogue dialogue = new Dialogue();
+            dialogue.fileName = originalDialogues[i].fileName;
+            dialogue.id = originalDialogues[i].id;
+            dialogueListToReturn.Add(dialogue);
+
+            for (int j = 0; j < originalDialogues[i].elements.Count; j++)
+            {
+                if (j <= data.currentElement)
+                {
+                    dialogueListToReturn[i].AddDialogueElement(originalDialogues[i].elements[j]);
+                }
+            }
+        }
+
+        return dialogueListToReturn;
+    }
     public void DisplayLoadedDialogue(List<Dialogue> loadedDialogues)
     {
         timeManager.StopClock();
+        List<Dialogue> dialoguesToRecoverToSave = new List<Dialogue>();
 
         //Chaque dialogue
         for (int i = 0; i < loadedDialogues.Count; i++)
@@ -314,11 +353,10 @@ public class DialogueDisplayer : MonoBehaviour
             //Chaque dialogue jusqu'au dernier (Partagent le même comportement)
             if (i != loadedDialogues.Count - 1)
             {
-                Debug.LogError("PAS dernier dialogue sauvegardé");
+                //Debug.LogError("PAS dernier dialogue sauvegardé");
                 //Chaque élément
                 for (int j = 0; j < loadedDialogues[i].elements.Count; j++)
                 {
-                    Debug.LogError(j);
                     currentDialogueElementId = j;
                     CreateMessageBubble();
                     DisplayMessage();
@@ -336,12 +374,13 @@ public class DialogueDisplayer : MonoBehaviour
             //Dernier dialogue, donc index de sauvegarde différents
             else
             {
-                Debug.LogError("Dernier dialogue sauvegardé");
+
+                //Debug.LogError("Dernier dialogue sauvegardé");
                 //Chaque élément
                 for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count; j++)
                 {
                     currentDialogueElementId = j;
-                    Debug.LogError(j);
+                    //Debug.LogError(j);
                     if (j != cachedDialogueManager.dialoguesToSave[i].elements.Count - 1)
                     {
                         allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
@@ -360,7 +399,7 @@ public class DialogueDisplayer : MonoBehaviour
                     //Dernier élément de la sauvegarde
                     else
                     {
-                        if(!isInitialisation && !isWaitingForReply && !reacting && !hasReplied)
+                        if (!isInitialisation && !isWaitingForReply && !reacting && !hasReplied)
                         {
                             Debug.LogWarning("Loading :: The dialogue is finished");
 
@@ -378,6 +417,8 @@ public class DialogueDisplayer : MonoBehaviour
                                 }
                             }
 
+                            isFinished = true;
+                            UpdateDialogueState();
                             bubbleSpawned = false;
                         }
                         //Un comportement spécifique pour chaque état
@@ -494,6 +535,7 @@ public class DialogueDisplayer : MonoBehaviour
 
                 }
             }
+            //cachedDialogueManager.dialoguesToSave = dialoguesToRecoverToSave;
         }
 
         //Set la clock
@@ -524,6 +566,7 @@ public class DialogueDisplayer : MonoBehaviour
         cameFromBranch = false;
         hasReplied = false;
         reacting = false;
+        isFinished = false;
 
     }
     public void StartDialogue(Dialogue dialogue)
@@ -552,6 +595,7 @@ public class DialogueDisplayer : MonoBehaviour
         cameFromBranch = false;
         hasReplied = false;
         reacting = false;
+        isFinished = true;
 
         UpdateDialogueState();
         if (currentBubble != null)
@@ -594,10 +638,17 @@ public class DialogueDisplayer : MonoBehaviour
                 messageBubble = messagePrefab.GetComponent<MessageBubble>();
                 Button button = messageBubble.textBackground.GetComponent<Button>();
 
-                button.enabled = true;
-                button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
-                currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                try
+                {
+                    button.enabled = true;
+                    button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+                }
+                catch
+                {
 
+                }
+
+                currentDialogue.elements[currentDialogueElementId].elementAction = null;
                 messageBubble.message.text = "...";
 
                 //Current bubble = The bubble which text is gonna get changed
@@ -817,10 +868,6 @@ public class DialogueDisplayer : MonoBehaviour
                 Reply reply = replies[i];
 
                 replyButton.GetComponent<Button>().onClick.AddListener(delegate { SendReply(reply); });
-
-                //Save
-                cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].
-                    elements[cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].elements.Count - 1].AddReply(replies[i]);
             }
         }
         else
@@ -839,7 +886,7 @@ public class DialogueDisplayer : MonoBehaviour
             isWaitingForReply = true;
             isInitialisation = false;
             UpdateDialogueState();
-        }       
+        }
     }
     private void DeleteReplies()
     {
