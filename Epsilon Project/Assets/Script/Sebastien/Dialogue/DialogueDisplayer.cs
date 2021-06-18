@@ -81,10 +81,28 @@ public class DialogueDisplayer : MonoBehaviour
     public GameObject repliesPanel;
     public GameObject replyButtonPrefab;
 
-    TimeManager timeManager;
+    DialogueData data;
+
     UserSettings userSettings;
 
     #endregion
+
+
+    private void DeleteDialogueData()
+    {
+        isInitialisation = true;
+        isWaitingForReply = false;
+        hasReplied = false;
+        reacting = true;
+        isFinished = false;
+
+        bubbleSpawned = false;
+        UpdateDialogueState();
+        Debug.LogWarning("Dialogue save data erased");
+        List<Dialogue> emptyMemory = new List<Dialogue>();
+        SaveDialogueData(emptyMemory);
+        cachedDialogueManager.dialoguesToSave = emptyMemory;
+    }
 
     #region Unity Loop
     private void Awake()
@@ -103,14 +121,36 @@ public class DialogueDisplayer : MonoBehaviour
     {
         //Load les dialogues précédents
         cachedDialogueManager = DialogueManager.Instance;
-        cachedDialogueManager.onGameSceneEntered = true;
+        if(cachedDialogueManager.timeManager == null)
+        {
+            cachedDialogueManager.timeManager = TimeManager.Instance;
+        }
+        if(cachedDialogueManager.displayer == null)
+        {
+            cachedDialogueManager.displayer = DialogueDisplayer.Instance;
+        }
 
+        cachedDialogueManager.timeManager.currentlyWaiting = false;
+        userSettings = UserSettings.Instance;
+#if UNITY_EDITOR
+        //DeleteDialogueData();
+#endif
+
+        Debug.Log("Press J to erase save data");
+
+        LoadDialogueData();
+
+        cachedDialogueManager.CreateAndStartDialogue(cachedDialogueManager.dialogueFileToLoad);
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
             LoadDialogueData();
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            DeleteDialogueData();
         }
 
         if (!isLoading)
@@ -128,7 +168,7 @@ public class DialogueDisplayer : MonoBehaviour
                     }
                     if (IsTimeOver())
                     {
-                        timeManager.StopClock();
+                        cachedDialogueManager.timeManager.StopClock();
                         if (isInitialisation)
                         {
                             DisplayMessage();
@@ -142,15 +182,22 @@ public class DialogueDisplayer : MonoBehaviour
                 }
                 else
                 {
-                    timeManager.StopClock();
+                    cachedDialogueManager.timeManager.StopClock();
                 }
             }
             else
             {
-                timeManager.StopClock();
+                cachedDialogueManager.timeManager.StopClock();
             }
         }
     }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        DeleteDialogueData();
+    } 
+#endif
     #endregion
 
     #region Save/Load
@@ -186,7 +233,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         if (!isLoading)
         {
-            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialogueList.Count-1].elements[cachedDialogueManager.dialoguesToSave
+            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialogueList.Count - 1].elements[cachedDialogueManager.dialoguesToSave
                 [cachedDialogueManager.dialogueList.Count - 1].elements.Count - 1] = elementToEdit;
 
             UpdateDialogueState();
@@ -197,12 +244,13 @@ public class DialogueDisplayer : MonoBehaviour
     {
         if (!isLoading)
         {
+            data = null;
             SaveSystem.SaveDialogue(dialogueListToSaveTo);
         }
     }
     public void LoadDialogueData()
     {
-        DialogueData data = SaveSystem.LoadDialogue();
+        data = SaveSystem.LoadDialogue();
 
         if (data != null)
         {
@@ -216,6 +264,7 @@ public class DialogueDisplayer : MonoBehaviour
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
             cachedDialogueManager.dialoguesToSave = RestoreSavedDialogues(cachedDialogueManager.dialogueList, data);
+
             SaveDialogueData(cachedDialogueManager.dialoguesToSave);
 
             DisplayLoadedDialogue(cachedDialogueManager.dialogueList);
@@ -232,19 +281,20 @@ public class DialogueDisplayer : MonoBehaviour
                     day = timeToReachData.day;
 
                     SetWaitingTime(day.ToString() + ":" + hour.ToString() + ":" + minute.ToString() + ":" + second.ToString());
-                    timeManager.SetClockGoal(currentWaitingTime);
+                    cachedDialogueManager.timeManager.SetClockGoal(currentWaitingTime);
                 }
                 catch
                 {
                     Debug.LogError("Time couldn't be reset. Setting time to autoModeTime");
                     SetWaitingTime(userSettings.autoModeWaitingTime);
-                    timeManager.StartClock(currentWaitingTime);
+                    cachedDialogueManager.timeManager.StartClock(currentWaitingTime);
                 }
 
             }
 
             isLoading = false;
         }
+
     }
     public List<Dialogue> RecreateDialogueListFromData(DialogueData data)
     {
@@ -324,7 +374,7 @@ public class DialogueDisplayer : MonoBehaviour
         for (int i = 0; i < originalDialogues.Count; i++)
         {
 
-            if (i != originalDialogues.Count - 1) 
+            if (i != originalDialogues.Count - 1)
             {
                 //Debug.LogWarning("Not the last dialogue");
 
@@ -351,15 +401,14 @@ public class DialogueDisplayer : MonoBehaviour
                     }
                 }
             }
-            
+
         }
 
         return dialogueListToReturn;
     }
     public void DisplayLoadedDialogue(List<Dialogue> loadedDialogues)
     {
-        timeManager.StopClock();
-        List<Dialogue> dialoguesToRecoverToSave = new List<Dialogue>();
+        cachedDialogueManager.timeManager.StopClock();
 
         //Chaque dialogue
         for (int i = 0; i < loadedDialogues.Count; i++)
@@ -569,10 +618,6 @@ public class DialogueDisplayer : MonoBehaviour
     {
         UpdateDialogueState();
 
-        timeManager = cachedDialogueManager.timeManager;
-        timeManager.currentlyWaiting = false;
-        userSettings = UserSettings.Instance;
-
         //Set the pointer to the first dialog element
         currentDialogueElementId = 0;
         if (currentDialogue != null)
@@ -603,7 +648,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         //Set clock and writing time to the initiation time of the current element
         SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
-        timeManager.StartClock(currentWaitingTime);
+        cachedDialogueManager.timeManager.StartClock(currentWaitingTime);
 
         writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
         timeToStartWriting = SetTimeToStartWriting();
@@ -623,7 +668,7 @@ public class DialogueDisplayer : MonoBehaviour
         {
             currentBubble = null;
         }
-        timeManager.StopClock();
+        cachedDialogueManager.timeManager.StopClock();
         InvokeEvent(dialogueToStop.endDialogueAction);
     }
 
@@ -976,7 +1021,7 @@ public class DialogueDisplayer : MonoBehaviour
 
                 //Clock
                 SetWaitingTime(reply.reactionTime);
-                timeManager.StartClock(currentWaitingTime);
+                cachedDialogueManager.timeManager.StartClock(currentWaitingTime);
 
                 writingTime = SetWritingTime(reply.reaction);
                 timeToStartWriting = SetTimeToStartWriting();
@@ -1071,7 +1116,7 @@ public class DialogueDisplayer : MonoBehaviour
                 UpdateDialogueState();
 
                 SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
-                timeManager.StartClock(currentWaitingTime);
+                cachedDialogueManager.timeManager.StartClock(currentWaitingTime);
 
                 writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
                 timeToStartWriting = SetTimeToStartWriting();
@@ -1110,12 +1155,12 @@ public class DialogueDisplayer : MonoBehaviour
     private System.DateTime SetTimeToStartWriting()
     {
         System.TimeSpan typingTime = System.DateTime.MinValue.Subtract(writingTime);
-        System.DateTime temp = timeManager.timeToReach.Add(typingTime);
+        System.DateTime temp = cachedDialogueManager.timeManager.timeToReach.Add(typingTime);
         //Debug.Log(timeManager.timeToReach);
 
-        if (temp < timeManager.currentTime)
+        if (temp < cachedDialogueManager.timeManager.currentTime)
         {
-            temp = timeManager.currentTime;
+            temp = cachedDialogueManager.timeManager.currentTime;
         }
 
         //Debug.Log("An empty bubble will start to appear at : " + temp);
@@ -1144,7 +1189,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         try
         {
-            return timeManager.currentTime >= timeManager.timeToReach && timeManager.currentlyWaiting;
+            return cachedDialogueManager.timeManager.currentTime >= cachedDialogueManager.timeManager.timeToReach && cachedDialogueManager.timeManager.currentlyWaiting;
         }
         catch
         {
@@ -1155,7 +1200,7 @@ public class DialogueDisplayer : MonoBehaviour
     {
         try
         {
-            return timeManager.currentTime >= timeToStartWriting && timeManager.currentlyWaiting;
+            return cachedDialogueManager.timeManager.currentTime >= timeToStartWriting && cachedDialogueManager.timeManager.currentlyWaiting;
         }
         catch
         {

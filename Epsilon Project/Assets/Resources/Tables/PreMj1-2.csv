@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Je le sais de source s�re, contente toi de ça.;De la part d'une personne qui débute une conversation avec des menaces...;Une personne qui ne va pas tarder à mettre ses menaces à exécution si tu continues.;;;;;
+Je le sais de source sûre, contente toi de ça.;De la part d'une personne qui débute une conversation avec des menaces...;Une personne qui ne va pas tarder à mettre ses menaces à exécution si tu continues.;;;;;
 ;Ok...;;;;;;
 ;;;;;;;
 Bien sûr, si ce n'était que ça, il ne serait pas bien difficile de le faire tomber.;;;;;;;
@@ -10,7 +10,7 @@ Il est couvert par son entreprise, et ce alors qu'il a au moins une dizaine de v
 ;;;;;;;
 Récemment, il a forcé une employée à lui accorder certaines faveurs sexuelles;En échange d'une promotion?;;;;;;
 ;;;;;;;
-En échange de ne pas ruiner sa carrière professionnelle.;Ah oui quand même…;Comme tu le dis, oui.;;;;;
+En échange de ne pas ruiner sa carrière professionnelle.;Ah oui quand même!;Comme tu le dis, oui.;;;;;
 ;C'est vraiment dégueulasse!;On est d'accord.;;;;;
 ;;;;;;;
 Comme je te l'ai dit, je compte ''ruiner sa vie''.;;;;;;;
@@ -20,18 +20,16 @@ Par ça, je veux dire que je vais lui faire du chantage et le forcer à démissi
 Le forcer à faire d'autres choses ensuite, mais ça ne te regarde pas.;Bien.;;;;;;
 ;Je vais t'aider mais ça me regarde pas?;Si ça t'intéresse tant que ça, je t'en parlerais plus tard.;;;;;
 ;;;;;;;
-Je vais t'envoyer deux liens.;;;;;;;
+Je vais t'envoyer un lien.;;;;;;;
 ;;;;;;;
-Le premier sera le lien de la page d'un réseau social de notre ''victime''.;;;;;;;
-;;;;;;;
-Le deuxième sera un lien vers sa boîte mail.;Je suis pas sûr de comprendre où tu veux en venir.;;;;;;
+Il s'agit du lien de la page d'un réseau social de notre ''victime''.;;;;;;
 ;Tu as hacké sa boite mail??;Non, il m'a gentiment envoyé ses identifiants par lettre.;;;;;
 ;;;;;;;
-Tu vas dans un premier temps fouiller sa page de réseau social.;;;;;;;
+Tu vas dans un premier temps fouiller sa boîte mail.;;;;;;;
 ;;;;;;;
-Puis dans un second, tu vas aller dans sa boite mail afin d'y trouver LE mail compromettant.;;;;;;;
+Puis dans un second, tu vas y trouver LE mail compromettant.;;;;;;;
 ;;;;;;;
 Celui qu'il ne veut pas qu'on voit, celui qui me permettrait de lui mettre la pression.;Et comment je saurais que c'est bien le bon mail?;;;;;;
 ;;;;;;;
-En te basant sur la page de son réseau social. C'est là qu'il met tout ce qu'il n'a pas besoin de cacher, ça nous permet donc de savoir ce qui ne marcherait pas contre lui.;Ok, je pense avoir compris.;;;;<BRANCH>PreMJ1-3;;
+En te basant sur la page de son réseau social. C'est là  qu'il met tout ce qu'il n'a pas besoin de cacher, ça nous permet donc de savoir ce qui ne marcherait pas contre lui.;Ok, je pense avoir compris.;;;;<BRANCH>PreMJ1-3;;
 ;Je suis pas sûr d'avoir compris.;;;;<BRANCH>PreMJ1-2b;;

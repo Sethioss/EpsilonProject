@@ -23,6 +23,7 @@ public class DialogueData
     {
         DialogueDisplayer displayer = DialogueManager.Instance.displayer;
 
+        Instance = null;
         dialogueFileName = new List<string>();
         chosenReplyId = new List<int>();
         elementId = new List<int>();
@@ -92,5 +93,6 @@ public class DialogueData
             isFinished = 1;
         }
 
+        Instance = this;
     }
 }
