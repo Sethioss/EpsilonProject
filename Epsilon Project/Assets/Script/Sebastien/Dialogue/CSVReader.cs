@@ -690,16 +690,17 @@ public class CSVReader : MonoBehaviour
 
         UnityAction leaveActions = null;
 
+        //leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
+
         if (branchToGoTo != "")
         {
-            leaveActions += delegate { DialogueManager.Instance.Branch(branchToGoTo); };
+            leaveActions += delegate { GameManager.Instance.SetDialogueAndGoToGame(branchToGoTo); };
         }
         else
         {
             Debug.LogError("LEAVE :: No dialogue to go to has been set");
         }
-
-        leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
+        
 
         Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions);
         newElement.AddReply(leaveReply);

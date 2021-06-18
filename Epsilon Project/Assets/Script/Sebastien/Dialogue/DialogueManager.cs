@@ -118,6 +118,11 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
+    public TextAsset GetElementFileFromName(string name)
+    {
+        return (TextAsset)Resources.Load("Tables\\" + name);
+    }
+
     #region BRANCH Command / Dialogue Initialisation
 
     public void Branch(string dialogueFileName)
@@ -141,7 +146,7 @@ public class DialogueManager : MonoBehaviour
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
 
-        currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
+        currentDialogueFile = GetElementFileFromName(dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(currentDialogueFile);
         dialogueToAdd.id = dialogueList.Count;
         dialogueToAdd.fileName = dialogueFileName;
@@ -565,7 +570,6 @@ public class DialogueManager : MonoBehaviour
                 sceneToChangeTo = GameManager.Instance.gameSceneName;
             }
 
-            DialogueManager.Instance.timeManager.StopClock();
             SceneManager.LoadScene(sceneToChangeTo);
         }
     }

@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         DialogueManager.Instance.currentDialogueFile = textToSet;
     }
 
+    public void SetDialogue(string dialogueFileName)
+    {
+        DialogueManager.Instance.currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
+    }
+
     private void GoToChatScene()
     {
         SceneManager.LoadScene(gameSceneId);
@@ -63,6 +68,12 @@ public class GameManager : MonoBehaviour
     public void SetDialogueAndGoToGame(TextAsset textToSet)
     {
         SetDialogue(textToSet);
+        GoToChatScene();
+    }
+
+    public void SetDialogueAndGoToGame(string fileName)
+    {
+        SetDialogue(fileName);
         GoToChatScene();
     }
 }
