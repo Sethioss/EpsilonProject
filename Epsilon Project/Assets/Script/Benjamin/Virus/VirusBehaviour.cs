@@ -14,13 +14,39 @@ public class VirusBehaviour : MonoBehaviour
     public float speed;
     public static bool reachedGoal;
     bool canHack = true;
-    public GameObject[] allTiles;
+    public int config;
+     GameObject[] allTiles = new GameObject[16];
+    public GameObject[] allTiles1;
+    public GameObject[] allTiles2;
+    public GameObject[] allTiles3;
+    public GameObject[] tilesConfig;
     GameObject[,] tiles = new GameObject[20, 20];
     bool gameEnded;
 
 
     void Start()
     {
+        config = Random.Range(1, 4);
+        for(int i =0; i < tilesConfig.Length; i++)
+        {
+            tilesConfig[i].SetActive(false);
+        }
+        switch (config)
+        {
+            case 1:
+                allTiles = allTiles1;
+                tilesConfig[0].SetActive(true);
+                break;
+            case 2: 
+                allTiles = allTiles2;
+                tilesConfig[1].SetActive(true);
+                break;
+            case 3:
+                allTiles = allTiles3;
+                tilesConfig[2].SetActive(true);
+                break;
+        }
+
         for (int i = 0; i < numberOfRows - 1; i++)
         {
             for (int j = 0; j < numberOfColumns - 1; j++)

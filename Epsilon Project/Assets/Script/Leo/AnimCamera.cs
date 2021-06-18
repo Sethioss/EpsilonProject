@@ -10,7 +10,27 @@ public class AnimCamera : MonoBehaviour
     public Vector3[] posCamera;
     public Quaternion[] angleCamera;
     private bool Desactive = true;
-
+    public int[] MinAngleCamera;
+    public int[] MaxAngleCamera;
+    public void Update()
+    {
+        for(int i = 0; i < Camera.Length; i++)
+        {
+            angleCamera[i] = Camera[i].transform.rotation;
+            if (angleCamera[i].y > MinAngleCamera[i])
+            {
+                Camera[i].gameObject.transform.Rotate(new Vector3(0f, 100f, 0f) * Time.deltaTime);
+            }
+            else if(angleCamera[i].y > MinAngleCamera[i])
+            {
+                Camera[i].gameObject.transform.Rotate(new Vector3(0f, -100f, 0f) * Time.deltaTime);
+            }
+            else
+            {
+                Camera[i].gameObject.transform.Rotate(new Vector3(0f, -100f, 0f) * Time.deltaTime);
+            }
+        }
+    }
     public void Start()
     {
         for (int i = 0; i < Camera.Length; i++)
@@ -21,6 +41,7 @@ public class AnimCamera : MonoBehaviour
             
         
     }
+
     public void ChangeAnim()
     {
         if (Desactive == true)
