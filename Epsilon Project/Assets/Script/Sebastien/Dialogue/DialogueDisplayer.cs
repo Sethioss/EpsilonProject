@@ -50,18 +50,19 @@ public class DialogueDisplayer : MonoBehaviour
     [HideInInspector]
     public bool tempIsFinished;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool isInitialisation = true;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isWaitingForReply = false;
-    //[HideInInspector]
+    [HideInInspector]
     public bool hasReplied = false;
-    //[HideInInspector]
+    [HideInInspector]
     public bool reacting = true;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isFinished = false;
-
     private bool bubbleSpawned = false;
+
+    public bool isHackingScene = false;
 
     private string currentWaitingTime;
 
@@ -98,10 +99,20 @@ public class DialogueDisplayer : MonoBehaviour
 
         bubbleSpawned = false;
         UpdateDialogueState();
-        Debug.LogWarning("Dialogue save data erased");
         List<Dialogue> emptyMemory = new List<Dialogue>();
+
+#if UNITY_EDITOR
+        cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
+        SaveSystem.SaveDialogue(cachedDialogueManager.mainChatDialoguesToSave);
+        cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
+        SaveSystem.SaveHackingDialogue(cachedDialogueManager.hackingChatDialoguesToSave);
+#else
         SaveDialogueData(emptyMemory);
-        cachedDialogueManager.dialoguesToSave = emptyMemory;
+#endif
+        cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
+        cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
+        Debug.LogWarning("Dialogue save data erased");
+
     }
 
     #region Unity Loop
@@ -121,11 +132,11 @@ public class DialogueDisplayer : MonoBehaviour
     {
         //Load les dialogues précédents
         cachedDialogueManager = DialogueManager.Instance;
-        if(cachedDialogueManager.timeManager == null)
+        if (cachedDialogueManager.timeManager == null)
         {
             cachedDialogueManager.timeManager = TimeManager.Instance;
         }
-        if(cachedDialogueManager.displayer == null)
+        if (cachedDialogueManager.displayer == null)
         {
             cachedDialogueManager.displayer = DialogueDisplayer.Instance;
         }
@@ -150,7 +161,9 @@ public class DialogueDisplayer : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            DeleteDialogueData();
+            SaveSystem.EraseDialogueData();
+            SaveSystem.EraseHackingDialogueData();
+            Debug.LogWarning("Save files deleted");
         }
 
         if (!isLoading)
@@ -196,8 +209,9 @@ public class DialogueDisplayer : MonoBehaviour
     private void OnApplicationQuit()
     {
         DeleteDialogueData();
-    } 
+    }
 #endif
+
     #endregion
 
     #region Save/Load
@@ -209,35 +223,74 @@ public class DialogueDisplayer : MonoBehaviour
         tempHasReacted = reacting;
         tempIsFinished = isFinished;
 
-        SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+        if (!isHackingScene)
+        {
+            SaveDialogueData(cachedDialogueManager.mainChatDialoguesToSave);
+        }
+        else
+        {
+            SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
+        }
     }
     private void AddDialogueToSave(Dialogue dialogueToAdd)
     {
         if (!isLoading)
         {
-            cachedDialogueManager.dialoguesToSave.Add(dialogueToAdd);
-            UpdateDialogueState();
-            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+            if (!isHackingScene)
+            {
+                cachedDialogueManager.mainChatDialoguesToSave.Add(dialogueToAdd);
+                UpdateDialogueState();
+                SaveDialogueData(cachedDialogueManager.mainChatDialoguesToSave);
+            }
+            else
+            {
+                cachedDialogueManager.hackingChatDialoguesToSave.Add(dialogueToAdd);
+                UpdateDialogueState();
+                SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
+
+            }
         }
     }
     private void AddElementToSave(DialogueElement elementToAdd)
     {
         if (!isLoading)
         {
-            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].AddDialogueElement(elementToAdd);
-            UpdateDialogueState();
-            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+            if (!isHackingScene)
+            {
+                cachedDialogueManager.mainChatDialoguesToSave[cachedDialogueManager.mainChatDialoguesToSave.Count - 1].AddDialogueElement(elementToAdd);
+
+                UpdateDialogueState();
+                SaveDialogueData(cachedDialogueManager.mainChatDialoguesToSave);
+            }
+            else
+            {
+                cachedDialogueManager.hackingChatDialoguesToSave[cachedDialogueManager.hackingChatDialoguesToSave.Count - 1].AddDialogueElement(elementToAdd);
+
+                UpdateDialogueState();
+                SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
+            }
         }
     }
     private void EditLastSavedElement(DialogueElement elementToEdit)
     {
         if (!isLoading)
         {
-            cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialogueList.Count - 1].elements[cachedDialogueManager.dialoguesToSave
-                [cachedDialogueManager.dialogueList.Count - 1].elements.Count - 1] = elementToEdit;
+            if (!isHackingScene)
+            {
+                cachedDialogueManager.mainChatDialoguesToSave[cachedDialogueManager.dialogueList.Count - 1].elements[cachedDialogueManager.mainChatDialoguesToSave
+                    [cachedDialogueManager.dialogueList.Count - 1].elements.Count - 1] = elementToEdit;
 
-            UpdateDialogueState();
-            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+                UpdateDialogueState();
+                SaveDialogueData(cachedDialogueManager.mainChatDialoguesToSave);
+            }
+            else
+            {
+                cachedDialogueManager.hackingChatDialoguesToSave[cachedDialogueManager.hackingChatDialoguesToSave.Count - 1].elements[cachedDialogueManager.hackingChatDialoguesToSave
+                    [cachedDialogueManager.dialogueList.Count - 1].elements.Count - 1] = elementToEdit;
+
+                UpdateDialogueState();
+                SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
+            }
         }
     }
     public void SaveDialogueData(List<Dialogue> dialogueListToSaveTo)
@@ -245,12 +298,26 @@ public class DialogueDisplayer : MonoBehaviour
         if (!isLoading)
         {
             data = null;
-            SaveSystem.SaveDialogue(dialogueListToSaveTo);
+            if (!isHackingScene)
+            {
+                SaveSystem.SaveDialogue(dialogueListToSaveTo);
+            }
+            else
+            {
+                SaveSystem.SaveHackingDialogue(dialogueListToSaveTo);
+            }
         }
     }
     public void LoadDialogueData()
     {
-        data = SaveSystem.LoadDialogue();
+        if (!isHackingScene)
+        {
+            data = SaveSystem.LoadDialogue();
+        }
+        else
+        {
+            data = SaveSystem.LoadHackingDialogue();
+        }
 
         if (data != null)
         {
@@ -263,9 +330,18 @@ public class DialogueDisplayer : MonoBehaviour
 
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
-            cachedDialogueManager.dialoguesToSave = RestoreSavedDialogues(cachedDialogueManager.dialogueList, data);
 
-            SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+            if (!isHackingScene)
+            {
+                cachedDialogueManager.mainChatDialoguesToSave = RestoreSavedDialogues(cachedDialogueManager.dialogueList, data);
+                SaveDialogueData(cachedDialogueManager.mainChatDialoguesToSave);
+            }
+            else
+            {
+                cachedDialogueManager.hackingChatDialoguesToSave = RestoreSavedDialogues(cachedDialogueManager.dialogueList, data);
+                SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
+            }
+
 
             DisplayLoadedDialogue(cachedDialogueManager.dialogueList);
 
@@ -410,48 +486,24 @@ public class DialogueDisplayer : MonoBehaviour
     {
         cachedDialogueManager.timeManager.StopClock();
 
-        //Chaque dialogue
-        for (int i = 0; i < loadedDialogues.Count; i++)
+        if (!isHackingScene)
         {
-            currentDialogueElementId = 0;
-            currentDialogue = loadedDialogues[i];
-
-            //Debug.LogError(i);
-
-            //Chaque dialogue jusqu'au dernier (Partagent le même comportement)
-            if (i != loadedDialogues.Count - 1)
+            //Chaque dialogue
+            for (int i = 0; i < loadedDialogues.Count; i++)
             {
-                //Debug.LogError("PAS dernier dialogue sauvegardé");
-                //Chaque élément
-                for (int j = 0; j < loadedDialogues[i].elements.Count; j++)
-                {
-                    currentDialogueElementId = j;
-                    CreateMessageBubble();
-                    DisplayMessage();
-                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
-                    {
-                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
-                        {
-                            CreateMessageBubble();
-                            DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
-                        }
-                    }
-                }
-            }
-            //Dernier dialogue, donc index de sauvegarde différents
-            else
-            {
+                currentDialogueElementId = 0;
+                currentDialogue = loadedDialogues[i];
 
-                //Debug.LogError("Dernier dialogue sauvegardé");
-                //Chaque élément
-                for (int j = 0; j < cachedDialogueManager.dialoguesToSave[i].elements.Count; j++)
+                //Debug.LogError(i);
+
+                //Chaque dialogue jusqu'au dernier (Partagent le même comportement)
+                if (i != loadedDialogues.Count - 1)
                 {
-                    currentDialogueElementId = j;
-                    //Debug.LogError(j);
-                    if (j != cachedDialogueManager.dialoguesToSave[i].elements.Count - 1)
+                    //Debug.LogError("PAS dernier dialogue sauvegardé");
+                    //Chaque élément
+                    for (int j = 0; j < loadedDialogues[i].elements.Count; j++)
                     {
-                        allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
+                        currentDialogueElementId = j;
                         CreateMessageBubble();
                         DisplayMessage();
                         if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
@@ -464,148 +516,372 @@ public class DialogueDisplayer : MonoBehaviour
                             }
                         }
                     }
-                    //Dernier élément de la sauvegarde
-                    else
-                    {
-                        if (!isInitialisation && !isWaitingForReply && !reacting && !hasReplied)
-                        {
-                            Debug.LogWarning("Loading :: The dialogue is finished");
+                }
+                //Dernier dialogue, donc index de sauvegarde différents
+                else
+                {
 
+                    //Debug.LogError("Dernier dialogue sauvegardé");
+                    //Chaque élément
+                    for (int j = 0; j < cachedDialogueManager.mainChatDialoguesToSave[i].elements.Count; j++)
+                    {
+                        currentDialogueElementId = j;
+                        //Debug.LogError(j);
+                        if (j != cachedDialogueManager.mainChatDialoguesToSave[i].elements.Count - 1)
+                        {
+                            allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
                             CreateMessageBubble();
                             DisplayMessage();
                             if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
                             {
                                 SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-                                if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != ""
-                                    || loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
                                 {
-                                    Debug.Log("Sending the message's reaction");
                                     CreateMessageBubble();
                                     DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
                                 }
                             }
-
-                            isFinished = true;
-                            UpdateDialogueState();
-                            bubbleSpawned = false;
                         }
-                        //Un comportement spécifique pour chaque état
-                        else if (isInitialisation)
+                        //Dernier élément de la sauvegarde
+                        else
                         {
-                            if (reacting)
+                            if (!isInitialisation && !isWaitingForReply && !reacting && !hasReplied)
                             {
-                                Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a message pending, but the \"...\" bubble isn't sent yet");
+                                Debug.LogWarning("Loading :: The dialogue is finished");
 
                                 CreateMessageBubble();
                                 DisplayMessage();
                                 if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
                                 {
                                     SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
+                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != ""
+                                        || loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
                                     {
+                                        Debug.Log("Sending the message's reaction");
                                         CreateMessageBubble();
                                         DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
                                     }
                                 }
 
+                                isFinished = true;
+                                UpdateDialogueState();
                                 bubbleSpawned = false;
-
-                                /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
-                                timeManager.StartClock(currentWaitingTime);*/
-
-                                writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
-                                timeToStartWriting = SetTimeToStartWriting();
                             }
-
-                            else
+                            //Un comportement spécifique pour chaque état
+                            else if (isInitialisation)
                             {
-                                //Attente du message
-                                Debug.LogWarning("Loading :: The dialogue is currently in a state where the message bubble has spawned but the message hasn't been written yet");
-                                CreateMessageBubble();
+                                if (reacting)
+                                {
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a message pending, but the \"...\" bubble isn't sent yet");
 
-                                /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
-                                timeManager.StartClock(currentWaitingTime);*/
+                                    CreateMessageBubble();
+                                    DisplayMessage();
+                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                    {
+                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
+                                        {
+                                            CreateMessageBubble();
+                                            DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                        }
+                                    }
 
-                                writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
-                                timeToStartWriting = SetTimeToStartWriting();
+                                    bubbleSpawned = false;
+
+                                    /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+                                    timeManager.StartClock(currentWaitingTime);*/
+
+                                    writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+                                    timeToStartWriting = SetTimeToStartWriting();
+                                }
+
+                                else
+                                {
+                                    //Attente du message
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where the message bubble has spawned but the message hasn't been written yet");
+                                    CreateMessageBubble();
+
+                                    /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+                                    timeManager.StartClock(currentWaitingTime);*/
+
+                                    writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+                                    timeToStartWriting = SetTimeToStartWriting();
+                                }
                             }
-                        }
-                        else if (isWaitingForReply)
-                        {
-                            Debug.LogWarning("Loading :: The dialogue is currently in a state where it's waiting for a reply");
-                            //Attente de la réponse
-                            CreateMessageBubble();
-                            DisplayMessage();
-
-                            bubbleSpawned = false;
-
-                        }
-                        else
-                        {
-                            if (hasReplied && !reacting)
+                            else if (isWaitingForReply)
                             {
-                                Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a reaction pending, but the \"...\" bubble isn't sent yet");
-                                //Attente de la réaction
-                                bubbleSpawned = false;
-
+                                Debug.LogWarning("Loading :: The dialogue is currently in a state where it's waiting for a reply");
+                                //Attente de la réponse
                                 CreateMessageBubble();
                                 DisplayMessage();
 
+                                bubbleSpawned = false;
 
-                                if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
-                                {
-                                    SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-
-                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" ||
-                                        loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
-                                    {
-                                        awaitingReaction = loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction;
-
-                                        /*SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
-                                        timeManager.StartClock(currentWaitingTime);*/
-
-                                        writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
-                                        timeToStartWriting = SetTimeToStartWriting();
-                                    }
-
-                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
-                                    {
-                                        loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
-                                    }
-                                }
                             }
                             else
                             {
-                                Debug.LogWarning("Loading :: The dialogue is currently in a state where the reaction bubble has spawned but the reaction hasn't been written yet");
-                                //Attente de la réaction
-                                CreateMessageBubble();
-                                DisplayMessage();
-                                if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                if (hasReplied && !reacting)
                                 {
-                                    SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a reaction pending, but the \"...\" bubble isn't sent yet");
+                                    //Attente de la réaction
+                                    bubbleSpawned = false;
 
-                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" ||
-                                        loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
-                                    {
-                                        CreateMessageBubble();
-                                        /*SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
-                                        timeManager.StartClock(currentWaitingTime);*/
+                                    CreateMessageBubble();
+                                    DisplayMessage();
 
-                                        writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
-                                        timeToStartWriting = SetTimeToStartWriting();
-                                    }
-                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
+
+                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
                                     {
-                                        loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" ||
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                        {
+                                            awaitingReaction = loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction;
+
+                                            /*SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
+                                            timeManager.StartClock(currentWaitingTime);*/
+
+                                            writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                            timeToStartWriting = SetTimeToStartWriting();
+                                        }
+
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
+                                        {
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+                                        }
                                     }
                                 }
+                                else
+                                {
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where the reaction bubble has spawned but the reaction hasn't been written yet");
+                                    //Attente de la réaction
+                                    CreateMessageBubble();
+                                    DisplayMessage();
+                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                    {
+                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" ||
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                        {
+                                            CreateMessageBubble();
+                                            /*SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
+                                            timeManager.StartClock(currentWaitingTime);*/
+
+                                            writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                            timeToStartWriting = SetTimeToStartWriting();
+                                        }
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
+                                        {
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < loadedDialogues.Count; i++)
+            {
+                currentDialogueElementId = 0;
+                currentDialogue = loadedDialogues[i];
+
+                //Debug.LogError(i);
+
+                //Chaque dialogue jusqu'au dernier (Partagent le même comportement)
+                if (i != loadedDialogues.Count - 1)
+                {
+                    //Debug.LogError("PAS dernier dialogue sauvegardé");
+                    //Chaque élément
+                    for (int j = 0; j < loadedDialogues[i].elements.Count; j++)
+                    {
+                        currentDialogueElementId = j;
+                        CreateMessageBubble();
+                        DisplayMessage();
+                        if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                        {
+                            SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                            if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
+                            {
+                                CreateMessageBubble();
+                                DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
                             }
                         }
                     }
+                }
+                //Dernier dialogue, donc index de sauvegarde différents
+                else
+                {
 
+                    //Debug.LogError("Dernier dialogue sauvegardé");
+                    //Chaque élément
+                    for (int j = 0; j < cachedDialogueManager.hackingChatDialoguesToSave[i].elements.Count; j++)
+                    {
+                        currentDialogueElementId = j;
+                        //Debug.LogError(j);
+                        if (j != cachedDialogueManager.hackingChatDialoguesToSave[i].elements.Count - 1)
+                        {
+                            allowedType = (AllowedMessageType)loadedDialogues[i].elements[j].messageType;
+                            CreateMessageBubble();
+                            DisplayMessage();
+                            if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                            {
+                                SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                                if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
+                                {
+                                    CreateMessageBubble();
+                                    DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                }
+                            }
+                        }
+                        //Dernier élément de la sauvegarde
+                        else
+                        {
+                            if (!isInitialisation && !isWaitingForReply && !reacting && !hasReplied)
+                            {
+                                Debug.LogWarning("Loading :: The dialogue is finished");
+
+                                CreateMessageBubble();
+                                DisplayMessage();
+                                if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                {
+                                    SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                                    if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != ""
+                                        || loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                    {
+                                        Debug.Log("Sending the message's reaction");
+                                        CreateMessageBubble();
+                                        DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                    }
+                                }
+
+                                isFinished = true;
+                                UpdateDialogueState();
+                                bubbleSpawned = false;
+                            }
+                            //Un comportement spécifique pour chaque état
+                            else if (isInitialisation)
+                            {
+                                if (reacting)
+                                {
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a message pending, but the \"...\" bubble isn't sent yet");
+
+                                    CreateMessageBubble();
+                                    DisplayMessage();
+                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                    {
+                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
+                                        {
+                                            CreateMessageBubble();
+                                            DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                        }
+                                    }
+
+                                    bubbleSpawned = false;
+
+                                    /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+                                    timeManager.StartClock(currentWaitingTime);*/
+
+                                    writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+                                    timeToStartWriting = SetTimeToStartWriting();
+                                }
+
+                                else
+                                {
+                                    //Attente du message
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where the message bubble has spawned but the message hasn't been written yet");
+                                    CreateMessageBubble();
+
+                                    /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
+                                    timeManager.StartClock(currentWaitingTime);*/
+
+                                    writingTime = SetWritingTime(currentDialogue.elements[currentDialogueElementId].message);
+                                    timeToStartWriting = SetTimeToStartWriting();
+                                }
+                            }
+                            else if (isWaitingForReply)
+                            {
+                                Debug.LogWarning("Loading :: The dialogue is currently in a state where it's waiting for a reply");
+                                //Attente de la réponse
+                                CreateMessageBubble();
+                                DisplayMessage();
+
+                                bubbleSpawned = false;
+
+                            }
+                            else
+                            {
+                                if (hasReplied && !reacting)
+                                {
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a reaction pending, but the \"...\" bubble isn't sent yet");
+                                    //Attente de la réaction
+                                    bubbleSpawned = false;
+
+                                    CreateMessageBubble();
+                                    DisplayMessage();
+
+
+                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                    {
+                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" ||
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                        {
+                                            awaitingReaction = loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction;
+
+                                            /*SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
+                                            timeManager.StartClock(currentWaitingTime);*/
+
+                                            writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                            timeToStartWriting = SetTimeToStartWriting();
+                                        }
+
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
+                                        {
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("Loading :: The dialogue is currently in a state where the reaction bubble has spawned but the reaction hasn't been written yet");
+                                    //Attente de la réaction
+                                    CreateMessageBubble();
+                                    DisplayMessage();
+                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
+                                    {
+                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
+
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "" ||
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != null)
+                                        {
+                                            CreateMessageBubble();
+                                            /*SetWaitingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reactionTime);
+                                            timeManager.StartClock(currentWaitingTime);*/
+
+                                            writingTime = SetWritingTime(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
+                                            timeToStartWriting = SetTimeToStartWriting();
+                                        }
+                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent != null)
+                                        {
+                                            loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].replyEvent.Invoke();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
                 }
             }
-            //cachedDialogueManager.dialoguesToSave = dialoguesToRecoverToSave;
         }
 
         //Set la clock
@@ -641,10 +917,20 @@ public class DialogueDisplayer : MonoBehaviour
         currentDialogue = dialogue;
 
         AddDialogueToSave(new Dialogue());
-        cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].fileName = dialogue.fileName;
-        cachedDialogueManager.dialoguesToSave[cachedDialogueManager.dialoguesToSave.Count - 1].id = dialogue.id;
+        if (!isHackingScene)
+        {
+            cachedDialogueManager.mainChatDialoguesToSave[cachedDialogueManager.mainChatDialoguesToSave.Count - 1].fileName = dialogue.fileName;
+            cachedDialogueManager.mainChatDialoguesToSave[cachedDialogueManager.mainChatDialoguesToSave.Count - 1].id = dialogue.id;
 
-        SaveDialogueData(cachedDialogueManager.dialoguesToSave);
+            SaveDialogueData(cachedDialogueManager.mainChatDialoguesToSave);
+        }
+        else
+        {
+            cachedDialogueManager.hackingChatDialoguesToSave[cachedDialogueManager.hackingChatDialoguesToSave.Count - 1].fileName = dialogue.fileName;
+            cachedDialogueManager.hackingChatDialoguesToSave[cachedDialogueManager.hackingChatDialoguesToSave.Count - 1].id = dialogue.id;
+
+            SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
+        }
 
         //Set clock and writing time to the initiation time of the current element
         SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);

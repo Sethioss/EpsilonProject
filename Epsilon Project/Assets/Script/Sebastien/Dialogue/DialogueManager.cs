@@ -26,7 +26,8 @@ public class DialogueManager : MonoBehaviour
     public List<Dialogue> dialogueList;
     #endregion
 
-    public List<Dialogue> dialoguesToSave = new List<Dialogue>();
+    public List<Dialogue> mainChatDialoguesToSave = new List<Dialogue>();
+    public List<Dialogue> hackingChatDialoguesToSave = new List<Dialogue>();
 
     #region Debug
     [Header("Debugging tools")]
