@@ -16316,13 +16316,13 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
-  dialogueFileToLoad: {fileID: 0}
+  dialogueFileToLoad: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 
   m_testSetFloat: 0
   username: Sebilol

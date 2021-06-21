@@ -7416,7 +7416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectionName: 
   tagList:
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 1491938866}
     tagName: settings
     dynamicID: 0
     customParameters: []
@@ -7424,35 +7424,35 @@ MonoBehaviour:
     tagName: interlocutor1
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 713409323}
     tagName: autoModeTitle
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 630168945}
     tagName: autoModeDesc
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 1427355101}
     tagName: inactiveTitle
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 201464217}
     tagName: inactiveDesc
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 1995512282}
     tagName: inactivePeriodSet
     dynamicID: 1
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 88547331}
     tagName: languageTitle
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 577596624}
     tagName: languageDesc
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
+  - tagTxtObject: {fileID: 1471755893}
     tagName: profilePictureText
     dynamicID: 0
     customParameters: []
@@ -11402,7 +11402,7 @@ MonoBehaviour:
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 20
   m_testSetFloat: 20
   username: Sebilol
