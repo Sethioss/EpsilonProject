@@ -11,18 +11,23 @@ public class DialogueManager : MonoBehaviour
     public bool onGameSceneEntered = false;
 
     #region Dialogue Manager Components
-    private CSVReader reader;
+    [HideInInspector]
+    public CSVReader reader;
     [HideInInspector]
     public DialogueDisplayer displayer;
     [HideInInspector]
     public TimeManager timeManager;
 
     [Header("Dialogue initialisation and list")]
+    [HideInInspector]
     public TextAsset currentDialogueFile;
+    public TextAsset dialogueFileToLoad;
+
     public List<Dialogue> dialogueList;
     #endregion
 
-    public List<Dialogue> dialoguesToSave = new List<Dialogue>();
+    public List<Dialogue> mainChatDialoguesToSave = new List<Dialogue>();
+    public List<Dialogue> hackingChatDialoguesToSave = new List<Dialogue>();
 
     #region Debug
     [Header("Debugging tools")]
