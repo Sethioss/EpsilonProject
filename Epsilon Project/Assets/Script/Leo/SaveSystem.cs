@@ -56,11 +56,23 @@ public static class SaveSystem
         stream.Close();
 
     }
+
+    public static void SaveHackingDialogue(List<Dialogue> dialogueListToSaveTo)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/HackingDialogue.fun";
+        FileStream stream = File.Open(path, FileMode.OpenOrCreate);
+        DialogueData dialoguedata = new DialogueData(dialogueListToSaveTo);
+        formatter.Serialize(stream, dialoguedata);
+        stream.Close();
+
+    }
+
     public static void SaveDialogue(List<Dialogue> dialogueListToSaveTo)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
-        FileStream stream = File.Open(path, FileMode.Create);
+        FileStream stream = File.Open(path, FileMode.OpenOrCreate);
         DialogueData dialoguedata = new DialogueData(dialogueListToSaveTo);
         formatter.Serialize(stream, dialoguedata);
         stream.Close();
@@ -151,13 +163,14 @@ public static class SaveSystem
         }
 
     }
-    public static DialogueData LoadDialogue()
+
+    public static DialogueData LoadHackingDialogue()
     {
-        string path = Application.persistentDataPath + "/Dialogue.fun";
+        string path = Application.persistentDataPath + "/HackingDialogue.fun";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
             DialogueData data = (DialogueData)formatter.Deserialize(stream);
             stream.Close();
             return data;
@@ -169,6 +182,42 @@ public static class SaveSystem
         }
 
     }
+
+    public static DialogueData LoadDialogue()
+    {
+        string path = Application.persistentDataPath + "/Dialogue.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            DialogueData data = (DialogueData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Load file not found in " + path);
+            return null;
+        }
+
+    }
+    #endregion
+
+    #region Erase
+    public static void EraseDialogueData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Dialogue.fun";
+        File.Delete(path);
+    }
+
+    public static void EraseHackingDialogueData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/HackingDialogue.fun";
+        File.Delete(path);
+    }
+
     #endregion
 }
 
