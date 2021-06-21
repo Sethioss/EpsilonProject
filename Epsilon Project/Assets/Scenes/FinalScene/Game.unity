@@ -1355,6 +1355,7 @@ MonoBehaviour:
   inactivePeriods: 1
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
+  activateClockRecalibration: 0
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
@@ -1747,10 +1748,6 @@ MonoBehaviour:
   currentlyWaiting: 0
   timeValue: 60
   timerText: {fileID: 0}
-  second: 0
-  minute: 0
-  hour: 0
-  day: 0
 --- !u!4 &335444748
 Transform:
   m_ObjectHideFlags: 0
@@ -7046,8 +7043,14 @@ MonoBehaviour:
   isLoading: 0
   tempWaitingForReply: 0
   tempIsInitialisation: 0
+  tempHasReplied: 0
+  tempHasReacted: 0
+  tempIsFinished: 0
   isInitialisation: 1
   isWaitingForReply: 0
+  hasReplied: 0
+  reacting: 1
+  isFinished: 0
   cameFromBranch: 0
   currentBubble: {fileID: 0}
   messagePanel: {fileID: 2109942662}
@@ -8916,7 +8919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1698}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882319460
