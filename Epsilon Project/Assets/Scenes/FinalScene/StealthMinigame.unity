@@ -7601,8 +7601,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-  MinAngleCamera: 
-  MaxAngleCamera: 
 --- !u!1001 &234318050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11845,7 +11843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &382797926
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20948,8 +20946,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-  MinAngleCamera: 
-  MaxAngleCamera: 
 --- !u!1001 &643593464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33021,8 +33017,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-  MinAngleCamera: 
-  MaxAngleCamera: 
 --- !u!1001 &985460455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50750,8 +50744,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-  MinAngleCamera: 
-  MaxAngleCamera: 
 --- !u!1001 &1568030388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56956,8 +56948,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-  MinAngleCamera: 
-  MaxAngleCamera: 
 --- !u!1 &1771185511
 GameObject:
   m_ObjectHideFlags: 0
@@ -67602,8 +67592,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-  MinAngleCamera: 
-  MaxAngleCamera: 
 --- !u!1001 &2131422560
 PrefabInstance:
   m_ObjectHideFlags: 0
