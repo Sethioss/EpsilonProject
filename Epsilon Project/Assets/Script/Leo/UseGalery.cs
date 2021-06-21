@@ -52,7 +52,7 @@ public class UseGalery : MonoBehaviour
 		Destroy(ss);
 	}
 
-	private void PickImage(int maxSize)
+	public void PickImage(int maxSize)
 	{
 		NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
 		{
