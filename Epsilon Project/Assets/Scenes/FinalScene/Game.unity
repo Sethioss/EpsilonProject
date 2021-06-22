@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:02
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 1
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
@@ -1403,11 +1403,11 @@ RectTransform:
   m_Children:
   - {fileID: 1981881602}
   - {fileID: 499103110}
-  - {fileID: 1565060070}
-  - {fileID: 304347095}
   - {fileID: 517628481}
   - {fileID: 416067335}
   - {fileID: 1878603327}
+  - {fileID: 1565060070}
+  - {fileID: 304347095}
   m_Father: {fileID: 1813104237}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1900,7 +1900,7 @@ RectTransform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 178791459}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2113,7 +2113,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1961985356}
-  - {fileID: 1064298526}
   m_Father: {fileID: 1510778846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2281,7 +2280,7 @@ RectTransform:
   m_Children:
   - {fileID: 701421900}
   m_Father: {fileID: 178791459}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2909,7 +2908,7 @@ RectTransform:
   m_Children:
   - {fileID: 1286580723}
   m_Father: {fileID: 178791459}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -3120,7 +3119,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 2
+  m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
@@ -3164,7 +3163,7 @@ MonoBehaviour:
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
-  m_LineLimit: 9
+  m_LineLimit: 0
   m_InputValidator: {fileID: 0}
 --- !u!114 &566914587
 MonoBehaviour:
@@ -4009,7 +4008,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2109942663}
-  - {fileID: 1556784246}
   m_Father: {fileID: 1510778846}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4341,7 +4339,7 @@ RectTransform:
   - {fileID: 870092839}
   - {fileID: 1117013787}
   m_Father: {fileID: 1510778846}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5388,7 +5386,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -6553,8 +6551,8 @@ RectTransform:
   - {fileID: 3204634}
   - {fileID: 2015512246}
   - {fileID: 121097347}
-  m_Father: {fileID: 364619820}
-  m_RootOrder: 1
+  m_Father: {fileID: 1510778846}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -7511,7 +7509,7 @@ RectTransform:
   - {fileID: 2100952055}
   - {fileID: 1170306908}
   m_Father: {fileID: 1510778846}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7531,7 +7529,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profilePictureTransforms:
-  - {fileID: 0}
   - {fileID: 150942787}
   sliderText: {fileID: 1995512282}
   sliderMinTime: {fileID: 208669778}
@@ -8096,7 +8093,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1510778846}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -9241,6 +9238,8 @@ RectTransform:
   m_Children:
   - {fileID: 364619820}
   - {fileID: 672054459}
+  - {fileID: 1556784246}
+  - {fileID: 1064298526}
   - {fileID: 1341360254}
   - {fileID: 1273182830}
   - {fileID: 1813104237}
@@ -9523,12 +9522,12 @@ RectTransform:
   - {fileID: 1567644579}
   - {fileID: 1668824289}
   - {fileID: 1204322845}
-  m_Father: {fileID: 672054459}
-  m_RootOrder: 1
+  m_Father: {fileID: 1510778846}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -16.000013, y: 758.8595}
+  m_AnchoredPosition: {x: -16.000013, y: 602.99976}
   m_SizeDelta: {x: 202, y: 599}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1565060067
@@ -9659,7 +9658,7 @@ RectTransform:
   m_Children:
   - {fileID: 566914584}
   m_Father: {fileID: 178791459}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -11187,7 +11186,7 @@ RectTransform:
   - {fileID: 178791459}
   - {fileID: 1644381415}
   m_Father: {fileID: 1510778846}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11396,7 +11395,7 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 64c7b97a163d10540b3c488569e8c101, type: 3}
-  dialogueFileToLoad: {fileID: 0}
+  dialogueFileToLoad: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
@@ -11451,7 +11450,7 @@ RectTransform:
   m_Children:
   - {fileID: 1411527351}
   m_Father: {fileID: 178791459}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
