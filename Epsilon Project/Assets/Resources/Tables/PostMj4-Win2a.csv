@@ -1,9 +1,9 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Si tu n'es pas convaincu, je ne vais pas chercher à le faire. Tant que tu m'aides…;;;;;;;
+Si tu n'es pas convaincu, je ne vais pas chercher à le faire. Tant que tu m'aides...;;;;;;;
 ;;;;;;;
-Mais pour te faire un résumé : la société qu'on connaît ne va surement pas tenir;;;;;;;
+Mais pour te faire un résumé : la société qu'on connaît ne va surement pas tenir.;;;;;;;
 ;;;;;;;
 Et nous, on compte précipiter sa chute.;Ok.;;;;;;
 ;Pourquoi?!;Je vais t'épargner les détails, mais pour faire court, quoi qu'on fasse, la chute est inévitable, et plus elle prend du temps à arriver, plus on aura de mal à s'en relever.;;;;;
 ;;;;;;;
-Je te recontacte bientôt, j'aurais besoin de toi;;;;;;<BRANCH>PostMj5-1;
+Je te recontacte bientôt, j'aurai besoin de toi.;;;;;;<BRANCH>PostMj5-1;

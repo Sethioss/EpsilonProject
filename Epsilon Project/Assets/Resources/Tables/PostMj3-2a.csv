@@ -1,6 +1,6 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Bon, c'est assez embarassant, mais…;;;;;;;
+Bon, c'est assez embarassant, mais...;;;;;;;
 ;;;;;;;
-Mes compagnons me font plus confiance. Je ne peux plus faire marche arrière;;;;;;;
+Mes compagnons ne me font plus confiance. Je ne peux plus faire marche arrière.;;;;;;;
 ;;;;;;;
 Et c'est moi qui ai été choisie pour la mission…;Et je vais devoir t'assister? Mais comment?;;;;<BRANCH>PostMj3-3;;

@@ -1,7 +1,7 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
 Bien. Je vais t'apprendre quelque chose.;;;00:02:00:00;;;;
 ;;;;;;;
-Je fais partie d'un groupe avec un but assez important. Si je t'ai contacté c'est pour que tu puisses nous aider moi et mon groupe.;Quel est votre but?;Je ne peux pas t'en parler pour l'instant, mais je le ferais très prochainement.;;;;;
+Je fais partie d'un groupe avec un but assez important. Si je t'ai contacté c'est pour que tu puisses nous aider moi et mon groupe.;Quel est votre but?;Je ne peux pas t'en parler pour l'instant, mais je le ferai très prochainement.;;;;;
 ;Vous êtes un groupe de quoi?;Nous sommes un groupe de hacker activiste, c'est tout ce que je peux te dire pour l'instant.;;;;;
 ;;;;;;;
 Sache juste que nous avons un but. Et pour mener à bien ce but, nous ne pouvons agir seul.;De qui avez-vous besoin?;;;;;;
@@ -17,7 +17,7 @@ On sait juste qu'ils peuvent nous aider.;;;;;;;
 On a déjà eu recours à leur aide par le passé.;;;;;;;
 ;;;;;;;
 Ça a personnellement été une mauvaise expérience, mais on n'a plus le choix.;Et que veux-tu que je fasse?;J'allais y venir.;;;;;
-;Ils sont si important?;Honnêtement, je ne saurais pas te répondre. Je sais juste encore une fois qu'il me faut les contacter.;;;;;
+;Ils sont si importants?;Honnêtement, je ne saurais pas te répondre. Je sais juste encore une fois qu'il me faut les contacter.;;;;;
 ;;;;;;;
 Je disais donc qu'on a déjà travaillé avec eux par le passé. Avant de couper toute communication, ils nous ont laissé un lien crypté en nous disant que c'était ce lien qui nous permettrait de les recontacter dans le futur.;Et quel est le problème?;;;;;;
 ;;;;;;;
@@ -30,6 +30,6 @@ Tu vas cliquer sur ce lien et me dire ce qui s'y trouve.;T'es malade!;;;;;;
 Rassure-toi.;;;;;;;
 ;;;;;;;
 Le groupe dont on parle n'en a rien à faire d'une personne lambda comme toi.;Il est vrai ton mensonge?;Je t'assure. S'il devait t'arriver quoi que ce soit, je ferais en sorte de te protéger de toute façon.;;;;;
-;Je pensais que vous ne saviez rien d'eux?;On ne sait pas grand-chose, nuance. On sait qu'ils ont des objectifs importants eux aussi, qu'ils ne s'attarderaient pas � embêter quelqu'un comme toi.;;;;;
+;Je pensais que vous ne saviez rien d'eux?;On ne sait pas grand-chose, nuance. On sait qu'ils ont des objectifs importants eux aussi, qu'ils ne s'attarderaient pas à embêter quelqu'un comme toi.;;;;;
 ;;;;;;;
 Je vais t'envoyer le lien. Tu vas cliquer dessus et me dire ce que tu y vois dans un premier temps.;Bien...;;;;;<LINK>DeepWeb 'Lien vers le deep web';
