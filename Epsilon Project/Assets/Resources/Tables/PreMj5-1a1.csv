@@ -1,0 +1,11 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Je vais t'expliquer deux choses : Premièrement, te détailler notre but, et ensuite, te décrire ton ultime tâche.;;;;;;;
+;;;;;;;
+Je t'ai dit que notre but était d'accélérer les boucles de rétroactions positives...;;;;;;;
+;;;;;;;
+C'est parce que, comme je te l'ai déjà dit, nous ne croyons pas qu'il soit possible d'empêcher notre chute...;;;;;;;
+;;;;;;;
+Nous allons donc l'accélérer afin de rendre notre société plus résiliente.;;;;;;;
+;;;;;;;
+Dans plus longtemps notre chute viendra, moins notre société sera résiliente.;Résiliente?;;;;<BRANCH>PreMj5-1a2;;
+;Je vois. Et pourquoi tu ne m'as pas expliqué ça plus rapidement?;;;;<BRANCH>PreMj5-1a3;;

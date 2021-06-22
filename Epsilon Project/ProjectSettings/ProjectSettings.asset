@@ -183,6 +183,16 @@ PlayerSettings:
   - {fileID: 4900000, guid: 79e76a56026c05c4895e457deca09dce, type: 3}
   - {fileID: 4900000, guid: 64b8d2da669fe884ebc3413022135dd1, type: 3}
   - {fileID: 4900000, guid: 7fac9eef1391c6d49bf262d430060381, type: 3}
+  - {fileID: 4900000, guid: 738f45a3ad3100248b5ef96559b1f010, type: 3}
+  - {fileID: 4900000, guid: be77ba439255af248b1a73d7f40ac555, type: 3}
+  - {fileID: 4900000, guid: 48b1b52f7f22dc84092c49d7acc141bf, type: 3}
+  - {fileID: 4900000, guid: 799e650f156f9bc43a417f535ab09fc6, type: 3}
+  - {fileID: 4900000, guid: 9195e5d88f7aaf04691e38564abdab05, type: 3}
+  - {fileID: 4900000, guid: 86e20a995da7b8c4286a3187f8281c34, type: 3}
+  - {fileID: 4900000, guid: 6d9b65f4d28110844a7fd0c7a76d4824, type: 3}
+  - {fileID: 4900000, guid: 27c9cb9e0a5bae349bd86ab122721855, type: 3}
+  - {fileID: 4900000, guid: feaaccdbed17c5642833c3a4f79ad3bc, type: 3}
+  - {fileID: 4900000, guid: 196587e9d214add4fb35f73fbb45cbdb, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
