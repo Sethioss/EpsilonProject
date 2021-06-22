@@ -58,10 +58,13 @@ public class OptionMenu : MonoBehaviour
     {
         if (autoModeToggle.isOn)
         {
-            DialogueManager.Instance.timeManager.StopClock();
-            DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
+            if (DialogueManager.Instance.timeManager != null)
+            {
+                DialogueManager.Instance.timeManager.StopClock();
+                DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
+            }
         }
-        if(autoModeToggle.isOn && inactivePeriodsToggle.isOn)
+        if (autoModeToggle.isOn && inactivePeriodsToggle.isOn)
         {
             inactivePeriodsToggle.isOn = false;
             inactivePeriodsToggle.interactable = false;
@@ -90,8 +93,8 @@ public class OptionMenu : MonoBehaviour
 
     public void SetMinMaxTimeToToggle()
     {
-       inactiveToggleValue = inactivePeriodsToggle.isOn;
-       UpdateMinMaxTime();
+        inactiveToggleValue = inactivePeriodsToggle.isOn;
+        UpdateMinMaxTime();
     }
 
     private void DisableMinMaxTime()
@@ -122,15 +125,22 @@ public class OptionMenu : MonoBehaviour
         inactivePeriodsToggle.isOn = inactiveToggleValue;
 
         XMLManager.Instance.UpdateHour();
-        if (inactivePeriodsToggle.isOn)
+        try
         {
-            if (DialogueManager.Instance.displayer.currentBubble == null)
+            if (inactivePeriodsToggle.isOn)
             {
-                DialogueManager.Instance.displayer.CreateMessageBubble();
+                if (DialogueManager.Instance.displayer.currentBubble == null)
+                {
+                    DialogueManager.Instance.displayer.CreateMessageBubble();
+                }
+                DialogueManager.Instance.timeManager.StopClock();
+                DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
             }
-            DialogueManager.Instance.timeManager.StopClock();
-            DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
-        }       
+        }
+        catch
+        {
+
+        }
 
         UpdateMinMaxTimeInManager();
         UpdateMenu();
