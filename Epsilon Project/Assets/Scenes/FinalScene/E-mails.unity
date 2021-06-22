@@ -3761,7 +3761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &332791696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6179,10 +6179,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1328913143}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1328913148}
+        m_TargetAssemblyTypeName: AnimBanner, Assembly-CSharp
+        m_MethodName: ChangeAnim
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10266,14 +10266,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
+  reader: {fileID: 0}
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 0}
+  dialogueFileToLoad: {fileID: 0}
   dialogueList: []
-  dialoguesToSave: []
+  mainChatDialoguesToSave: []
+  hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 
   m_testSetFloat: 0
   username: Sebilol
@@ -11995,6 +11998,7 @@ GameObject:
   - component: {fileID: 1061025035}
   - component: {fileID: 1061025034}
   - component: {fileID: 1061025033}
+  - component: {fileID: 1061025036}
   m_Layer: 5
   m_Name: Log Out Button
   m_TagString: Untagged
@@ -12065,9 +12069,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BannerMenu, Assembly-CSharp
-        m_MethodName: QuitAplication
+      - m_Target: {fileID: 1061025036}
+        m_TargetAssemblyTypeName: QuitAppli, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12115,6 +12119,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061025031}
   m_CullTransparentMesh: 1
+--- !u!114 &1061025036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061025031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecec93c5a5e580948870d12df46786af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1068266177
 GameObject:
   m_ObjectHideFlags: 0
@@ -14590,7 +14606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1228661192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14614,6 +14630,7 @@ RectTransform:
   - {fileID: 1141137068}
   - {fileID: 2062916777}
   - {fileID: 1623612285}
+  - {fileID: 1446533791}
   m_Father: {fileID: 1607199981}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15807,7 +15824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1309824319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16467,6 +16484,8 @@ GameObject:
   - component: {fileID: 1328913147}
   - component: {fileID: 1328913146}
   - component: {fileID: 1328913145}
+  - component: {fileID: 1328913149}
+  - component: {fileID: 1328913148}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -16556,6 +16575,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328913143}
   m_CullTransparentMesh: 1
+--- !u!114 &1328913148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328913143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c09b4e650f3ec94f82b55f6dfe2c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1328913149}
+--- !u!95 &1328913149
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328913143}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbd64488cb3014247b62bf3359bed926, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1332418338
 GameObject:
   m_ObjectHideFlags: 0
@@ -17674,12 +17725,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1607199981}
-  m_RootOrder: 7
+  m_Father: {fileID: 1228661192}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 324.99994, y: -630}
+  m_AnchoredPosition: {x: -335, y: 651}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446533792
@@ -17726,7 +17777,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1328913145}
+        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1328913148}
         m_TargetAssemblyTypeName: AnimBanner, Assembly-CSharp
         m_MethodName: ChangeAnim
         m_Mode: 1
@@ -19643,7 +19706,6 @@ RectTransform:
   - {fileID: 585443099}
   - {fileID: 1309824319}
   - {fileID: 1328913144}
-  - {fileID: 1446533791}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

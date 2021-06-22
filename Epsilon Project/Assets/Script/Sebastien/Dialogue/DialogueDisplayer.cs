@@ -89,7 +89,7 @@ public class DialogueDisplayer : MonoBehaviour
     #endregion
 
 
-    private void DeleteDialogueData()
+    public void DeleteDialogueData()
     {
         isInitialisation = true;
         isWaitingForReply = false;

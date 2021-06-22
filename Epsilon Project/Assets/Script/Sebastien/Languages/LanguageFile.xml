@@ -21,10 +21,10 @@
     <languageDesc>Changer la langue du jeu</languageDesc>
     <profilePictureText>Changer l'image de profil</profilePictureText>
 
+    
     <mj1MessagePanel>0 nouveux messages</mj1MessagePanel>
     <mj1BasicPostTitle>{0} a posté - le {1}/{2}</mj1BasicPostTitle>
     <mj1CommentTitle>{0} a commenté - le {1}/{2}</mj1CommentTitle>
-
     <mj1Post1Content>Nos vacances à Fuerteventura… Un petit coin de paradis perdu au milieu de l’atlantique et proches des côtes marocaines… Fantastique…</mj1Post1Content>
     <mj1Post2Comment1>Super pierrick !! Passez à la maison !</mj1Post2Comment1>
     <mj1Post2Comment2>Samuel a eu son bac S avec mention Bien... Fierté!</mj1Post2Comment2>
@@ -37,7 +37,6 @@
     <mj1Post6Content>Un mort de plus… Nos frontière sont ouverte depuis trop longtemps et nous commençons a en subir les conséquences !</mj1Post6Content>
     <mj1Post7Content>15 ans ensemble…. Et on s’aime comme au premier jour…. Pas un pas de travers pas une seule grosse bourde…. Je t’aime tellement mon loulou {0}{0}</mj1Post7Content>
     <mj1Post7Comment1>Moi aussi je t’aime ma chérie ! 15 ans ça fait long mais mes sentiments restent inchangés ! tu es vraiment la femme de ma vie !! </mj1Post7Comment1>
-       1
     <mj1MailSender>De : {0}</mj1MailSender>
     <mj1Mail1Content>Vous avez gagné!
 
@@ -128,6 +127,178 @@
   Intrigué? Curieux? Amusé? Que vous le vouliez ou non, ces phrases décrivent votre avenir. Alors autant y être préparé un maximum. Abonnez-vous à notre service et recevez des divinations précises, à la demande.
 
    *Le lien a été detecté comme frauduleux et n'est à présent plus disponible*</mj1Mail15Content>
+
+    <mj2DivineMeatWhoAmITitle>Qui suis-je?
+   </mj2DivineMeatWhoAmITitle>
+    <mj2DivineMeatWhoAmIContent>
+    Mon identité importe peu. La question que vous devriez vous poser, c'est plutôt "Qu'est-ce que je fais içi?". Vous êtes içi parce que vous êtes en proie au même questionnement que le moi d'il y'a plusieurs années : ça a quel goût, la viande humaine? Eh bien, heureusement pour vous, le goût est exquis. Il est exquis pour votre langue, votre corps, et même votre âme! J'ai créé cette page web afin de partager les avantages de la consommation de viande humaine, et les subtilités de sa préparation.
+   </mj2DivineMeatWhoAmIContent>
+    
+    <mj2DivineMeatWhyEatMeatTitle>Pourquoi manger de la viande humaine?
+   </mj2DivineMeatWhyEatMeatTitle>
+    <mj2DivineMeatWhyEatMeatContent>
+    Commencons par le plus évident : Les humains sont des animaux. Les animaux sont l'une des bases de la consommation humaine, alors en quoi notre propre viande serait différente des autres? Parce que c'est considéré comme "immoral"? Je vais vous dire une bonne chose, si tout le monde vous disait que boire de l'eau était immoral, cela vous empêcherait-il de boire de l'eau? Au final, il suffit de ne pas avoir peur de voir la vérité en face, et de voir qu'il n'y a aucune différence entre la viande humaine et animale. Si vous ête içi, je suppose que vous avez déja ouvert les yeux, ou êtes sur le point de le faire. N'ayez pas peur, je vais vous donner les informations nécessaires pour bien démarrer cette aventure.
+    
+    Rentrons directement au coeur (Jeu de mot voulu) du sujet, et commençons par parler des bienfaits de la viande humaine sur la santé : En plus d'avoir un délicieux goût s'apparentant à celui du porc, la viande humaine favorise la perte de poids, ralentit le vieillissement, et vous protège d'absolument tous les troubles et toutes les maladies digestives!
+    
+    Je sais ce que vous vous dites. "La viande humaine est bonne pour mon âme? Qu'est-ce que ça veut dire?" Eh bien cette phrase ne peut pas être plus vraie! Connaissez-vous Vin, l'ancienne déesse Maya? On la traitait d'hérétique et la suivait comme son ombre, mais la vérité est qu'ils étaient juste jaloux de ses pouvoirs, et des généreux dons qu'elle offrait aux consommateurs de viande humaine. Acceptez la viande humaine comme partie intégrante de votre alimentation, et Vin sera ravie, vous récompensant d'une vie plus longue, d'une fertilité et force inégalée, et une sagesse sans limite. J'en ai fait l'expérience moi-même, et ma vie a complètement changé depuis ce jour, pour le meilleur uniquement. N'est-ce pas génial?
+   </mj2DivineMeatWhyEatMeatContent>
+    
+    <mj2DivineMeatHowToCookTitle>Comment préparer et cuisiner de la viande humaine?
+   </mj2DivineMeatHowToCookTitle>
+    <mj2DivineMeatHowToCookContent>
+    La partie la plus compliquée, c'est l'acquisition d'une pièce de viande humaine comestible. Beaucoup de liens sur des forums cryptés ou des chats non modérés vous permettront de trouver des vendeurs de viande fraîche, par partie, ou par carcasse entière. La viande humaine est chère, mais elle vaut chaque centime.
+    
+    La deuxième partie sera la plus dure pour les nouveaux consommateurs, mais elle est plus facile que ce que l'on pourrait croire. Couper la partie du corps désirée (Si vous achetez une carcasse entière) se fait de la même manière qu'avec la carcasse d'un porc, dont l'humain est plus proche qu'on ne le croit. Il y'a de nombreux tutoriels sur le découpage de porcs sur Internet, il vous suffit juste de reproduire ces vidéos sur votre carcasse humaine.
+    
+    La dernière partie est la plus facile (Et la plus fun) : La cuisson. La facilité de cette partie peut être résumée en quatre mots : C'est comme le boeuf. La cuisson d'une pièce humaine se fait de la même manière que celle d'un boeuf. Vous n'avez pas peur de cuire du boeuf, n'est-ce pas? Alors il ne faut pas vous en faire, la seule chose qui change içi, c'est la viande utilisée.
+
+    </mj2DivineMeatHowToCookContent>
+    
+    <mj2DivineMeatWhatToCookTitle>Que peut-on cuisiner à base de viande humaine?
+   </mj2DivineMeatWhatToCookTitle>
+    <mj2DivineMeatWhatToCookContent>Honnêtement, tout est possible! N'importe quelle recette à base de boeuf se marie parfaitement avec le goût de la viande. J'ai quand-même une préférence personnelle pour le Chili con carne
+    </mj2DivineMeatWhatToCookContent>
+
+
+    <mj2BlackIceBreakerSubTitle>Le hacker le plus destructeur du deep web
+   </mj2BlackIceBreakerSubTitle>
+    <mj2BlackIceBreakerDesc>Je suis le fameux Black Ice Breaker. Beaucoup croyaient que j'étais mort, mais je suis de retour plus fort que jamais. Préparez-vous.
+   </mj2BlackIceBreakerDesc>
+    <mj2BlackIceBreakerHire>Vous avez besoin de mes services? Voyez plus bas
+   </mj2BlackIceBreakerHire>
+    
+    <mj2BlackIceBreakerContent>
+    Méfait mineur - 300€
+    
+    Je pirate n'importe quel compte de n'importe quel réseau social, boîte mail etc...
+    J'y fais ce que vous voulez puis je vous donne les identifiants du compte
+
+   Méfait majeur - 500€
+   
+   Je pirate les bases de données du gouvernement et j'y édite ce que vous voulez : Des dossiers médicaux, casiers judiciaires... 
+   Je peux aussi pirater les bases de données de grandes sociétés si besoin.
+
+   Semer le chaos et la désolation - 1000€
+   
+   Je pirate des bases de données confidentielles pour y récupérer des informations sensibles et confidentielles. Je peux générer des preuves contre n'importe quelle personne, la faire chanter ou arrêter par la police, ce pour n'importe quel crime imaginable. 
+   Je peux cibler une société ou établissement en particuler et les attaquer jusqu'à ce qu'ils tombent en banqueroute, ou je peux aussi créer un scandale les concernant.
+
+   ??? - 9000€
+ </mj2BlackIceBreakerContent>
+    
+    <mj2BlackIceBreakerWarning>Prenez cette offre à vos risques et périls
+    </mj2BlackIceBreakerWarning>
+
+    
+    
+    <mj2TreeSocietySubTitle>ACCUEILLEZ EN VOUS LE DIEU SYLVESTRE
+    </mj2TreeSocietySubTitle>
+
+    <mj2TreeSocietyContent>
+    Le Dieu Sylvestre, l'être primordial, le précurseur des précurseurs, le plus vieux des plus jeunes et le plus jeune des plus vieux. Il est celui qui écoute sans oreilles et voit sans yeux. Il nous a béni de preuves de son existence depuis des millénaires. Et pourtant, l'humanité a à de nombreuses reprises échoué à découvrir sa présence suprême. Mais plus maintenant. Le monde est désormais à une période nouvelle : L'age des arbres.
+    
+    Vous devez vous lier au dieu sylvestre le plus vite possible, car la fin est proche. La fin d'une illusion née de l'age de l'Homme se profile. Vous devez transférer votre énergie au Dieu Sylvestre et vous reconnecter à votre vraie nature.
+    
+    Si vous lisez ces lignes, alors vous vous êtes déja rendu compte de l'existence de l'être suprême. Vous êtes désormais sur le bon chemin, alors sans plus attendre :
+    
+    Bienvenue mon frère. Bienvenue dans la Tree Society
+    
+    Cette page vous apprendra comment débuter votre initiation, vos premiers pas vers un voyage éternel.
+
+    </mj2TreeSocietyContent>
+
+    <mj2TreeSocietyTransferTitle>Transférer votre énergie
+   </mj2TreeSocietyTransferTitle>
+    <mj2TreeSocietyTransferContent>
+    Il s'agit de la première étape, et la plus importante de votre périple: transférer votre énergie de votre corps à ceux du Dieu Sylvestre. Cette étape est cruciale pour rejoindre le Dieu Sylvestre à la fin de ce monde, avant de renaître en tant qu'être supérieur au prochain age.
+    
+    Pour transférer votre énergie, il vous faut faire offrande de votre énergie vitale au Dieu Sylvestre, ou plutôt, à l'un de ses corps: Les arbres eux-mêmes.
+    
+    Oui, le Dieu Sylvestre existe en chaque arbre sur Terre, et même ceux des autres planètes. Trouver un arbre est le moyen le plus simple et rapide de rentrer en contact avec l'être suprême.
+    
+    Après avoir trouvé un arbre approprié, suivez votre instinct et frappez-le. Oui, frappez-le. C'est la manière la plus rapide et efficace de transférer votre énergie vitale à un autre corps. N'ayez pas peur, vous ne blesserez pas le Dieu Sylvestre, car celui-ci est immortel. Vous non plus ne serez pas blessé durant le processus, car l'être suprême vous protège.
+    
+    Répétez cette même action sur le même arbre, tous les jours. Si celui-ci se brise, trouvez un autre arbre et continuez. N'arrêtez jamais de frapper, aussi souvent et aussi longtemps que possible. Entrez en contact avec vos frères et soeurs supérieurs pour savoir ce qu'il vous reste d'énergie vitale à transférer, ou sinon, si vous êtes plus curieux, priez le Dieu Sylvestre lui-même et attendez sa réponse. Il vous contactera par vos rêves, ou en gravant des motifs sur l'écorce des arbres
+    
+    Au fil des mois, votre énergie sera transférée au Dieu Sylvestre, et vous vous sentirez plus léger, plus fort, plus rapide et plus encore. C'est bon signe, cela signifie que votre transfert se passe sans accroc et que l'être suprême a commencé à exister en vous. Alors continuez de frapper votre arbre! Que l'être suprême vous accompagne dans votre périple.
+   </mj2TreeSocietyTransferContent>
+
+
+
+    <mj2LastWishesAboutTitle>À propos
+    </mj2LastWishesAboutTitle>
+    <mj2LastWishesAboutContent>
+    Tout ce que vous avez besoin de savoir est que je suis un vétéran de guerre expérimenté qui en a fini avec l'armée, et qui utilise maintenant ses capacités pour se faire de l'argent en tant que tueur à gages sur le deep web. Je me fous de qui vous êtes et vous vous foutez de qui je suis. Ça fait de moi l'homme le plus fiable pour la travail que vous me réservez.
+    </mj2LastWishesAboutContent>
+
+    <mj2LastWishesMyServicesTitle>Mes services
+    </mj2LastWishesMyServicesTitle>
+    <mj2LastWishesMyServicesContent>
+      Cibles :
+      N'importe laquell, au dessus de 18 ans.
+
+      Zones d'opération :
+      Amérique du Nord
+      Amérique du Sud
+      Europe
+      Asie (+200€ de frais supplémentaires)
+
+      Services :
+      Cible unique 2000€
+      Cibles multiples 1600€ + 700€ par tête. Maximum 3.
+      Homme Politique 5000€
+      Personne célèbre ou figure industrielle 3800€
+      Personne avec un casier judiciaire 1750€
+
+      Options :
+      Masquer le meurtre en tant qu'accident +600€
+      Masquer le meurtre en tant que suicide +800€
+      Faire accuser quelqu'un en particulier +1200€
+      Torture avant l'assassinat +1000€ for 12 hours
+      Passage à tabac avant l'assassinat +150€
+      Laisser un message ou une carte de visite +300€ (Spécifiez le message)
+      Effacer toutes les données sur une cible +500€
+
+      Le paiement se fait içi : https://theirlastwishes549816/payments.onion
+    </mj2LastWishesMyServicesContent>
+
+    <mj2LastWishesUsefulInfoTitle>Liens utiles
+    </mj2LastWishesUsefulInfoTitle>
+    <mj2LastWishesUsefulInfoContent>
+      Une liste non exhaustive de services du deep web que vous pourrez trouver utile :
+
+      http://supremedrugs5695kf7.onion - Un site d'achat de drogue avec des prix très avantageux
+
+      http://nobackgroundcheckg895ff2g.onion - Un site pour acheter des armes et des munitions partout dans le monde
+
+      http://theforbiddenstore65526gvg/onion - Un grand marché noir en ligne pour acheter quoique ce soit d'interdit ou de banni
+
+      https://blackiceBreaker26513zder.onion - Un Hacker très compétent, connu pour sa fiabilité
+
+      http://fakethemall36.onion - Service de faussage de preuves pour accuser un innocent
+
+      https://pyroswonderland65163dzefvr.onion - Un site pour acheter des explosifs et armes incendiaires multiples
+    </mj2LastWishesUsefulInfoContent>
+
+
+    <mj2LieOfAprilTitle>Le mensonge du 26 Avril 1986</mj2LieOfAprilTitle>
+    <mj2LieOfAprilTchernobylTitle>Tchernobyl n'était pas un accident</mj2LieOfAprilTchernobylTitle>
+    <mj2LieOfAprilTchernobylContent1>
+      Ils ne nous ont pas tout dit. La seule chose vraie que l'on sache est que l'accident de Tchernobyl a été revendiquée comme l'une des pires catastrophes de notre Histoire.
+
+
+      Cependant, de nombreux enquêteurs n'ont pas cru en l'histoire officielle fournie par les experts et le grouvernement. Ils étaient convaincus que le réacteur qui a éxplosé avait en réalité intentionnellement été saboté.
+    </mj2LieOfAprilTchernobylContent1>
+    <mj2LieOfAprilTchernobylContent2>
+      Même à ce jour, ils continuent de chercher le fin mot de l'histoire, mais sans parvenir à se mettre d'accord sur les détails de cette machination. Par exemple, qui aurait causé cette explosion, et pourquoi? Au début, beaucoup pensaient que c'était un agent secret américain qui avait causé cette explosion, pour discrediter le gouvernement soviétique en les pointant du doigt comme coupable de l'une des pires catastrophes de l'Histoire de l'Humanié. Cette histoire beaucoup de points de corrélation, mais il reste quand même des incohérences sur lesquelles nous débatons encore à ce jour.
+      
+      Mais ce n'est pas fini. Un enquêteur nommé Ivan Tarkov s'est infiltré dans la zone de Tchernobyl à la recherce de réponses. Il a documenté ses découvertes sur son blog personnel du deep web (Maintenant fermé), reportant ce qu'il y trouvait pendant des mois d'exploration. En se rapprochant du centre de la zone, près du réacteur détruit, il aurait trouvé des restes de laboratoires clandestins et d'expériences confidentielles utilisant des animaux et, semble-t-il, des humains, comme cobayes.
+      De son exploration, Ivan a conclu que l'accident avait été causé par les soviétiques dans le but d'étudier les effets des radiations pour en faire une arme, nourrissant probablement le rêve un peu fou de créer des super soldats, ou d'en apprendre plus sur de potentiels phénomènes psychiques résultant de ces radiations.
+      
+      Il a publié tout ce qu'il a trouvé dont des documents retrouvés sur place, mais a indiqué que toute activité concernant les expériences avait été stoppée depuis bien longtemps, et que toutes les preuves avaient été détruites. Il a aussi dit qu'il avait réussi à atteindre le coeur de Tchernobyl grâce à une protection anti-radiation qu'il aurait trouvé, et que selon les documents qu'il aurait découvert, se trouverait une preuve cruciale à l'intérieur du sarcophage de Tchernobyl, à l'intérieur même du réacteur. Depuis qu'il a évoqué son désir de rentrer à l'intérieur pour l'obtenir, Ivan a arrêté de poster quoi que ce soit, et personne ne sait où il est actuellement.
+    </mj2LieOfAprilTchernobylContent2>
+    
   </language>
 
   <language>
@@ -149,10 +320,10 @@
     <languageDesc>Change the game's language</languageDesc>
     <profilePictureText>Change your profile picture</profilePictureText>
 
+    
     <mj1MessagePanel>0 new messages</mj1MessagePanel>
     <mj1BasicPostTitle>{0} posted - {2}/{1}</mj1BasicPostTitle>
     <mj1CommentTitle>{0} commented - {2}/{1}</mj1CommentTitle>
-       1
     <mj1Post1Content>Our trip to Fuerteventura... A heavenly place lost in the middle of the atlantic and close to moroccan shores... Beautiful...</mj1Post1Content>
     <mj1Post2Comment1>That's great !! You should come by our place!</mj1Post2Comment1>
     <mj1Post2Comment2>Samuel graduated with honors... So proud of him!</mj1Post2Comment2>
@@ -266,5 +437,161 @@
 
   *The following link has been detected as fraudulent and has been removed*</mj1Mail15Content>
 
-  </language>
+    <mj2DivineMeatWhoAmITitle>Who am I?
+   </mj2DivineMeatWhoAmITitle>
+    <mj2DivineMeatWhoAmIContent>Who i am doesn't matter. The question you should be asking yourself is "Why am i here ?". You are here because you have the same question i had several years ago : how good is human meat ? Well, luckily for you, it's great. It great and it's good for you body and soul ! I have made this little webpage to share the benefits of human meat consumption as well as technicalities.
+   </mj2DivineMeatWhoAmIContent>
+    
+    <mj2DivineMeatWhyEatMeatTitle>Why should I eat human meat ?
+   </mj2DivineMeatWhyEatMeatTitle>
+    
+   <mj2DivineMeatWhyEatMeatContent>Let's start with the obvious : humans are animals. You eat animals all the time, so why not eat this one too ? Because you think it's bad ? If everyone tell you drinking water is bad, will you refrain from drinking water ? Or will you open your eyes and see that there is no difference and the others are just scared of the truth ? If you are here, i assume you have already opened your eyes or at least are about to do so. Don't be scared, i am here and i will do my best to guide you with the info i have put on this page.
+   
+   To get on the meat (pun intended) of this topic, let's talk about the health benefits : human meat favours weight loss, slows aging and can protect you from most digestion-related diseases and troubles. And it tastes great !
+   
+   Remember when i mentionned how good it is for your soul ? Well it's actually truer than it sounds : the goddess Vin holds in high regards those who take part in human meat consumption. Who's Vin ? It is an ancient goddess worshipped in some mayan civilizations. She was branded heretical, and forced to be followed in secret, but they were just jealous of her powers and the blessings she offers to human meat consumers. if you too welcome human meat in your diet, Vin will be pleased and will reward you with longer life, fertility, strength and even wisdom. Neat, right ?
+  </mj2DivineMeatWhyEatMeatContent>
+      
+      
+    <mj2DivineMeatHowToCookTitle>How to prepare and cook human meat ?
+   </mj2DivineMeatHowToCookTitle>
+    <mj2DivineMeatHowToCookContent>The hardest part is to get your hands on actual edible human meat. There are some useful links that you can find on most hidden forums and non-moderated chats that will take you to some sellers of either parts or full carcasses. It can be expensive, but i assure you it will be worth every cent, and very fresh too.
+    
+    The second part can be hard for newcomers, but it's actually easier than it seem : cutting the part (obviously only applies if you get a full carcass). Long story short : do it the same way you would do with the carcass of a pig. You can find some tutorials on the internet, you just have to translate to your human prize.
+    
+    The last part if the easiest (and funniest one) : the cooking. It's so easy that it could be summarize like this : cook it as your normaly would. Seriously, it just like cooking beef. You aren't scared of cooking beef, right? The meat is the only thing that changes, so it's no sweat, really.
+  </mj2DivineMeatHowToCookContent>
+
+    <mj2DivineMeatWhatToCookTitle>What to cook?
+   </mj2DivineMeatWhatToCookTitle>
+
+    <mj2DivineMeatWhatToCookContent>So many possibilities ! Honestly, any beef-based cooking recipe will do. My favorite is the chili con carne.
+   </mj2DivineMeatWhatToCookContent>
+
+    <mj2BlackIceBreakerSubTitle>The most destructive hacker of the deep web
+   </mj2BlackIceBreakerSubTitle>
+    <mj2BlackIceBreakerDesc>I am the infamous Black Ice Breaker. Many thought i was dead but i am back stronger than ever. Brace yourselves
+   </mj2BlackIceBreakerDesc>
+    <mj2BlackIceBreakerHire>Want to hire my services ? See below
+   </mj2BlackIceBreakerHire>
+    
+    <mj2BlackIceBreakerContent>Minor Mischief - 300$
+    
+    I hack any social media, mail, etc... I do what you want then give you acess to the accounts.
+    
+    Major Mischief - 500$
+    
+    I hack inside official governments databases and edit what you want, such as grades, medical records, criminal records, and so on. I can also mess with company databases if needed.
+    
+    Spread Chaos And Ruin - 1000$
+    
+    I hack inside secret or sensitive databases to retrieve secret and very sensible info. I can make up evidence to frame someone, blackmail them or get them arrested for pretty much any crime you can think of. I can focus a specific company or establishment and attack them until they go bankrupt or make up a public scandal.
+    
+    ??? - 9000$
+    </mj2BlackIceBreakerContent>
+    
+    <mj2BlackIceBreakerWarning>Hire at your own risks.
+   </mj2BlackIceBreakerWarning>
+
+
+    
+    <mj2TreeSocietySubTitle>EMBRACE THE GOD IN THE TREES
+   </mj2TreeSocietySubTitle>
+
+    <mj2TreeSocietyContent>The god of trees, the primordial being, the first of the first, the oldest of the youngest and the youngest of the oldest. He is the one who listens without ear and sees without eyes. He has made his presence known for millenias, and yet, humanity has repeatedly failed to take notice of his supreme being. But not anymore. Today is a new age. The age of trees.
+    
+    You must do you best to join our god for the end is near, the end of an illusion born from the bygone age of Man. You must transfer your energy to the Tree God and reconnect to your primary nature.
+    
+    If you are reading this, then you have already took notice of the existence of our supreme lord and are now on the right path, so, without further ado :
+    
+    Welcome my brother. Welcome to the Tree society.
+    
+    This page will now inform you on how to begin your initiation, your first steps in a journey of a lifetime.
+    </mj2TreeSocietyContent>
+      
+    <mj2TreeSocietyTransferTitle>Transfering your energy
+   </mj2TreeSocietyTransferTitle>
+    <mj2TreeSocietyTransferContent>This is the first and most important step of your new journey : transfering your energy from your  body, to the Tree God. This is by far the most vital step for it is how you will be able to join the Tree God at the end of this world, and be reborn as a superior being once the new age starts. To do it, you have to directly give your life energy to the Tree Gods, or, to be more accurate, to one of it's relays : the trees themselves.
+    
+    Yes, the Tree God exists within every single tree in the world and even beyond. Finding a tree is the best, simplest and quickest way to be in contact with our supreme first lord.
+    
+    Now that you have found a suitable tree, just following your instinct, punch it. Yes, punch it. It is the fastest and truest way of transfering your vital energy to an other body. Do not be afraid, the Tree God cannot be harmed for he isn't mortal, and you will not be harmed forhe protects you.
+    
+    Everyday, punch the same tree. If it breaks, find another one and continue. Never stop punching, do it as often as you can, for as long as possible. You can enter in contact with one of your superior brothers and sisters to know how much vital energy you have yet to transfer, or, if you are more curious, pray to the Tree God himself and wait for him to answer you. He usually contacts you in dreams or via trees.
+    
+    As your energy is being transfered over the months, you will feel lighter, stronger, faster and so on : it is a good sign, it means your transfer is in progress and the first lord has already started existing trough you. So keep punching your tree! May the supreme being be with you in your journey.
+   </mj2TreeSocietyTransferContent>
+
+    
+    <mj2LastWishesAboutTitle>About me   
+   </mj2LastWishesAboutTitle>
+    <mj2LastWishesAboutContent>
+      All you need to know is that i am an experienced war veteran who's done with the army and is now using his skills to make cash on the deep web as a hitman for hire. You don't care about who i am and i don't care about who you are. Which makes me your best shot for the job you have.
+   </mj2LastWishesAboutContent>
+
+    <mj2LastWishesMyServicesTitle>My services
+    </mj2LastWishesMyServicesTitle>
+    <mj2LastWishesMyServicesContent>
+      Targets :
+      Any above 18.
+
+      Continents of operation :
+      North America
+      South America
+      Europe
+      Asia (+200$ extra fee)
+
+      Services :
+      Single target kill 2000$
+      Multiple target kill 1600$ + 700$ per head. Max 3.
+      Political Figure 5000$
+      Industrial figure or famous person 3800$
+      Person with criminal record 1750$
+
+      Options :
+      Mask kill as accident +600$
+      Mask kill as suicide +800$
+      Frame someone in particular +1200$
+      Torture before kill +1000$ for 12 hours
+      Beat up before kill +150$
+      Leave visit card or message +300$ (specify message)
+      Erase all data about target +500$
+
+      payment is made here : https://theirlastwishes549816/payments.onion
+    </mj2LastWishesMyServicesContent>
+
+    <mj2LastWishesUsefulInfoTitle>Useful Links
+   </mj2LastWishesUsefulInfoTitle>
+    <mj2LastWishesUsefulInfoContent>
+      A quick collection of other deep web services that you might find useful
+
+      http://supremedrugs5695kf7.onion - A site to buy drugs at cheap price
+
+      http://nobackgroundcheckg895ff2g.onion - A site to buy weapons and ammo from all over the world
+
+      http://theforbiddenstore65526gvg/onion - A huge online black market to buy anything forbidden or banned
+
+      https://blackiceBreaker26513zder.onion - High quality hacker for hire, known for being reliable
+
+      http://fakethemall36.onion - Online service to frame innocent people by making false evidence
+
+      https://pyroswonderland65163dzefvr.onion - Wesbite to buy unknown explosives and fire-based weapons
+    </mj2LastWishesUsefulInfoContent>
+
+
+    <mj2LieOfAprilTitle>The real lie of April 26th 1986</mj2LieOfAprilTitle>
+    <mj2LieOfAprilTchernobylTitle>Tchernobyl wasn't an accident</mj2LieOfAprilTchernobylTitle>
+    <mj2LieOfAprilTchernobylContent1>They didn't tell us everything. The tchernobyl accident was claimed to be one of the worst disasters ever recorded in history.
+    
+    
+    However, many investigators didn't believe the official story given by the government and the experts. They believed that the reactor who blew up was actually sabotaged on purpose.
+    </mj2LieOfAprilTchernobylContent1>
+    <mj2LieOfAprilTchernobylContent2>
+      Even today, they keep digging into this story, but they can't really agree on the details, such as who caused it and why. At first, most believed it was done by an undercover USA spy to discredit the soviet government by blaming them afterwards. This story has many strong points, but still some flaws that are still debated to this day.
+
+      This isn't the best part, however. An investigator named Ivan Tarkov sneaked into the Tchernobyl area himself, seeking answers. He reported his findings on his (now down) personal deepweb blog, documenting it all over months of exploration. When getting closer to the center of the area, near the destroyed reactor, he claimed to have fund remains of clandestine labs and secret experiments on various mutated animals, including some human remains. He said that the accident was done by the soviets on purpose to study the effects of radiations and weaponize it, probably in some crazy hope of making supersoldiers or learning more about so-called psychic phenomenons.
+
+      He published everything he found, including some documents, but he also added that everything that might have happened there is now long-gone, and most of the evidence destroyed. He said that he went to the center despite the radiations, claiming to have found a protection against radiations, and documents that lead him to conclude there is crucial evidence inside tchernobyl's sarcophagus, inside the reactor's core. He said that he will try to pierce it to get in, but went missing and never posted anything after that.
+    </mj2LieOfAprilTchernobylContent2>
+</language>
 </languages>

@@ -276,10 +276,6 @@ MonoBehaviour:
   currentlyWaiting: 0
   timeValue: 60
   timerText: {fileID: 0}
-  second: 0
-  minute: 0
-  hour: 0
-  day: 0
 --- !u!4 &335444748
 Transform:
   m_ObjectHideFlags: 0
@@ -790,6 +786,7 @@ MonoBehaviour:
   inactivePeriods: 1
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7
+  activateClockRecalibration: 0
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
@@ -962,8 +959,15 @@ MonoBehaviour:
   isLoading: 0
   tempWaitingForReply: 0
   tempIsInitialisation: 0
+  tempHasReplied: 0
+  tempHasReacted: 0
+  tempIsFinished: 0
   isInitialisation: 1
   isWaitingForReply: 0
+  hasReplied: 0
+  reacting: 1
+  isFinished: 0
+  isHackingScene: 1
   cameFromBranch: 0
   currentBubble: {fileID: 0}
   messagePanel: {fileID: 2109942662}
@@ -1415,14 +1419,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
+  reader: {fileID: 0}
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 0d656ac13570455499464e5ad7bca8ad, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 0d656ac13570455499464e5ad7bca8ad, type: 3}
   dialogueList: []
-  dialoguesToSave: []
+  mainChatDialoguesToSave: []
+  hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
   username: Sebilol

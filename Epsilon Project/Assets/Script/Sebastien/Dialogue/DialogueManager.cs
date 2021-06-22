@@ -35,8 +35,8 @@ public class DialogueManager : MonoBehaviour
     public bool debugReadCommandKeywords = false;
     [Tooltip("Sends debug messages for each function that is played when its call is made")]
     public bool debugExecutingFunction = false;
-    [Tooltip("Sends debug messages concerning the saving of dialogues")]
-    public bool dialogueSavingDebug = false;
+    [Tooltip("Keeps the saved file between two launchs of the game")]
+    public bool persistentSave = false;
 
     private List<string> debugMessages { get; } = new List<string>();
     private string colorCodeStart = "";
@@ -85,6 +85,13 @@ public class DialogueManager : MonoBehaviour
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
     }
+
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        displayer.DeleteDialogueData();
+    }
+#endif
 
     private void Update()
     {
