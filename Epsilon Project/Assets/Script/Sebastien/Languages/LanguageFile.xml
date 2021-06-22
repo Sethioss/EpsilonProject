@@ -6,10 +6,43 @@
     <Name>Français</Name>
     <Prefix>FR</Prefix>
 
+    <usernameOrMail>Nom d'utilisateur ou mail</usernameOrMail>
+    <password>Mot de passe</password>
+    <forgotPassword>Mot de passe oublié?</forgotPassword>
+    <noAccount>Pas de compte?</noAccount>
+    <register>S'enregistrer</register>
+    <registerUsername>Votre nom d'utilisateur</registerUsername>
+    <registerPassword>Votre mot de passe</registerPassword>
+    <registerDOB>Votre date de naissance</registerDOB>
+    <registerPhoneNumber>Votre numéro de téléphone</registerPhoneNumber>
+    <registerPopUp>Validez-vous ces informations?</registerPopUp>
+
+    <profileTitle>Profil</profileTitle>
+    <profilePfp>Photo de profil</profilePfp>
+    <profileBio>Biographie</profileBio>
+    <profileBioContent>Bonjour, je suis un utilisateur de BlueBox!</profileBioContent>
+    <profileUsername>Nom d'utilisateur</profileUsername>
+    <profileDOB>Date de naissance</profileDOB>
+    <profilePhoneNumber>Numéro de téléphone</profilePhoneNumber>
+    <profileCredits>Crédits</profileCredits>
+
+    <creditsGP>Programmeurs</creditsGP>
+    <creditsGD>Game Designer</creditsGD>
+    <creditsPROD>Producer</creditsPROD>
+    <creditsART>Game Artist</creditsART>
+
+    <aGameFrom>Un jeu de</aGameFrom>
+    <digitalSchool>École du digital 
+De Vinci Paris</digitalSchool>
+
+    <incorrectLogIn>Votre mail ou mot de passe est incorrect</incorrectLogIn>
+
+    
     <settings>Paramètres</settings>
     <usernamePlaceholder>Pseudo...</usernamePlaceholder>
     <passwordPlaceholder>Mot de passe...</passwordPlaceholder>
-    <mainMenuMails>0 nouveaux messages, 0 nouveaux mails</mainMenuMails>
+    <mainMenuMails>0 nouveaux mails</mainMenuMails>
+    <mainMenuPosts>0 nouveaux posts</mainMenuPosts>
 
     <interlocutor1>Inconnu</interlocutor1>
     <autoModeTitle>Mode automatique</autoModeTitle>
@@ -305,10 +338,44 @@
     <Name>English</Name>
     <Prefix>EN</Prefix>
 
+    <usernameOrMail>Username or mail</usernameOrMail>
+    <password>Password</password>
+    <forgotPassword>Forgot Password?</forgotPassword>
+    <noAccount>No account?</noAccount>
+    <register>Register</register>
+    <registerUsername>Your username</registerUsername>
+    <registerPassword>Your password</registerPassword>
+    <registerDOB>Your date of birth</registerDOB>
+    <registerPhoneNumber>Your phone number</registerPhoneNumber>
+    <registerPopUp>Do you want to save these informations?</registerPopUp>
+
+    <profileTitle>Profile</profileTitle>
+    <profilePfp>Profile Picture</profilePfp>
+    <profileBio>Bio</profileBio>
+    <profileBioContent>Hello, I am a BlueBox user!</profileBioContent>
+    <profileUsername>Username</profileUsername>
+    <profileDOB>Birth Date</profileDOB>
+    <profilePhoneNumber>Phone Number</profilePhoneNumber>
+    <profileCredits>Credits</profileCredits>
+
+    <creditsGP>Programmers</creditsGP>
+    <creditsGD>Game Designer</creditsGD>
+    <creditsPROD>Producer</creditsPROD>
+    <creditsART>Game Artist</creditsART>
+
+    <aGameFrom>A game from</aGameFrom>
+    <digitalSchool>Digital School
+De Vinci Paris
+    </digitalSchool>
+
+    <incorrectLogIn>Your mail or password is incorrect</incorrectLogIn>
+    
+    
     <settings>Settings</settings>
     <usernamePlaceholder>Username...</usernamePlaceholder>
     <passwordPlaceholder>Password...</passwordPlaceholder>
-    <mainMenuMails>0 new messages, 0 new mails</mainMenuMails>
+    <mainMenuMails>0 new mails</mainMenuMails>
+    <mainMenuPosts>0 new posts</mainMenuPosts>
 
     <interlocutor1>Unknown</interlocutor1>
     <autoModeTitle>Automatic mode</autoModeTitle>
