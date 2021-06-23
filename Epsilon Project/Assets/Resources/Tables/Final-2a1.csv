@@ -1,0 +1,8 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Bref, je suis désolée de t'avoir embarqué dans tout ça.;;;;;;;
+;;;;;;;
+Peut-être que je te recontacterais un jour, je sais pas.;;;;;;;
+;;;;;;;
+En attendant, j'ai besoin de changer d'air.;;;;;;;
+;;;;;;;
+Salut.;;;;;;<LEAVE>;

@@ -88,33 +88,6 @@ public class DialogueDisplayer : MonoBehaviour
 
     #endregion
 
-
-    public void DeleteDialogueData()
-    {
-        isInitialisation = true;
-        isWaitingForReply = false;
-        hasReplied = false;
-        reacting = true;
-        isFinished = false;
-
-        bubbleSpawned = false;
-        UpdateDialogueState();
-        List<Dialogue> emptyMemory = new List<Dialogue>();
-
-#if UNITY_EDITOR
-        cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
-        SaveSystem.SaveDialogue(cachedDialogueManager.mainChatDialoguesToSave);
-        cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
-        SaveSystem.SaveHackingDialogue(cachedDialogueManager.hackingChatDialoguesToSave);
-#else
-        SaveDialogueData(emptyMemory);
-#endif
-        cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
-        cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
-        Debug.LogWarning("Dialogue save data erased");
-
-    }
-
     #region Unity Loop
     private void Awake()
     {
@@ -150,8 +123,8 @@ public class DialogueDisplayer : MonoBehaviour
         Debug.Log("Press J to erase save data");
 
         LoadDialogueData();
-
         cachedDialogueManager.CreateAndStartDialogue(cachedDialogueManager.dialogueFileToLoad);
+
     }
     private void Update()
     {
@@ -215,6 +188,37 @@ public class DialogueDisplayer : MonoBehaviour
     #endregion
 
     #region Save/Load
+    public void DeleteDialogueData()
+    {
+        isInitialisation = true;
+        isWaitingForReply = false;
+        hasReplied = false;
+        reacting = true;
+        isFinished = false;
+
+        bubbleSpawned = false;
+        UpdateDialogueState();
+        List<Dialogue> emptyMemory = new List<Dialogue>();
+
+#if UNITY_EDITOR
+        if (!cachedDialogueManager.persistentSave)
+        {
+            cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
+            SaveSystem.SaveDialogue(cachedDialogueManager.mainChatDialoguesToSave);
+            cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
+            SaveSystem.SaveHackingDialogue(cachedDialogueManager.hackingChatDialoguesToSave);
+
+            cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
+            cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
+            Debug.LogWarning("Dialogue save data erased");
+        }
+
+#else
+        SaveDialogueData(emptyMemory);
+#endif
+
+
+    }
     private void UpdateDialogueState()
     {
         tempWaitingForReply = isWaitingForReply;
@@ -341,7 +345,6 @@ public class DialogueDisplayer : MonoBehaviour
                 cachedDialogueManager.hackingChatDialoguesToSave = RestoreSavedDialogues(cachedDialogueManager.dialogueList, data);
                 SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
             }
-
 
             DisplayLoadedDialogue(cachedDialogueManager.dialogueList);
 
@@ -892,7 +895,7 @@ public class DialogueDisplayer : MonoBehaviour
     #region Dialogue starting methods
     private void Init()
     {
-        UpdateDialogueState();
+        //UpdateDialogueState();
 
         //Set the pointer to the first dialog element
         currentDialogueElementId = 0;

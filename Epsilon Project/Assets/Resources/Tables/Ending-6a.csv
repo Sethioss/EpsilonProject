@@ -1,0 +1,4 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Y'a rien du tout;;;00:00:06:00;;;;
+;;;;;;;
+Je vais essayer de voir sous le pont.;;;;;;<BRANCH>Ending-7;

@@ -608,32 +608,32 @@ public class CSVReader : MonoBehaviour
                         events += delegate { DialogueManager.Instance.CompareFloatVariables(valueToCheck, finalValueToCheckWith, firstCommand, secondCommand, op); };
                     }
 
-                    string[] brokenDownFirstCommand = firstCommand.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
-                    string[] brokenDownSecondCommand = secondCommand.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
-
-                    if (brokenDownFirstCommand[0] == "LINK")
+                    try
                     {
-                        CreateLinkElement(specialMessageElementBuffer, brokenDownFirstCommand[1], brokenDownFirstCommand[2].Trim('\''));
+                        string[] brokenDownFirstCommand = firstCommand.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                        string[] brokenDownSecondCommand = secondCommand.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+                        if (brokenDownFirstCommand[0] == "LINK")
+                        {
+                            CreateLinkElement(specialMessageElementBuffer, brokenDownFirstCommand[1], brokenDownFirstCommand[2].Trim('\''));
+                        }
+                        else if (brokenDownFirstCommand[0] == "LEAVE")
+                        {
+                            CreateLeaveElement(specialMessageElementBuffer, brokenDownFirstCommand[1].Trim('\''));
+                        }
+
+                        if (brokenDownSecondCommand[0] == "LINK")
+                        {
+                            CreateLinkElement(specialMessageElementBuffer, brokenDownSecondCommand[1], brokenDownSecondCommand[2].Trim('\''));
+                        }
+                        else if (brokenDownSecondCommand[0] == "LEAVE")
+                        {
+                            CreateLeaveElement(specialMessageElementBuffer, brokenDownSecondCommand[1].Trim('\''));
+                        }
                     }
-                    else if (brokenDownFirstCommand[0] == "LEAVE")
+                    catch
                     {
-                        CreateLeaveElement(specialMessageElementBuffer, brokenDownFirstCommand[1].Trim('\''));
-                    }
-
-                    if(brokenDownSecondCommand[0] == "LINK")
-                    {
-                        CreateLinkElement(specialMessageElementBuffer, brokenDownSecondCommand[1], brokenDownSecondCommand[2].Trim('\''));
-                    }
-                    else if (brokenDownSecondCommand[0] == "LEAVE")
-                    {
-                        CreateLeaveElement(specialMessageElementBuffer, brokenDownSecondCommand[1].Trim('\''));
-                    }
-
-                    else
-                    {
-                        //CompareStringVariables contains the logic that plays the functions inside the commands with a recursive call
-
-
+                        return events;
                     }
 
                     jump = secondCommandEndID - i;
@@ -698,7 +698,7 @@ public class CSVReader : MonoBehaviour
         }
         else
         {
-            Debug.LogError("LEAVE :: No dialogue to go to has been set");
+            Debug.LogError("LEAVE :: No dialogue to go to has been set. If this is not intended, please verify the dialogue file");
         }
         
 
