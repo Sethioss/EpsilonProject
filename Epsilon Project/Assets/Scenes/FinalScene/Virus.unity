@@ -4244,16 +4244,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGameSceneEntered: 0
+  reader: {fileID: 0}
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 0}
+  dialogueFileToLoad: {fileID: 0}
   dialogueList: []
-  dialoguesToSave: []
+  mainChatDialoguesToSave: []
+  hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 
   m_testSetFloat: 0
+  m_wentBackHome: 0
+  m_wentToBridge: 0
   username: Sebilol
 --- !u!4 &854426622
 Transform:
@@ -9092,7 +9097,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4e2434f2b5dec69489f9b53b11925daa, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: feaaccdbed17c5642833c3a4f79ad3bc, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -9107,7 +9112,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4c3b2db5e4e45f5419de5ddef0d94743, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: 27c9cb9e0a5bae349bd86ab122721855, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

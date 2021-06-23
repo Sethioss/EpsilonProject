@@ -3871,7 +3871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &128144775
 PrefabInstance:
@@ -6030,7 +6030,7 @@ Transform:
   - {fileID: 232534024}
   - {fileID: 642017036}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &198305367
 PrefabInstance:
@@ -6471,7 +6471,7 @@ Transform:
   - {fileID: 1403521905}
   - {fileID: 295958094}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &202836785
 PrefabInstance:
@@ -11900,8 +11900,8 @@ MonoBehaviour:
   winScreen: {fileID: 0}
   loseScreen: {fileID: 0}
   NumberGoal: 0
-  textBox: {fileID: 321573560}
-  textBoxText: {fileID: 155311175}
+  textBox: {fileID: 2055952030}
+  textBoxText: {fileID: 1777158019}
   stopTexts:
   - Attends je fais une pause
   - Je suis a bout de souffle, une seconde
@@ -12644,7 +12644,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4c3b2db5e4e45f5419de5ddef0d94743, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: 8ee0b81f490bf174ba7874d71cccc0a6, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -12659,7 +12659,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4c3b2db5e4e45f5419de5ddef0d94743, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: 6a8a3f1196dd5404e825c05479876b90, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -12678,7 +12678,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &406524260
 PrefabInstance:
@@ -13039,7 +13039,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1001 &414320858
 PrefabInstance:
@@ -24062,7 +24062,7 @@ Transform:
   - {fileID: 2130593999}
   - {fileID: 1770538930}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &751600833
 PrefabInstance:
@@ -35245,7 +35245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1001 &1084867433
 PrefabInstance:
@@ -36986,70 +36986,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6415893616695537139, guid: 20a8eec48f19d5c478e07b491d08b08b, type: 3}
   m_PrefabInstance: {fileID: 1150578468}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1151548439
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1151548441}
-  - component: {fileID: 1151548440}
-  m_Layer: 0
-  m_Name: MiniGameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1151548440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151548439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00fb518c9476924b9686feee0d00f0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaveGameAction:
-    m_PersistentCalls:
-      m_Calls: []
-  winAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDialogueAndGoToGame
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4c3b2db5e4e45f5419de5ddef0d94743, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  loseAction:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1151548441
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151548439}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1037.5266, y: 989.5252, z: -7788.9487}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153802017
 GameObject:
   m_ObjectHideFlags: 0
@@ -47881,7 +47817,7 @@ Transform:
   - {fileID: 1655387744}
   - {fileID: 392045663}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1464354461
 PrefabInstance:
@@ -53649,7 +53585,7 @@ Transform:
   m_Children:
   - {fileID: 1956098919}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1667666764
 PrefabInstance:
@@ -60006,7 +59942,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!114 &1850373639
 MonoBehaviour:
@@ -63674,7 +63610,7 @@ Transform:
   - {fileID: 894451246}
   - {fileID: 1979573140}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1991455396
 PrefabInstance:
@@ -64866,6 +64802,8 @@ MonoBehaviour:
   persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
+  m_wentBackHome: 0
+  m_wentToBridge: 0
   username: Sebilol
 --- !u!4 &2028010910
 Transform:
