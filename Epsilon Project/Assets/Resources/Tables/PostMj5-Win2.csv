@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Bien, reste connecté, alors. Je pense que tu auras des nouvelles d'içi une semaine.;D'accord.;;;;;;
+;1 semaine?? C'est long…;C'est vrai, malheureusement c'est le temps qu'il nous faudra pour être sûr que notre plan a vraiment fonctionné.;;;;;
+;;;;;;;
+À dans une semaine!;;;;;;<BRANCH>Ending-1;

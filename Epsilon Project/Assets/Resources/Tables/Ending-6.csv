@@ -1,0 +1,13 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+J'y suis arrivé.;;;00:00:20:00;;;<SET>wentToBridge 1;
+;;;;;;;
+Je suis sur le pont;Tu vois quelque chose?;;;;;;
+;;;;;;;
+Non, il n'y a rien ni personne.;;;;;;;
+;;;;;;;
+Je peux allez sous le pont ou aller de l'autre côté.;Tu devrais aller voir sous le pont.;Bien, je te dis si j'y trouve quelque chose.;;;;;
+;Va voir de l'autre côté.;;;;<BRANCH>Ending-6a;;
+;;;;;;;
+Y'a rien du tout;;;00:00:04:00;;;;
+;;;;;;;
+Pourtant je suis sûre que c'est les bonnes coordonnées.;;;;;;<BRANCH>Ending-7;

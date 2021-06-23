@@ -1,0 +1,25 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+On se fout de ma gueule ou quoi?;Tu devrais partir.;;00:00:02:00;;;;
+;Tu devrais chercher dans les alentours.;;;;;;
+;;;;;;;
+Attends.;;;;;;;
+;;;;;;;
+Je vois une valise.;Une valise??;;;;;;
+;;;;;;;
+J'essaye de m'en approcher.;;;00:00:02:00;;;;
+;;;;;;;
+C'est une grosse valise;;;;;;;
+;;;;;;;
+Tu penses que c'est ce qu'ils voulaient que je voie?;Je pense que oui.;;;;;;
+;Elle était un peu cachée ou pas du tout?;Pas vraiment.;;;;;
+;;;;;;;
+Je devrais l'ouvrir?;Oui, ouvre-la;;;;<BRANCH>Ending-7a;;
+;Non, tu devrais partir.;;;;;;
+;;;;;;;
+Je pense aussi.;;;;;;;
+;;;;;;;
+Je me casse de la;;;;;;;
+;;;;;;;
+Je vais chercher un hotel ou jsp quoi;;;;;;;
+;;;;;;;
+Je te recontacterais;;;;;;<BRANCH>Final-1;

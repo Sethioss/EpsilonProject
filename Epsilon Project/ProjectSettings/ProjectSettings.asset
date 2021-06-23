@@ -183,6 +183,40 @@ PlayerSettings:
   - {fileID: 4900000, guid: 79e76a56026c05c4895e457deca09dce, type: 3}
   - {fileID: 4900000, guid: 64b8d2da669fe884ebc3413022135dd1, type: 3}
   - {fileID: 4900000, guid: 7fac9eef1391c6d49bf262d430060381, type: 3}
+  - {fileID: 4900000, guid: 738f45a3ad3100248b5ef96559b1f010, type: 3}
+  - {fileID: 4900000, guid: be77ba439255af248b1a73d7f40ac555, type: 3}
+  - {fileID: 4900000, guid: 48b1b52f7f22dc84092c49d7acc141bf, type: 3}
+  - {fileID: 4900000, guid: 799e650f156f9bc43a417f535ab09fc6, type: 3}
+  - {fileID: 4900000, guid: 9195e5d88f7aaf04691e38564abdab05, type: 3}
+  - {fileID: 4900000, guid: 86e20a995da7b8c4286a3187f8281c34, type: 3}
+  - {fileID: 4900000, guid: 6d9b65f4d28110844a7fd0c7a76d4824, type: 3}
+  - {fileID: 4900000, guid: 27c9cb9e0a5bae349bd86ab122721855, type: 3}
+  - {fileID: 4900000, guid: feaaccdbed17c5642833c3a4f79ad3bc, type: 3}
+  - {fileID: 4900000, guid: 196587e9d214add4fb35f73fbb45cbdb, type: 3}
+  - {fileID: 4900000, guid: 5af4462182a296741b1165d324006752, type: 3}
+  - {fileID: 4900000, guid: e69507a02ecf51d4793d39ef347f0f09, type: 3}
+  - {fileID: 4900000, guid: 75ae5ecaf58ec874ba07ad2d25df60d2, type: 3}
+  - {fileID: 4900000, guid: 4c9081cf302322d4f89ae2291fdef720, type: 3}
+  - {fileID: 4900000, guid: 3cac01e0c0b1b9c42bdd79ffa807fffb, type: 3}
+  - {fileID: 4900000, guid: 48969b32625b18248ab1f2121db85683, type: 3}
+  - {fileID: 4900000, guid: 8350d722c6cd21746a28d4a39bdf18ca, type: 3}
+  - {fileID: 4900000, guid: c53e6acbf92002d4f9994336807b59fe, type: 3}
+  - {fileID: 4900000, guid: 3555c73f015a57743a76b611c8b181f8, type: 3}
+  - {fileID: 4900000, guid: b4a1d0545b71f20479b9b76c52c80710, type: 3}
+  - {fileID: 4900000, guid: 047301d92a3ea5c419f259e217a64247, type: 3}
+  - {fileID: 4900000, guid: 01535a393750876488cbdfb76174a503, type: 3}
+  - {fileID: 4900000, guid: 86982d35d8e3d3f42bfa1e0174c95031, type: 3}
+  - {fileID: 4900000, guid: 1161e15071c7a20488fdb46283e73f9c, type: 3}
+  - {fileID: 4900000, guid: 7b756c0fd86e1eb4ca7674687d43da74, type: 3}
+  - {fileID: 4900000, guid: 56a05028f4da3874799ab4ed539983cf, type: 3}
+  - {fileID: 4900000, guid: ea9d1c1f85efc3e449033210525c78a3, type: 3}
+  - {fileID: 4900000, guid: 76f8e57f82bc3e64a8904fba6d0d8bf3, type: 3}
+  - {fileID: 4900000, guid: 8c51da2940b06dc45abb160e5e4778af, type: 3}
+  - {fileID: 4900000, guid: 11e6c802e8933044cb21bea6ecc285f8, type: 3}
+  - {fileID: 4900000, guid: 06dd94bf4c0dd994fba32ca19f4c03cf, type: 3}
+  - {fileID: 4900000, guid: c96ace9665619364a831a56855967f54, type: 3}
+  - {fileID: 4900000, guid: c224fd2726dcce945bdd0c8a8be12bfc, type: 3}
+  - {fileID: 4900000, guid: ae054cdeadb36e14092b2fa407df478a, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1

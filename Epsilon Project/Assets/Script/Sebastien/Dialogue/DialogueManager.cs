@@ -48,14 +48,25 @@ public class DialogueManager : MonoBehaviour
 
     public string testSet { get { return m_testSet; } set { m_testSet = value; } }
     public float testSetFloat { get { return m_testSetFloat; } set { m_testSetFloat = value; } }
+    public float wentBackHome { get { return m_wentBackHome; } set { m_wentBackHome= value; } }
+    public float wentToBridge { get { return m_wentToBridge; } set { m_wentToBridge = value; } }
 
-    [Header("Accessible variables (Changed by events)")]
+    [Header("Accessible test variables (Changed by events)")]
     [SerializeField]
     [Tooltip("Test for string variables")]
     private string m_testSet;
     [SerializeField]
     [Tooltip("Test for float variables")]
     private float m_testSetFloat;
+
+    [Header("Accessible variables that are in the game (Changed by events)")]
+    [SerializeField]
+    [Header("0 = false, 1 = true")]
+    private float m_wentBackHome = 0;
+    [SerializeField]
+    [Header("0 = false, 1 = true")]
+    private float m_wentToBridge = 0;
+
     public string username = "Sebilol";
 
     #endregion

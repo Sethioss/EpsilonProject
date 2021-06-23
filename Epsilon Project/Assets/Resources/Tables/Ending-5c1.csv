@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Je n'ai pas de proches chez qui aller mais;;;;;;;
+;;;;;;;
+L'hôtel ça me semble être une bonne idée.;;;;;;;
+;;;;;;;
+Je te recontacterais.;;;;;;<BRANCH>Final-1;

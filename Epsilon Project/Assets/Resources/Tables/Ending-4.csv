@@ -1,0 +1,12 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Je vais regarder.;;;00:00:05:00;;;;
+;;;;;;;
+J'ai vérifié;;;;;;;
+;;;;;;;
+Re vérifié pour être sûr.;;;;;;;
+;;;;;;;
+Mais c'est les coordonnées d'un pont...;Qu'est-ce qu'ils veulent que t'ailles foutre sur un pont??;J'en ai aucune idée;;;;;
+;Un pont loin de chez toi?;Non, assez proche.;;;;;
+;;;;;;;
+Tu penses que je devrais y aller?;Tu devrais y aller.;;;;<BRANCH>Ending-5a;<BRANCH>Ending-5b;
+;Tu devrais retourner chez toi.;T'es sûr?;;;;;

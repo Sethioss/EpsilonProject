@@ -1,0 +1,22 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Notre but de base était de rendre toutes les données de l'entreprise qu'on a ciblé indécryptables.;;;;;;;
+;;;;;;;
+Au vu de l'importance de cette dernière, cela aurait eu un effet dévastateur sur beaucoup de rouages de notre société.;;;;;;;
+;;;;;;;
+Créant ainsi un effet domino.;Mais...?;;;;;;
+;;;;;;;
+Mais il y'a eu des dissensions au sein du groupe.;;;;;;;
+;;;;;;;
+Quand certains ont compris que le réel but de toutes les opérations était de demander une rançon à l'entreprise.;Une rançon?;;;;;;
+;;;;;;;
+Oui. Une énorme somme d'argent en échange de la clé qui leur aurait permis de récupérer toutes leurs données.;;;;;;;
+;;;;;;;
+Évidemment, ça n'a pas marché car beaucoup n'étaient pas d'accord. Au final, quelqu'un nous a tous balancé.;;;;;;<CHECK>wentBackHome = 1 ? <BRANCH>Final-2a :  !;
+;;;;;;;
+J'avais déjà été mise à l'écart alors je n'en sais pas grand-chose. Mais quelqu'un du groupe a tenté de me protéger.;;;;;;;
+;;;;;;;
+C'est eux qui se sont débarrassés du cadavre.;;;;;;;
+;;;;;;;
+Bref;;;;;;;
+;;;;;;;
+Désolé pour tout.;;;;;;<LEAVE>;

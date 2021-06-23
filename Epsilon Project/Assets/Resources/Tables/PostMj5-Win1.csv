@@ -1,0 +1,19 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+C'est bon.;;;00:01:00:00;;;;
+;;;;;;;
+Je te confirme que c'est bon, tu as réussi.;T'inquiète;;;;;;
+;C'était pas très difficile!;;;;;;
+;;;;;;;
+Maintenant, je vais te laisser tranquille.;;;;;;;
+;;;;;;;
+Tu veux quand même des nouvelles quand à la réussite de notre plan?;Je sais pas... C'est peut-être dangereux.;;;;;;
+;Oui, bien sûr!;;;;<BRANCH>PostMj5-Win2;;
+;;;;;;;
+Je t'assure que je continuerai à te protéger, ça ne sera pas dangereux.;;;;;;;
+;;;;;;;
+Quoi que... Ça reste ton choix en fait, fais comme tu veux.;J'insiste, il vaut mieux que tu ne me reparles plus jamais.;;;;;;
+;Bon, je veux bien des nouvelles en fait.;;;;<BRANCH>PostMj5-Win2;;
+;;;;;;;
+Je vois. Si c'est ce que tu veux...;;;;;;;
+;;;;;;;
+Adieu et merci pour tout. Désolée de t'avoir dérangé.;;;;;;<LEAVE>;

@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+La personne qui est venue chez moi.;;;;;;;
+;;;;;;;
+L'adresse qu'on m'a envoyé.;;;;;;;
+;;;;;;;
+Pourquoi quelqu'un s'est fait abattre devant chez moi...;Raconte!;;;;<BRANCH>Final-2;;

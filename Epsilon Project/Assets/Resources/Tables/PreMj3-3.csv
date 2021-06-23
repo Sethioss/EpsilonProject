@@ -2,13 +2,13 @@ Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (
 C'est ce qui nous pousse à agir. Je ne peux pas encore te dire de quelle façon nous comptons intervenir mais… Tu le sauras.;Quand tu dis que l'homme court à sa perte, que veux-tu dire?;Je te l'expliquerais. Je suis désolé, mais je n'ai pas le temps de le faire pour le moment.;;;;;
 ;Bien.;;;;;;
 ;;;;;;;
-En plus… J'ai d'autres mauvaises nouvelles;;;;;;;
+En plus… J'ai d'autres mauvaises nouvelles.;;;;;;;
 ;;;;;;;
-Grâce à toi, les hackers nous ont bel et bien contacté;;;;;;;
+Grâce à toi, les hackers nous ont bel et bien contactés;;;;;;;
 ;;;;;;;
 Mais ils ont très rapidement cessé de donner des nouvelles.;;;;;;;
 ;;;;;;;
 Nous comptons tout de même avancer.;Que comptez-vous faire?;;;;;;
 ;;;;;;;
 On va infiltrer un bâtiment et y placer un dispositif de piratage.;Quel genre de bâtiment?;;;;<BRANCH>PreMj3-3a;;
-;Pourquoi faire?;;;;<BRANCH>PreMj3-3b;;
+;Pour quoi faire?;;;;<BRANCH>PreMj3-3b;;

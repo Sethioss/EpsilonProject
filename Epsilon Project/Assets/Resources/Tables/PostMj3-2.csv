@@ -1,6 +1,6 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Oui;Me dis pas que je vais être chargé de l'infiltration…;Non, ne t'inquiètres pas. Je t'ai dit que je ne te ferais pas faire de choses dangereuses.;;;;;
-;Je vais devoir faire quoi?;Eh bien…;;;;;
+Oui.;Me dis pas que je vais être chargé de l'infiltration...;Non, ne t'inquiète pas. Je t'ai dit que je ne te ferai pas faire de choses dangereuses.;;;;;
+;Je vais devoir faire quoi?;Eh bien...;;;;;
 ;;;;;;;
 Disons que tu vas m'assister;T'assister? C’est-à-dire?;;;;;;
 ;;;;;;;

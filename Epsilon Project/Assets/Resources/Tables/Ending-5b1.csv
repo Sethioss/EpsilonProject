@@ -1,0 +1,7 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Je vais le faire.;;;;;;;
+;;;;;;;
+J'ai peur d'y retourner;;;;;;;
+;;;;;;;
+Mais je vais le faire.;Ok;;;;<BRANCH>Ending-5c;;
+;Tiens-moi au courant.;;;;<BRANCH>Ending-5c;;

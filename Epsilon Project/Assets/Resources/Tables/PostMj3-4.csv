@@ -1,7 +1,7 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
 Ils m'ont proposé de faire ce que moi je te propose de faire. M'aider avec les caméras pour empêcher le gouvernement de connaître mon apparence.;;;;;;;
 ;;;;;;;
-Je vais leur faire croire que je compte sur eux. Mais dans l'ombre, c'est toi qui assureras mes arrières.;Bien, j'ai compris;Super.;;;;;
-;Tu es sûr que je ne risque rien, moi?;J'ai fait le nécessaire pour que tu sois intraçable, ne t'inquiètes pas.;;;;;
+Je vais leur faire croire que je compte sur eux. Mais dans l'ombre, tu assureras mes arrières.;Bien, j'ai compris;Super.;;;;;
+;Tu es sûr que je ne risque rien, moi?;J'ai fait le nécessaire pour que tu sois intraçable, ne t'inquiète pas.;;;;;
 ;;;;;;;
-Je vais me déconnecter pendant quelques heures, je t'enverrais un message un peu avant que je ne passe à l'action pour te briefer, ok?;Bien reçu!;;;;<BRANCH>PreMj4-1;;
+Je vais me déconnecter pendant quelques heures, je t'enverrai un message un peu avant que je ne passe à l'action pour te briefer, ok?;Bien reçu!;;;;<BRANCH>PreMj4-1;;

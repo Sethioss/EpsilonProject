@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+La valise.;;;;;;;
+;;;;;;;
+L'adresse qu'on m'a envoyé.;;;;;;;
+;;;;;;;
+C'était pour me protéger, mais je suis tombé sur le cadavre d'un de nos compagnons.;Quoi??;;;;<BRANCH>Final-2;;

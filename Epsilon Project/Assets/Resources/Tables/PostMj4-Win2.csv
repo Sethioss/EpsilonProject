@@ -1,22 +1,22 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Quoi qu'il en soit, leur motivation est la même que la mienne;;;;;;;
+Quoi qu'il en soit, leur motivation est la même que la mienne.;;;;;;;
 ;;;;;;;
-Et je pense que tu as le droit d'en savoir plus;;;;;;;
+Et je pense que tu as le droit d'en savoir plus.;;;;;;;
 ;;;;;;;
 La dernière fois, je t'ai parlé du fait qu'on combattait pour notre avenir à tous.;;;;;;;
 ;;;;;;;
 Nous croyons tous que la société court à sa perte, et ce dans un délai bien plus proche qu'on ne le pense;Proche à quel point?;;;;;;
 ;Mouais...;;;;<BRANCH>PostMj4-Win2a;;
 ;;;;;;;
-Quand on parle de la fin de la société qu'on connait, les prédictions tournent toujours autour de la première moitié du 21ème siècle.;Ah oui quand même...;;;;;;
-;Ca va !;;;;;;
+Quand on parle de la fin de la société qu'on connaît, les prédictions tournent toujours autour de la première moitié du 21ème siècle.;Ah oui quand même...;;;;;;
+;Ça va !;;;;;;
 ;;;;;;;
 Et aujourd'hui, on est nombreux à penser que c'est irrémédiable.;C'est-à-dire?;;;;;;
 ;Je sais déjà tout ça.;;;;<BRANCH>PostMj4-Win2b;;
 ;;;;;;;
-C'est-à-dire que la majeure partie de nos problèmes ont commencé à eux-même engendrer des problèmes plus importants;;;;;;;
+C'est-à-dire que la majeure partie de nos problèmes ont commencé à eux-même engendrer des problèmes plus importants.;;;;;;;
 ;;;;;;;
-Sans que l'on puisse y faire quoique ce soit.;Tu as un exemple?;;;;;;
+Sans que l'on puisse y faire quoi que ce soit.;Tu as un exemple?;;;;;;
 ;;;;;;;
 L'exemple le plus probant serait de parler du réchauffement planétaire.;;;;;;;
 ;;;;;;;
@@ -33,4 +33,4 @@ La rétroaction positive, c'est juste une manière pompeuse de parler de cercle 
 ;;;;;;;
 On veut les accélérer.;Quoi?!;;;;;;
 ;;;;;;;
-Je te donnerais plus de détails. Je vais bientôt avoir besoin de toi.;Attend!;;;;<BRANCH>PostMj5-1;;
+Je te donnerais plus de détails. Je vais bientôt avoir besoin de toi.;Attend!;;;;<BRANCH>PreMj5-1a;;

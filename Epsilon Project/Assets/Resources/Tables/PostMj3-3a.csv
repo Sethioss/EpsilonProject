@@ -1,7 +1,7 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Le fait que j'aie été choisie à la dernière minute pour la mission, le fait qu'ils ne me communiquent plus autant d'informations qu'auparavant…;;;;;;;
+Le fait que j'ai été choisie à la dernière minute pour la mission, le fait qu'ils ne me communiquent plus autant d'informations qu'auparavant...;;;;;;;
 ;;;;;;;
 Et surtout, j'ai fais mes recherches, et je me suis rendu compte que si les autorités m'arrêtaient moi, mes compagnons resteraient intraçables.;;;;;;;
 ;;;;;;;
 En bref, ils ont fait en sorte de couvrir leurs arrières.;Et comment comptent-ils te piéger?;;;;<BRANCH>PostMj3-4;;
-;C'est des putains de salauds!;;;;<BRANCH>PostMj3-3a1;;
+;C'est des putain de salauds!;;;;<BRANCH>PostMj3-3a1;;

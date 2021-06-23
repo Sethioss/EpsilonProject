@@ -1,0 +1,12 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+J'avais déjà été mise à l'écart alors je n'en sais pas grand-chose. Mais quelqu'un du groupe a tenté de me prévenir.;;;;;;;
+;;;;;;;
+C'est lui qui s'est fait abattre.;;;;;;<CHECK>wentToBridge = 1 ? <BRANCH>Final-2a1 :  !;
+;;;;;;;
+Et la valise.;;;;;;;
+;;;;;;;
+C'était probablement le cadavre d'un de mes compagnons.;;;;;;;
+;;;;;;;
+Je n'ai même pas envie d'en parler...;;;;;;;
+;;;;;;;
+Désolé pour tout.;;;;;;<LEAVE>;
