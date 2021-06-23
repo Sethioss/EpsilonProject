@@ -24,6 +24,8 @@ public class CharacterBehaviour : MonoBehaviour
     public TMP_Text textBoxText;
     public string[] stopTexts;
     bool textHasToChange = true;
+    public bool isTutorial;
+    int dialogueStep = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +52,17 @@ public class CharacterBehaviour : MonoBehaviour
     public IEnumerator WaitAround(float waitTime)
     {
         if(textHasToChange == true) { 
+            if(isTutorial == false) { 
         int dialogueNumber = Random.Range(0, stopTexts.Length);
         textBoxText.text = stopTexts[dialogueNumber];
+            }
+            if (isTutorial)
+            {
+                if (dialogueStep > 0){ 
+                textBoxText.text = stopTexts[dialogueStep-1];
+                }
+                dialogueStep++;
+            }
             textHasToChange = false;
         textBox.SetActive(true);
         }

@@ -6665,6 +6665,8 @@ MonoBehaviour:
   persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
+  m_wentBackHome: 0
+  m_wentToBridge: 0
   username: Sebilol
 --- !u!4 &1284621577
 Transform:
@@ -6752,6 +6754,7 @@ MonoBehaviour:
   stopTexts:
   - Desactive la camera rouge.
   - Maintenant desactive la camera jaune.
+  isTutorial: 1
 --- !u!195 &1287162717
 NavMeshAgent:
   m_ObjectHideFlags: 0
