@@ -9,9 +9,9 @@ public class TilesBehaviour : MonoBehaviour
     public bool isInfected = false;
     public bool holdsVirus, isGoal;
     public bool isBlocked = true;
+    public bool isHacked;
     public string[] textArray;
     public bool useRandomText;
-    public bool isHacked;
     public Renderer cubeRend;
     public Material orangeMat, yellowMat, redMat, blueMat, greenMat, greyMat;
     public GameObject virus;
