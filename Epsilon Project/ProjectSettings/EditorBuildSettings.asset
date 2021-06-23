@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene/FindThePath.unity
     guid: 5be1b2cfa175a3f4f8bdcd9a579a5a31
   - enabled: 1
+    path: Assets/Scenes/FinalScene/VirusTutorial.unity
+    guid: 866a0d90285307c4ca9adf247666c106
+  - enabled: 1
     path: Assets/Scenes/FinalScene/Virus.unity
     guid: 972a00e62d5b66940a84c374571c43c5
   - enabled: 1

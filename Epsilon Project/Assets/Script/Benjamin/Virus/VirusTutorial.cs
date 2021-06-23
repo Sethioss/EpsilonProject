@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class VirusTutorial : MonoBehaviour
 {
@@ -16,12 +18,16 @@ public class VirusTutorial : MonoBehaviour
     GameObject[,] tiles = new GameObject[20, 20];
     bool gameEnded;
     int step = 0;
+    bool justStepped;
     public string[] tutorialDialogue;
-    public Text dialogueText;
+    public TMP_Text dialogueText;
     public GameObject dialogueUI;
+    public GameObject endButtons;
+    public GameObject closeButton;
 
     void Start()
     {
+        Time.timeScale = 0;
         reachedGoal = false;
         for (int i = 0; i < numberOfRows - 1; i++)
         {
@@ -54,20 +60,29 @@ public class VirusTutorial : MonoBehaviour
 
     void Update()
     {
-        if (reachedGoal && !gameEnded)
+        dialogueText.text = tutorialDialogue[step];
+        if (step==4 && justStepped==true)
         {
-            Debug.Log("Goal Reached, congrats");
-            MinigameManager.Instance.winAction.Invoke();
-            gameEnded = true;
+            StartCoroutine (DialogueAppear());
+            closeButton.SetActive(false);
+            endButtons.SetActive(true);
         }
-        if (canHack == true && reachedGoal == false)
+        if(step == 1 && justStepped == true)
         {
-            //StartCoroutine(HackingProcess());
+            StartCoroutine(DialogueAppear());
         }
+        if (step == 2 && justStepped == true)
+        {
+            StartCoroutine(DialogueAppear());
+        }
+    }
 
-        //currentValue -= speed * Time.deltaTime;
-
-        //LoadingBar.fillAmount = currentValue / 100;
+    public IEnumerator DialogueAppear()
+    {
+        justStepped = false;
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0;
+        dialogueUI.SetActive(true);
     }
 
     public IEnumerator StartSpreading(int coordY, int coordX, float timeToWait)
@@ -98,12 +113,12 @@ public class VirusTutorial : MonoBehaviour
                         TilesBehaviour tileLeftBhv = tileLeft.GetComponent<TilesBehaviour>();
                         if (tileLeftBhv.isInfected == false && tileLeftBhv.isBlocked == false && tileLeftBhv.isHacked == false)
                         {
+                            step++;
+                            justStepped = true;
                             currentTileBhv.holdsVirus = false;
                             tileLeftBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
-                            StopCoroutine(StartFading());
                             StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -125,12 +140,12 @@ public class VirusTutorial : MonoBehaviour
                         TilesBehaviour tileRightBhv = tileRight.GetComponent<TilesBehaviour>();
                         if (tileRightBhv.isInfected == false && tileRightBhv.isBlocked == false && tileRightBhv.isHacked == false)
                         {
+                            step++;
+                            justStepped = true;
                             currentTileBhv.holdsVirus = false;
                             tileRightBhv.holdsVirus = true;
-                            StopCoroutine(StartFading());
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -150,12 +165,12 @@ public class VirusTutorial : MonoBehaviour
                         TilesBehaviour tileUpBhv = tileUp.GetComponent<TilesBehaviour>();
                         if (tileUpBhv.isInfected == false && tileUpBhv.isBlocked == false && tileUpBhv.isHacked == false)
                         {
+                            step++;
+                            justStepped = true;
                             currentTileBhv.holdsVirus = false;
                             tileUpBhv.holdsVirus = true;
-                            StopCoroutine(StartFading());
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -175,12 +190,12 @@ public class VirusTutorial : MonoBehaviour
                         TilesBehaviour tileDownBhv = tileDown.GetComponent<TilesBehaviour>();
                         if (tileDownBhv.isInfected == false && tileDownBhv.isBlocked == false && tileDownBhv.isHacked == false)
                         {
+                            step++;
+                            justStepped = true;
                             currentTileBhv.holdsVirus = false;
                             tileDownBhv.holdsVirus = true;
-                            StopCoroutine(StartFading());
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -201,34 +216,9 @@ public class VirusTutorial : MonoBehaviour
         Time.timeScale = 1;
         dialogueUI.SetActive(false);
         }
-    //public IEnumerator HackingProcess()
-    //{
-    //    canHack = false;
-    //    yield return new WaitForSeconds(hackFrequency);
-    //    HackRandom();
-    //}
-
-    //void HackRandom()
-    //{
-    //    int randomColumn = Random.Range(0, numberOfColumns);
-    //    int randomRow = Random.Range(0, numberOfRows);
-    //    if (tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isInfected == false && tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isBlocked == false && tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked == false)
-    //    {
-    //        tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked = true;
-    //        canHack = true;
-    //    }
-    //    else
-    //    {
-    //        HackRandom();
-    //    }
-    //}
-
-    public IEnumerator StartFading()
+  
+    public void ChangeScene(int sceneToLoad)
     {
-        currentValue = 100;
-        yield return new WaitForSeconds(timeToFade);
-        Debug.Log("You loose");
-        MinigameManager.Instance.loseAction.Invoke();
+        SceneManager.LoadScene(sceneToLoad);
     }
-
 }
