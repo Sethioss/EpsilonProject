@@ -13035,7 +13035,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413139076}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 2, y: 50, z: -200}
+  m_LocalPosition: {x: 2, y: 65, z: -200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35241,7 +35241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083513313}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 12, y: 60, z: -100}
+  m_LocalPosition: {x: 12, y: 65, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60002,7 +60002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850373631}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 12, y: 60, z: 0}
+  m_LocalPosition: {x: 12, y: 65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64863,7 +64863,7 @@ MonoBehaviour:
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
   username: Sebilol
