@@ -608,9 +608,11 @@ MonoBehaviour:
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  dialogueSavingDebug: 0
+  persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
+  m_wentBackHome: 0
+  m_wentToBridge: 0
   username: Sebilol
 --- !u!4 &489206101
 Transform:
@@ -985,7 +987,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 363f7816dc93a4e4a9eb47fba8a5100c, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: 2abe25a7238582043a57987a85c34cef, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
