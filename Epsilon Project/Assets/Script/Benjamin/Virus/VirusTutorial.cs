@@ -219,6 +219,7 @@ public class VirusTutorial : MonoBehaviour
   
     public void ChangeScene(int sceneToLoad)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneToLoad);
     }
 }

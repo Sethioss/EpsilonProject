@@ -23,7 +23,10 @@ public class VirusBehaviour : MonoBehaviour
     GameObject[,] tiles = new GameObject[20, 20];
     bool gameEnded;
 
-
+    void Awake()
+    {
+        reachedGoal = false;
+    }
     void Start()
     {
         config = Random.Range(1, 4);
