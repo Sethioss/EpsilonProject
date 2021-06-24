@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
 
     public string testSet { get { return m_testSet; } set { m_testSet = value; } }
     public float testSetFloat { get { return m_testSetFloat; } set { m_testSetFloat = value; } }
-    public float wentBackHome { get { return m_wentBackHome; } set { m_wentBackHome= value; } }
+    public float wentBackHome { get { return m_wentBackHome; } set { m_wentBackHome = value; } }
     public float wentToBridge { get { return m_wentToBridge; } set { m_wentToBridge = value; } }
 
     [Header("Accessible test variables (Changed by events)")]
@@ -100,7 +100,10 @@ public class DialogueManager : MonoBehaviour
 #if UNITY_EDITOR
     private void OnApplicationQuit()
     {
-        displayer.DeleteDialogueData();
+        if (!persistentSave)
+        {
+            displayer.DeleteDialogueData();
+        }
     }
 #endif
 
@@ -159,7 +162,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     dialogueList.Insert(dialogueList.Count, CreateDialogue(dialogueFileName));
                 }
-            }            
+            }
         }
     }
 
@@ -564,7 +567,7 @@ public class DialogueManager : MonoBehaviour
         displayer.allowedType = (DialogueDisplayer.AllowedMessageType)allowedType;
 
 #if UNITY_EDITOR
-        if(displayer.allowedType == DialogueDisplayer.AllowedMessageType.LINK)
+        if (displayer.allowedType == DialogueDisplayer.AllowedMessageType.LINK)
         {
             colorCodeStart = "<color=blue>";
             AddToDebugFunctionMessage("=======LINK FUNCTION EXECUTING=======", debugMessages);
