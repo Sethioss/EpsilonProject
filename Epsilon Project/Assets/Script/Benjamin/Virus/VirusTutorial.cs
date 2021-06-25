@@ -24,9 +24,13 @@ public class VirusTutorial : MonoBehaviour
     public GameObject dialogueUI;
     public GameObject endButtons;
     public GameObject closeButton;
-
+    public XMLTagList myTagList;
+    
     void Start()
     {
+        
+        XMLManager.Instance.GetSceneXMLTags();
+        XMLManager.Instance.SwitchLanguage();
         Time.timeScale = 0;
         reachedGoal = false;
         for (int i = 0; i < numberOfRows - 1; i++)
@@ -60,7 +64,9 @@ public class VirusTutorial : MonoBehaviour
 
     void Update()
     {
-        dialogueText.text = tutorialDialogue[step];
+        myTagList.tagList[0].tagName = tutorialDialogue[step];
+        XMLManager.Instance.GetSceneXMLTags();
+        XMLManager.Instance.SwitchLanguage();
         if (step==4 && justStepped==true)
         {
             StartCoroutine (DialogueAppear());
