@@ -8,9 +8,11 @@ public class VirusBehaviour : MonoBehaviour
     public int numberOfColumns, numberOfRows;
     public int hackFrequency = 3;
     int tracker = 0;
-    public int timeToFade;
+    public float timeToFade;
+    float initialTimeToFade;
     public Image LoadingBar;
-    public float currentValue;
+    float currentValue = 100;
+    float initialValue;
     public float speed;
     public static bool reachedGoal;
     bool canHack = true;
@@ -29,6 +31,8 @@ public class VirusBehaviour : MonoBehaviour
     }
     void Start()
     {
+        initialTimeToFade = timeToFade;
+        initialValue = currentValue;
         config = Random.Range(1, 4);
         for(int i =0; i < tilesConfig.Length; i++)
         {
@@ -84,8 +88,7 @@ public class VirusBehaviour : MonoBehaviour
         if (reachedGoal && !gameEnded)
         {
             Debug.Log("Goal Reached, congrats");
-            MinigameManager.Instance.winAction.Invoke();
-            gameEnded = true;
+            StartCoroutine(EndGame());
         }
         if (canHack == true && reachedGoal == false)
         {
@@ -95,6 +98,17 @@ public class VirusBehaviour : MonoBehaviour
         currentValue -= speed * Time.deltaTime;
 
         LoadingBar.fillAmount = currentValue / 100;
+
+    }
+
+    private void FixedUpdate()
+    {
+        LoadingBar.fillAmount = currentValue / 100;
+        timeToFade -= Time.deltaTime;
+        if (timeToFade <= 0)
+        {
+            MinigameManager.Instance.loseAction.Invoke();
+        }
     }
 
     public IEnumerator StartSpreading(int coordY, int coordX, float timeToWait)
@@ -128,9 +142,9 @@ public class VirusBehaviour : MonoBehaviour
                             currentTileBhv.holdsVirus = false;
                             tileLeftBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
-                            StopCoroutine(StartFading());
+                            currentValue = initialValue;
+                            timeToFade = initialTimeToFade;
                             StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -154,10 +168,10 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileRightBhv.holdsVirus = true;
-                            StopCoroutine(StartFading());
+                            currentValue = initialValue;
+                            timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -179,10 +193,10 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileUpBhv.holdsVirus = true;
-                            StopCoroutine(StartFading());
+                            currentValue = initialValue;
+                            timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -204,10 +218,10 @@ public class VirusBehaviour : MonoBehaviour
                         {
                             currentTileBhv.holdsVirus = false;
                             tileDownBhv.holdsVirus = true;
-                            StopCoroutine(StartFading());
+                            currentValue = initialValue;
+                            timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
-                            StartCoroutine(StartFading());
                         }
                         else
                         {
@@ -245,12 +259,18 @@ public class VirusBehaviour : MonoBehaviour
         }
     }
 
-    public IEnumerator StartFading()
-    {
-        currentValue = 100;
-        yield return new WaitForSeconds(timeToFade);
-        Debug.Log("You loose");
-        MinigameManager.Instance.loseAction.Invoke();
-    }
+    //public IEnumerator StartFading()
+    //{
+    //    currentValue = 100;
+    //    yield return new WaitForSeconds(timeToFade);
+    //    Debug.Log("You loose");
+    //    MinigameManager.Instance.loseAction.Invoke();
+    //}
 
+    public IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(2f);
+        MinigameManager.Instance.winAction.Invoke();
+        gameEnded = true;
+    }
 }
