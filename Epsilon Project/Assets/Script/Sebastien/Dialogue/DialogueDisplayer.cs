@@ -18,7 +18,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     #region Display Variables
     [SerializeField]
-    public enum AllowedMessageType { NORMAL = 0, LINK = 1, LEAVE = 2 };
+    public enum AllowedMessageType { NORMAL = 0, LINK = 1, LEAVE = 2, INFO = 3};
     public AllowedMessageType allowedType;
 
     public Dialogue currentDialogue;
@@ -996,6 +996,21 @@ public class DialogueDisplayer : MonoBehaviour
 
                 StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
             }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.INFO)
+            {
+                allowedType = AllowedMessageType.INFO;
+                Debug.Log("Creating info message bubble");
+                messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                messageBubble.message.text = "";
+                messageBubble.gameObject.SetActive(false);
+
+                currentBubble = messagePrefab;
+                bubbleSpawned = true;
+
+                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+            }
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
                 allowedType = AllowedMessageType.LINK;
@@ -1066,6 +1081,38 @@ public class DialogueDisplayer : MonoBehaviour
                     bubbleSpawned = true;
 
                     allowedType = AllowedMessageType.LEAVE;
+
+                    if (isInitialisation)
+                    {
+                        newElement = CreateLeaveMessageBubble(messageBubble);
+                        AddElementToSave(newElement);
+                    }
+                    else
+                    {
+                        currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                    }
+
+                    StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+                }
+                else
+                {
+                    GoToNextElement();
+                }
+            }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.INFO)
+            {
+                if (allowedType == AllowedMessageType.INFO)
+                {
+                    messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                    messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                    messageBubble.message.text = "";
+                    messagePrefab.gameObject.SetActive(false);
+
+                    currentBubble = messagePrefab;
+                    bubbleSpawned = true;
+
+                    allowedType = AllowedMessageType.INFO;
 
                     if (isInitialisation)
                     {

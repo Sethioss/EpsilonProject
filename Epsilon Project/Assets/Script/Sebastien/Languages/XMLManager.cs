@@ -182,8 +182,16 @@ public class XMLManager : MonoBehaviour
 
     public void UpdateHour()
     {
-        string initialStr = dictionary[(int)UserSettings.Instance.language][hourTextTag.tagName];
-        hourTextTag.tagTxtObject.text = GetHourString(initialStr);
+        try
+        {
+            string initialStr = dictionary[(int)UserSettings.Instance.language][hourTextTag.tagName];
+            hourTextTag.tagTxtObject.text = GetHourString(initialStr);
+        }
+        catch
+        {
+
+        }
+
     }
 
     private string GetHourString(string processedString)

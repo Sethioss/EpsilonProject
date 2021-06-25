@@ -561,7 +561,7 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-    #region LINK and LEAVE Command
+    #region LINK/LEAVE/INFO Command
     public void SpecialMessage(string sceneToChangeTo, int allowedType)
     {
         displayer.allowedType = (DialogueDisplayer.AllowedMessageType)allowedType;
@@ -578,7 +578,7 @@ public class DialogueManager : MonoBehaviour
         {
             colorCodeStart = "<color=blue>";
             AddToDebugFunctionMessage("=======LEAVE FUNCTION EXECUTING=======", debugMessages);
-            AddToDebugFunctionMessage(colorCodeStart + "Sending a leave message that leads to Dialogue " + sceneToChangeTo + colorCodeEnd, debugMessages);
+            AddToDebugFunctionMessage(colorCodeStart + "Sending a leave message that leads to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
             DebugElement(debugMessages.ToArray());
         }
 #endif

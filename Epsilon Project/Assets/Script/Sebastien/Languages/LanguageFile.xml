@@ -15,8 +15,11 @@
     <registerPassword>Votre mot de passe</registerPassword>
     <registerDOB>Votre date de naissance</registerDOB>
     <registerPhoneNumber>Votre numéro de téléphone</registerPhoneNumber>
-    <registerPopUp>Validez-vous ces informations?</registerPopUp>
+    <registerPopUp>Confirmez-vous ces informations?</registerPopUp>
 
+    <confirm>Confirmer</confirm>
+    <logIn>Se connecter</logIn>
+    
     <profileTitle>Profil</profileTitle>
     <profilePfp>Photo de profil</profilePfp>
     <profileBio>Biographie</profileBio>
@@ -54,6 +57,9 @@ De Vinci Paris</digitalSchool>
     <languageDesc>Changer la langue du jeu</languageDesc>
     <profilePictureText>Changer l'image de profil</profilePictureText>
 
+    <mj1LogInSignature>Une application de</mj1LogInSignature>
+    <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>
+    <mj1ProfileBioContent>Bonjour je m'appelle Pierre tocan, je suis auriginaire du val d'oise et je suis marié depuis 10 ans avec Nathalie Tocan. </mj1ProfileBioContent>
     
     <mj1MessagePanel>0 nouveux messages</mj1MessagePanel>
     <mj1BasicPostTitle>{0} a posté - le {1}/{2}</mj1BasicPostTitle>
@@ -349,6 +355,9 @@ De Vinci Paris</digitalSchool>
     <registerPhoneNumber>Your phone number</registerPhoneNumber>
     <registerPopUp>Do you want to save these informations?</registerPopUp>
 
+    <confirm>Confirm</confirm>
+    <logIn>Log in</logIn>
+    
     <profileTitle>Profile</profileTitle>
     <profilePfp>Profile Picture</profilePfp>
     <profileBio>Bio</profileBio>
@@ -387,7 +396,9 @@ De Vinci Paris
     <languageDesc>Change the game's language</languageDesc>
     <profilePictureText>Change your profile picture</profilePictureText>
 
-    
+    <mj1LogInSignature>A sotfware from</mj1LogInSignature>
+    <mj1LogInButton>[ LOG IN ]</mj1LogInButton>
+    <mj1ProfileBioContent>Hello my name is Pierre tocan, I'm from Florida. Happily married with Nathalie Tocan for 10 years. </mj1ProfileBioContent>
     <mj1MessagePanel>0 new messages</mj1MessagePanel>
     <mj1BasicPostTitle>{0} posted - {2}/{1}</mj1BasicPostTitle>
     <mj1CommentTitle>{0} commented - {2}/{1}</mj1CommentTitle>

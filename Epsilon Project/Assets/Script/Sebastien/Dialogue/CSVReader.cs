@@ -496,6 +496,70 @@ public class CSVReader : MonoBehaviour
                     break;
                 #endregion
 
+                #region INFO
+                case "INFO":
+
+                    string infoString = "";
+                    //Find if there's a message to go with the link
+                    try
+                    {
+                        //Get invite message
+                        infoString = tagArea[i + 1];
+                        int messageStartId = i + 1;
+                        char firstLetterOfMessage = infoString[0];
+                        int messageEndId = messageStartId;
+
+                        if (firstLetterOfMessage == '\'')
+                        {
+                            string tempMessage = tagArea[messageStartId];
+                            while (tempMessage[tempMessage.Length - 1] != '\'')
+                            {
+                                tempMessage = tagArea[messageEndId];
+                                messageEndId++;
+                                tempMessage = tagArea[messageEndId];
+                            }
+
+                            tempMessage = "";
+
+                            for (int j = messageStartId; j <= messageEndId; j++)
+                            {
+                                if (j == messageStartId)
+                                {
+                                    tempMessage += tagArea[j];
+                                }
+                                else
+                                {
+                                    tempMessage += " " + tagArea[j];
+                                }
+                            }
+                            infoString = tempMessage.Trim('\'');
+
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+
+                    events += delegate { DialogueManager.Instance.SpecialMessage(null, (int)DialogueElement.MessageType.INFO); };
+
+                    if (playRightAway)
+                    {
+                        events.Invoke();
+                    }
+                    else
+                    {
+                        //Creation d'un nouvel élément
+
+                        CreateInfoElement(specialMessageElementBuffer, infoString);
+                    }
+
+                    jump = 3;
+
+                    break;
+
+                #endregion
+
                 #region SCENE
                 case "SCENE":
 
@@ -679,6 +743,15 @@ public class CSVReader : MonoBehaviour
     }
     #endregion
 
+    private void CreateInfoElement(List<DialogueElement> elementBuffer, string infoString)
+    {
+        DialogueElement newElement = new DialogueElement(infoString, tempDialogue.elements.Count, "00:00:00:01", null);
+
+        newElement.messageType = DialogueElement.MessageType.INFO;
+
+        elementBuffer.Add(newElement);
+    }
+
     private void CreateLeaveElement(List<DialogueElement> elementBuffer, string branchToGoTo, string leaveMessage = null)
     {
         if (leaveMessage == null)
@@ -686,11 +759,9 @@ public class CSVReader : MonoBehaviour
             leaveMessage = "The user has left the chat";
         }
 
-        DialogueElement newElement = new DialogueElement(leaveMessage, tempDialogue.elements.Count, "00:00:00:01", null);
+        DialogueElement newElement = new DialogueElement(leaveMessage, tempDialogue.elements.Count, "00:00:00:05", null);
 
         UnityAction leaveActions = null;
-
-        //leaveActions += delegate { DialogueManager.Instance.ChangeScene("Game"); };
 
         if (branchToGoTo != "")
         {
@@ -702,7 +773,7 @@ public class CSVReader : MonoBehaviour
         }
         
 
-        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:01", leaveActions);
+        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:05", leaveActions);
         newElement.AddReply(leaveReply);
         newElement.messageType = DialogueElement.MessageType.LEAVE;
 
