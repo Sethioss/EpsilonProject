@@ -4,32 +4,79 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public GameObject CameraGlitch = null;
+    public CamMove[] cams;
 
-    public PostRenderer postRenderer = null;
-    public void Glitch()
+    void Update()
     {
-        StartCoroutine(WaitRenderer());
+        for (int i = 0;i < cams.Length; i++)
+        {
+            cams[i].Update();
+        }
     }
-    private IEnumerator WaitRenderer()
+
+    [System.Serializable]
+    public struct CamMove
     {
-        postRenderer.enabled = false;
+        public Transform c;
+        public float min;
+        public float max;
+        public int speed;
+        public bool sens;
+        public Vector3 angleC;
+
+        public float wait;
+        private float timer;
+        public bool waitTimer;
+        public void Update()
+        {
+            
+            angleC = c.eulerAngles;
+
+            if (angleC.y < min)
+            {
+                timer += Time.deltaTime;
+                if (timer >= wait)
+                {
+                    
+                    timer = timer - wait;
+                    waitTimer = true;
+                    sens = false;
+                }
+                else
+                {
+                    c.gameObject.transform.Rotate(new Vector3(0f, 0f, 0f) * Time.deltaTime);
+                    waitTimer = false;
+                }
+            }
+            else if (angleC.y > max)
+            {
+                timer += Time.deltaTime;
+                if (timer >= wait)
+                {
+
+                    timer = timer - wait;
+                    waitTimer = true;
+                    sens = true;
+                }
+                else
+                {
+                    c.gameObject.transform.Rotate(new Vector3(0f, 0f, 0f) * Time.deltaTime);
+                    waitTimer = false;
+                }
+            }
+            
+            if (sens == true & waitTimer == true)
+            {
+                c.transform.Rotate(new Vector3(0f, -speed, 0f) * Time.deltaTime);
+            }
+            else if (sens == false & waitTimer == true)
+            {
+                c.transform.Rotate(new Vector3(0f, speed, 0f) * Time.deltaTime);
+            }
+        }
+
         
-        yield return new WaitForSeconds(0.25f);
         
-        postRenderer.enabled = true;
-        //Sfx?.RandomSFXbug();
-        yield return new WaitForSeconds(0.5f);
-        postRenderer.enabled = false;
-        //Sfx?.MusicChaine();
-        
-    }
-    private IEnumerator WaitGlitch()
-    {
-        postRenderer.enabled = true;
-        //Sfx?.RandomSFXbug();
-        yield return new WaitForSeconds(0.5f);
-        postRenderer.enabled = false;
-        //Sfx?.MusicChaine();
+
     }
 }
