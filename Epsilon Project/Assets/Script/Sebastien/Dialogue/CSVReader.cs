@@ -733,6 +733,96 @@ public class CSVReader : MonoBehaviour
                     break;
                 #endregion
 
+                #region END
+                case "END":
+                    jump = 1;
+
+                    events += delegate { DialogueManager.Instance.SpecialMessage(null, (int)DialogueElement.MessageType.END); };
+
+                    if (playRightAway)
+                    {
+                        events.Invoke();
+                    }
+                    else
+                    {
+                        //Creation d'un nouvel élément
+
+                        CreateEndElement(specialMessageElementBuffer, "The End");
+                    }
+
+                    break;
+                #endregion
+
+                #region CHECKPOINT
+                case "CHECKPOINT":
+                    jump = 1;
+                    events += delegate { DialogueManager.Instance.SetCheckpoint(); };
+
+                    break;
+                #endregion
+
+                #region GAMEOVER
+                case "GAMEOVER":
+                    jump = 1;
+
+                    string gameOverString = "";
+                    //Find if there's a message to go with the link
+                    try
+                    {
+                        //Get invite message
+                        gameOverString = tagArea[i + 1];
+                        int messageStartId = i + 1;
+                        char firstLetterOfMessage = gameOverString[0];
+                        int messageEndId = messageStartId;
+
+                        if (firstLetterOfMessage == '\'')
+                        {
+                            string tempMessage = tagArea[messageStartId];
+                            while (tempMessage[tempMessage.Length - 1] != '\'')
+                            {
+                                tempMessage = tagArea[messageEndId];
+                                messageEndId++;
+                                tempMessage = tagArea[messageEndId];
+                            }
+
+                            tempMessage = "";
+
+                            for (int j = messageStartId; j <= messageEndId; j++)
+                            {
+                                if (j == messageStartId)
+                                {
+                                    tempMessage += tagArea[j];
+                                }
+                                else
+                                {
+                                    tempMessage += " " + tagArea[j];
+                                }
+                            }
+                            gameOverString = tempMessage.Trim('\'');
+
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+
+                    events += delegate { DialogueManager.Instance.SpecialMessage(null, (int)DialogueElement.MessageType.GAMEOVER); };
+
+                    if (playRightAway)
+                    {
+                        events.Invoke();
+                    }
+                    else
+                    {
+                        //Creation d'un nouvel élément
+
+                        CreateGameOverElement(specialMessageElementBuffer, gameOverString);
+                    }
+
+                    break;
+                #endregion
+
                 default:
                     jump = 1;
                     break;
@@ -742,6 +832,55 @@ public class CSVReader : MonoBehaviour
         return events;
     }
     #endregion
+
+    private void CreateGameOverElement(List<DialogueElement> elementBuffer, string gameOverString)
+    {
+        DialogueElement newElement = new DialogueElement(gameOverString, tempDialogue.elements.Count, "00:00:00:01", null);
+
+        //Info element
+        newElement.messageType = DialogueElement.MessageType.INFO;
+        elementBuffer.Add(newElement);
+
+        //Game Over element
+        newElement = new DialogueElement("GAME OVER", tempDialogue.elements.Count, "00:00:00:01", null);
+        newElement.messageType = DialogueElement.MessageType.GAMEOVER;
+
+        UnityAction leaveActions = null;
+        leaveActions += delegate { DialogueManager.Instance.GoToCheckpoint(); };
+
+        //Checkpoint reload reply
+        Reply leaveReply = new Reply("[Recommencer depuis le dernier point de sauvegarde]", null, 0, "00:00:00:01", leaveActions);
+        newElement.AddReply(leaveReply);
+
+        //Back to menu reply
+        leaveActions = null;
+        leaveActions += delegate { GameManager.Instance.GoToMenu(); };
+        leaveActions += delegate { DialogueManager.Instance.displayer.StopDialogue(DialogueManager.Instance.displayer.currentDialogue); };
+        leaveActions += delegate { DialogueManager.Instance.displayer.DeleteDialogueData(); };
+
+        //Checkpoint reload reply
+        leaveReply = new Reply("[Retour au menu principal]", null, 1, "00:00:00:01", leaveActions);
+        newElement.AddReply(leaveReply);
+
+        elementBuffer.Add(newElement);
+    }
+    private void CreateEndElement(List<DialogueElement> elementBuffer, string infoString)
+    {
+        DialogueElement newElement = new DialogueElement(infoString, tempDialogue.elements.Count, "00:00:00:01", null);
+
+        newElement.messageType = DialogueElement.MessageType.END;
+
+        UnityAction leaveActions = null;
+        leaveActions += delegate { GameManager.Instance.GoToMenu(); };
+        leaveActions += delegate { DialogueManager.Instance.displayer.StopDialogue(DialogueManager.Instance.displayer.currentDialogue); };
+        leaveActions += delegate { DialogueManager.Instance.displayer.DeleteDialogueData(); };
+
+        Reply leaveReply = new Reply("[Retour au menu principal]", null, 0, "00:00:00:05", leaveActions);
+        newElement.AddReply(leaveReply);
+        newElement.messageType = DialogueElement.MessageType.END;
+
+        elementBuffer.Add(newElement);
+    }
 
     private void CreateInfoElement(List<DialogueElement> elementBuffer, string infoString)
     {
@@ -771,7 +910,7 @@ public class CSVReader : MonoBehaviour
         {
             Debug.LogError("LEAVE :: No dialogue to go to has been set. If this is not intended, please verify the dialogue file");
         }
-        
+
 
         Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:05", leaveActions);
         newElement.AddReply(leaveReply);

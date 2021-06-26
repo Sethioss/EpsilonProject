@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Tu es là?;Oui;;00:12:00:00;;;;
+Tu es là?;Oui;;00:12:00:00;;;<CHECKPOINT>;
 ;;;;;;;
 Bien, je suis prêt à infiltrer le bâtiment, je vais te briefer rapidement, puis je vais te laisser directement le lien.;;;;;;;
 ;;;;;;;

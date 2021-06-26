@@ -52,6 +52,7 @@ MonoBehaviour:
   textBackground: {fileID: 5183199338440041884}
   profilePictureTransform: {fileID: 0}
   message: {fileID: 8006375592738377830}
+  gameOverColor: {r: 0.5754717, g: 0.08414916, b: 0.08414916, a: 1}
 --- !u!1 &3225660987187460582
 GameObject:
   m_ObjectHideFlags: 0

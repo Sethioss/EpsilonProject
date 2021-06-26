@@ -18,7 +18,7 @@ public class DialogueDisplayer : MonoBehaviour
 
     #region Display Variables
     [SerializeField]
-    public enum AllowedMessageType { NORMAL = 0, LINK = 1, LEAVE = 2, INFO = 3};
+    public enum AllowedMessageType { NORMAL = 0, LINK = 1, LEAVE = 2, INFO = 3, END = 4, GAMEOVER = 5 };
     public AllowedMessageType allowedType;
 
     public Dialogue currentDialogue;
@@ -218,6 +218,7 @@ public class DialogueDisplayer : MonoBehaviour
         isFinished = false;
 
         bubbleSpawned = false;
+        cachedDialogueManager.dialogueCheckpoint = null;
         UpdateDialogueState();
         List<Dialogue> emptyMemory = new List<Dialogue>();
 
@@ -230,7 +231,7 @@ public class DialogueDisplayer : MonoBehaviour
         cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
         Debug.LogWarning("Dialogue save data erased");
     }
-    private void UpdateDialogueState()
+    public void UpdateDialogueState()
     {
         tempWaitingForReply = isWaitingForReply;
         tempIsInitialisation = isInitialisation;
@@ -342,6 +343,9 @@ public class DialogueDisplayer : MonoBehaviour
             isWaitingForReply = BoolToInt(data.waitForReply);
             hasReplied = BoolToInt(data.replied);
             reacting = BoolToInt(data.reacted);
+            cachedDialogueManager.wentBackHome = data.wentBackHome;
+            cachedDialogueManager.wentToBridge = data.wentToBridge;
+            cachedDialogueManager.dialogueCheckpoint = data.checkpoint;
             UpdateDialogueState();
 
             //Création des dialogues de retour
@@ -1011,6 +1015,37 @@ public class DialogueDisplayer : MonoBehaviour
 
                 StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
             }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.GAMEOVER)
+            {
+                allowedType = AllowedMessageType.GAMEOVER;
+                Debug.Log("Creating game over message bubble");
+                messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                messageBubble.textBackground.GetComponent<Image>().color = messageBubble.gameOverColor;
+                messageBubble.message.text = "";
+                messageBubble.gameObject.SetActive(false);
+
+                currentBubble = messagePrefab;
+                bubbleSpawned = true;
+
+                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+            }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.END)
+            {
+                allowedType = AllowedMessageType.END;
+                Debug.Log("Creating end message bubble");
+                messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                messageBubble.message.text = "";
+                messageBubble.gameObject.SetActive(false);
+
+                currentBubble = messagePrefab;
+                bubbleSpawned = true;
+
+                StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+            }
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
                 allowedType = AllowedMessageType.LINK;
@@ -1101,7 +1136,7 @@ public class DialogueDisplayer : MonoBehaviour
             }
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.INFO)
             {
-                if (allowedType == AllowedMessageType.INFO)
+                if (allowedType == AllowedMessageType.INFO || allowedType == AllowedMessageType.GAMEOVER)
                 {
                     messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                     messageBubble = messagePrefab.GetComponent<MessageBubble>();
@@ -1112,7 +1147,46 @@ public class DialogueDisplayer : MonoBehaviour
                     currentBubble = messagePrefab;
                     bubbleSpawned = true;
 
-                    allowedType = AllowedMessageType.INFO;
+                    if (allowedType != AllowedMessageType.GAMEOVER)
+                    {
+                        allowedType = AllowedMessageType.INFO;
+                    }
+                    else
+                    {
+                        allowedType = AllowedMessageType.GAMEOVER;
+                    }
+
+                    if (isInitialisation)
+                    {
+                        newElement = CreateLeaveMessageBubble(messageBubble);
+                        AddElementToSave(newElement);
+                    }
+                    else
+                    {
+                        currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                    }
+
+                    StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+                }
+                else
+                {
+                    GoToNextElement();
+                }
+            }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.END)
+            {
+                if (allowedType == AllowedMessageType.END)
+                {
+                    messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                    messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                    messageBubble.message.text = "";
+                    messagePrefab.gameObject.SetActive(false);
+
+                    currentBubble = messagePrefab;
+                    bubbleSpawned = true;
+
+                    allowedType = AllowedMessageType.END;
 
                     if (isInitialisation)
                     {
@@ -1156,6 +1230,39 @@ public class DialogueDisplayer : MonoBehaviour
                 else
                 {
                     currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                    GoToNextElement();
+                }
+            }
+            else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.GAMEOVER)
+            {
+                if (allowedType == AllowedMessageType.GAMEOVER)
+                {
+                    messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
+                    messageBubble = messagePrefab.GetComponent<MessageBubble>();
+
+                    messageBubble.textBackground.GetComponent<Image>().color = messageBubble.gameOverColor;
+                    messageBubble.message.text = "";
+                    messagePrefab.gameObject.SetActive(false);
+
+                    currentBubble = messagePrefab;
+                    bubbleSpawned = true;
+
+                    allowedType = AllowedMessageType.GAMEOVER;
+
+                    if (isInitialisation)
+                    {
+                        newElement = CreateLeaveMessageBubble(messageBubble);
+                        AddElementToSave(newElement);
+                    }
+                    else
+                    {
+                        currentDialogue.elements[currentDialogueElementId].elementAction = null;
+                    }
+
+                    StartCoroutine(SetObjectHeightToBackground(messagePrefab, messageBubble.textBackground, messagePanel));
+                }
+                else
+                {
                     GoToNextElement();
                 }
             }
@@ -1336,7 +1443,9 @@ public class DialogueDisplayer : MonoBehaviour
         }
         else
         {
-            if (currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.LEAVE)
+            if (currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.LEAVE &&
+                currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.GAMEOVER &&
+                currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.END)
             {
                 //Display
                 DeleteReplies();
@@ -1401,11 +1510,17 @@ public class DialogueDisplayer : MonoBehaviour
             }
             else
             {
-                currentDialogue.elements[currentDialogueElementId].replies[0].replyEvent.Invoke();
+                //Apply goodReplyIndex to the dialogues
+                int goodReplyIndex = reply.index;
+
+                cachedDialogueManager.dialogueList[currentDialogue.id].elements[currentDialogueElementId].chosenReplyIndex = goodReplyIndex;
+                currentDialogue.elements[currentDialogueElementId].chosenReplyIndex = goodReplyIndex;
+
+                currentDialogue.elements[currentDialogueElementId].replies[currentDialogue.elements[currentDialogueElementId].chosenReplyIndex].replyEvent.Invoke();
             }
         }
     }
-    void DisplayReaction(string reaction)
+    private void DisplayReaction(string reaction)
     {
         if (isLoading)
         {
@@ -1490,10 +1605,14 @@ public class DialogueDisplayer : MonoBehaviour
     private System.DateTime SetWritingTime(string message)
     {
         System.DateTime typingTime = System.DateTime.MinValue;
-        int typingSpeed = GetTypingSpeed(message);
+        if (message != null || message != "")
+        {
 
-        typingTime = typingTime.AddSeconds(typingSpeed);
+            int typingSpeed = GetTypingSpeed(message);
 
+            typingTime = typingTime.AddSeconds(typingSpeed);
+
+        }
         return typingTime;
     }
 

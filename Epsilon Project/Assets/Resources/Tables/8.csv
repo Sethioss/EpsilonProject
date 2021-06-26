@@ -1,0 +1,4 @@
+Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
+Salut comment ça va? Je fais le checkpoint vite fait et je t'envoie en branche 7;;;;;;<CHECKPOINT>;
+;;;;;;;
+Ok je t'envoie en branche 7 maintenant!;;;;;;<BRANCH>7;

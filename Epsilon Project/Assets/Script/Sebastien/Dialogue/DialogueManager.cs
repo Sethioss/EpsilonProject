@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     [HideInInspector]
     public TextAsset currentDialogueFile;
     public TextAsset dialogueFileToLoad;
+    [HideInInspector]
+    public string dialogueCheckpoint;
 
     public List<Dialogue> dialogueList;
     #endregion
@@ -597,6 +599,40 @@ public class DialogueManager : MonoBehaviour
             }
 
             SceneManager.LoadScene(sceneToChangeTo);
+        }
+    }
+    #endregion
+
+    #region CHECKPOINT Command
+    public void SetCheckpoint()
+    {
+        dialogueCheckpoint = currentDialogueFile.name;
+        SaveSystem.SaveDialogue(mainChatDialoguesToSave);
+        SaveSystem.SaveDialogue(hackingChatDialoguesToSave);
+    }
+    #endregion
+
+    #region GAMEOVER Command
+    public void GoToCheckpoint()
+    {
+        for(int i = mainChatDialoguesToSave.Count-1; i >= 0; i--)
+        {
+            if(mainChatDialoguesToSave[i].fileName == dialogueCheckpoint)
+            {
+                dialogueFileToLoad = GetElementFileFromName(dialogueCheckpoint);
+                displayer.SaveDialogueData(mainChatDialoguesToSave);
+                displayer.currentDialogueElementId = mainChatDialoguesToSave[i].elements.Count-1;
+                Debug.LogError(displayer.currentDialogueElementId);
+
+                displayer.UpdateDialogueState();
+                ChangeScene("Game");
+                return;
+            }
+            else
+            {
+                mainChatDialoguesToSave.RemoveAt(i);
+                displayer.SaveDialogueData(mainChatDialoguesToSave);
+            }
         }
     }
     #endregion

@@ -18,6 +18,11 @@ public class DialogueData
     public int reacted = 0;
     public int isFinished = 0;
 
+    public int wentBackHome = 0;
+    public int wentToBridge = 0;
+
+    public string checkpoint = "Intro-1";
+
     //public DialogueData() { }
     public DialogueData(List<Dialogue> dialogueToSave)
     {
@@ -29,6 +34,7 @@ public class DialogueData
         elementId = new List<int>();
         numberOfElementsInDialogue = new List<int>();
         currentElement = displayer.currentDialogueElementId;
+        checkpoint = DialogueManager.Instance.dialogueCheckpoint;
 
         //Debug.LogWarning("========= New save call ==========");
         //Fetch all dialogues
@@ -92,6 +98,9 @@ public class DialogueData
         {
             isFinished = 1;
         }
+
+        wentBackHome = (int)DialogueManager.Instance.wentBackHome;
+        wentToBridge = (int)DialogueManager.Instance.wentToBridge;
 
         Instance = this;
     }

@@ -783,7 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoMode: 1
   autoModeWaitingTime: 00:00:00:01
-  inactivePeriods: 1
+  inactivePeriods: 0
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7
   activateClockRecalibration: 0

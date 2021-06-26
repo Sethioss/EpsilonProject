@@ -76,4 +76,9 @@ public class GameManager : MonoBehaviour
         SetDialogue(fileName);
         GoToChatScene();
     }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

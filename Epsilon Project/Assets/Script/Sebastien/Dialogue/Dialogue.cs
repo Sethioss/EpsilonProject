@@ -35,7 +35,7 @@ public class DialogueElement
     public int index;
     public string initiationTime;
     public string message;
-    public enum MessageType { NORMAL = 0, LINK = 1, LEAVE = 2, INFO = 3};
+    public enum MessageType { NORMAL = 0, LINK = 1, LEAVE = 2, INFO = 3, END = 4, GAMEOVER = 5};
     public MessageType messageType;
 
     public List<Reply> replies = new List<Reply>();

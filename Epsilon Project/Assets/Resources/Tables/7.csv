@@ -1,4 +1,6 @@
 Message;Possible Answers;Reactions;Initiation time(seconds);Reaction Time(seconds);ReplyEvent;ElementEvents;DialogueEvents
 Oh non il y'a le méchant hacker qui me poursuit AAAAAAA;;;;;;<INFO>'À partir de maintenant, vos décisions peuvent avoir de graves conséquences. Réfléchissez-bien avant de les prendre.';
 ;;;;;;;
-Ah bah en fait ça va;;;;;;;
+Ah bah en fait ça va;;;;;;<GAMEOVER>'En fait ça n'allait pas. Mr.X a arrêté de vous répondre, et elle semble avoir complètement disparu. Vous ne savez pas où elle peut être passée. Encore une fois, en fait ça n'allait pas.';
+;;;;;;;
+Carrément bien même;;;;;;<END>;
