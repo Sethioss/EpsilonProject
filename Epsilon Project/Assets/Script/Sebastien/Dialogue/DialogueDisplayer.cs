@@ -1202,7 +1202,7 @@ public class DialogueDisplayer : MonoBehaviour
             messageBubble.gameObject.SetActive(true);
             messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
 
-            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0 && currentDialogue.elements[currentDialogueElementId].messageType != DialogueElement.MessageType.LEAVE)
+            if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
             {
                 Debug.LogWarning("Loading replies");
                 DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
