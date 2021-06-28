@@ -17,7 +17,7 @@ public class VirusTutorial : MonoBehaviour
     public GameObject[] allTiles;
     GameObject[,] tiles = new GameObject[20, 20];
     bool gameEnded;
-    int step = 0;
+    public int step = 0;
     bool justStepped;
     public string[] tutorialDialogue;
     public TMP_Text dialogueText;

@@ -24,7 +24,8 @@ public class TilesBehaviour : MonoBehaviour
     public TMP_InputField hackField;
     public TMP_Text hackFieldText;
     bool UIActive;
-
+    public bool isTutorial;
+    public VirusTutorial tutorial;
 
     void Start()
     {
@@ -86,6 +87,7 @@ public class TilesBehaviour : MonoBehaviour
     {
         if (isHacked && UIActive == false)
         {
+            if((isTutorial == false)||(isTutorial==true && tutorial.step >= 2)){ 
             hackUI.SetActive(true);
             if (useRandomText) { 
             int length = Random.Range(4, 6);
@@ -97,8 +99,9 @@ public class TilesBehaviour : MonoBehaviour
             }
             hackText.text = hackString;
             UIActive = true;
-            
+            }
         }
+        
     }
     
     void PickRandomString()
