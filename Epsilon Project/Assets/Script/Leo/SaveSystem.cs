@@ -50,7 +50,7 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Identity.fun";
-        FileStream stream = new FileStream(path, FileMode.Create);
+        FileStream stream = File.Open(path, FileMode.OpenOrCreate);
         TakeIdentityData identitydata = new TakeIdentityData(identity);
         formatter.Serialize(stream, identitydata);
         stream.Close();
@@ -152,8 +152,9 @@ public static class SaveSystem
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-            TakeIdentityData identitydata = formatter.Deserialize(stream) as TakeIdentityData;
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            TakeIdentityData identitydata = (TakeIdentityData)formatter.Deserialize(stream);
+            stream.Close();
             return identitydata;
         }
         else
@@ -204,6 +205,12 @@ public static class SaveSystem
     #endregion
 
     #region Erase
+    public static void EraseTakeIdentityData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Identity.fun";
+        File.Delete(path);
+    }
     public static void EraseDialogueData()
     {
         BinaryFormatter formatter = new BinaryFormatter();

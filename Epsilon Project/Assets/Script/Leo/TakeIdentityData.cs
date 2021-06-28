@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class TakeIdentityData
 {
+    public static TakeIdentityData Instance { set; get; }
     public string Username;
     public string Password;
     public string Day, Month, Year;
