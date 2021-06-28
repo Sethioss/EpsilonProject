@@ -78,6 +78,17 @@ public static class SaveSystem
         stream.Close();
 
     }
+
+    public static void SaveSettings(UserSettings settings)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Settings.fun";
+        FileStream stream = File.Open(path, FileMode.OpenOrCreate);
+        SettingsData settingsData = new SettingsData(settings);
+        formatter.Serialize(stream, settingsData);
+        stream.Close();
+
+    }
     #endregion
     #region Load
     public static GPSData LoadGPS()
@@ -202,20 +213,48 @@ public static class SaveSystem
         }
 
     }
+
+    public static SettingsData LoadSettings()
+    {
+        string path = Application.persistentDataPath + "/Settings.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            SettingsData data = (SettingsData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Load file not found in " + path);
+            return null;
+        }
+
+    }
     #endregion
 
     #region Erase
+    public static void EraseSettingsData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Settings.fun";
+        File.Delete(path);
+        Debug.LogWarning("File have been successfully deleted at " + path);
+    }
     public static void EraseTakeIdentityData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Identity.fun";
         File.Delete(path);
+        Debug.LogWarning("File have been successfully deleted at " + path);
     }
     public static void EraseDialogueData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
         File.Delete(path);
+        Debug.LogWarning("File have been successfully deleted at " + path);
     }
 
     public static void EraseHackingDialogueData()
@@ -223,6 +262,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/HackingDialogue.fun";
         File.Delete(path);
+        Debug.LogWarning("File have been successfully deleted at " + path);
     }
 
     #endregion

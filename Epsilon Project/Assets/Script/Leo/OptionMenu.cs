@@ -77,6 +77,8 @@ public class OptionMenu : MonoBehaviour
                 inactivePeriodsToggle.interactable = true;
             }
         }
+
+        SaveSystem.SaveSettings(userSettings);
     }
 
     public void SetSliderMinTime()

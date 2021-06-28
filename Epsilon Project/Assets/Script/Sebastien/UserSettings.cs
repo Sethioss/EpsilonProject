@@ -28,14 +28,16 @@ public class UserSettings : MonoBehaviour
 
     [Range(0, 23)]
     public int inactivePeriodEndHour = 7;
-
-    public bool activateClockRecalibration;
     public enum Language { Français = 0, English = 1 };
     public Language language;
 
+    [HideInInspector]
     public string languagePrefix;
 
     public Sprite profilePicture;
+
+    [Header("If activated, the settings save file will persist after runtime mode in the editor")]
+    public bool persistentSaveSettings = false;
 
 #if UNITY_EDITOR
     private OptionMenu sceneOptionMenu;
@@ -63,9 +65,50 @@ public class UserSettings : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        LoadUserSettings();
+        SaveSystem.SaveSettings(this);
+    }
+
+    private void LoadUserSettings()
+    {
+        SettingsData data = SaveSystem.LoadSettings();
+
+        if (data != null)
+        {
+            if (data.autoMode != 0)
+            {
+                autoMode = true;
+            }
+            else
+            {
+                autoMode = false;
+            }
+
+            if (data.inactivePeriods != 0)
+            {
+                inactivePeriods = true;
+            }
+            else
+            {
+                inactivePeriods = false;
+            }
+
+            inactivePeriodStartHour = data.inactivePeriodStart;
+            inactivePeriodEndHour = data.inactivePeriodEnd;
+            language = (UserSettings.Language)data.language;
+        }
+
     }
 
 #if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        if (!persistentSaveSettings)
+        {
+            SaveSystem.EraseSettingsData();
+        }
+    }
     private void Update()
     {
         if (languageMemory != language)
@@ -80,22 +123,22 @@ public class UserSettings : MonoBehaviour
             ResetElements();
         }
 
-        else if(inactivePeriodEndMemory != inactivePeriodEndHour)
+        else if (inactivePeriodEndMemory != inactivePeriodEndHour)
         {
             ResetElements();
         }
 
-        else if(autoModeMemory != autoMode)
+        else if (autoModeMemory != autoMode)
         {
             ResetElements();
         }
 
-        else if(inactivePeriodsMemory != inactivePeriods)
+        else if (inactivePeriodsMemory != inactivePeriods)
         {
             ResetElements();
         }
 
-        else if(profilePictureMemory != profilePicture)
+        else if (profilePictureMemory != profilePicture)
         {
             ResetElements();
         }

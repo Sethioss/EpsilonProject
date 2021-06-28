@@ -4225,8 +4225,16 @@ MonoBehaviour:
     tagName: languageDesc
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
-    tagName: profilePictureText
+  - tagTxtObject: {fileID: 1591758402}
+    tagName: eraseDataText
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 1663117040}
+    tagName: eraseDataWarning
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 1327303793}
+    tagName: confirm
     dynamicID: 0
     customParameters: []
 --- !u!114 &334574055
@@ -8096,6 +8104,7 @@ MonoBehaviour:
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 1c90b049c0955d4489d6617601677090, type: 3}
+  persistentSaveSettings: 0
 --- !u!4 &605637341
 Transform:
   m_ObjectHideFlags: 0

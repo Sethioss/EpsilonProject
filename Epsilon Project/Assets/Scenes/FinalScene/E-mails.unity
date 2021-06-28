@@ -13145,10 +13145,10 @@ MonoBehaviour:
   inactivePeriods: 0
   inactivePeriodStartHour: 12
   inactivePeriodEndHour: 15
-  activateClockRecalibration: 0
   language: 0
-  languagePrefix: EN
+  languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: bc9d4394b8fd39b4ca5021ec140ff799, type: 3}
+  persistentSaveSettings: 0
 --- !u!4 &1032389309
 Transform:
   m_ObjectHideFlags: 0
@@ -25025,6 +25025,18 @@ MonoBehaviour:
     customParameters: []
   - tagTxtObject: {fileID: 237764497}
     tagName: languageDesc
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 1510976141}
+    tagName: eraseDataText
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 1376646314}
+    tagName: eraseDataWarning
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 1946186935}
+    tagName: confirm
     dynamicID: 0
     customParameters: []
 --- !u!4 &1805620951

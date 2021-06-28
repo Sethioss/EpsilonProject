@@ -58,7 +58,7 @@ De Vinci Paris</digitalSchool>
     <profilePictureText>Changer l'image de profil</profilePictureText>
     
     <eraseDataText>Supprimer les données de sauvegarde</eraseDataText>
-    <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde. Vous reprendrez le jeu depuis le tout début...</eraseDataWarning>
+    <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde? Vous reprendrez le jeu depuis le tout début...</eraseDataWarning>
 
     <mj1LogInSignature>Une application de</mj1LogInSignature>
     <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>

@@ -1418,6 +1418,7 @@ MonoBehaviour:
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
+  persistentSaveSettings: 0
 --- !u!4 &153191506
 Transform:
   m_ObjectHideFlags: 0
@@ -8227,8 +8228,16 @@ MonoBehaviour:
     tagName: languageDesc
     dynamicID: 0
     customParameters: []
-  - tagTxtObject: {fileID: 0}
-    tagName: profilePictureText
+  - tagTxtObject: {fileID: 845149500}
+    tagName: eraseDataText
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 225470799}
+    tagName: eraseDataWarning
+    dynamicID: 0
+    customParameters: []
+  - tagTxtObject: {fileID: 18183416}
+    tagName: confirm
     dynamicID: 0
     customParameters: []
 --- !u!4 &1271215399
@@ -8390,8 +8399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55089029ae20edb47a81abdbde747233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profilePictureTransforms:
-  - {fileID: 0}
+  profilePictureTransforms: []
   sliderText: {fileID: 1995512282}
   sliderMinTime: {fileID: 208669778}
   sliderMaxTime: {fileID: 1586731621}
