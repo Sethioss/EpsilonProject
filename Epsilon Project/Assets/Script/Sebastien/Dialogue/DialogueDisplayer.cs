@@ -57,15 +57,15 @@ public class DialogueDisplayer : MonoBehaviour
     [HideInInspector]
     public bool tempIsFinished;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isInitialisation = true;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isWaitingForReply = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool hasReplied = false;
-    [HideInInspector]
+    //[HideInInspector]
     public bool reacting = true;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isFinished = false;
     private bool bubbleSpawned = false;
 

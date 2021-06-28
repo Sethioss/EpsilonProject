@@ -58,7 +58,7 @@ De Vinci Paris</digitalSchool>
     <profilePictureText>Changer l'image de profil</profilePictureText>
     
     <eraseDataText>Supprimer les données de sauvegarde</eraseDataText>
-    <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde? Vous reprendrez le jeu depuis le tout début...</eraseDataWarning>
+    <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde? L'application se fermera et vous reprendrez le jeu depuis le tout début</eraseDataWarning>
 
     <mj1LogInSignature>Une application de</mj1LogInSignature>
     <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>
@@ -413,7 +413,7 @@ De Vinci Paris
     <profilePictureText>Change your profile picture</profilePictureText>
     
     <eraseDataText>Erase save data</eraseDataText>
-    <eraseDataWarning>Are you sure you want to erase your save data? You will start again from the beginning</eraseDataWarning>
+    <eraseDataWarning>Are you sure you want to erase your save data? The application will close, and you will start again from the beginning</eraseDataWarning>
 
     <mj1LogInSignature>A sotfware from</mj1LogInSignature>
     <mj1LogInButton>[ LOG IN ]</mj1LogInButton>

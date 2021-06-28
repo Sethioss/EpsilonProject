@@ -20,11 +20,16 @@ public class OptionMenu : MonoBehaviour
     private bool inactiveToggleValue = true;
     private bool autoModeToggleValue = true;
 
+    private bool initiating = false;
+
     private UserSettings userSettings;
 
     private void Start()
     {
+        initiating = true;
         Init();
+
+        initiating = false;
     }
 
     public void SetLanguage()
@@ -84,12 +89,22 @@ public class OptionMenu : MonoBehaviour
     public void SetSliderMinTime()
     {
         sliderMinTimeValue = (int)sliderMinTime.value;
+        if (!initiating && !inactivePeriodsToggle.isOn)
+        {
+            inactivePeriodsToggle.isOn = true;
+            autoModeToggle.isOn = false;
+        }
         UpdateMinMaxTime();
     }
 
     public void SetSliderMaxTime()
     {
         sliderMaxTimeValue = (int)sliderMaxTime.value;
+        if (!initiating && !inactivePeriodsToggle.isOn)
+        {
+            inactivePeriodsToggle.isOn = true;
+            autoModeToggle.isOn = false;
+        }
         UpdateMinMaxTime();
     }
 

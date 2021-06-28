@@ -1410,11 +1410,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:00
+  autoModeWaitingTime: 00:00:00:01
   inactivePeriods: 0
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
-  activateClockRecalibration: 0
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
@@ -12137,7 +12136,7 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 64c7b97a163d10540b3c488569e8c101, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 8ee0b81f490bf174ba7874d71cccc0a6, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 9cdfe4a59e5e55341b4e5e772367098f, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []

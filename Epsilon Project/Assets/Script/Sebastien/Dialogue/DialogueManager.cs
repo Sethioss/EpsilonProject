@@ -622,8 +622,11 @@ public class DialogueManager : MonoBehaviour
                 dialogueFileToLoad = GetElementFileFromName(dialogueCheckpoint);
                 displayer.SaveDialogueData(mainChatDialoguesToSave);
                 displayer.currentDialogueElementId = mainChatDialoguesToSave[i].elements.Count-1;
-                Debug.LogError(displayer.currentDialogueElementId);
+                //Debug.LogError(displayer.currentDialogueElementId);
 
+                displayer.isInitialisation = true;
+                displayer.isFinished = false;
+                displayer.isWaitingForReply = false;
                 displayer.UpdateDialogueState();
                 ChangeScene("Game");
                 return;
