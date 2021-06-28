@@ -573,6 +573,7 @@ MonoBehaviour:
   textBackground: {fileID: 1970339521499332534}
   profilePictureTransform: {fileID: 8221150751887927113}
   message: {fileID: 3446869258362968813}
+  gameOverColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7316272194042769211
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +673,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

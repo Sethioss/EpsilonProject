@@ -56,6 +56,9 @@ De Vinci Paris</digitalSchool>
     <languageTitle>Langue</languageTitle>
     <languageDesc>Changer la langue du jeu</languageDesc>
     <profilePictureText>Changer l'image de profil</profilePictureText>
+    
+    <eraseDataText>Supprimer les données de sauvegarde</eraseDataText>
+    <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde. Vous reprendrez le jeu depuis le tout début...</eraseDataWarning>
 
     <mj1LogInSignature>Une application de</mj1LogInSignature>
     <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>
@@ -408,6 +411,9 @@ De Vinci Paris
     <languageTitle>Language</languageTitle>
     <languageDesc>Change the game's language</languageDesc>
     <profilePictureText>Change your profile picture</profilePictureText>
+    
+    <eraseDataText>Erase save data</eraseDataText>
+    <eraseDataWarning>Are you sure you want to erase your save data? You will start again from the beginning</eraseDataWarning>
 
     <mj1LogInSignature>A sotfware from</mj1LogInSignature>
     <mj1LogInButton>[ LOG IN ]</mj1LogInButton>

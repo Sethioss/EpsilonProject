@@ -1350,8 +1350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoMode: 0
-  autoModeWaitingTime: 00:00:00:20
+  autoMode: 1
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 0
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
@@ -11659,7 +11659,7 @@ MonoBehaviour:
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 1
+  persistentSave: 0
   m_testSet: 20
   m_testSetFloat: 20
   m_wentBackHome: 0
