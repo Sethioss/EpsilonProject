@@ -1350,9 +1350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoMode: 1
-  autoModeWaitingTime: 00:00:00:00
-  inactivePeriods: 1
+  autoMode: 0
+  autoModeWaitingTime: 00:00:00:20
+  inactivePeriods: 0
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
   activateClockRecalibration: 0
@@ -9364,6 +9364,10 @@ MonoBehaviour:
     elements: []
   currentDialogueElementId: 0
   isLoading: 0
+  second: 0
+  minute: 0
+  hour: 0
+  day: 0
   tempWaitingForReply: 0
   tempIsInitialisation: 0
   tempHasReplied: 0
@@ -9383,10 +9387,6 @@ MonoBehaviour:
   leaveMessagePrefab: {fileID: 2779018404497212492, guid: 8cb4ba1be2795a943821bd1e293701b5, type: 3}
   repliesPanel: {fileID: 1341360253}
   replyButtonPrefab: {fileID: 6342958404133415085, guid: 524741b7ef3aa454fbec555ce14cd8b5, type: 3}
-  second: 0
-  minute: 0
-  hour: 0
-  day: 0
 --- !u!4 &1496320537
 Transform:
   m_ObjectHideFlags: 0
@@ -11652,14 +11652,14 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 64c7b97a163d10540b3c488569e8c101, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 1f8ad8f99f40b014798013e00ebbed58, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 8ee0b81f490bf174ba7874d71cccc0a6, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
+  persistentSave: 1
   m_testSet: 20
   m_testSetFloat: 20
   m_wentBackHome: 0

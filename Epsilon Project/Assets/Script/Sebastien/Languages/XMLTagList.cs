@@ -8,7 +8,7 @@ public class XMLTagList : MonoBehaviour
     private void Start()
     {
         XMLManager.Instance.GetSceneXMLTags();
-        Debug.Log("Fetching XMLTags from the " + collectionName + " list present in the scene");
+        //Debug.Log("Fetching XMLTags from the " + collectionName + " list present in the scene");
         XMLManager.Instance.SwitchLanguage();
     }
 }

@@ -31,6 +31,13 @@ public class DialogueDisplayer : MonoBehaviour
     private DialogueManager cachedDialogueManager;
     #endregion
 
+    #region SaveWriting variables
+    public int second;
+    public int minute;
+    public int hour;
+    public int day;
+    #endregion
+
     #region Dialogues timing / display variables
 
     private string awaitingReaction;
@@ -123,6 +130,7 @@ public class DialogueDisplayer : MonoBehaviour
         Debug.Log("Press J to erase save data");
 
         LoadDialogueData();
+
         //Need to find a way to only create dialogues once
         bool isDialogueAlreadyInList = false;
 
@@ -216,6 +224,16 @@ public class DialogueDisplayer : MonoBehaviour
         hasReplied = false;
         reacting = true;
         isFinished = false;
+
+        day = 0;
+        hour = 0;
+        minute = 0;
+        second = 0;
+
+        cachedDialogueManager.wentBackHome = 0;
+        cachedDialogueManager.wentToBridge = 0;
+
+        SaveSystem.SaveTimeToReach(cachedDialogueManager.timeManager);
 
         bubbleSpawned = false;
         cachedDialogueManager.dialogueCheckpoint = null;
@@ -343,10 +361,11 @@ public class DialogueDisplayer : MonoBehaviour
             isWaitingForReply = BoolToInt(data.waitForReply);
             hasReplied = BoolToInt(data.replied);
             reacting = BoolToInt(data.reacted);
+            UpdateDialogueState();
+
             cachedDialogueManager.wentBackHome = data.wentBackHome;
             cachedDialogueManager.wentToBridge = data.wentToBridge;
             cachedDialogueManager.dialogueCheckpoint = data.checkpoint;
-            UpdateDialogueState();
 
             //Création des dialogues de retour
             cachedDialogueManager.dialogueList = RecreateDialogueListFromData(data);
@@ -366,15 +385,16 @@ public class DialogueDisplayer : MonoBehaviour
 
             if (!isWaitingForReply)
             {
+                //Load the current time to reach
+                TimeToReachData timeToReachData = SaveSystem.LoadTimeToReach();
+
+                second = timeToReachData.sec;
+                minute = timeToReachData.min;
+                hour = timeToReachData.hour;
+                day = timeToReachData.day;
+
                 try
                 {
-                    //Load the current time to reach
-                    TimeToReachData timeToReachData = SaveSystem.LoadTimeToReach();
-                    second = timeToReachData.sec;
-                    minute = timeToReachData.min;
-                    hour = timeToReachData.hour;
-                    day = timeToReachData.day;
-
                     SetWaitingTime(day.ToString() + ":" + hour.ToString() + ":" + minute.ToString() + ":" + second.ToString());
                     cachedDialogueManager.timeManager.SetClockGoal(currentWaitingTime);
                 }
@@ -386,7 +406,15 @@ public class DialogueDisplayer : MonoBehaviour
                 }
             }
 
+            if (cachedDialogueManager.dialogueList.Count > 0 && !bubbleSpawned)
+            {
+                Debug.LogError(cachedDialogueManager.dialogueList.Count);
+                writingTime = SetWritingTime(cachedDialogueManager.dialogueList[cachedDialogueManager.dialogueList.Count - 1].elements[data.currentElement].message);
+                timeToStartWriting = SetTimeToStartWriting();
+            }
+
             isLoading = false;
+
         }
 
     }
@@ -592,18 +620,6 @@ public class DialogueDisplayer : MonoBehaviour
                                 {
                                     Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a message pending, but the \"...\" bubble isn't sent yet");
 
-                                    CreateMessageBubble();
-                                    DisplayMessage();
-                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
-                                    {
-                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
-                                        {
-                                            CreateMessageBubble();
-                                            DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
-                                        }
-                                    }
-
                                     bubbleSpawned = false;
 
                                     /*SetWaitingTime(currentDialogue.elements[currentDialogueElementId].initiationTime);
@@ -789,18 +805,6 @@ public class DialogueDisplayer : MonoBehaviour
                                 if (reacting)
                                 {
                                     Debug.LogWarning("Loading :: The dialogue is currently in a state where there's a message pending, but the \"...\" bubble isn't sent yet");
-
-                                    CreateMessageBubble();
-                                    DisplayMessage();
-                                    if (loadedDialogues[i].elements[j].chosenReplyIndex != -1)
-                                    {
-                                        SendReply(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex]);
-                                        if (loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction != "")
-                                        {
-                                            CreateMessageBubble();
-                                            DisplayReaction(loadedDialogues[i].elements[j].replies[loadedDialogues[i].elements[j].chosenReplyIndex].reaction);
-                                        }
-                                    }
 
                                     bubbleSpawned = false;
 
@@ -1657,6 +1661,7 @@ public class DialogueDisplayer : MonoBehaviour
         {
             currentWaitingTime = waitingTime;
         }
+        //Debug.LogError("Time saved");
 
     }
     #endregion
@@ -1686,11 +1691,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     #endregion
 
-    #region SaveWriting
-    public int second;
-    public int minute;
-    public int hour;
-    public int day;
+    #region SaveWriting functions
 
     public void LoadTimeToStartWriting()
     {

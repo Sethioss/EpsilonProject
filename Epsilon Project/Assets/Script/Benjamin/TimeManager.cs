@@ -77,6 +77,7 @@ public class TimeManager : MonoBehaviour
         //MinValue initializes day at 1. Accounted for in the "StartWaiting" function
         System.DateTime timeToStore = System.DateTime.MinValue;
 
+        //Debug.LogError("Input : " + input);
         string[] splitInput = input.Split(new char[] { ':' }, System.StringSplitOptions.RemoveEmptyEntries);
         int[] stringToInt = new int[splitInput.Length];
 
@@ -89,18 +90,27 @@ public class TimeManager : MonoBehaviour
         }
 
         //Int array to DateTime object conversion
-        timeToStore = timeToStore.AddDays(stringToInt[0]);
+        timeToStore = timeToStore.AddYears(System.DateTime.UtcNow.Year - 1);
+        timeToStore = timeToStore.AddMonths(System.DateTime.UtcNow.Month - 1);
+
+        timeToStore = timeToStore.AddDays(stringToInt[0] - 1);
         timeToStore = timeToStore.AddHours(stringToInt[1]);
         timeToStore = timeToStore.AddMinutes(stringToInt[2]);
         timeToStore = timeToStore.AddSeconds(stringToInt[3]);
+        //Debug.LogError("CLOCK :: Setting timeToStore");
+        //Debug.LogError(timeToStore.Day + ":" + timeToStore.Hour + ":" + timeToStore.Minute + ":" + timeToStore.Second);
 
-        SetClockGoal();
+        SetClockGoal(timeToStore);
     }
 
-    private void SetClockGoal()
+    private void SetClockGoal(System.DateTime timeToStore)
     {
-        System.TimeSpan waitTimeSpan = storedTime.Subtract(currentTime);
-        //Debug.LogError("Wait time is " + waitTimeSpan.Days + ":" + waitTimeSpan.Hours + ":" + waitTimeSpan.Minutes + ":" + waitTimeSpan.Seconds);
+
+        System.TimeSpan waitTimeSpan = timeToStore.Subtract(currentTime);
+        //Debug.LogError("CurrentTime date : " + currentTime.Date);
+        //Debug.LogError("StoredTime date : " + timeToStore.Date);
+        //Debug.LogError("waitTimeSpan : " + waitTimeSpan);
+
         StartWaiting(System.DateTime.MinValue.Add(waitTimeSpan).AddSeconds(1));
     }
 
