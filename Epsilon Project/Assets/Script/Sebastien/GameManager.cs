@@ -34,6 +34,13 @@ public class GameManager : MonoBehaviour
         GetGameSceneName();
     }
 
+    public void EraseSave()
+    {
+        SaveSystem.EraseTakeIdentityData();
+        SaveSystem.EraseDialogueData();
+        SaveSystem.EraseHackingDialogueData();
+    }
+
     public void SetDialogue(TextAsset textToSet)
     {
         DialogueManager.Instance.dialogueFileToLoad = textToSet;
