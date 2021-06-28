@@ -14,7 +14,7 @@ public class CharacterBehaviour : MonoBehaviour
     public GameObject[] destinations;
     public float[] stopsTime;
     public int[] teleportDestinations;
-    [SerializeField]int step = 0;
+    [SerializeField] int step = 0;
     bool doneWaiting = true;
     public NavMeshAgent agent;
     public GameObject winScreen, loseScreen;
@@ -26,15 +26,18 @@ public class CharacterBehaviour : MonoBehaviour
     bool textHasToChange = true;
     public bool isTutorial;
     int dialogueStep = 0;
+    public XMLTagList myTagList;
     // Start is called before the first frame update
     void Start()
     {
         ChangeDestination();
         NumberGoal = 0;
         //agent.SetDestination(AllDestination[0].transform.position);
+        if (isTutorial == false) { 
         AllCameraTop[0].SetActive(true);
         AllCameraTop[1].SetActive(false);
         AllCameraTop[2].SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -51,20 +54,27 @@ public class CharacterBehaviour : MonoBehaviour
 
     public IEnumerator WaitAround(float waitTime)
     {
-        if(textHasToChange == true) { 
-            if(isTutorial == false) { 
-        int dialogueNumber = Random.Range(0, stopTexts.Length);
-        textBoxText.text = stopTexts[dialogueNumber];
+        if (textHasToChange == true)
+        {
+            if (isTutorial == false)
+            {
+                int dialogueNumber = Random.Range(0, stopTexts.Length);
+                myTagList.tagList[0].tagName = stopTexts[dialogueNumber];
+                XMLManager.Instance.GetSceneXMLTags();
+                XMLManager.Instance.SwitchLanguage();
             }
             if (isTutorial)
             {
-                if (dialogueStep > 0){ 
-                textBoxText.text = stopTexts[dialogueStep-1];
+                if (dialogueStep > 0)
+                {
+                    myTagList.tagList[0].tagName = stopTexts[dialogueStep - 1];
+                    XMLManager.Instance.GetSceneXMLTags();
+                    XMLManager.Instance.SwitchLanguage();
                 }
                 dialogueStep++;
             }
             textHasToChange = false;
-        textBox.SetActive(true);
+            textBox.SetActive(true);
         }
         yield return new WaitForSeconds(waitTime);
         if (teleportDestinations[step] != 0)
@@ -91,12 +101,12 @@ public class CharacterBehaviour : MonoBehaviour
         textBox.SetActive(false);
         textHasToChange = true;
         agent.SetDestination(destinations[step].transform.position);
-            step++;
+        step++;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == destinations[step-1])
+        if (other.gameObject == destinations[step - 1])
         {
             Debug.Log("Reached destination");
             if (step == destinations.Length)
