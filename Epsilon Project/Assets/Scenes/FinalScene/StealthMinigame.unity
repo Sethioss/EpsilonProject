@@ -6008,6 +6008,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 195999662}
+  - component: {fileID: 195999663}
   m_Layer: 0
   m_Name: AllCamera (WIP)
   m_TagString: Untagged
@@ -6032,6 +6033,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &195999663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195999661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f60f8d4bf851948839fea94d5c375d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cams:
+  - c: {fileID: 0}
+    min: 0
+    max: 90
+    sens: 0
 --- !u!1001 &198305367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11588,8 +11606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f60f8d4bf851948839fea94d5c375d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraGlitch: {fileID: 375044058}
-  postRenderer: {fileID: 1850373639}
+  cams: []
 --- !u!1001 &377655862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11907,6 +11924,7 @@ MonoBehaviour:
   - Je suis a bout de souffle, une seconde
   - "Laisse moi v\xE9rifier quelque chose"
   - Donne moi une minute, il y a quelque chose de suspect
+  isTutorial: 0
 --- !u!195 &382797928
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12906,8 +12924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f60f8d4bf851948839fea94d5c375d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraGlitch: {fileID: 0}
-  postRenderer: {fileID: 0}
+  cams: []
 --- !u!114 &413139078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35112,8 +35129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f60f8d4bf851948839fea94d5c375d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraGlitch: {fileID: 0}
-  postRenderer: {fileID: 0}
+  cams: []
 --- !u!114 &1083513315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59809,8 +59825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f60f8d4bf851948839fea94d5c375d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraGlitch: {fileID: 0}
-  postRenderer: {fileID: 0}
+  cams: []
 --- !u!114 &1850373633
 MonoBehaviour:
   m_ObjectHideFlags: 0
