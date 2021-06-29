@@ -230,6 +230,7 @@ public class DialogueDisplayer : MonoBehaviour
         cachedDialogueManager.dialogueList = new List<Dialogue>();
         cachedDialogueManager.mainChatDialoguesToSave = new List<Dialogue>();
         cachedDialogueManager.hackingChatDialoguesToSave = new List<Dialogue>();
+        cachedDialogueManager.dialogueFileToLoad = cachedDialogueManager.GetElementFileFromName("Intro1");
     }
     public void UpdateDialogueState()
     {

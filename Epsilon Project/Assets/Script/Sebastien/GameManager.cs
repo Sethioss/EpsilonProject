@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         SaveSystem.EraseHackingDialogueData();
         SaveSystem.EraseSettingsData();
         SaveSystem.EraseTimeToReachData();
+
+        DialogueManager.Instance.dialogueFileToLoad = DialogueManager.Instance.GetElementFileFromName("Intro1");
     }
 
     public void SetDialogue(TextAsset textToSet)

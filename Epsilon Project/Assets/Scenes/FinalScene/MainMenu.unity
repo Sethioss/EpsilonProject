@@ -18570,7 +18570,7 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 9195e5d88f7aaf04691e38564abdab05, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 58e8c0923d9632b4e977a36f89a23712, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
@@ -18583,6 +18583,7 @@ MonoBehaviour:
   m_wentBackHome: 0
   m_wentToBridge: 0
   username: Sebilol
+  confirmationMessage: {fileID: 0}
 --- !u!4 &1509991332
 Transform:
   m_ObjectHideFlags: 0

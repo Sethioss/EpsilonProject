@@ -854,9 +854,7 @@ public class CSVReader : MonoBehaviour
 
         //Back to menu reply
         leaveActions = null;
-        leaveActions += delegate { GameManager.Instance.GoToMenu(); };
-        leaveActions += delegate { DialogueManager.Instance.displayer.StopDialogue(DialogueManager.Instance.displayer.currentDialogue); };
-        leaveActions += delegate { DialogueManager.Instance.displayer.DeleteDialogueData(); };
+        leaveActions += delegate { DialogueManager.Instance.AskForConfirmation(); };
 
         //Checkpoint reload reply
         leaveReply = new Reply("[Retour au menu principal]", null, 1, "00:00:00:01", leaveActions);
@@ -871,9 +869,7 @@ public class CSVReader : MonoBehaviour
         newElement.messageType = DialogueElement.MessageType.END;
 
         UnityAction leaveActions = null;
-        leaveActions += delegate { DialogueManager.Instance.displayer.StopDialogue(DialogueManager.Instance.displayer.currentDialogue); };
-        leaveActions += delegate { DialogueManager.Instance.displayer.DeleteDialogueData(); };
-        leaveActions += delegate { GameManager.Instance.GoToMenu(); };
+        leaveActions += delegate { DialogueManager.Instance.AskForConfirmation(); };
 
         Reply leaveReply = new Reply("[Retour au menu principal]", null, 0, "00:00:00:05", leaveActions);
         newElement.AddReply(leaveReply);

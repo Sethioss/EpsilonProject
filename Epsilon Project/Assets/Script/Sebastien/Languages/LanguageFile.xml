@@ -59,6 +59,7 @@ De Vinci Paris</digitalSchool>
     
     <eraseDataText>Supprimer les données de sauvegarde</eraseDataText>
     <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde? L'application se fermera et vous reprendrez le jeu depuis le tout début</eraseDataWarning>
+    <backToMenuWarning>Voulez-vous vraiment quitter et revenir au menu principal? Votre partie sera supprimée...</backToMenuWarning>
 
     <mj1LogInSignature>Une application de</mj1LogInSignature>
     <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>
@@ -414,6 +415,7 @@ De Vinci Paris
     
     <eraseDataText>Erase save data</eraseDataText>
     <eraseDataWarning>Are you sure you want to erase your save data? The application will close, and you will start again from the beginning</eraseDataWarning>
+    <backToMenuWarning>Are you sure you want to leave? Your progression will be erased...</backToMenuWarning>
 
     <mj1LogInSignature>A sotfware from</mj1LogInSignature>
     <mj1LogInButton>[ LOG IN ]</mj1LogInButton>
