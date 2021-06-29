@@ -1,2 +1,2 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Espèce de connard;;;;;;<LEAVE>;
+Espèce de connard;;;;;;<GAMEOVER>'La communication a été coupée';

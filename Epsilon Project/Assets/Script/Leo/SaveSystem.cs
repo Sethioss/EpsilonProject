@@ -265,6 +265,14 @@ public static class SaveSystem
         Debug.LogWarning("File have been successfully deleted at " + path);
     }
 
+    public static void EraseTimeToReachData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/TimeReach.fun";
+        File.Delete(path);
+        Debug.LogWarning("File have been successfully deleted at " + path);
+    }
+
     #endregion
 }
 

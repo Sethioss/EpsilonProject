@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         SaveSystem.EraseDialogueData();
         SaveSystem.EraseHackingDialogueData();
         SaveSystem.EraseSettingsData();
+        SaveSystem.EraseTimeToReachData();
     }
 
     public void SetDialogue(TextAsset textToSet)

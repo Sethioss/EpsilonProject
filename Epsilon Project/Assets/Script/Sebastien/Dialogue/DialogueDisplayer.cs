@@ -161,8 +161,8 @@ public class DialogueDisplayer : MonoBehaviour
         {
             cachedDialogueManager.CreateAndStartDialogue(cachedDialogueManager.dialogueFileToLoad);
         }
-
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -191,6 +191,10 @@ public class DialogueDisplayer : MonoBehaviour
                     }
                     if (IsTimeOver())
                     {
+                        if (currentBubble == null)
+                        {
+                            CreateMessageBubble();
+                        }
                         cachedDialogueManager.timeManager.StopClock();
                         if (isInitialisation)
                         {
@@ -219,35 +223,13 @@ public class DialogueDisplayer : MonoBehaviour
     #region Save/Load
     public void DeleteDialogueData()
     {
-        isInitialisation = true;
-        isWaitingForReply = false;
-        hasReplied = false;
-        reacting = true;
-        isFinished = false;
+        SaveSystem.EraseDialogueData();
+        SaveSystem.EraseHackingDialogueData();
+        SaveSystem.EraseTimeToReachData();
 
-        day = 0;
-        hour = 0;
-        minute = 0;
-        second = 0;
-
-        cachedDialogueManager.wentBackHome = 0;
-        cachedDialogueManager.wentToBridge = 0;
-
-        SaveSystem.SaveTimeToReach(cachedDialogueManager.timeManager);
-
-        bubbleSpawned = false;
-        cachedDialogueManager.dialogueCheckpoint = null;
-        UpdateDialogueState();
-        List<Dialogue> emptyMemory = new List<Dialogue>();
-
-        cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
-        SaveSystem.SaveDialogue(cachedDialogueManager.mainChatDialoguesToSave);
-        cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
-        SaveSystem.SaveHackingDialogue(cachedDialogueManager.hackingChatDialoguesToSave);
-
-        cachedDialogueManager.mainChatDialoguesToSave = emptyMemory;
-        cachedDialogueManager.hackingChatDialoguesToSave = emptyMemory;
-        Debug.LogWarning("Dialogue save data erased");
+        cachedDialogueManager.dialogueList = new List<Dialogue>();
+        cachedDialogueManager.mainChatDialoguesToSave = new List<Dialogue>();
+        cachedDialogueManager.hackingChatDialoguesToSave = new List<Dialogue>();
     }
     public void UpdateDialogueState()
     {
@@ -1038,7 +1020,6 @@ public class DialogueDisplayer : MonoBehaviour
             else if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.END)
             {
                 allowedType = AllowedMessageType.END;
-                Debug.Log("Creating end message bubble");
                 messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                 messageBubble = messagePrefab.GetComponent<MessageBubble>();
 
@@ -1181,6 +1162,8 @@ public class DialogueDisplayer : MonoBehaviour
             {
                 if (allowedType == AllowedMessageType.END)
                 {
+                    UserSettings.Instance.hasUnlockedAutoMode = true;
+                    SaveSystem.SaveSettings(userSettings);
                     messagePrefab = GameObject.Instantiate(leaveMessagePrefab, transform.position, Quaternion.identity, messagePanel.transform);
                     messageBubble = messagePrefab.GetComponent<MessageBubble>();
 

@@ -13,6 +13,10 @@ public class UserSettings : MonoBehaviour
         }
     }
 
+    [Header("True = Acts as if it had already unlocked autoMode")]
+    public bool autoModeDebug = false;
+    public bool sentAutoModeWindow;
+    public bool hasUnlockedAutoMode;
     [Tooltip("Waits autoModeWaitingTime between dialogues")]
     public bool autoMode = false;
     [Header("Only set automode time to 00:00:00:00 for testing purposes, not for builds!")]
@@ -36,12 +40,15 @@ public class UserSettings : MonoBehaviour
 
     public Sprite profilePicture;
 
+    public GameObject popUpObject;
+
     [Header("If activated, the settings save file will persist after runtime mode in the editor")]
     public bool persistentSaveSettings = false;
 
 #if UNITY_EDITOR
     private OptionMenu sceneOptionMenu;
     private XMLManager xmlManager;
+    private bool messageSentMemory;
     private bool autoModeMemory;
     private bool inactivePeriodsMemory;
     private int inactivePeriodStartMemory;
@@ -57,19 +64,36 @@ public class UserSettings : MonoBehaviour
             instance = this;
 
             DontDestroyOnLoad(instance);
-#if UNITY_EDITOR
-            ResetElements();
-#endif
         }
         else
         {
             Destroy(this.gameObject);
         }
 
-        LoadUserSettings();
-        SaveSystem.SaveSettings(this);
+        Init();        
     }
 
+    public void Init()
+    {
+        LoadUserSettings();
+
+        if (hasUnlockedAutoMode && !sentAutoModeWindow)
+        {
+            //Create a window to say you unlocked automode
+            try
+            {
+                popUpObject.GetComponent<AnimBanner>().ChangeAnim();
+            }
+            catch
+            {
+
+            }
+
+            sentAutoModeWindow = true;
+        }
+
+        SaveSystem.SaveSettings(this);
+    }
     private void LoadUserSettings()
     {
         SettingsData data = SaveSystem.LoadSettings();
@@ -92,6 +116,24 @@ public class UserSettings : MonoBehaviour
             else
             {
                 inactivePeriods = false;
+            }
+
+            if (data.unlockedAutoMode != 0)
+            {
+                hasUnlockedAutoMode = true;
+            }
+            else
+            {
+                hasUnlockedAutoMode = false;
+            }
+
+            if (data.autoModeMessageSent != 0)
+            {
+                sentAutoModeWindow = true;
+            }
+            else
+            {
+                sentAutoModeWindow = false;
             }
 
             inactivePeriodStartHour = data.inactivePeriodStart;
@@ -118,27 +160,32 @@ public class UserSettings : MonoBehaviour
             xmlManager.SwitchLanguage();
         }
 
-        else if (inactivePeriodStartMemory != inactivePeriodStartHour)
+        if (inactivePeriodStartMemory != inactivePeriodStartHour)
         {
             ResetElements();
         }
 
-        else if (inactivePeriodEndMemory != inactivePeriodEndHour)
+        if (inactivePeriodEndMemory != inactivePeriodEndHour)
         {
             ResetElements();
         }
 
-        else if (autoModeMemory != autoMode)
+        if(messageSentMemory != sentAutoModeWindow)
         {
             ResetElements();
         }
 
-        else if (inactivePeriodsMemory != inactivePeriods)
+        if (autoModeMemory != autoMode)
         {
             ResetElements();
         }
 
-        else if (profilePictureMemory != profilePicture)
+        if (inactivePeriodsMemory != inactivePeriods)
+        {
+            ResetElements();
+        }
+
+        if (profilePictureMemory != profilePicture)
         {
             ResetElements();
         }
@@ -147,6 +194,7 @@ public class UserSettings : MonoBehaviour
     private void ResetElements()
     {
         autoModeMemory = autoMode;
+        messageSentMemory = sentAutoModeWindow;
         inactivePeriodsMemory = inactivePeriods;
         inactivePeriodStartMemory = inactivePeriodStartHour;
         inactivePeriodEndMemory = inactivePeriodEndHour;
@@ -165,6 +213,7 @@ public class UserSettings : MonoBehaviour
             sceneOptionMenu.Init();
         }
         catch { }
+        SaveSystem.SaveSettings(this);
     }
 #endif
 }

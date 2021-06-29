@@ -1,4 +1,4 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-C'est fini.;;;00:16:00:00;;;;
+C'est fini.;;;00:16:00:00;;;<CHECKPOINT>;
 ;;;;;;;
 Un de mes compagnons m'a tout expliqué.;;;;;;<CHECK>wentBackHome = 1 ? <BRANCH>Final-1a : <BRANCH>Final-1b !;

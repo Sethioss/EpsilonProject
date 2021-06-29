@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Tu penses?;Oui, fais attention, mais vas-y;;;;;;
+Tu penses?;Oui, fais attention, mais vas-y;;;;;<CHECKPOINT>;
 ;Quoique, tu devrais plutôt d'abord retourner chez toi.;;;;<BRANCH>Ending-5b;;
 ;;;;;;;
 Ouais;;;;;;;

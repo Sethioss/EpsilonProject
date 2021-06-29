@@ -1409,8 +1409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoModeDebug: 1
+  sentAutoModeWindow: 0
+  hasUnlockedAutoMode: 0
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:01
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 0
   inactivePeriodStartHour: 11
   inactivePeriodEndHour: 20
@@ -12136,7 +12139,7 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 64c7b97a163d10540b3c488569e8c101, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 9cdfe4a59e5e55341b4e5e772367098f, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 06dd94bf4c0dd994fba32ca19f4c03cf, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []

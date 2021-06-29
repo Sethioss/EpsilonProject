@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class OptionMenu : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class OptionMenu : MonoBehaviour
     {
         userSettings = UserSettings.Instance;
 
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            userSettings.Init();
+        }
+
         foreach (Image image in profilePictureTransforms)
         {
             image.sprite = userSettings.profilePicture;
@@ -51,7 +57,24 @@ public class OptionMenu : MonoBehaviour
         sliderMaxTimeValue = userSettings.inactivePeriodEndHour;
 
         inactiveToggleValue = userSettings.inactivePeriods;
+        autoModeToggle.interactable = true;
         autoModeToggleValue = userSettings.autoMode;
+
+        if (!userSettings.autoModeDebug)
+        {
+            if (userSettings.hasUnlockedAutoMode)
+            {
+                autoModeToggle.interactable = true;
+                autoModeToggleValue = userSettings.autoMode;
+            }
+            else
+            {
+                userSettings.autoMode = false;
+                autoModeToggle.isOn = false;
+                autoModeToggle.interactable = false;
+            }
+        }
+
 
         languageDropdown.value = (int)userSettings.language;
 

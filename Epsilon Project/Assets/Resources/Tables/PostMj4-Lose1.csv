@@ -1,2 +1,2 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Vous n'avez pas su cacher l'identité de mr.X. Ce dernier s'est fait arrêter.;;;;;;<GAMEOVER>'Vous n'avez pas su cacher l'identité de Mr.X. Ce dernier s'est fait arrêter';
+Merde, je me suis fait repérer!;;;;;;<GAMEOVER>'Vous n'avez pas su cacher l'identitÃ© de Mr.X. Ce dernier s'est fait arrêter';

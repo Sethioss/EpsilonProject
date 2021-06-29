@@ -39,7 +39,7 @@
 De Vinci Paris</digitalSchool>
 
     <incorrectLogIn>Votre mail ou mot de passe est incorrect</incorrectLogIn>
-
+    <unlockedAutoPopUp>Vous avez débloqué le mode automatique! Vous pouvez l'activer depuis le menu options</unlockedAutoPopUp>
     
     <settings>Paramètres</settings>
     <usernamePlaceholder>Pseudo...</usernamePlaceholder>
@@ -394,7 +394,7 @@ De Vinci Paris
     </digitalSchool>
 
     <incorrectLogIn>Your mail or password is incorrect</incorrectLogIn>
-    
+    <unlockedAutoPopUp>You have unlocked the automatic mode! You can enable it from the options menu</unlockedAutoPopUp>
     
     <settings>Settings</settings>
     <usernamePlaceholder>Username...</usernamePlaceholder>
