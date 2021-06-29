@@ -18,37 +18,22 @@ public class CameraManager : MonoBehaviour
     public struct CamMove
     {
         public Transform c;
-        public float min;
-        public float max;
+        public float yMin;
+        public float yMax;
         public int speed;
-        public bool sens;
-        public Vector3 angleC;
-
         public float wait;
+        public bool sens;
+
         private float timer;
-        public bool waitTimer;
+        private bool waitTimer;
+        private float offSetY;
+
         public void Update()
         {
-            
-            angleC = c.eulerAngles;
+            float SpeedTime;
+            SpeedTime = speed * Time.deltaTime;
 
-            if (angleC.y < min)
-            {
-                timer += Time.deltaTime;
-                if (timer >= wait)
-                {
-                    
-                    timer = timer - wait;
-                    waitTimer = true;
-                    sens = false;
-                }
-                else
-                {
-                    c.gameObject.transform.Rotate(new Vector3(0f, 0f, 0f) * Time.deltaTime);
-                    waitTimer = false;
-                }
-            }
-            else if (angleC.y > max)
+            if (!sens && offSetY < yMin)
             {
                 timer += Time.deltaTime;
                 if (timer >= wait)
@@ -60,23 +45,38 @@ public class CameraManager : MonoBehaviour
                 }
                 else
                 {
-                    c.gameObject.transform.Rotate(new Vector3(0f, 0f, 0f) * Time.deltaTime);
+                    SpeedTime = 0;
                     waitTimer = false;
                 }
             }
-            
-            if (sens == true & waitTimer == true)
+            else if (sens && offSetY > yMax)
             {
-                c.transform.Rotate(new Vector3(0f, -speed, 0f) * Time.deltaTime);
+                timer += Time.deltaTime;
+                if (timer >= wait)
+                {
+
+                    timer = timer - wait;
+                    waitTimer = true;
+                    sens = false;
+                }
+                else
+                {
+                    SpeedTime = 0;
+                    waitTimer = false;
+                }
             }
-            else if (sens == false & waitTimer == true)
+
+            if (sens == true && waitTimer == true)
             {
-                c.transform.Rotate(new Vector3(0f, speed, 0f) * Time.deltaTime);
+                SpeedTime *= 1;
             }
+            else if (sens == false && waitTimer == true)
+            {
+                SpeedTime *= -1;
+            }
+
+            c.transform.Rotate(new Vector3(0, SpeedTime, 0));
+            offSetY += SpeedTime;
         }
-
-        
-        
-
     }
 }
