@@ -540,13 +540,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cams:
   - c: {fileID: 1067224858}
-    min: 30
-    max: 330
+    yMin: -40
+    yMax: 40
     speed: 25
-    sens: 1
-    angleC: {x: 0, y: 0, z: 0}
     wait: 2
-    waitTimer: 1
+    sens: 1
+  - c: {fileID: 1971185877}
+    yMin: -40
+    yMax: 40
+    speed: 25
+    wait: 2
+    sens: 1
 --- !u!4 &321115933
 Transform:
   m_ObjectHideFlags: 0
@@ -3379,7 +3383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1971185877
 Transform:
   m_ObjectHideFlags: 0
