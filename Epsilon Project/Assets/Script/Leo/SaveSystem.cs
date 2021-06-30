@@ -240,21 +240,21 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Settings.fun";
         File.Delete(path);
-        Debug.LogWarning("File have been successfully deleted at " + path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
     }
     public static void EraseTakeIdentityData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Identity.fun";
         File.Delete(path);
-        Debug.LogWarning("File have been successfully deleted at " + path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
     }
     public static void EraseDialogueData()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/Dialogue.fun";
         File.Delete(path);
-        Debug.LogWarning("File have been successfully deleted at " + path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
     }
 
     public static void EraseHackingDialogueData()
@@ -262,7 +262,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/HackingDialogue.fun";
         File.Delete(path);
-        Debug.LogWarning("File have been successfully deleted at " + path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
     }
 
     public static void EraseTimeToReachData()
@@ -270,7 +270,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/TimeReach.fun";
         File.Delete(path);
-        Debug.LogWarning("File have been successfully deleted at " + path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
     }
 
     #endregion

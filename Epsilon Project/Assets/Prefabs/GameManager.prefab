@@ -45,3 +45,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSceneId: 1
   gameSceneName: Game
+  currentMinigameID: -1
+  minigameProgressionList:
+  - stringID: E-mails
+    id: 0
+    minigameFinished: 0
+  - stringID: DeepWeb
+    id: 1
+    minigameFinished: 0
+  - stringID: FindThePath
+    id: 2
+    minigameFinished: 0
+  - stringID: TutoStealthMinigame
+    id: 3
+    minigameFinished: 0
+  - stringID: VirusTutorial
+    id: 4
+    minigameFinished: 0
