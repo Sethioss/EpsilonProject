@@ -13,7 +13,10 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID BEEP = 1123068841U;
+        static const AkUniqueID CLICK = 1584507803U;
+        static const AkUniqueID SHIELDAPPEAR = 1496194385U;
+        static const AkUniqueID SHIELDDISAPPEAR = 3556887013U;
+        static const AkUniqueID VIRUS = 3455673912U;
     } // namespace EVENTS
 
     namespace BANKS
