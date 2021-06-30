@@ -52,11 +52,6 @@ public class DialogueManager : MonoBehaviour
     public float testSetFloat { get { return m_testSetFloat; } set { m_testSetFloat = value; } }
     public float wentBackHome { get { return m_wentBackHome; } set { m_wentBackHome = value; } }
     public float wentToBridge { get { return m_wentToBridge; } set { m_wentToBridge = value; } }
-    public float eMailsFinished { get { return m_eMailsFinished; } set { m_eMailsFinished = value; } }
-    public float deepWebFinished { get { return m_deepWebFinished; } set { m_deepWebFinished = value; } }
-    public float findThePathFinished { get { return m_findThePathFinished; } set { m_findThePathFinished = value; } }
-    public float stealthMinigameFinished { get { return m_stealthMinigameFinished; } set { m_stealthMinigameFinished = value; } }
-    public float virusFinished { get { return m_virusFinished; } set { m_virusFinished = value; } }
 
     [Header("Accessible test variables (Changed by events)")]
     [SerializeField]
@@ -74,21 +69,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     [Header("0 = false, 1 = true")]
     private float m_wentToBridge = 0;
-    [SerializeField]
-    [Header("0 = false, 1 = true")]
-    private float m_eMailsFinished = 0;
-    [SerializeField]
-    [Header("0 = false, 1 = true")]
-    private float m_deepWebFinished = 0;
-    [SerializeField]
-    [Header("0 = false, 1 = true")]
-    private float m_findThePathFinished = 0;
-    [SerializeField]
-    [Header("0 = false, 1 = true")]
-    private float m_stealthMinigameFinished = 0;
-    [SerializeField]
-    [Header("0 = false, 1 = true")]
-    private float m_virusFinished = 0;
 
     public string username = "Sebilol";
 

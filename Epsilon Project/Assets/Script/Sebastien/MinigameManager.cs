@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MinigameManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
+    private GameManager cachedGameManager;
+
     private void Awake()
     {
         if (instance == null)
@@ -28,6 +31,12 @@ public class MinigameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void Start()
+    {
+        cachedGameManager = GameManager.Instance;
+        cachedGameManager.FindCurrentMinigameBySceneName();
     }
 
     public void ActivateWinAction()

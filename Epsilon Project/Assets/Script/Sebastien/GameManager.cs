@@ -3,12 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class MinigameProgressionUnit
+{
+    public string stringID;
+    public int id;
+    public bool minigameFinished;
+}
+
 public class GameManager : MonoBehaviour
 {
     [Header("The name of the main chatting app scene")]
     public int gameSceneId;
     [HideInInspector]
     public string gameSceneName;
+
+    [Header("Minigame progression data")]
+    public int currentMinigameID;
+    public List<MinigameProgressionUnit> minigameProgressionList;
 
     private static GameManager instance;
     public static GameManager Instance
@@ -24,14 +36,26 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(instance);
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         GetGameSceneName();
+        SetMinigamesID();
+    }
+
+    private void SetMinigamesID()
+    {
+        int i = 0;
+
+        foreach (MinigameProgressionUnit unit in minigameProgressionList)
+        {
+            unit.id = i;
+            i++;
+        }
     }
 
     public void EraseSave()
@@ -58,6 +82,30 @@ public class GameManager : MonoBehaviour
     private void GoToChatScene()
     {
         SceneManager.LoadScene(gameSceneId);
+
+        SetMinigamesID();
+        Debug.LogWarning(GameManager.Instance.currentMinigameID);
+        Debug.LogWarning("Going to chat scene!");
+
+        if (GameManager.Instance.currentMinigameID != -1)
+        {
+            GameManager.Instance.minigameProgressionList[GameManager.Instance.currentMinigameID].minigameFinished = true;
+        }
+
+        GameManager.Instance.currentMinigameID = -1;
+    }
+
+    public void FindCurrentMinigameBySceneName()
+    {
+        for (int i = 0; i < minigameProgressionList.Count; i++)
+        {
+            if (minigameProgressionList[i].stringID == SceneManager.GetActiveScene().name)
+            {
+                GameManager.Instance.currentMinigameID = minigameProgressionList[i].id;
+                
+                break;
+            }
+        }
     }
 
     public void GoToScene(string sceneName)
