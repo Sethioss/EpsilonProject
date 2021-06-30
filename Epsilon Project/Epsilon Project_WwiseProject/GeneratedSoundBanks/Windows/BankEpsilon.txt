@@ -1,6 +1,15 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1123068841	Beep			\Default Work Unit\Beep	
+	1496194385	shieldAppear			\Default Work Unit\shieldAppear	
+	1584507803	Click			\Default Work Unit\Click	
+	3455673912	virus			\Default Work Unit\virus	
+	3556887013	shieldDisappear			\Default Work Unit\shieldDisappear	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	380679745	Beep	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\beep_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Beep		189872
+	4607719	shieldAppear	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\shieldAppear_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\shieldAppear		705744
+	234157071	Click 2	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\Click 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 2		38692
+	327614205	Click 3	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\Click 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 3		36044
+	610294547	Click 4	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\Click 4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 4		35332
+	723815568	Click 1	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\Click 1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 1		242860
+	809707411	virus	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\virus_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\virus		113840
+	936422803	shieldDisappear	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\shieldDisappear_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\shieldDisappear		258716
 

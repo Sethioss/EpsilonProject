@@ -11,21 +11,62 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
+		<SoundBank Id="1161967626" Language="SFX" Hash="666189162">
+			<ObjectPath>\SoundBanks\Default Work Unit\Shield</ObjectPath>
+			<ShortName>Shield</ShortName>
+			<Path>Shield.bnk</Path>
+		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="2754342975">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="4060328087" Language="SFX" Hash="813035519">
+		<SoundBank Id="4060328087" Language="SFX" Hash="228517863">
 			<ObjectPath>\SoundBanks\Default Work Unit\BankEpsilon</ObjectPath>
 			<ShortName>BankEpsilon</ShortName>
 			<Path>BankEpsilon.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1123068841" Name="Beep" ObjectPath="\Events\Default Work Unit\Beep" DurationType="OneShot" DurationMin="1.076009" DurationMax="1.076009">
+				<Event Id="1584507803" Name="Click" ObjectPath="\Events\Default Work Unit\Click" DurationType="OneShot" DurationMin="0.199478" DurationMax="1.376395">
 					<IncludedMemoryFiles>
-						<File Id="380679745" Language="SFX">
-							<ShortName>beep.wav</ShortName>
-							<Path>SFX\beep_10C4C929.wem</Path>
+						<File Id="234157071" Language="SFX">
+							<ShortName>Click 2.wav</ShortName>
+							<Path>SFX\Click 2_10C4C929.wem</Path>
+						</File>
+						<File Id="327614205" Language="SFX">
+							<ShortName>Click 3.wav</ShortName>
+							<Path>SFX\Click 3_10C4C929.wem</Path>
+						</File>
+						<File Id="610294547" Language="SFX">
+							<ShortName>Click 4.wav</ShortName>
+							<Path>SFX\Click 4_10C4C929.wem</Path>
+						</File>
+						<File Id="723815568" Language="SFX">
+							<ShortName>Click 1.wav</ShortName>
+							<Path>SFX\Click 1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1496194385" Name="shieldAppear" ObjectPath="\Events\Default Work Unit\shieldAppear" DurationType="OneShot" DurationMin="4.000000" DurationMax="4.000000">
+					<IncludedMemoryFiles>
+						<File Id="4607719" Language="SFX">
+							<ShortName>shieldAppear.wav</ShortName>
+							<Path>SFX\shieldAppear_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3556887013" Name="shieldDisappear" ObjectPath="\Events\Default Work Unit\shieldDisappear" DurationType="OneShot" DurationMin="1.466281" DurationMax="1.466281">
+					<IncludedMemoryFiles>
+						<File Id="936422803" Language="SFX">
+							<ShortName>shieldDisappear.wav</ShortName>
+							<Path>SFX\shieldDisappear_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3455673912" Name="virus" ObjectPath="\Events\Default Work Unit\virus" DurationType="OneShot" DurationMin="0.644989" DurationMax="0.644989">
+					<IncludedMemoryFiles>
+						<File Id="809707411" Language="SFX">
+							<ShortName>virus.wav</ShortName>
+							<Path>SFX\virus_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
