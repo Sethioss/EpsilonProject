@@ -302,14 +302,19 @@ public class DialogueDisplayer : MonoBehaviour
             }
             else
             {
-                cachedDialogueManager.hackingChatDialoguesToSave[cachedDialogueManager.hackingChatDialoguesToSave.Count - 1].elements[cachedDialogueManager.hackingChatDialoguesToSave
-                    [cachedDialogueManager.dialogueList.Count - 1].elements.Count - 1] = elementToEdit;
+                //Debug.LogWarning("Did the thing!");
+                //Debug.LogWarning(cachedDialogueManager.dialogueList.Count - 1);
+                //Debug.LogWarning(cachedDialogueManager.hackingChatDialoguesToSave[0].elements.Count - 1);
+
+                cachedDialogueManager.hackingChatDialoguesToSave[0].elements[cachedDialogueManager.hackingChatDialoguesToSave
+                    [0].elements.Count - 1] = elementToEdit;
 
                 UpdateDialogueState();
                 SaveDialogueData(cachedDialogueManager.hackingChatDialoguesToSave);
             }
         }
     }
+
     public void SaveDialogueData(List<Dialogue> dialogueListToSaveTo)
     {
         if (!isLoading)
@@ -391,7 +396,7 @@ public class DialogueDisplayer : MonoBehaviour
 
             if (cachedDialogueManager.dialogueList.Count > 0 && !bubbleSpawned)
             {
-                Debug.LogError(cachedDialogueManager.dialogueList.Count);
+                //Debug.LogError(cachedDialogueManager.dialogueList.Count);
                 writingTime = SetWritingTime(cachedDialogueManager.dialogueList[cachedDialogueManager.dialogueList.Count - 1].elements[data.currentElement].message);
                 timeToStartWriting = SetTimeToStartWriting();
             }
@@ -1299,7 +1304,7 @@ public class DialogueDisplayer : MonoBehaviour
 
             if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
             {
-                Debug.LogWarning("Loading replies");
+                //Debug.LogWarning("Loading replies");
                 DisplayPossibleReplies(currentDialogue.elements[currentDialogueElementId].replies);
             }
             else
