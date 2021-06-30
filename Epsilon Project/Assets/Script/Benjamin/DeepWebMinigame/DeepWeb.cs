@@ -18,6 +18,7 @@ public class DeepWeb : MonoBehaviour
     }
     public void OpenURL(int UrlNumber)
     {
+        //Mettre le son WWise Suivant : Click
         switch (UrlNumber)
         {
             case 0:
@@ -47,6 +48,7 @@ public class DeepWeb : MonoBehaviour
     
     public void CloseURL(GameObject pageToClose)
     {
+        //Mettre le son WWise Suivant : Click
         UrlContainer.text = ("http//mirror-11d269e3.onion/");
         pageToClose.SetActive(false);
     }

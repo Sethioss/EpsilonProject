@@ -142,6 +142,7 @@ public class VirusBehaviour : MonoBehaviour
                             currentTileBhv.holdsVirus = false;
                             tileLeftBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             currentValue = initialValue;
                             timeToFade = initialTimeToFade;
                             StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
@@ -171,6 +172,7 @@ public class VirusBehaviour : MonoBehaviour
                             currentValue = initialValue;
                             timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
                         }
                         else
@@ -196,6 +198,7 @@ public class VirusBehaviour : MonoBehaviour
                             currentValue = initialValue;
                             timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
                         }
                         else
@@ -221,6 +224,7 @@ public class VirusBehaviour : MonoBehaviour
                             currentValue = initialValue;
                             timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
                         }
                         else
@@ -251,6 +255,7 @@ public class VirusBehaviour : MonoBehaviour
         if (tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isInfected == false && tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isBlocked == false && tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked == false)
         {
             tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked = true;
+            //Mettre le son WWise Suivant : shieldAppear
             canHack = true;
         }
         else

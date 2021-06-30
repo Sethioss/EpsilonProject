@@ -32,12 +32,14 @@ public class LikeButton : MonoBehaviour
     {
         if (isLiked)
         {
+            //Mettre le son WWise Suivant : Like
             gameObject.GetComponent<Image>().sprite = unlikedSprite;
             isLiked = false;
             numberOfLikes--;
         }
         else
         {
+            //Mettre le son WWise Suivant : Dislike
             gameObject.GetComponent<Image>().sprite = likedSprite;
             isLiked = true;
             numberOfLikes++;
