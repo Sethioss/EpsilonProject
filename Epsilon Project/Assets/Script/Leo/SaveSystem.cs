@@ -89,6 +89,28 @@ public static class SaveSystem
         stream.Close();
 
     }
+
+    public static void SaveMinigameProgression(List<MinigameProgressionUnit> mjProgressionData)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/MinigameProgression.fun";
+        FileStream stream = File.Open(path, FileMode.OpenOrCreate);
+        MinigameProgressionData progressionData = new MinigameProgressionData(mjProgressionData);
+        formatter.Serialize(stream, progressionData);
+        stream.Close();
+
+    }
+
+    public static void SaveCheckpoint(List<MinigameProgressionUnit> mjProgressionData, DialogueManager manager)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Checkpoint.fun";
+        FileStream stream = File.Open(path, FileMode.OpenOrCreate);
+        CheckpointData checkpointData = new CheckpointData(mjProgressionData, manager);
+        formatter.Serialize(stream, checkpointData);
+        stream.Close();
+    }
+
     #endregion
     #region Load
     public static GPSData LoadGPS()
@@ -232,8 +254,44 @@ public static class SaveSystem
         }
 
     }
-    #endregion
 
+    public static MinigameProgressionData LoadMinigameProgressionData()
+    {
+        string path = Application.persistentDataPath + "/MinigameProgression.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            MinigameProgressionData data = (MinigameProgressionData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Load file not found in " + path);
+            return null;
+        }
+
+    }
+
+    public static CheckpointData LoadCheckpoint()
+    {
+        string path = Application.persistentDataPath + "/Checkpoint.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+            CheckpointData data = (CheckpointData)formatter.Deserialize(stream);
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Load file not found in " + path);
+            return null;
+        }
+    }
+    #endregion
     #region Erase
     public static void EraseSettingsData()
     {
@@ -269,6 +327,22 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/TimeReach.fun";
+        File.Delete(path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
+    }
+
+    public static void EraseMinigameProgressionData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/MinigameProgression.fun";
+        File.Delete(path);
+        Debug.LogWarning("Files have been successfully deleted at " + path);
+    }
+
+    public static void EraseCheckpointData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Checkpoint.fun";
         File.Delete(path);
         Debug.LogWarning("Files have been successfully deleted at " + path);
     }

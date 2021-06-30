@@ -1421,7 +1421,6 @@ MonoBehaviour:
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
   popUpObject: {fileID: 0}
-  persistentSaveSettings: 0
 --- !u!4 &153191506
 Transform:
   m_ObjectHideFlags: 0
@@ -12880,14 +12879,13 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 64c7b97a163d10540b3c488569e8c101, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 298df11f7dc57124397a464a789b3599, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 5323994ccc522cb4ab112f127fd89ee6, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
   m_testSet: 20
   m_testSetFloat: 20
   m_wentBackHome: 0

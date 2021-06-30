@@ -7,6 +7,7 @@ public class DialogueData
 {
     public static DialogueData Instance { set; get; }
     public List<string> dialogueFileName;
+    public List<int> isMinigameFinished;
     public List<int> chosenReplyId;
     public List<int> elementId;
     public List<int> numberOfElementsInDialogue;
@@ -30,6 +31,7 @@ public class DialogueData
 
         Instance = null;
         dialogueFileName = new List<string>();
+        isMinigameFinished = new List<int>();
         chosenReplyId = new List<int>();
         elementId = new List<int>();
         numberOfElementsInDialogue = new List<int>();
@@ -65,7 +67,15 @@ public class DialogueData
                         //Debug.LogWarning("Chosen reply reaction : " + element.replies[0].reaction);
                     }
                 }
+
                 chosenReplyId.Add(element.chosenReplyIndex);
+
+                int toAdd = 0;
+                if (element.minigameLinkFinished)
+                {
+                    toAdd = 1;
+                }
+                isMinigameFinished.Add(toAdd);
             }
 
             //Debug.LogWarning("This dialogue has " + elementsInDialogue + " elements in it");

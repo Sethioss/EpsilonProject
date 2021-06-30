@@ -62,3 +62,4 @@ MonoBehaviour:
   - stringID: VirusTutorial
     id: 4
     minigameFinished: 0
+  persistentSave: 0

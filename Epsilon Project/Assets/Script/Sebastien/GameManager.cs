@@ -6,21 +6,32 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class MinigameProgressionUnit
 {
+    [Header("The minigame's scene name (The one that will be sent via link)")]
     public string stringID;
+    [HideInInspector]
     public int id;
     public bool minigameFinished;
+
+    public MinigameProgressionUnit() { }
+    public MinigameProgressionUnit(string stringID, bool isFinished)
+    {
+        this.stringID = stringID;
+        this.minigameFinished = isFinished;
+    }
 }
 
 public class GameManager : MonoBehaviour
 {
-    [Header("The name of the main chatting app scene")]
+    [Header("The ID of the main chatting app scene")]
     public int gameSceneId;
     [HideInInspector]
     public string gameSceneName;
 
-    [Header("Minigame progression data")]
     public int currentMinigameID;
     public List<MinigameProgressionUnit> minigameProgressionList;
+
+    [Header("Keeps the save files between two launchs of the game")]
+    public bool persistentSave = false;
 
     private static GameManager instance;
     public static GameManager Instance
@@ -31,6 +42,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
+    private void OnApplicationQuit()
+    {
+        if (!GameManager.instance.persistentSave)
+        {
+            GameManager.Instance.EraseSave();
+        }
+    }
+#endif
     private void Awake()
     {
         if (instance == null)
@@ -44,14 +64,56 @@ public class GameManager : MonoBehaviour
         }
 
         GetGameSceneName();
+        LoadMinigameProgression();
+        //LoadCheckpoint();
         SetMinigamesID();
+    }
+
+    private void LoadCheckpoint()
+    {
+        Debug.LogWarning("Loading CheckpointData");
+        CheckpointData data = SaveSystem.LoadCheckpoint();
+
+        if (data != null)
+        {
+            Instance.minigameProgressionList = new List<MinigameProgressionUnit>();
+
+            for (int i = 0; i < data.minigameName.Count; i++)
+            {
+                Instance.minigameProgressionList.Add(new MinigameProgressionUnit(data.minigameName[i], data.minigameFinished[i]));
+            }
+
+            DialogueManager.Instance.wentBackHome = data.wentBackHome;
+            DialogueManager.Instance.wentToBridge = data.wentToBridge;
+        }
+    }
+
+    private void LoadMinigameProgression()
+    {
+        Debug.LogWarning("Loading minigameProgressionData");
+        MinigameProgressionData data = SaveSystem.LoadMinigameProgressionData();
+
+        if (data != null)
+        {
+            Instance.minigameProgressionList = new List<MinigameProgressionUnit>();
+
+            for(int i = 0; i < data.minigameName.Count; i++)
+            {
+                Instance.minigameProgressionList.Add(new MinigameProgressionUnit(data.minigameName[i], data.minigameFinished[i]));
+            }
+        }
+    }
+
+    public void ResetMinigameProgressionValues()
+    {
+        Instance.minigameProgressionList = minigameProgressionList;
     }
 
     private void SetMinigamesID()
     {
         int i = 0;
 
-        foreach (MinigameProgressionUnit unit in minigameProgressionList)
+        foreach (MinigameProgressionUnit unit in Instance.minigameProgressionList)
         {
             unit.id = i;
             i++;
@@ -65,6 +127,8 @@ public class GameManager : MonoBehaviour
         SaveSystem.EraseHackingDialogueData();
         SaveSystem.EraseSettingsData();
         SaveSystem.EraseTimeToReachData();
+        SaveSystem.EraseMinigameProgressionData();
+        SaveSystem.EraseCheckpointData();
 
         DialogueManager.Instance.dialogueFileToLoad = DialogueManager.Instance.GetElementFileFromName("Intro1");
     }
@@ -79,30 +143,32 @@ public class GameManager : MonoBehaviour
         DialogueManager.Instance.dialogueFileToLoad = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
     }
 
-    private void GoToChatScene()
+    public void GoToChatScene()
     {
-        SceneManager.LoadScene(gameSceneId);
 
         SetMinigamesID();
-        Debug.LogWarning(GameManager.Instance.currentMinigameID);
-        Debug.LogWarning("Going to chat scene!");
+        Debug.LogWarning(Instance.currentMinigameID);
+        //Debug.LogWarning("Going to chat scene!");
 
-        if (GameManager.Instance.currentMinigameID != -1)
+        if (Instance.currentMinigameID != -1)
         {
-            GameManager.Instance.minigameProgressionList[GameManager.Instance.currentMinigameID].minigameFinished = true;
+            Instance.minigameProgressionList[Instance.currentMinigameID].minigameFinished = true;
         }
 
-        GameManager.Instance.currentMinigameID = -1;
+        Instance.currentMinigameID = -1;
+        SaveSystem.SaveMinigameProgression(Instance.minigameProgressionList);
+
+        SceneManager.LoadScene(gameSceneId);
     }
 
     public void FindCurrentMinigameBySceneName()
     {
-        for (int i = 0; i < minigameProgressionList.Count; i++)
+        for (int i = 0; i < Instance.minigameProgressionList.Count; i++)
         {
-            if (minigameProgressionList[i].stringID == SceneManager.GetActiveScene().name)
+            if (Instance.minigameProgressionList[i].stringID == SceneManager.GetActiveScene().name)
             {
-                GameManager.Instance.currentMinigameID = minigameProgressionList[i].id;
-                
+                Instance.currentMinigameID = Instance.minigameProgressionList[i].id;
+
                 break;
             }
         }

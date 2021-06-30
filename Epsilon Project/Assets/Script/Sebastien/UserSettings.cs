@@ -42,9 +42,6 @@ public class UserSettings : MonoBehaviour
 
     public GameObject popUpObject;
 
-    [Header("If activated, the settings save file will persist after runtime mode in the editor")]
-    public bool persistentSaveSettings = false;
-
 #if UNITY_EDITOR
     private OptionMenu sceneOptionMenu;
     private XMLManager xmlManager;
@@ -144,13 +141,6 @@ public class UserSettings : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    private void OnApplicationQuit()
-    {
-        if (!persistentSaveSettings)
-        {
-            SaveSystem.EraseSettingsData();
-        }
-    }
     private void Update()
     {
         if (languageMemory != language)

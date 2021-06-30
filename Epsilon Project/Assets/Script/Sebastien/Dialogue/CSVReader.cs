@@ -935,6 +935,23 @@ public class CSVReader : MonoBehaviour
 
         newElement.messageType = DialogueElement.MessageType.LINK;
 
+        foreach(MinigameProgressionUnit unit in GameManager.Instance.minigameProgressionList)
+        {
+            if(unit.stringID == sceneToChangeTo)
+            {
+                //Debug.LogWarning("There's a match!");
+                if (unit.minigameFinished)
+                {
+                    newElement.minigameLinkFinished = true;
+                }
+                else
+                {
+                    newElement.minigameLinkFinished = false;
+                }
+                break;
+            }
+        }
+
         elementBuffer.Add(newElement);
     }
 

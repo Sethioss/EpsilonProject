@@ -226,10 +226,16 @@ public class DialogueDisplayer : MonoBehaviour
         SaveSystem.EraseDialogueData();
         SaveSystem.EraseHackingDialogueData();
         SaveSystem.EraseTimeToReachData();
+        SaveSystem.EraseMinigameProgressionData();
+        SaveSystem.EraseCheckpointData();
 
+        //Reset variables to their original values (Used for when the player erases their save and launched the game again without closing the app)
         cachedDialogueManager.dialogueList = new List<Dialogue>();
         cachedDialogueManager.mainChatDialoguesToSave = new List<Dialogue>();
         cachedDialogueManager.hackingChatDialoguesToSave = new List<Dialogue>();
+
+        GameManager.Instance.ResetMinigameProgressionValues();
+
         cachedDialogueManager.dialogueFileToLoad = cachedDialogueManager.GetElementFileFromName("Intro1");
     }
     public void UpdateDialogueState()
@@ -345,10 +351,10 @@ public class DialogueDisplayer : MonoBehaviour
         {
             isLoading = true;
 
-            isInitialisation = BoolToInt(data.initialisation);
-            isWaitingForReply = BoolToInt(data.waitForReply);
-            hasReplied = BoolToInt(data.replied);
-            reacting = BoolToInt(data.reacted);
+            isInitialisation = IntToBool(data.initialisation);
+            isWaitingForReply = IntToBool(data.waitForReply);
+            hasReplied = IntToBool(data.replied);
+            reacting = IntToBool(data.reacted);
             UpdateDialogueState();
 
             cachedDialogueManager.wentBackHome = data.wentBackHome;
@@ -426,6 +432,7 @@ public class DialogueDisplayer : MonoBehaviour
             //Pour chaque élément
             for (int j = 0; j < templateDialogue.elements.Count; j++)
             {
+                Debug.LogWarning(templateDialogue.elements[j].minigameLinkFinished);
                 //Debug.LogError(processedGlobalElement);
                 //Debug.LogError("Checking element " + currentDialogue.elements[j].index);
                 //If the save data indicates that the player has already passed this element
@@ -445,6 +452,8 @@ public class DialogueDisplayer : MonoBehaviour
                             DialogueElement element = new DialogueElement(templateDialogue.elements[j].message,
                                 templateDialogue.elements[j].index, templateDialogue.elements[j].initiationTime, templateDialogue.elements[j].elementAction);
                             element.chosenReplyIndex = data.chosenReplyId[globalElementInLoop];
+                            element.minigameLinkFinished = templateDialogue.elements[j].minigameLinkFinished;
+                            Debug.LogError("minigameLink : " + element.minigameLinkFinished);
 
                             element.messageType = templateDialogue.elements[j].messageType;
 
@@ -475,6 +484,7 @@ public class DialogueDisplayer : MonoBehaviour
             processedGlobalElement += data.numberOfElementsInDialogue[i];
             toLoad.Add(dialogueToCreate);
         }
+
         return toLoad;
     }
     private List<Dialogue> RestoreSavedDialogues(List<Dialogue> originalDialogues, DialogueData data)
@@ -1291,16 +1301,39 @@ public class DialogueDisplayer : MonoBehaviour
             MessageBubble messageBubble = currentBubble.GetComponent<MessageBubble>();
             if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
-                Button button = messageBubble.textBackground.GetComponent<Button>();
-                button.enabled = true;
-                button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+                if (!currentDialogue.elements[currentDialogueElementId].minigameLinkFinished)
+                {
+                    Button button = messageBubble.textBackground.GetComponent<Button>();
+                    button.enabled = true;
+                    button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+                    currentDialogue.elements[currentDialogueElementId].elementAction = null;
+
+                    DialogueElement newElement = new DialogueElement();
+
+                    messageBubble.gameObject.SetActive(true);
+                    messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
+                }
+                else
+                {
+                    Button button = messageBubble.textBackground.GetComponent<Button>();
+                    button.enabled = false;
+                    DialogueElement newElement = new DialogueElement();
+
+                    messageBubble.gameObject.SetActive(true);
+                    messageBubble.message.text = "Le lien qui a été envoyé n'est plus disponible";
+                }
                 currentDialogue.elements[currentDialogueElementId].elementAction = null;
+
+            }
+            else
+            {
+                DialogueElement newElement = new DialogueElement();
+
+                messageBubble.gameObject.SetActive(true);
+
+                messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
             }
 
-            DialogueElement newElement = new DialogueElement();
-
-            messageBubble.gameObject.SetActive(true);
-            messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
 
             if (currentDialogue.elements[currentDialogueElementId].replies.Count > 0)
             {
@@ -1320,17 +1353,37 @@ public class DialogueDisplayer : MonoBehaviour
 
             if (currentDialogue.elements[currentDialogueElementId].messageType == DialogueElement.MessageType.LINK)
             {
-                Button button = messageBubble.textBackground.GetComponent<Button>();
-                button.enabled = true;
-                button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+                if (!currentDialogue.elements[currentDialogueElementId].minigameLinkFinished)
+                {
+                    Button button = messageBubble.textBackground.GetComponent<Button>();
+                    button.enabled = true;
+                    button.onClick.AddListener(currentDialogue.elements[currentDialogueElementId].elementAction);
+
+                    DialogueElement newElement = new DialogueElement();
+
+                    messageBubble.gameObject.SetActive(true);
+                    messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
+                }
+                else
+                {
+                    Button button = messageBubble.textBackground.GetComponent<Button>();
+                    button.enabled = false;
+                    DialogueElement newElement = new DialogueElement();
+
+                    messageBubble.gameObject.SetActive(true);
+                    messageBubble.message.text = "Le lien qui a été envoyé n'est plus disponible";
+                }
                 currentDialogue.elements[currentDialogueElementId].elementAction = null;
             }
+            else
+            {
+                DialogueElement newElement = new DialogueElement();
 
-            DialogueElement newElement = new DialogueElement();
+                messageBubble.gameObject.SetActive(true);
 
-            messageBubble.gameObject.SetActive(true);
+                messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
+            }
 
-            messageBubble.message.text = currentDialogue.elements[currentDialogueElementId].message;
 
             isInitialisation = false;
             bubbleSpawned = false;
@@ -1355,6 +1408,7 @@ public class DialogueDisplayer : MonoBehaviour
         currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
 
         newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
+        newElement.minigameLinkFinished = currentDialogue.elements[currentDialogueElementId].minigameLinkFinished;
 
         return newElement;
     }
@@ -1715,7 +1769,7 @@ public class DialogueDisplayer : MonoBehaviour
             new Vector2(messagePrefab.GetComponent<RectTransform>().sizeDelta.x, imageBg.GetComponent<RectTransform>().sizeDelta.y);
     }
 
-    private bool BoolToInt(int originalBool)
+    private bool IntToBool(int originalBool)
     {
         return originalBool == 1;
     }
