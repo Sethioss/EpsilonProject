@@ -18830,12 +18830,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead04e35fcf0094183f0e5da6da5ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localisedDialogue: 
+  unlocalisedDialogue: 
+  ignoreDialogueLocalisation: 1
   onGameSceneEntered: 0
   reader: {fileID: 0}
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 58e8c0923d9632b4e977a36f89a23712, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 04b8793397bf80446916f1c999aa7c08, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
