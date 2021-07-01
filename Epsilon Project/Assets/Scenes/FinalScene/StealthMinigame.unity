@@ -7687,26 +7687,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568401dd36ad4314fab5254bae13cbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera:
-  - {fileID: 1233514917}
-  - {fileID: 492215388}
-  - {fileID: 1061468428}
-  - {fileID: 2002748535}
   animCamera:
   - {fileID: 1233514922}
   - {fileID: 492215393}
   - {fileID: 1061468433}
   - {fileID: 2002748540}
-  posCamera:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  angleCamera:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &234318050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11939,7 +11924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &382797926
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20933,26 +20918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568401dd36ad4314fab5254bae13cbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera:
-  - {fileID: 1529144859}
-  - {fileID: 1282397343}
-  - {fileID: 119815388}
-  - {fileID: 1100625784}
   animCamera:
   - {fileID: 1529144864}
   - {fileID: 1282397348}
   - {fileID: 119815393}
   - {fileID: 1100625789}
-  posCamera:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  angleCamera:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &643593464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50225,26 +50195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568401dd36ad4314fab5254bae13cbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera:
-  - {fileID: 699987651}
-  - {fileID: 1881833619}
-  - {fileID: 2012620301}
-  - {fileID: 1215975525}
   animCamera:
   - {fileID: 699987656}
   - {fileID: 1881833624}
   - {fileID: 2012620306}
   - {fileID: 1215975530}
-  posCamera:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  angleCamera:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &1568030388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63839,16 +63794,10 @@ MonoBehaviour:
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
   m_wentBackHome: 0
   m_wentToBridge: 0
-  m_eMailsFinished: 0
-  m_deepWebFinished: 0
-  m_findThePathFinished: 0
-  m_stealthMinigameFinished: 0
-  m_virusFinished: 0
   username: Sebilol
   confirmationMessage: {fileID: 0}
 --- !u!4 &2028010910
