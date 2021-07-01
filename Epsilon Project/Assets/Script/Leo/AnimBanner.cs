@@ -12,6 +12,7 @@ public class AnimBanner : MonoBehaviour
     }
     public void ChangeAnim()
     {
+        WwiseSoundManager.instance.Click.Post(gameObject);
         if (Open == false)
         {
             anim.SetBool("Open", true);

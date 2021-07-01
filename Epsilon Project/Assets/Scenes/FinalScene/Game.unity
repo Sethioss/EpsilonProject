@@ -2342,6 +2342,7 @@ GameObject:
   - component: {fileID: 304347098}
   - component: {fileID: 304347097}
   - component: {fileID: 304347096}
+  - component: {fileID: 304347099}
   m_Layer: 5
   m_Name: ButtonConfirmBio
   m_TagString: Untagged
@@ -2413,9 +2414,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1565060067}
-        m_TargetAssemblyTypeName: AnimBanner, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 304347099}
+        m_TargetAssemblyTypeName: ClickSound, Assembly-CSharp
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2463,6 +2464,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304347094}
   m_CullTransparentMesh: 1
+--- !u!114 &304347099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304347094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5423b1613eeafc4ebc83e0b22a55c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &304540231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,6 +6059,7 @@ GameObject:
   - component: {fileID: 845149501}
   - component: {fileID: 845149500}
   - component: {fileID: 845149499}
+  - component: {fileID: 845149502}
   m_Layer: 5
   m_Name: EraseSave
   m_TagString: Untagged
@@ -6119,6 +6133,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1647577434}
         m_TargetAssemblyTypeName: AnimBanner, Assembly-CSharp
         m_MethodName: ChangeAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 845149502}
+        m_TargetAssemblyTypeName: ClickSound, Assembly-CSharp
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6225,6 +6251,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845149497}
   m_CullTransparentMesh: 1
+--- !u!114 &845149502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845149497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5423b1613eeafc4ebc83e0b22a55c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &845443288
 GameObject:
   m_ObjectHideFlags: 0
