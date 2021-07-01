@@ -8580,7 +8580,7 @@ MonoBehaviour:
   sentAutoModeWindow: 0
   hasUnlockedAutoMode: 0
   autoMode: 1
-  autoModeWaitingTime: 00:00:00:00
+  autoModeWaitingTime: 00:00:00:01
   inactivePeriods: 0
   inactivePeriodStartHour: 5
   inactivePeriodEndHour: 10
