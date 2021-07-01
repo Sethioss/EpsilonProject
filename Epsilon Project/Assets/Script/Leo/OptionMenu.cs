@@ -35,6 +35,8 @@ public class OptionMenu : MonoBehaviour
 
     public void SetLanguage()
     {
+        WwiseSoundManager.instance.Click.Post(gameObject);
+
         userSettings.language = (UserSettings.Language)languageDropdown.value;
         XMLManager.Instance.SwitchLanguage();
     }
@@ -133,6 +135,7 @@ public class OptionMenu : MonoBehaviour
 
     public void SetMinMaxTimeToToggle()
     {
+        WwiseSoundManager.instance.Click.Post(gameObject);
         inactiveToggleValue = inactivePeriodsToggle.isOn;
         UpdateMinMaxTime();
     }
@@ -145,6 +148,7 @@ public class OptionMenu : MonoBehaviour
 
     public void SetAutoModeToToggle()
     {
+        WwiseSoundManager.instance.Click.Post(gameObject);
         autoModeToggleValue = autoModeToggle.isOn;
         UpdateAutoMode();
     }

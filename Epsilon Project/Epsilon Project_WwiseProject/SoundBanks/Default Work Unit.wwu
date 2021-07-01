@@ -5,7 +5,15 @@
 			<ChildrenList>
 				<SoundBank Name="BankEpsilon" ID="{E3A1747E-1D46-45C6-A2AF-8BB85360FB87}">
 					<ObjectInclusionList>
-						<ObjectRef Name="Beep" ID="{59D5ABFE-49A0-42E8-BB60-48F74DDF737A}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="shieldDisappear" ID="{6A8C890A-74A8-441E-9410-12DE1F7BB167}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Flicker" ID="{263A08AC-F6CD-45B9-914D-A260D41B82CF}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="errorSound" ID="{24455EF8-B2BD-45EB-8505-CA9EC69BA322}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Like" ID="{2533263B-69E9-487F-BD49-956469498AE0}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="virus" ID="{95E8A225-60B1-491E-83A9-AFABCA55CD1B}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Click" ID="{9604A947-9354-49BE-867D-32FE7068B16F}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopVoice" ID="{43715242-7DD2-4B9E-9757-2AB0E0B22340}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="shieldAppear" ID="{9FE61193-7362-4D60-B437-8E693060DF23}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="GoVoice" ID="{5D0D510F-77C9-4E88-89CF-86A0F95FDF11}" WorkUnitID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

@@ -143,6 +143,7 @@ public class VirusBehaviour : MonoBehaviour
                             tileLeftBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             //Mettre le son WWise Suivant : virus
+                            WwiseSoundManager.instance.virus.Post(gameObject);
                             currentValue = initialValue;
                             timeToFade = initialTimeToFade;
                             StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
@@ -173,6 +174,7 @@ public class VirusBehaviour : MonoBehaviour
                             timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             //Mettre le son WWise Suivant : virus
+                            WwiseSoundManager.instance.virus.Post(gameObject);
                             StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
                         }
                         else
@@ -199,6 +201,7 @@ public class VirusBehaviour : MonoBehaviour
                             timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             //Mettre le son WWise Suivant : virus
+                            WwiseSoundManager.instance.virus.Post(gameObject);
                             StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
                         }
                         else
@@ -225,6 +228,7 @@ public class VirusBehaviour : MonoBehaviour
                             timeToFade = initialTimeToFade;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
                             //Mettre le son WWise Suivant : virus
+                            WwiseSoundManager.instance.virus.Post(gameObject);
                             StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
                         }
                         else
@@ -256,6 +260,7 @@ public class VirusBehaviour : MonoBehaviour
         {
             tiles[randomColumn, randomRow].GetComponent<TilesBehaviour>().isHacked = true;
             //Mettre le son WWise Suivant : shieldAppear
+            WwiseSoundManager.instance.shieldAppear.Post(gameObject);
             canHack = true;
         }
         else

@@ -53,7 +53,7 @@ public class MailUI : MonoBehaviour
     }
     public void Click()
     {
-        //Mettre le son WWise Suivant : Click
+        WwiseSoundManager.instance.Click.Post(gameObject);
     }
     public void SwitchInbox()
     {
@@ -103,7 +103,7 @@ public class MailUI : MonoBehaviour
     public void OpenMail(int mailID)
     {
         zoomedHUD.SetActive(true);
-        //Mettre le son WWise Suivant : Click
+        WwiseSoundManager.instance.Click.Post(gameObject);
         currentMail = mailID;
         if (spamOpen == false)
         {
@@ -120,7 +120,7 @@ public class MailUI : MonoBehaviour
 
     public void CloseMail()
     {
-        //Mettre le son WWise Suivant : Click
+        WwiseSoundManager.instance.Click.Post(gameObject);
         zoomedHUD.SetActive(false);
         currentMail = -1;
     }
@@ -129,21 +129,21 @@ public class MailUI : MonoBehaviour
     {
         if(currentMail == mailToShare )
         {
-            //Mettre le son WWise Suivant : Click
+            WwiseSoundManager.instance.Click.Post(gameObject);
             if ((isMailToShareSpam && spamOpen == true)||(isMailToShareSpam == false && spamOpen == false)){ 
             Debug.Log("Yup this was the correct one");
                 miniGame.winAction.Invoke();
             }
             else
             {
-                //Mettre le son WWise Suivant : Error
+                WwiseSoundManager.instance.errorSound.Post(gameObject);
                 Debug.Log("Noooo ! This is not correct");
                 miniGame.loseAction.Invoke();
             }
         }
         else
         {
-            //Mettre le son WWise Suivant : Error
+            WwiseSoundManager.instance.errorSound.Post(gameObject);
             Debug.Log("Noooo ! This is not correct");
             miniGame.loseAction.Invoke();
         }

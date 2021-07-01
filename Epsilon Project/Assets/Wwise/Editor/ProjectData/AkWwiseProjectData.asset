@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: b15b5528120aba49a120490844304e8a
     GuidInternal: 
-    m_lastTime: -8585768675666230566
+    m_lastTime: -8585764603038591823
     List:
     - name: BankEpsilon
       guid: 7e74a1e3461dc645a2af8bb85360fb87
@@ -108,11 +108,11 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: fd6c1cf7d7c1664d98ecdd6952664f1c
     GuidInternal: 
-    m_lastTime: -8585768698831714575
+    m_lastTime: -8585764603050825559
     List:
-    - name: Beep
-      guid: feabd559a049e842bb6048f74ddf737a
-      id: 1123068841
+    - name: Click
+      guid: 47a904965493be49867d32fe7068b16f
+      id: 1584507803
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -120,10 +120,146 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: fd6c1cf7d7c1664d98ecdd6952664f1c
-      - ElementName: Beep
+      - ElementName: Click
         ObjectType: 3
-        guid: feabd559a049e842bb6048f74ddf737a
-      Path: Events\Default Work Unit\Beep
+        guid: 47a904965493be49867d32fe7068b16f
+      Path: Events\Default Work Unit\Click
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: errorSound
+      guid: f85e4524bdb2eb458505ca9ec69ba322
+      id: 1136066642
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: errorSound
+        ObjectType: 3
+        guid: f85e4524bdb2eb458505ca9ec69ba322
+      Path: Events\Default Work Unit\errorSound
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Flicker
+      guid: ac083a26cdf6b945914da260d41b82cf
+      id: 4121622623
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: Flicker
+        ObjectType: 3
+        guid: ac083a26cdf6b945914da260d41b82cf
+      Path: Events\Default Work Unit\Flicker
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: GoVoice
+      guid: 0f510d5dc977884e89cf86a0f95fdf11
+      id: 1065493763
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: GoVoice
+        ObjectType: 3
+        guid: 0f510d5dc977884e89cf86a0f95fdf11
+      Path: Events\Default Work Unit\GoVoice
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Like
+      guid: 3b263325e9697f48bd49956469498ae0
+      id: 86026100
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: Like
+        ObjectType: 3
+        guid: 3b263325e9697f48bd49956469498ae0
+      Path: Events\Default Work Unit\Like
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: shieldAppear
+      guid: 9311e69f6273604db4378e693060df23
+      id: 1496194385
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: shieldAppear
+        ObjectType: 3
+        guid: 9311e69f6273604db4378e693060df23
+      Path: Events\Default Work Unit\shieldAppear
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: shieldDisappear
+      guid: 0a898c6aa8741e44941012de1f7bb167
+      id: 3556887013
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: shieldDisappear
+        ObjectType: 3
+        guid: 0a898c6aa8741e44941012de1f7bb167
+      Path: Events\Default Work Unit\shieldDisappear
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: StopVoice
+      guid: 42527143d27d9e4b97572ab0e0b22340
+      id: 1309266873
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: StopVoice
+        ObjectType: 3
+        guid: 42527143d27d9e4b97572ab0e0b22340
+      Path: Events\Default Work Unit\StopVoice
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: virus
+      guid: 25a2e895b1601e4983a9afabca55cd1b
+      id: 3455673912
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fd6c1cf7d7c1664d98ecdd6952664f1c
+      - ElementName: virus
+        ObjectType: 3
+        guid: 25a2e895b1601e4983a9afabca55cd1b
+      Path: Events\Default Work Unit\virus
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -184,7 +320,7 @@ MonoBehaviour:
     m_lastTime: -8585768698829266774
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 010000000500000006000000090000000a0000000b0000000c000000
+  ExpandedWaapiItemIds: 010000000500000006000000090000000a0000000b0000000c0000001200000013000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

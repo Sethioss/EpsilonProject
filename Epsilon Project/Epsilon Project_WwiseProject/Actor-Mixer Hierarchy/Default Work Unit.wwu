@@ -215,6 +215,183 @@
 					</ChildrenList>
 					<ObjectLists/>
 				</RandomSequenceContainer>
+				<Sound Name="Dislike" ID="{E5A82FE7-A0C4-44F6-8D03-C7D2706AC2E3}" ShortID="312150120">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{71DAC2CD-50CB-4F6A-A6DE-2A8B825AAFC4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5137C121-5F63-4620-A424-02B4AE66D5A7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dislike" ID="{0248984F-7AE5-45A6-ABC6-B75D9095C00D}">
+							<Language>SFX</Language>
+							<AudioFile>Dislike.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="606255024"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="Dislike" ID="{0248984F-7AE5-45A6-ABC6-B75D9095C00D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="errorSound" ID="{4CFC94F6-3FB4-4007-A9A2-1C593A7539C9}" ShortID="128823777">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{71DAC2CD-50CB-4F6A-A6DE-2A8B825AAFC4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5137C121-5F63-4620-A424-02B4AE66D5A7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="errorSound" ID="{4B665DD2-F67F-444F-8EEC-79D229883B21}">
+							<Language>SFX</Language>
+							<AudioFile>errorSound.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="376798544"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="errorSound" ID="{4B665DD2-F67F-444F-8EEC-79D229883B21}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Flicker" ID="{F3918838-522B-4193-A980-143841D70C7C}" ShortID="80429652">
+					<PropertyList>
+						<Property Name="IsLoopingInfinite" Type="bool" Value="False"/>
+						<Property Name="LoopCount" Type="int32" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{71DAC2CD-50CB-4F6A-A6DE-2A8B825AAFC4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5137C121-5F63-4620-A424-02B4AE66D5A7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Flicker" ID="{3E985B60-99EC-4154-B2C3-F6D923DF69B6}">
+							<Language>SFX</Language>
+							<AudioFile>Flicker.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="678893159"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="Flicker" ID="{3E985B60-99EC-4154-B2C3-F6D923DF69B6}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="GoVoice" ID="{3F06BB67-39D6-4540-8096-544C1C150CD3}" ShortID="1021121820">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{71DAC2CD-50CB-4F6A-A6DE-2A8B825AAFC4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5137C121-5F63-4620-A424-02B4AE66D5A7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="GoVoice" ID="{F9AD5DD7-76EA-45FA-9106-002C3294A8F5}">
+							<Language>SFX</Language>
+							<AudioFile>GoVoice.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="935057517"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="GoVoice" ID="{F9AD5DD7-76EA-45FA-9106-002C3294A8F5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Like" ID="{F2F05376-01CF-43F1-9408-6A6BF7A45684}" ShortID="126026981">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{71DAC2CD-50CB-4F6A-A6DE-2A8B825AAFC4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5137C121-5F63-4620-A424-02B4AE66D5A7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Like" ID="{0F0B4EA7-EB12-4D56-87C9-82AE10EEFF61}">
+							<Language>SFX</Language>
+							<AudioFile>Like.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="442397883"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="Like" ID="{0F0B4EA7-EB12-4D56-87C9-82AE10EEFF61}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="StopVoice" ID="{48659327-3B1C-4589-921A-D680716F457D}" ShortID="327894517">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{71DAC2CD-50CB-4F6A-A6DE-2A8B825AAFC4}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5137C121-5F63-4620-A424-02B4AE66D5A7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="StopVoice" ID="{0A343781-6B70-40A9-B8D5-A9AE13802EB2}">
+							<Language>SFX</Language>
+							<AudioFile>StopVoice.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="944264475"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="StopVoice" ID="{0A343781-6B70-40A9-B8D5-A9AE13802EB2}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

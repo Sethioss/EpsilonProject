@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 470e1bc14a6bb084c8df08160c6a520e, type: 3}
+  m_Name: 24455EF8-B2BD-45EB-8505-CA9EC69BA322
+  m_EditorClassIdentifier: 
+  objectName: errorSound
+  id: 1136066642
+  guid: 24455EF8-B2BD-45EB-8505-CA9EC69BA322

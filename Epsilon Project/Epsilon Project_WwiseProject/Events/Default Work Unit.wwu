@@ -47,6 +47,61 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="errorSound" ID="{24455EF8-B2BD-45EB-8505-CA9EC69BA322}">
+					<ChildrenList>
+						<Action Name="" ID="{307BDD5A-0C36-48ED-BBA4-4001F37D14F8}" ShortID="651202842">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="errorSound" ID="{4CFC94F6-3FB4-4007-A9A2-1C593A7539C9}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Flicker" ID="{263A08AC-F6CD-45B9-914D-A260D41B82CF}">
+					<ChildrenList>
+						<Action Name="" ID="{EE2BFE88-5C06-489C-829B-B2F429994FC8}" ShortID="454866447">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Flicker" ID="{F3918838-522B-4193-A980-143841D70C7C}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="GoVoice" ID="{5D0D510F-77C9-4E88-89CF-86A0F95FDF11}">
+					<ChildrenList>
+						<Action Name="" ID="{094EB771-3DA0-412E-869C-B49D27C3D1EF}" ShortID="361014462">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GoVoice" ID="{3F06BB67-39D6-4540-8096-544C1C150CD3}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Like" ID="{2533263B-69E9-487F-BD49-956469498AE0}">
+					<ChildrenList>
+						<Action Name="" ID="{D3B0F4BB-D783-4A33-B001-D2001CB68F0D}" ShortID="543949935">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Like" ID="{F2F05376-01CF-43F1-9408-6A6BF7A45684}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopVoice" ID="{43715242-7DD2-4B9E-9757-2AB0E0B22340}">
+					<ChildrenList>
+						<Action Name="" ID="{3B19AD07-78FE-4785-BD82-0F0C26108F4E}" ShortID="951995291">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="StopVoice" ID="{48659327-3B1C-4589-921A-D680716F457D}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

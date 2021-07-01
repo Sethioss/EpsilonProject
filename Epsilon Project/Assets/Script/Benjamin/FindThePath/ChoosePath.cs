@@ -22,12 +22,14 @@ public class ChoosePath : MonoBehaviour
         if (correctPath)
         {
             //Mettre le son WWise Suivant : Click
+            WwiseSoundManager.instance.Click.Post(gameObject);
             Debug.Log("You found the correct path. Congrats !");
             MinigameManager.Instance.winAction.Invoke();
         }
         else
         {
             //Mettre le son WWise Suivant : Error
+            WwiseSoundManager.instance.errorSound.Post(gameObject);
             Debug.Log("Booh ! That's wrong");
         }
     }

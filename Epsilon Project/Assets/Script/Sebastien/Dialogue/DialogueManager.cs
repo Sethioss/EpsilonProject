@@ -174,7 +174,6 @@ public class DialogueManager : MonoBehaviour
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
-
         CreateAndStartDialogue(currentDialogueFile);
         onGameSceneEntered = false;
     }

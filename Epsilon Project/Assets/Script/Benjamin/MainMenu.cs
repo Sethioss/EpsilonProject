@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void ClickSound()
     {
-        //Mettre le son WWise Suivant : Click
+        WwiseSoundManager.instance.Click.Post(gameObject);
     }
 
 

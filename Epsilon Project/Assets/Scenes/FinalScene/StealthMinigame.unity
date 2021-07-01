@@ -7687,26 +7687,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568401dd36ad4314fab5254bae13cbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera:
-  - {fileID: 1233514917}
-  - {fileID: 492215388}
-  - {fileID: 1061468428}
-  - {fileID: 2002748535}
   animCamera:
   - {fileID: 1233514922}
   - {fileID: 492215393}
   - {fileID: 1061468433}
   - {fileID: 2002748540}
-  posCamera:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  angleCamera:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &234318050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10633,7 +10618,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 642017037}
           m_TargetAssemblyTypeName: AnimCamera, Assembly-CSharp
           m_MethodName: ChangeAnim
           m_Mode: 1
@@ -10673,7 +10658,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 642017037}
           m_TargetAssemblyTypeName: AnimCamera, Assembly-CSharp
           m_MethodName: ChangeAnim
           m_Mode: 1
@@ -11939,7 +11924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &382797926
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11992,8 +11977,6 @@ MonoBehaviour:
   teleportDestinations: 000000000000000000000000010000000000000002000000
   step: 0
   agent: {fileID: 382797928}
-  winScreen: {fileID: 0}
-  loseScreen: {fileID: 0}
   NumberGoal: 0
   textBox: {fileID: 2055952030}
   textBoxText: {fileID: 1777158019}
@@ -20820,6 +20803,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6580152032012484137, guid: d3c3e32bc703a094dadfdcdb4abfa46b, type: 3}
   m_PrefabInstance: {fileID: 636761051}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &638592412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638592414}
+  - component: {fileID: 638592413}
+  m_Layer: 0
+  m_Name: XML Tag List
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &638592413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638592412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionName: 
+  tagList:
+  - tagTxtObject: {fileID: 1777158019}
+    tagName: 
+    dynamicID: 0
+    customParameters: []
+--- !u!4 &638592414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638592412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1037.5266, y: 989.5252, z: -7788.9487}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &640293545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20933,26 +20965,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568401dd36ad4314fab5254bae13cbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera:
-  - {fileID: 1529144859}
-  - {fileID: 1282397343}
-  - {fileID: 119815388}
-  - {fileID: 1100625784}
   animCamera:
   - {fileID: 1529144864}
   - {fileID: 1282397348}
   - {fileID: 119815393}
   - {fileID: 1100625789}
-  posCamera:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  angleCamera:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &643593464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25915,6 +25932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arrow 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
 --- !u!1001 &806593137
@@ -27473,7 +27494,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 232534025}
           m_TargetAssemblyTypeName: AnimCamera, Assembly-CSharp
           m_MethodName: ChangeAnim
           m_Mode: 1
@@ -27513,7 +27534,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 232534025}
           m_TargetAssemblyTypeName: AnimCamera, Assembly-CSharp
           m_MethodName: ChangeAnim
           m_Mode: 1
@@ -36796,7 +36817,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1557891314}
           m_TargetAssemblyTypeName: AnimCamera, Assembly-CSharp
           m_MethodName: ChangeAnim
           m_Mode: 1
@@ -36836,7 +36857,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1557891314}
           m_TargetAssemblyTypeName: AnimCamera, Assembly-CSharp
           m_MethodName: ChangeAnim
           m_Mode: 1
@@ -50225,26 +50246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568401dd36ad4314fab5254bae13cbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera:
-  - {fileID: 699987651}
-  - {fileID: 1881833619}
-  - {fileID: 2012620301}
-  - {fileID: 1215975525}
   animCamera:
   - {fileID: 699987656}
   - {fileID: 1881833624}
   - {fileID: 2012620306}
   - {fileID: 1215975530}
-  posCamera:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  angleCamera:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &1568030388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52932,6 +52938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arrow 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
 --- !u!1001 &1665512838
@@ -53000,6 +53010,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
       propertyPath: m_Name
       value: arrow 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ac4621c7070534282f9ddcea0fc727, type: 3}
@@ -63839,16 +63853,10 @@ MonoBehaviour:
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
   m_wentBackHome: 0
   m_wentToBridge: 0
-  m_eMailsFinished: 0
-  m_deepWebFinished: 0
-  m_findThePathFinished: 0
-  m_stealthMinigameFinished: 0
-  m_virusFinished: 0
   username: Sebilol
   confirmationMessage: {fileID: 0}
 --- !u!4 &2028010910
@@ -64721,6 +64729,10 @@ PrefabInstance:
     - target: {fileID: 2151304922826548441, guid: f47507e9b4ec4c44ba38407dd13fd306, type: 3}
       propertyPath: m_Name
       value: stairs icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151304922826548441, guid: f47507e9b4ec4c44ba38407dd13fd306, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47507e9b4ec4c44ba38407dd13fd306, type: 3}
@@ -67161,6 +67173,10 @@ PrefabInstance:
     - target: {fileID: 2151304922826548441, guid: f47507e9b4ec4c44ba38407dd13fd306, type: 3}
       propertyPath: m_Name
       value: stairs icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2151304922826548441, guid: f47507e9b4ec4c44ba38407dd13fd306, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f47507e9b4ec4c44ba38407dd13fd306, type: 3}
