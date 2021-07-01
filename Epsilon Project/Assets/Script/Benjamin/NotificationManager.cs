@@ -48,12 +48,12 @@ public class NotificationManager : MonoBehaviour
 
     }
 
-    public void SendNotification(float waitTime)
+    public void SendNotification(double waitTime)
     {
         AndroidNotification notification = new AndroidNotification()
         {
-            Title = "Test",
-            Text = "This is a test",
+            Title = "Blue Box",
+            Text = "Vous avez un nouveau message",
             SmallIcon = "default",
             LargeIcon = "default",
             FireTime = System.DateTime.Now.AddSeconds(waitTime),

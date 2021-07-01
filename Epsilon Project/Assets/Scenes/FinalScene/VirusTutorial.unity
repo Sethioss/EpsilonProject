@@ -2555,23 +2555,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead04e35fcf0094183f0e5da6da5ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localisedDialogue: 
+  unlocalisedDialogue: 
+  ignoreDialogueLocalisation: 0
   onGameSceneEntered: 0
   reader: {fileID: 0}
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 0}
   dialogueFileToLoad: {fileID: 0}
+  dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
   m_testSet: 
   m_testSetFloat: 0
   m_wentBackHome: 0
   m_wentToBridge: 0
   username: Sebilol
+  confirmationMessage: {fileID: 0}
 --- !u!4 &854426622
 Transform:
   m_ObjectHideFlags: 0
@@ -4786,34 +4790,10 @@ MonoBehaviour:
       m_Calls: []
   winAction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6681529301092192989, guid: f0b8ff28b83b4ac48a020db149c21a71, type: 3}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDialogueAndGoToGame
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4e2434f2b5dec69489f9b53b11925daa, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   loseAction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6681529301092192989, guid: f0b8ff28b83b4ac48a020db149c21a71, type: 3}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDialogueAndGoToGame
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 4c3b2db5e4e45f5419de5ddef0d94743, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1565821752
 Transform:
   m_ObjectHideFlags: 0
@@ -5422,15 +5402,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoModeDebug: 0
+  sentAutoModeWindow: 0
+  hasUnlockedAutoMode: 0
   autoMode: 0
   autoModeWaitingTime: 00:00:00:01
   inactivePeriods: 1
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7
-  activateClockRecalibration: 0
   language: 0
   languagePrefix: 
   profilePicture: {fileID: 0}
+  popUpObject: {fileID: 0}
 --- !u!4 &1931076710
 Transform:
   m_ObjectHideFlags: 0

@@ -163,7 +163,12 @@ public class TimeManager : MonoBehaviour
         currentlyWaiting = true;
         SaveSystem.SaveTimeToReach(this);
 
-        //notificationScript.SendNotification(secondsToWait);
+        System.TimeSpan timeSpan = timeToReach-currentTime;
+
+        if(userSettings.autoMode == false)
+        {
+            notificationScript.SendNotification(timeSpan.TotalSeconds);
+        }
     }
 
     //Permets d'afficher le timer pour du debugging eventuel

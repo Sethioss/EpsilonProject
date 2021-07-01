@@ -11936,6 +11936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead04e35fcf0094183f0e5da6da5ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localisedDialogue: 
+  unlocalisedDialogue: 
+  ignoreDialogueLocalisation: 0
   onGameSceneEntered: 0
   reader: {fileID: 0}
   displayer: {fileID: 0}
@@ -29667,7 +29670,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 49743786ce9695f40874be5a6d380958, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: 75443aa9a97931847a3cd2e9db0a017b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -29682,7 +29685,7 @@ MonoBehaviour:
         m_MethodName: SetDialogueAndGoToGame
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4900000, guid: 716399fd726bfc54ca1d2197d47fcae1, type: 3}
+          m_ObjectArgument: {fileID: 4900000, guid: c2d6a796375b7184d9928d45136a4dcf, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.TextAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
