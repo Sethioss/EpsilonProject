@@ -1,15 +1,25 @@
 Event	ID	Name			Wwise Object Path	Notes
+	86026100	Like			\Default Work Unit\Like	
+	1065493763	GoVoice			\Default Work Unit\GoVoice	
+	1136066642	errorSound			\Default Work Unit\errorSound	
+	1309266873	StopVoice			\Default Work Unit\StopVoice	
 	1496194385	shieldAppear			\Default Work Unit\shieldAppear	
 	1584507803	Click			\Default Work Unit\Click	
 	3455673912	virus			\Default Work Unit\virus	
 	3556887013	shieldDisappear			\Default Work Unit\shieldDisappear	
+	4121622623	Flicker			\Default Work Unit\Flicker	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	4607719	shieldAppear	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\shieldAppear_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\shieldAppear		705744
 	234157071	Click 2	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\Click 2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 2		38692
 	327614205	Click 3	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\Click 3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 3		36044
+	376798544	errorSound	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\errorSound_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\errorSound		186376
+	442397883	Like	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\Like_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Like		4860
 	610294547	Click 4	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\Click 4_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 4		35332
+	678893159	Flicker	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\Flicker_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Flicker		1728252
 	723815568	Click 1	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\Click 1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 1		242860
 	809707411	virus	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\virus_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\virus		113840
+	935057517	GoVoice	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\GoVoice_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GoVoice		363412
 	936422803	shieldDisappear	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\shieldDisappear_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\shieldDisappear		258716
+	944264475	StopVoice	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Mac\SFX\StopVoice_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\StopVoice		293588
 

@@ -21,7 +21,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="4060328087" Language="SFX" Hash="228517863">
+		<SoundBank Id="4060328087" Language="SFX" Hash="1431305862">
 			<ObjectPath>\SoundBanks\Default Work Unit\BankEpsilon</ObjectPath>
 			<ShortName>BankEpsilon</ShortName>
 			<Path>BankEpsilon.bnk</Path>
@@ -46,6 +46,38 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1136066642" Name="errorSound" ObjectPath="\Events\Default Work Unit\errorSound" DurationType="OneShot" DurationMin="1.056190" DurationMax="1.056190">
+					<IncludedMemoryFiles>
+						<File Id="376798544" Language="SFX">
+							<ShortName>errorSound.wav</ShortName>
+							<Path>SFX\errorSound_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4121622623" Name="Flicker" ObjectPath="\Events\Default Work Unit\Flicker" DurationType="OneShot" DurationMin="9.000979" DurationMax="9.000979">
+					<IncludedMemoryFiles>
+						<File Id="678893159" Language="SFX">
+							<ShortName>Flicker.wav</ShortName>
+							<Path>SFX\Flicker_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1065493763" Name="GoVoice" ObjectPath="\Events\Default Work Unit\GoVoice" DurationType="OneShot" DurationMin="1.892437" DurationMax="1.892437">
+					<IncludedMemoryFiles>
+						<File Id="935057517" Language="SFX">
+							<ShortName>GoVoice.wav</ShortName>
+							<Path>SFX\GoVoice_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="86026100" Name="Like" ObjectPath="\Events\Default Work Unit\Like" DurationType="OneShot" DurationMin="0.024979" DurationMax="0.024979">
+					<IncludedMemoryFiles>
+						<File Id="442397883" Language="SFX">
+							<ShortName>Like.wav</ShortName>
+							<Path>SFX\Like_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1496194385" Name="shieldAppear" ObjectPath="\Events\Default Work Unit\shieldAppear" DurationType="OneShot" DurationMin="4.000000" DurationMax="4.000000">
 					<IncludedMemoryFiles>
 						<File Id="4607719" Language="SFX">
@@ -59,6 +91,14 @@
 						<File Id="936422803" Language="SFX">
 							<ShortName>shieldDisappear.wav</ShortName>
 							<Path>SFX\shieldDisappear_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1309266873" Name="StopVoice" ObjectPath="\Events\Default Work Unit\StopVoice" DurationType="OneShot" DurationMin="1.528771" DurationMax="1.528771">
+					<IncludedMemoryFiles>
+						<File Id="944264475" Language="SFX">
+							<ShortName>StopVoice.wav</ShortName>
+							<Path>SFX\StopVoice_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

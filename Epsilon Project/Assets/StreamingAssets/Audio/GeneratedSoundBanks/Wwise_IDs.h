@@ -14,8 +14,13 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID CLICK = 1584507803U;
+        static const AkUniqueID ERRORSOUND = 1136066642U;
+        static const AkUniqueID FLICKER = 4121622623U;
+        static const AkUniqueID GOVOICE = 1065493763U;
+        static const AkUniqueID LIKE = 86026100U;
         static const AkUniqueID SHIELDAPPEAR = 1496194385U;
         static const AkUniqueID SHIELDDISAPPEAR = 3556887013U;
+        static const AkUniqueID STOPVOICE = 1309266873U;
         static const AkUniqueID VIRUS = 3455673912U;
     } // namespace EVENTS
 
