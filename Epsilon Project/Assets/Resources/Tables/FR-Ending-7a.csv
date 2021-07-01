@@ -1,0 +1,19 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+T'es sûr??;;;;;;;
+;;;;;;;
+Ptn j'espère que je fais pas une erreur en técoutant;;;;;;;
+;;;;;;;
+PUTAIN;;;00:00:03:00;;;;
+;;;;;;;
+C'est IMMONDE;;;;;;;
+;;;;;;;
+C'est une PUTAIN D4ODEUR;Une odeur???;;;;;;
+;;;;;;;
+Ca PUE ENORMEMENT;Tu devrais fuir!!;;;;;;
+;Regarde ce qu'il y'a dedans!;;;;<BRANCH>Ending-7a1;;
+;;;;;;;
+Oui je me casse de la ptn;;;;;;;
+;;;;;;;
+Je vais me prendre une chambre d'hôtel ou jsp quoi;;;00:00:20:00;;;;
+;;;;;;;
+Je te recontacterais;;;;;;<BRANCH>Final-1;

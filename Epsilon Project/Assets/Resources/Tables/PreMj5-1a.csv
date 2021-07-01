@@ -1,8 +1,0 @@
-Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Bien, désolé de ne pas t'avoir contacté plus tot;Pas de soucis.;;00:24:00:00;;<BRANCH>PreMj5-1a1;;
-;C'est pas trop tôt.;;;;;;
-;;;;;;;
-Tu commences à te prendre au jeu?;Je m'inquiétais, c'est tout.;Je vois, c'est presque gentil, tu sais?;;;<BRANCH>PreMj5-1a1;;
-;Je dois avouer que oui.;Eh bien, c'est bien mais on arrive à la fin de notre projet.;;;;;
-;;;;;;;
-Désolé de ne pas t'avoir contacté plus tôt.;;;;;;<BRANCH>PreMj5-1a1;

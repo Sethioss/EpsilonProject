@@ -1,4 +1,0 @@
-Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Bien, je vais t'envoyer le lien d'içi quelques minutes, prépare-toi!;;;;;;<CHECKPOINT>;
-;;;;;;;
-Dès que tu signales ta présence, je t'envoie le lien.;Je suis là;;00:00:30:00;;<LINK>VirusTutorial 'Voilà le lien :';;

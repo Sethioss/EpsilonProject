@@ -1,0 +1,18 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Tu es là? Dis-moi que tu es là s'il te plait.;Oui.;;00:16:00:00;;;;
+;;;;;;;
+Bien. Écoute, je vais être plus clair avec toi.;;;;;;;
+;;;;;;;
+Sur notre motivation à tous.;Je t'écoute.;;;;;;
+;Enfin!;;;;;;
+;;;;;;;
+On est une bande de personnes qui ont toutes été d'une façon ou d'une autre... Déçues par leur vies et par leurs perspectives.;;;;;;;
+;;;;;;;
+Pour certains, c'était une aubaine, pour d'autres un malheur et une crainte de plus.;;;;;;;
+;;;;;;;
+Mais on s'est tous profondément renseignés sur le futur de notre société.;;;;;;;
+;;;;;;;
+Dans notre coin ou bien en s''informant les uns les autres.'';;;;;;;
+;;;;;;;
+Et… On s'est tous fait à l'idée que le futur s'annonçait plutôt sombre.;C’est-à-dire?;;;;<BRANCH>PreMj3-2;;
+;Et toi?;;;;<BRANCH>PreMj3-1a;;

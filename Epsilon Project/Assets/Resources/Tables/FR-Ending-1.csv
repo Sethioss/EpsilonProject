@@ -1,0 +1,26 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+T'es là?;Oui?;Désolé de te contacter à l'improviste, mais...;00:12:00:00;;;<CHECKPOINT>;
+;Hey, tu ne devais pas m'envoyer un message dans 1 semaine?;Oui, mais je te contacte pour une autre raison.;;;;;
+;;;;;;;
+J'ai vraiment peur…;Tout va bien??;;;;;;
+;Peur de quoi??;;;;;;
+;;;;;;;
+Ça fait deux jours que j'ai l'impression qu'on m'observe… Qu'on me suit.;Qui te suivrais?;;;;;;
+;Tu es sûr?!;;;;;;
+;;;;;;;
+Je sais pas, j'ai l'impression de devenir folle...;;;;;;;
+;;;;;;;
+Hier, j'ai vu un homme devant ma maison.;Il est resté longtemps?;;;;;;
+;C'est peut-être une coïncidence;;;;;;
+;;;;;;;
+Il y est resté quatre heures...;Ah oui...;;;;;;
+;????? Quoi;;;;;;
+;;;;;;;
+Et c'est pas tout...;;;;;;;
+;;;;;;;
+J'ai l'impression d'être suivie dans la rue.;;;;;;;
+;;;;;;;
+Aujourd'hui même, j'ai eu l'impression qu'un homme me suivait.;Tu penses savoir qui c'est?;;;;;;
+;Ce n'est pas toute ces histoires de hacking et de plans qui te montent à la tête?;;;;<BRANCH>Ending-1a;;
+;;;;;;;
+Non, j'ai des doutes quant à qui aurait pu m'envoyer quelqu'un mais...;Tu portes tes doutes sur qui?;;;;<BRANCH>Ending-2;;

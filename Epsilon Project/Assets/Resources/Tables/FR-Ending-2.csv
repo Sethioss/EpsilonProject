@@ -1,0 +1,17 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Attends.;??;;;;;;
+;;;;;;;
+L'homme dont je te parlais.;;;00:00:05:00;;;;
+;;;;;;;
+Il est là.;;;;;;;
+;;;;;;;
+Je crois qu'il m'a vu, il est devant ma maison.;Reste à l'affut!;Oui, je continue à l'observer discrètement...;;;;;
+;Tu peux le prendre en photo??;J'ai bien trop peur pour ça!;;;;;
+;;;;;;;
+Putain;?!;;;;;;
+;;;;;;;
+Je suis sûre qu'il m'a vu. Il est arrivé devant ma porte et a toqué de manière répétée. Je fais quoi?!;Va lui ouvrir;;;;;;
+;Trouve un moyen de fuir!;;;;<BRANCH>Ending-2a;;
+;;;;;;;
+T'es sûr?? Tu penses que je peux lui faire confiance?;Oui. Vas-y.;;;;;<BRANCH>Ending-2b;
+;Mmh... En y réflechissant bien, je ne pense pas. Tu devrais fuir.;;;;<BRANCH>Ending-2a;;
