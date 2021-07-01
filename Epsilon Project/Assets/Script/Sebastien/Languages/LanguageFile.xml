@@ -65,7 +65,7 @@ De Vinci Paris</digitalSchool>
     <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>
     <mj1ProfileBioContent>Bonjour je m'appelle Pierre tocan, je suis auriginaire du val d'oise et je suis marié depuis 10 ans avec Nathalie Tocan. </mj1ProfileBioContent>
     
-    <mj1MessagePanel>0 nouveux messages</mj1MessagePanel>
+    <mj1MessagePanel>0 nouveaux messages</mj1MessagePanel>
     <mj1BasicPostTitle>{0} a posté - le {1}/{2}</mj1BasicPostTitle>
     <mj1CommentTitle>{0} a commenté - le {1}/{2}</mj1CommentTitle>
     <mj1Post1Content>Nos vacances à Fuerteventura… Un petit coin de paradis perdu au milieu de l’atlantique et proches des côtes marocaines… Fantastique…</mj1Post1Content>
@@ -345,7 +345,7 @@ De Vinci Paris</digitalSchool>
     <mj4tuto1>Désactive la caméra rouge.</mj4tuto1>
     <mj4tuto2>Maintenant désactive la camera jaune.</mj4tuto2>
 
-    <mj41>Attends je fais une pause.</mj41>
+    <mjmj41>Attends je fais une pause.</mj41>
     <mj42>Je suis à bout de souffle, une seconde.</mj42>
     <mj43>Laisse moi vérifier quelque chose.</mj43>
     <mj44>Donne moi une minute, il y a quelque chose de suspect.</mj44>

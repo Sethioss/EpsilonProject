@@ -4249,17 +4249,18 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 0}
   dialogueFileToLoad: {fileID: 0}
+  dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
   m_testSet: 
   m_testSetFloat: 0
   m_wentBackHome: 0
   m_wentToBridge: 0
   username: Sebilol
+  confirmationMessage: {fileID: 0}
 --- !u!4 &854426622
 Transform:
   m_ObjectHideFlags: 0
