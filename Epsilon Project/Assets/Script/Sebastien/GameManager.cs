@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         SaveSystem.EraseMinigameProgressionData();
         SaveSystem.EraseCheckpointData();
 
-        DialogueManager.Instance.dialogueFileToLoad = DialogueManager.Instance.GetElementFileFromName("Intro1");
+        DialogueManager.Instance.dialogueFileToLoad = DialogueManager.Instance.GetElementFileFromName("FR-Intro1");
     }
 
     public void SetDialogue(TextAsset textToSet)

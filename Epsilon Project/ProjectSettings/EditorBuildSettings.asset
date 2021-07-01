@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene/Virus.unity
     guid: 972a00e62d5b66940a84c374571c43c5
   - enabled: 1
+    path: Assets/Scenes/FinalScene/TutoStealthMinigame.unity
+    guid: f72e8982094c86740981ebc1c4fc3fd4
+  - enabled: 1
     path: Assets/Scenes/FinalScene/StealthMinigame.unity
     guid: 7f3260fd4b016cd43bdefe99cb07e231
   - enabled: 1
