@@ -45,7 +45,7 @@ public class OptionMenu : MonoBehaviour
     {
         userSettings = UserSettings.Instance;
 
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             userSettings.Init();
         }
@@ -90,8 +90,11 @@ public class OptionMenu : MonoBehaviour
         {
             if (DialogueManager.Instance.timeManager != null)
             {
-                DialogueManager.Instance.timeManager.StopClock();
-                DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
+                if (!DialogueDisplayer.Instance.isWaitingForReply)
+                {
+                    DialogueManager.Instance.timeManager.StopClock();
+                    DialogueManager.Instance.timeManager.StartClock(UserSettings.Instance.autoModeWaitingTime);
+                }
             }
         }
         if (autoModeToggle.isOn && inactivePeriodsToggle.isOn)
@@ -169,9 +172,10 @@ public class OptionMenu : MonoBehaviour
         inactivePeriodsToggle.isOn = inactiveToggleValue;
 
         XMLManager.Instance.UpdateHour();
+
         try
         {
-            if (inactivePeriodsToggle.isOn)
+            if (!DialogueDisplayer.Instance.isWaitingForReply)
             {
                 if (DialogueManager.Instance.displayer.currentBubble == null)
                 {

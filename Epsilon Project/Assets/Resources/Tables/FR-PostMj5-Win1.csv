@@ -1,5 +1,5 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-C'est bon.;;;00:01:00:00;;;;
+C'est bon.;;;00:01:00:00;;;<CHECKPOINT>;
 ;;;;;;;
 Je te confirme que c'est bon, tu as réussi.;T'inquiète;;;;;;
 ;C'était pas très difficile!;;;;;;

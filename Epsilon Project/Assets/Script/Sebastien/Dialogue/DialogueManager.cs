@@ -76,8 +76,6 @@ public class DialogueManager : MonoBehaviour
 
     public string username = "Sebilol";
 
-    public AnimBanner confirmationMessage;
-
     #endregion
 
     private static DialogueManager instance;
@@ -696,7 +694,7 @@ public class DialogueManager : MonoBehaviour
 
     public void AskForConfirmation()
     {
-        confirmationMessage.ChangeAnim();
+        displayer.confirmationMessage.ChangeAnim();
     }
     #endregion
 }

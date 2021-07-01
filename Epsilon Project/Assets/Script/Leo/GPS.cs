@@ -6,7 +6,15 @@ using UnityEngine.Android;
 
 public class GPS : MonoBehaviour
 {
-    public static GPS Instance { set; get; }
+    public static GPS instance;
+    public static GPS Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
     public float latitude;
     public float longitude;
 
@@ -18,12 +26,22 @@ public class GPS : MonoBehaviour
             Permission.RequestUserPermission(Permission.FineLocation);
         }
 
+        if (instance == null)
+        {
+            instance = this;
+            //DontDestroyOnLoad(instance);
+        }
+
+        if (this != instance)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
     private void Start()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(instance);
         StartCoroutine(StartLocationService());
     }
 

@@ -57,15 +57,15 @@ public class DialogueDisplayer : MonoBehaviour
     [HideInInspector]
     public bool tempIsFinished;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool isInitialisation = true;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isWaitingForReply = false;
-    //[HideInInspector]
+    [HideInInspector]
     public bool hasReplied = false;
-    //[HideInInspector]
+    [HideInInspector]
     public bool reacting = true;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isFinished = false;
     private bool bubbleSpawned = false;
 
@@ -88,6 +88,8 @@ public class DialogueDisplayer : MonoBehaviour
     [Header("Reply area")]
     public GameObject repliesPanel;
     public GameObject replyButtonPrefab;
+
+    public AnimBanner confirmationMessage;
 
     DialogueData data;
 
@@ -236,7 +238,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         GameManager.Instance.ResetMinigameProgressionValues();
 
-        cachedDialogueManager.dialogueFileToLoad = cachedDialogueManager.GetElementFileFromName("Intro1");
+        cachedDialogueManager.dialogueFileToLoad = cachedDialogueManager.GetElementFileFromName("FR-Intro1");
     }
     public void UpdateDialogueState()
     {
