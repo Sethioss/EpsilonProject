@@ -20,6 +20,7 @@ public class CameraHacking : MonoBehaviour
     public void DeactivateCamera(GameObject target)
     {
         target.SetActive(false);
+        //Mettre le son WWise Suivant : Click
     }
 
     public void LoadNextScene(int sceneID)
@@ -44,6 +45,7 @@ public class CameraHacking : MonoBehaviour
 
     IEnumerator CameraFlicker(GameObject cameraHacked)
     {
+        //Mettre le son WWise Suivant : Flicker
         yield return new WaitForSeconds(.5f);
         cameraHacked.SetActive(true);
     }

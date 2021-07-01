@@ -89,6 +89,7 @@ public class VirusTutorial : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0;
         dialogueUI.SetActive(true);
+        //Mettre le son WWise Suivant : Click
     }
 
     public IEnumerator StartSpreading(int coordY, int coordX, float timeToWait)
@@ -124,6 +125,7 @@ public class VirusTutorial : MonoBehaviour
                             currentTileBhv.holdsVirus = false;
                             tileLeftBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY, coordX - 1, 4f));
                         }
                         else
@@ -151,6 +153,7 @@ public class VirusTutorial : MonoBehaviour
                             currentTileBhv.holdsVirus = false;
                             tileRightBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY, coordX + 1, 4f));
                         }
                         else
@@ -176,6 +179,7 @@ public class VirusTutorial : MonoBehaviour
                             currentTileBhv.holdsVirus = false;
                             tileUpBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY - 1, coordX, 4f));
                         }
                         else
@@ -201,6 +205,7 @@ public class VirusTutorial : MonoBehaviour
                             currentTileBhv.holdsVirus = false;
                             tileDownBhv.holdsVirus = true;
                             (currentTileBhv.virusAnim).SetBool("canDissolve", true);
+                            //Mettre le son WWise Suivant : virus
                             StartCoroutine(StartSpreading(coordY + 1, coordX, 4f));
                         }
                         else
@@ -221,11 +226,13 @@ public class VirusTutorial : MonoBehaviour
         {
         Time.timeScale = 1;
         dialogueUI.SetActive(false);
-        }
-  
+        //Mettre le son WWise Suivant : Click
+    }
+
     public void ChangeScene(int sceneToLoad)
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneToLoad);
+        //Mettre le son WWise Suivant : Click
     }
 }

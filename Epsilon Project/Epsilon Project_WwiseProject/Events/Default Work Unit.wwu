@@ -3,12 +3,45 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{F71C6CFD-C1D7-4D66-98EC-DD6952664F1C}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Beep" ID="{59D5ABFE-49A0-42E8-BB60-48F74DDF737A}">
+				<Event Name="shieldAppear" ID="{9FE61193-7362-4D60-B437-8E693060DF23}">
 					<ChildrenList>
-						<Action Name="" ID="{4DA43839-7551-4514-8828-D3168D79354F}" ShortID="77765088">
+						<Action Name="" ID="{160A4E99-39CC-44B6-8178-88DDFC64B991}" ShortID="625743970">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Beep" ID="{9E280071-E0CE-4490-9951-FE39984FE245}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+									<ObjectRef Name="shieldAppear" ID="{6DBAB4D2-37C4-4B39-A3EC-C4EF231BFC9A}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="shieldDisappear" ID="{6A8C890A-74A8-441E-9410-12DE1F7BB167}">
+					<ChildrenList>
+						<Action Name="" ID="{2795BF12-0CF5-4581-A5A8-8E405A0E8497}" ShortID="242430941">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="shieldDisappear" ID="{44A38CEC-BD50-4889-B2B7-1723690A59DD}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="virus" ID="{95E8A225-60B1-491E-83A9-AFABCA55CD1B}">
+					<ChildrenList>
+						<Action Name="" ID="{3626EBEE-C205-426A-9FB0-389DD64CF244}" ShortID="526096062">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="virus" ID="{9780FFFE-2916-4104-8B37-500C54ECDFE4}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Click" ID="{9604A947-9354-49BE-867D-32FE7068B16F}">
+					<ChildrenList>
+						<Action Name="" ID="{474DC678-8F84-4E44-A79A-E89A1DBF1697}" ShortID="111302282">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Click" ID="{6B803607-3542-4FBE-AD7D-962F6EFB9759}" WorkUnitID="{692BBA39-AC22-4887-99AA-E728311E4E6E}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

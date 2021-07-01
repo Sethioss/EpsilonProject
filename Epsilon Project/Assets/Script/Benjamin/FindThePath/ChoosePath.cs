@@ -21,11 +21,13 @@ public class ChoosePath : MonoBehaviour
     {
         if (correctPath)
         {
+            //Mettre le son WWise Suivant : Click
             Debug.Log("You found the correct path. Congrats !");
             MinigameManager.Instance.winAction.Invoke();
         }
         else
         {
+            //Mettre le son WWise Suivant : Error
             Debug.Log("Booh ! That's wrong");
         }
     }
