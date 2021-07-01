@@ -178,6 +178,9 @@ public class XMLManager : MonoBehaviour
                     }
             }
         }
+
+        DialogueManager.Instance.localisedDialogue = DialogueManager.Instance.GetLocalisedDialogue(DialogueManager.Instance.dialogueFileToLoad);
+        DialogueManager.Instance.unlocalisedDialogue = DialogueManager.Instance.GetUnlocalisedDialogue(DialogueManager.Instance.dialogueFileToLoad);
     }
 
     public void UpdateHour()

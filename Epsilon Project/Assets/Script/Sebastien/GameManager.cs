@@ -104,6 +104,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadChekpoint()
+    {
+        Debug.LogWarning("Loading checkpointData");
+        CheckpointData data = SaveSystem.LoadCheckpoint();
+
+        if (data != null)
+        {
+            Instance.minigameProgressionList = new List<MinigameProgressionUnit>();
+
+            for (int i = 0; i < data.minigameName.Count; i++)
+            {
+                Instance.minigameProgressionList.Add(new MinigameProgressionUnit(data.minigameName[i], data.minigameFinished[i]));
+            }
+
+            DialogueManager.Instance.wentBackHome = data.wentBackHome;
+            DialogueManager.Instance.wentToBridge = data.wentToBridge;
+        }
+
+        SaveSystem.SaveMinigameProgression(Instance.minigameProgressionList);
+    }
+
     public void ResetMinigameProgressionValues()
     {
         Instance.minigameProgressionList = minigameProgressionList;
@@ -135,12 +156,14 @@ public class GameManager : MonoBehaviour
 
     public void SetDialogue(TextAsset textToSet)
     {
-        DialogueManager.Instance.dialogueFileToLoad = textToSet;
+        Debug.LogError(DialogueManager.Instance.GetElementFileFromName(DialogueManager.Instance.GetLocalisedDialogue(textToSet)).name);
+        DialogueManager.Instance.dialogueFileToLoad = DialogueManager.Instance.GetElementFileFromName(DialogueManager.Instance.GetLocalisedDialogue(textToSet));
     }
 
     public void SetDialogue(string dialogueFileName)
     {
-        DialogueManager.Instance.dialogueFileToLoad = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
+        Debug.LogError("Tables\\" + DialogueManager.Instance.GetLocalisedDialogue(dialogueFileName));
+        DialogueManager.Instance.dialogueFileToLoad = (TextAsset)Resources.Load("Tables\\" + DialogueManager.Instance.GetLocalisedDialogue(dialogueFileName));
     }
 
     public void GoToChatScene()

@@ -138,7 +138,7 @@ public class DialogueDisplayer : MonoBehaviour
         {
             for (int i = 0; i < cachedDialogueManager.mainChatDialoguesToSave.Count; i++)
             {
-                if (cachedDialogueManager.dialogueFileToLoad.name == cachedDialogueManager.mainChatDialoguesToSave[i].fileName)
+                if (cachedDialogueManager.GetUnlocalisedDialogue(cachedDialogueManager.dialogueFileToLoad.name) == cachedDialogueManager.GetUnlocalisedDialogue(cachedDialogueManager.mainChatDialoguesToSave[i].fileName))
                 {
                     isDialogueAlreadyInList = true;
                     break;
@@ -149,7 +149,7 @@ public class DialogueDisplayer : MonoBehaviour
         {
             for (int i = 0; i < cachedDialogueManager.hackingChatDialoguesToSave.Count; i++)
             {
-                if (cachedDialogueManager.dialogueFileToLoad.name == cachedDialogueManager.hackingChatDialoguesToSave[i].fileName)
+                if (cachedDialogueManager.GetUnlocalisedDialogue(cachedDialogueManager.dialogueFileToLoad.name) == cachedDialogueManager.GetUnlocalisedDialogue(cachedDialogueManager.hackingChatDialoguesToSave[i].fileName))
                 {
                     isDialogueAlreadyInList = true;
                     break;
@@ -159,7 +159,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         if (!isDialogueAlreadyInList)
         {
-            cachedDialogueManager.CreateAndStartDialogue(cachedDialogueManager.dialogueFileToLoad);
+            cachedDialogueManager.CreateAndStartDialogue(cachedDialogueManager.GetLocalisedDialogue(cachedDialogueManager.dialogueFileToLoad.name));
         }
     }
 
@@ -421,9 +421,9 @@ public class DialogueDisplayer : MonoBehaviour
         for (int i = 0; i < data.dialogueFileName.Count; i++)
         {
             //Debug.LogError("Checking dialogue " + data.dialogueFileName[i]);
-            Dialogue templateDialogue = cachedDialogueManager.CreateDialogue(data.dialogueFileName[i]);
+            Dialogue templateDialogue = cachedDialogueManager.CreateDialogue(cachedDialogueManager.GetLocalisedDialogue(data.dialogueFileName[i]));
             Dialogue dialogueToCreate = new Dialogue();
-            dialogueToCreate.fileName = data.dialogueFileName[i];
+            dialogueToCreate.fileName = cachedDialogueManager.GetLocalisedDialogue(data.dialogueFileName[i]);
             dialogueToCreate.id = templateDialogue.id;
 
             //Debug.LogWarning("Number of elements in dialogue " + data.numberOfElementsInDialogue[i]);
@@ -432,7 +432,6 @@ public class DialogueDisplayer : MonoBehaviour
             //Pour chaque élément
             for (int j = 0; j < templateDialogue.elements.Count; j++)
             {
-                Debug.LogWarning(templateDialogue.elements[j].minigameLinkFinished);
                 //Debug.LogError(processedGlobalElement);
                 //Debug.LogError("Checking element " + currentDialogue.elements[j].index);
                 //If the save data indicates that the player has already passed this element
@@ -453,7 +452,7 @@ public class DialogueDisplayer : MonoBehaviour
                                 templateDialogue.elements[j].index, templateDialogue.elements[j].initiationTime, templateDialogue.elements[j].elementAction);
                             element.chosenReplyIndex = data.chosenReplyId[globalElementInLoop];
                             element.minigameLinkFinished = templateDialogue.elements[j].minigameLinkFinished;
-                            Debug.LogError("minigameLink : " + element.minigameLinkFinished);
+                            //Debug.LogError("minigameLink : " + element.minigameLinkFinished);
 
                             element.messageType = templateDialogue.elements[j].messageType;
 

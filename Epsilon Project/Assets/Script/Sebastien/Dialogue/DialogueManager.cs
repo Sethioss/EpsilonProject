@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Localisation Debug")]
+    public string localisedDialogue;
+    public string unlocalisedDialogue;
+    [Header("Disregards all dialogue localisations (Defaults to French)")]
+    public bool ignoreDialogueLocalisation;
+
     [HideInInspector]
     public bool onGameSceneEntered = false;
 
@@ -83,6 +89,61 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public string GetUnlocalisedDialogue(TextAsset dialogue)
+    {
+        string dialogueName = dialogue.name;
+        int endOfLocalisation = dialogueName.IndexOf("-");
+        string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
+
+        unlocalisedDialogue = unlocalisedDialogueName;
+        return unlocalisedDialogueName;
+    }
+
+    public string GetLocalisedDialogue(TextAsset dialogue)
+    {
+        string dialogueName = dialogue.name;
+
+        if (!ignoreDialogueLocalisation)
+        {
+            dialogueName = UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogue);
+        }
+        else
+        {
+            dialogueName = "FR-" + GetUnlocalisedDialogue(dialogue);
+        }
+
+        localisedDialogue = dialogueName;
+        return dialogueName;
+    }
+    public string GetUnlocalisedDialogue(string dialogue)
+    {
+        string dialogueName = dialogue;
+        int endOfLocalisation = dialogueName.IndexOf("-");
+        string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
+
+        unlocalisedDialogue = unlocalisedDialogueName;
+        return unlocalisedDialogueName;
+    }
+
+    public string GetLocalisedDialogue(string dialogue)
+    {
+        string dialogueName = dialogue;
+        if (!ignoreDialogueLocalisation)
+        {
+            dialogueName = UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogue);
+        }
+        else
+        {
+            dialogueName = "FR-" + GetUnlocalisedDialogue(dialogue);
+        }
+
+        localisedDialogue = dialogueName;
+        TextAsset temp = GetElementFileFromName(dialogueName);
+        currentDialogueFile = temp;
+
+        return dialogueName;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -144,6 +205,7 @@ public class DialogueManager : MonoBehaviour
     private void AddDialogueToDialogueList(Dialogue dialogueToAdd)
     {
         dialogueList.Add(dialogueToAdd);
+        localisedDialogue = GetLocalisedDialogue(GetElementFileFromName(dialogueFileToLoad.name));
     }
     private void StartDialogue(Dialogue dialogueToStart)
     {
@@ -161,7 +223,7 @@ public class DialogueManager : MonoBehaviour
                 displayer.cameFromBranch = true;
                 if (dialogueFileName != "")
                 {
-                    dialogueList.Insert(dialogueList.Count, CreateDialogue(dialogueFileName));
+                    dialogueList.Insert(dialogueList.Count, CreateDialogue(GetLocalisedDialogue(UserSettings.Instance.languagePrefix + "-" + dialogueFileName)));
                 }
             }
         }
@@ -607,13 +669,13 @@ public class DialogueManager : MonoBehaviour
     #region GAMEOVER Command
     public void GoToCheckpoint()
     {
-        for(int i = mainChatDialoguesToSave.Count-1; i >= 0; i--)
+        for (int i = mainChatDialoguesToSave.Count - 1; i >= 0; i--)
         {
-            if(mainChatDialoguesToSave[i].fileName == dialogueCheckpoint)
+            if (mainChatDialoguesToSave[i].fileName == dialogueCheckpoint)
             {
                 dialogueFileToLoad = GetElementFileFromName(dialogueCheckpoint);
                 displayer.SaveDialogueData(mainChatDialoguesToSave);
-                displayer.currentDialogueElementId = mainChatDialoguesToSave[i].elements.Count-1;
+                displayer.currentDialogueElementId = 1;
                 //Debug.LogError(displayer.currentDialogueElementId);
 
                 displayer.isInitialisation = true;
@@ -628,6 +690,8 @@ public class DialogueManager : MonoBehaviour
                 displayer.SaveDialogueData(mainChatDialoguesToSave);
             }
         }
+        GameManager.Instance.LoadChekpoint();
+        displayer.SaveDialogueData(mainChatDialoguesToSave);
         GameManager.Instance.GoToChatScene();
     }
 
