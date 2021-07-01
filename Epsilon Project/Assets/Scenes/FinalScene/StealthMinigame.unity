@@ -11977,8 +11977,6 @@ MonoBehaviour:
   teleportDestinations: 000000000000000000000000010000000000000002000000
   step: 0
   agent: {fileID: 382797928}
-  winScreen: {fileID: 0}
-  loseScreen: {fileID: 0}
   NumberGoal: 0
   textBox: {fileID: 2055952030}
   textBoxText: {fileID: 1777158019}
@@ -20805,6 +20803,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6580152032012484137, guid: d3c3e32bc703a094dadfdcdb4abfa46b, type: 3}
   m_PrefabInstance: {fileID: 636761051}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &638592412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638592414}
+  - component: {fileID: 638592413}
+  m_Layer: 0
+  m_Name: XML Tag List
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &638592413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638592412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b292d73df09bb41b5af33987fe94c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionName: 
+  tagList:
+  - tagTxtObject: {fileID: 1777158019}
+    tagName: 
+    dynamicID: 0
+    customParameters: []
+--- !u!4 &638592414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638592412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1037.5266, y: 989.5252, z: -7788.9487}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &640293545
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,9 +17,7 @@ public class CharacterBehaviour : MonoBehaviour
     [SerializeField] int step = 0;
     bool doneWaiting = true;
     public NavMeshAgent agent;
-    public GameObject winScreen, loseScreen;
     public int NumberGoal = 0;
-    private CameraManager cameraManager;
     public GameObject textBox;
     public TMP_Text textBoxText;
     public string[] stopTexts;
