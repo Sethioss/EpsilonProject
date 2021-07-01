@@ -37,7 +37,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-15</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -306,7 +306,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-10</Value>
+								<Value>-15</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -319,7 +319,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="GoVoice" ID="{F9AD5DD7-76EA-45FA-9106-002C3294A8F5}">
+						<AudioFileSource Name="GoVoice" ID="{9EABA8C3-8BB8-4E6D-ADEE-929653709E47}">
 							<Language>SFX</Language>
 							<AudioFile>GoVoice.wav</AudioFile>
 							<MediaIDList>
@@ -329,7 +329,7 @@
 					</ChildrenList>
 					<ObjectLists/>
 					<ActiveSourceList>
-						<ActiveSource Name="GoVoice" ID="{F9AD5DD7-76EA-45FA-9106-002C3294A8F5}" Platform="Linked"/>
+						<ActiveSource Name="GoVoice" ID="{9EABA8C3-8BB8-4E6D-ADEE-929653709E47}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Like" ID="{F2F05376-01CF-43F1-9408-6A6BF7A45684}" ShortID="126026981">

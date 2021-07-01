@@ -19,7 +19,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	678893159	Flicker	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\Flicker_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Flicker		1728252
 	723815568	Click 1	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\Click 1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Click\Click 1		242860
 	809707411	virus	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\virus_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\virus		113840
-	935057517	GoVoice	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\GoVoice_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GoVoice		363412
+	935057517	GoVoice	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\GoVoice_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GoVoice		80796
 	936422803	shieldDisappear	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\shieldDisappear_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\shieldDisappear		258716
 	944264475	StopVoice	A:\JeuxTravaille\Epsilon Project\Epsilon Project\Epsilon Project_WwiseProject\.cache\Windows\SFX\StopVoice_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\StopVoice		293588
 
