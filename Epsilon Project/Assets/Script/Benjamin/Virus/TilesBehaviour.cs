@@ -78,6 +78,7 @@ public class TilesBehaviour : MonoBehaviour
         {
             Debug.Log("Deactivating");
             //Mettre le son WWise Suivant : shieldDisappear
+            WwiseSoundManager.instance.shieldDisappear.Post(gameObject);
             hackUI.SetActive(false);
             hackField.Select();
             hackField.text = "";
@@ -94,6 +95,7 @@ public class TilesBehaviour : MonoBehaviour
             if ((isTutorial == false) || (isTutorial == true && tutorial.step >= 2))
             {
                 //Mettre le son WWise Suivant : Click
+                WwiseSoundManager.instance.Click.Post(gameObject);
                 hackUI.SetActive(true);
                 if (useRandomText)
                 {

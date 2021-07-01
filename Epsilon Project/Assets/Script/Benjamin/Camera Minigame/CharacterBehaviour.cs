@@ -57,6 +57,7 @@ public class CharacterBehaviour : MonoBehaviour
         if (textHasToChange == true)
         {
             //Mettre le son WWise Suivant : stopVoice
+            WwiseSoundManager.instance.StopVoice.Post(gameObject);
             if (isTutorial == false)
             {
                 int dialogueNumber = Random.Range(0, stopTexts.Length);
@@ -100,6 +101,7 @@ public class CharacterBehaviour : MonoBehaviour
             }
         }
         //Mettre le son WWise Suivant : GoVoice
+        WwiseSoundManager.instance.GoVoice.Post(gameObject);
         textBox.SetActive(false);
         textHasToChange = true;
         agent.SetDestination(destinations[step].transform.position);
@@ -126,6 +128,7 @@ public class CharacterBehaviour : MonoBehaviour
             Debug.Log("You were spotted");
             MinigameManager.Instance.loseAction.Invoke();
             //Mettre le son WWise Suivant : errorSound
+            WwiseSoundManager.instance.errorSound.Post(gameObject);
         }
         //if (other.CompareTag("Goal"))
         //{
