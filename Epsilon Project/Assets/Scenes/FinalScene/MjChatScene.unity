@@ -781,15 +781,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoModeDebug: 0
+  sentAutoModeWindow: 0
+  hasUnlockedAutoMode: 0
   autoMode: 1
   autoModeWaitingTime: 00:00:00:01
   inactivePeriods: 0
   inactivePeriodStartHour: 1
   inactivePeriodEndHour: 7
-  activateClockRecalibration: 0
   language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 5ba23c5627c4fda4984cb463e630c77b, type: 3}
+  popUpObject: {fileID: 0}
 --- !u!4 &1246198761
 Transform:
   m_ObjectHideFlags: 0
@@ -957,6 +960,10 @@ MonoBehaviour:
     elements: []
   currentDialogueElementId: 0
   isLoading: 0
+  second: 0
+  minute: 0
+  hour: 0
+  day: 0
   tempWaitingForReply: 0
   tempIsInitialisation: 0
   tempHasReplied: 0
@@ -976,10 +983,6 @@ MonoBehaviour:
   leaveMessagePrefab: {fileID: 2779018404497212492, guid: e145832930cacb54f8ec2935d3f8f3e8, type: 3}
   repliesPanel: {fileID: 1341360253}
   replyButtonPrefab: {fileID: 6342958404133415085, guid: 01cd6fe05737bc74abff4598126d0deb, type: 3}
-  second: 0
-  minute: 0
-  hour: 0
-  day: 0
 --- !u!4 &1496320537
 Transform:
   m_ObjectHideFlags: 0
@@ -1418,23 +1421,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ead04e35fcf0094183f0e5da6da5ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localisedDialogue: 
+  unlocalisedDialogue: 
+  ignoreDialogueLocalisation: 1
   onGameSceneEntered: 0
   reader: {fileID: 0}
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 0d656ac13570455499464e5ad7bca8ad, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: 0d656ac13570455499464e5ad7bca8ad, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 41b8f39d68132664f96f04247017384d, type: 3}
+  dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
   debugExecutingFunction: 0
-  persistentSave: 0
   m_testSet: 45
   m_testSetFloat: 7
   m_wentBackHome: 0
   m_wentToBridge: 0
   username: Sebilol
+  confirmationMessage: {fileID: 0}
 --- !u!4 &1863533797
 Transform:
   m_ObjectHideFlags: 0

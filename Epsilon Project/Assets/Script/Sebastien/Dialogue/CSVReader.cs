@@ -900,7 +900,7 @@ public class CSVReader : MonoBehaviour
 
         if (branchToGoTo != "")
         {
-            leaveActions += delegate { GameManager.Instance.SetDialogueAndGoToGame(branchToGoTo); };
+            leaveActions += delegate { GameManager.Instance.SetDialogueAndGoToGame(UserSettings.Instance.languagePrefix + "-" + branchToGoTo); };
         }
         else
         {
