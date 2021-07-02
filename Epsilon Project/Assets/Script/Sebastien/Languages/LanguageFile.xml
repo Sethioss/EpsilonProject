@@ -54,7 +54,7 @@ De Vinci Paris</digitalSchool>
     <inactiveDesc>Si activé, vos interlocuteurs ne vous enverront des messages que pendant une période que vous avez défini (Désactivé si le mode automatique est actif)</inactiveDesc>
     <inactivePeriodSet>Je ne veux pas recevoir de messages entre {0}h et {1}h.</inactivePeriodSet>
     <languageTitle>Langue</languageTitle>
-    <languageDesc>Changer la langue du jeu</languageDesc>
+    <languageDesc>Changer la langue du jeu (La traduction anglaise complète arrive bientôt)</languageDesc>
     <profilePictureText>Changer l'image de profil</profilePictureText>
     
     <eraseDataText>Supprimer les données de sauvegarde</eraseDataText>
@@ -410,7 +410,7 @@ De Vinci Paris
     <inactiveDesc>If active, your interlocutors will only send messages between the selected time frame (Isn't active when automatic mode is on)</inactiveDesc>
     <inactivePeriodSet>I don't want to receive messages between {0} and {1}.</inactivePeriodSet>
     <languageTitle>Language</languageTitle>
-    <languageDesc>Change the game's language</languageDesc>
+    <languageDesc>Change the game's language (Full english translation coming soon)</languageDesc>
     <profilePictureText>Change your profile picture</profilePictureText>
     
     <eraseDataText>Erase save data</eraseDataText>

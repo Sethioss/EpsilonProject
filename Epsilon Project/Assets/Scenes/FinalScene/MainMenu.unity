@@ -8576,10 +8576,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoModeDebug: 1
+  autoModeDebug: 0
   sentAutoModeWindow: 0
   hasUnlockedAutoMode: 0
-  autoMode: 1
+  autoMode: 0
   autoModeWaitingTime: 00:00:00:01
   inactivePeriods: 0
   inactivePeriodStartHour: 5
