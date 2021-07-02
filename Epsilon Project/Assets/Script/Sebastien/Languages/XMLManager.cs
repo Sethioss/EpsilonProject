@@ -44,6 +44,7 @@ public class XMLManager : MonoBehaviour
         CreateDictionary();
     }
 
+    #region XMLTag fetching / Setup
     public void GetSceneXMLTags()
     {
         xmlTagLists = new List<XMLTagList>();
@@ -81,7 +82,9 @@ public class XMLManager : MonoBehaviour
             dictionary.Add(tempObj);
         }
     }
+    #endregion
 
+    #region LanguageSwitching functions
     public void SwitchLanguage()
     {
         languageSwitchTrigger = true;
@@ -182,7 +185,9 @@ public class XMLManager : MonoBehaviour
         DialogueManager.Instance.localisedDialogue = DialogueManager.Instance.GetLocalisedDialogue(DialogueManager.Instance.dialogueFileToLoad);
         DialogueManager.Instance.unlocalisedDialogue = DialogueManager.Instance.GetUnlocalisedDialogue(DialogueManager.Instance.dialogueFileToLoad);
     }
+    #endregion
 
+    #region XMLTags Dynamic ID functions
     public void UpdateHour()
     {
         try
@@ -231,4 +236,5 @@ public class XMLManager : MonoBehaviour
         }
 
     }
+    #endregion
 }

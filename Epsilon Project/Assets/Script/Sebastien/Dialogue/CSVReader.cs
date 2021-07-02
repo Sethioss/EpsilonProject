@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class CSVReader : MonoBehaviour
 {
-    private Dialogue tempDialogue;
-    private List<DialogueElement> specialMessageElementBuffer;
-
     private static CSVReader instance;
     public static CSVReader Instance
     {
@@ -16,6 +13,9 @@ public class CSVReader : MonoBehaviour
             return instance;
         }
     }
+
+    private Dialogue tempDialogue;
+    private List<DialogueElement> specialMessageElementBuffer;
 
     private void Awake()
     {
@@ -168,17 +168,23 @@ public class CSVReader : MonoBehaviour
                     string stringToReturn = "<" + originalString.Substring(1, originalString.Length - 1) + ">";
                     return stringToReturn;
 
+                #region USERNAME
                 case "USERNAME":
                     return DialogueManager.Instance.username;
+                #endregion
 
+                #region DMODEL
                 case "DMODEL":
                     return SystemInfo.deviceModel;
+                #endregion
 
+                #region GPS Infos
                 /*case "LAT":
                     return GPS.Instance.latitude.ToString();
 
                 case "LONG":
                     return GPS.Instance.longitude.ToString();*/
+                #endregion
 
                 default:
                     return "<" + originalString + ">";
@@ -833,6 +839,7 @@ public class CSVReader : MonoBehaviour
     }
     #endregion
 
+    #region Special Element Creation
     private void CreateGameOverElement(List<DialogueElement> elementBuffer, string gameOverString)
     {
         DialogueElement newElement = new DialogueElement(gameOverString, tempDialogue.elements.Count, "00:00:00:01", null);
@@ -877,7 +884,6 @@ public class CSVReader : MonoBehaviour
 
         elementBuffer.Add(newElement);
     }
-
     private void CreateInfoElement(List<DialogueElement> elementBuffer, string infoString)
     {
         DialogueElement newElement = new DialogueElement(infoString, tempDialogue.elements.Count, "00:00:00:01", null);
@@ -886,7 +892,6 @@ public class CSVReader : MonoBehaviour
 
         elementBuffer.Add(newElement);
     }
-
     private void CreateLeaveElement(List<DialogueElement> elementBuffer, string branchToGoTo, string leaveMessage = null)
     {
         if (leaveMessage == null)
@@ -900,7 +905,7 @@ public class CSVReader : MonoBehaviour
 
         if (branchToGoTo != "")
         {
-            leaveActions += delegate { GameManager.Instance.SetDialogueAndGoToGame(UserSettings.Instance.languagePrefix + "-" + branchToGoTo); };
+            leaveActions += delegate { GameManager.Instance.SetDialogueAndGoToChatScene(UserSettings.Instance.languagePrefix + "-" + branchToGoTo); };
         }
         else
         {
@@ -935,9 +940,9 @@ public class CSVReader : MonoBehaviour
 
         newElement.messageType = DialogueElement.MessageType.LINK;
 
-        foreach(MinigameProgressionUnit unit in GameManager.Instance.minigameProgressionList)
+        foreach (MinigameProgressionUnit unit in GameManager.Instance.minigameProgressionList)
         {
-            if(unit.stringID == sceneToChangeTo)
+            if (unit.stringID == sceneToChangeTo)
             {
                 //Debug.LogWarning("There's a match!");
                 if (unit.minigameFinished)
@@ -955,6 +960,9 @@ public class CSVReader : MonoBehaviour
         elementBuffer.Add(newElement);
     }
 
+    #endregion
+
+    #region Misc
     private string GenerateRandomLink()
     {
         string randomLinkStart = "<color=blue><u>https://";
@@ -969,14 +977,6 @@ public class CSVReader : MonoBehaviour
 
         return randomLinkStart + randomLetterChain + randomLinkEnd;
     }
-
-    private float GetFloat(string stringValue, float defaultValue)
-    {
-        float result = defaultValue;
-        float.TryParse(stringValue, out result);
-        return result;
-    }
-
     private string GetTime(string cellContent)
     {
         if (cellContent.Split(new char[] { ':' }, System.StringSplitOptions.RemoveEmptyEntries).Length > 2)
@@ -986,4 +986,5 @@ public class CSVReader : MonoBehaviour
         //The time isn't readable
         return "00:00:00:07";
     }
+    #endregion
 }

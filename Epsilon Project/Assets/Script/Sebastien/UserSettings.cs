@@ -13,6 +13,7 @@ public class UserSettings : MonoBehaviour
         }
     }
 
+    #region Dialogue Display Related options
     [Header("True = Acts as if it had already unlocked autoMode")]
     public bool autoModeDebug = false;
     public bool sentAutoModeWindow;
@@ -32,16 +33,22 @@ public class UserSettings : MonoBehaviour
 
     [Range(0, 23)]
     public int inactivePeriodEndHour = 7;
+
+    #endregion
+
+    #region Language related options
     public enum Language { Français = 0, English = 1 };
     public Language language;
-
     [HideInInspector]
     public string languagePrefix;
+    #endregion
 
+    #region Misc
     public Sprite profilePicture;
-
     public GameObject popUpObject;
+    #endregion
 
+    #region Editor Debug Variables
 #if UNITY_EDITOR
     private OptionMenu sceneOptionMenu;
     private XMLManager xmlManager;
@@ -53,7 +60,9 @@ public class UserSettings : MonoBehaviour
     private Language languageMemory;
     private Sprite profilePictureMemory;
 #endif
+    #endregion
 
+    #region Unity Loop
     private void Awake()
     {
         if (instance == null)
@@ -67,9 +76,11 @@ public class UserSettings : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        Init();        
-    }
+        Init();
+    } 
+    #endregion
 
+    #region Load/Save functions
     public void Init()
     {
         LoadUserSettings();
@@ -91,6 +102,7 @@ public class UserSettings : MonoBehaviour
 
         SaveSystem.SaveSettings(this);
     }
+
     private void LoadUserSettings()
     {
         SettingsData data = SaveSystem.LoadSettings();
@@ -139,7 +151,9 @@ public class UserSettings : MonoBehaviour
         }
 
     }
+    #endregion
 
+    #region Editor Debug Functions
 #if UNITY_EDITOR
     private void Update()
     {
@@ -160,7 +174,7 @@ public class UserSettings : MonoBehaviour
             ResetElements();
         }
 
-        if(messageSentMemory != sentAutoModeWindow)
+        if (messageSentMemory != sentAutoModeWindow)
         {
             ResetElements();
         }
@@ -180,7 +194,6 @@ public class UserSettings : MonoBehaviour
             ResetElements();
         }
     }
-
     private void ResetElements()
     {
         autoModeMemory = autoMode;
@@ -206,4 +219,5 @@ public class UserSettings : MonoBehaviour
         SaveSystem.SaveSettings(this);
     }
 #endif
+    #endregion
 }

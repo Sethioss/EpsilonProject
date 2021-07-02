@@ -8576,15 +8576,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61352c775cca13b4cbad5a2561d8f876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoModeDebug: 0
+  autoModeDebug: 1
   sentAutoModeWindow: 0
   hasUnlockedAutoMode: 0
-  autoMode: 0
-  autoModeWaitingTime: 00:00:00:01
+  autoMode: 1
+  autoModeWaitingTime: 00:00:00:00
   inactivePeriods: 0
   inactivePeriodStartHour: 5
   inactivePeriodEndHour: 10
-  language: 0
+  language: 1
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 1c90b049c0955d4489d6617601677090, type: 3}
   popUpObject: {fileID: 1764447008}
@@ -18863,14 +18863,13 @@ MonoBehaviour:
   localisedDialogue: 
   unlocalisedDialogue: 
   ignoreDialogueLocalisation: 1
-  onGameSceneEntered: 0
-  reader: {fileID: 0}
-  displayer: {fileID: 0}
-  timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 75c46255314d44a4cb9f2f3ca6dc3692, type: 3}
   dialogueFileToLoad: {fileID: 4900000, guid: 04b8793397bf80446916f1c999aa7c08, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
+  reader: {fileID: 0}
+  displayer: {fileID: 0}
+  timeManager: {fileID: 0}
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0

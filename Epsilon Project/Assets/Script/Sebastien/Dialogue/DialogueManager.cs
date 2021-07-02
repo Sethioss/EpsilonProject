@@ -7,14 +7,32 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    private static DialogueManager instance;
+    public static DialogueManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    #region Dialogue related variables
     [Header("Localisation Debug")]
     public string localisedDialogue;
     public string unlocalisedDialogue;
     [Header("Disregards all dialogue localisations (Defaults to French)")]
     public bool ignoreDialogueLocalisation;
 
+    [Header("Dialogue initialisation and list")]
     [HideInInspector]
-    public bool onGameSceneEntered = false;
+    public TextAsset currentDialogueFile;
+    public TextAsset dialogueFileToLoad;
+
+    [HideInInspector]
+    public string dialogueCheckpoint;
+
+    public List<Dialogue> dialogueList;
+    #endregion
 
     #region Dialogue Manager Components
     [HideInInspector]
@@ -23,21 +41,15 @@ public class DialogueManager : MonoBehaviour
     public DialogueDisplayer displayer;
     [HideInInspector]
     public TimeManager timeManager;
-
-    [Header("Dialogue initialisation and list")]
-    [HideInInspector]
-    public TextAsset currentDialogueFile;
-    public TextAsset dialogueFileToLoad;
-    [HideInInspector]
-    public string dialogueCheckpoint;
-
-    public List<Dialogue> dialogueList;
     #endregion
 
+    #region Saved Dialogues variables
     public List<Dialogue> mainChatDialoguesToSave = new List<Dialogue>();
     public List<Dialogue> hackingChatDialoguesToSave = new List<Dialogue>();
+    #endregion
 
     #region Debug
+
     [Header("Debugging tools")]
     [Tooltip("Sends debug messages for each command keyword found in the dialogue file")]
     public bool debugReadCommandKeywords = false;
@@ -78,70 +90,6 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    private static DialogueManager instance;
-    public static DialogueManager Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-
-    public string GetUnlocalisedDialogue(TextAsset dialogue)
-    {
-        string dialogueName = dialogue.name;
-        int endOfLocalisation = dialogueName.IndexOf("-");
-        string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
-
-        unlocalisedDialogue = unlocalisedDialogueName;
-        return unlocalisedDialogueName;
-    }
-
-    public string GetLocalisedDialogue(TextAsset dialogue)
-    {
-        string dialogueName = dialogue.name;
-
-        if (!ignoreDialogueLocalisation)
-        {
-            dialogueName = UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogue);
-        }
-        else
-        {
-            dialogueName = "FR-" + GetUnlocalisedDialogue(dialogue);
-        }
-
-        localisedDialogue = dialogueName;
-        return dialogueName;
-    }
-    public string GetUnlocalisedDialogue(string dialogue)
-    {
-        string dialogueName = dialogue;
-        int endOfLocalisation = dialogueName.IndexOf("-");
-        string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
-
-        unlocalisedDialogue = unlocalisedDialogueName;
-        return unlocalisedDialogueName;
-    }
-
-    public string GetLocalisedDialogue(string dialogue)
-    {
-        string dialogueName = dialogue;
-        if (!ignoreDialogueLocalisation)
-        {
-            dialogueName = UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogue);
-        }
-        else
-        {
-            dialogueName = "FR-" + GetUnlocalisedDialogue(dialogue);
-        }
-
-        localisedDialogue = dialogueName;
-        TextAsset temp = GetElementFileFromName(dialogueName);
-        currentDialogueFile = temp;
-
-        return dialogueName;
-    }
-
     private void Awake()
     {
         if (instance == null)
@@ -157,23 +105,6 @@ public class DialogueManager : MonoBehaviour
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
-    }
-
-    private void Update()
-    {
-        if (onGameSceneEntered)
-        {
-            StartDialogue();
-        }
-    }
-
-    public void StartDialogue()
-    {
-        reader = CSVReader.Instance;
-        displayer = DialogueDisplayer.Instance;
-        timeManager = TimeManager.Instance;
-        CreateAndStartDialogue(currentDialogueFile);
-        onGameSceneEntered = false;
     }
 
     #region Debugging
@@ -195,21 +126,133 @@ public class DialogueManager : MonoBehaviour
     }
     #endregion
 
-    public TextAsset GetElementFileFromName(string name)
+    #region Dialogue Initialisation
+    public TextAsset GetDialogueFileFromName(string name)
     {
-        return (TextAsset)Resources.Load("Tables\\" + name);
+        //Debug.LogWarning(name);
+        //Debug.LogWarning(GetLocalisedDialoguePath(name));
+        return (TextAsset)Resources.Load(GetLocalisedDialoguePath(name));
+    }
+    //The text asset form executes for dialogueFileToLoad at the start of the first occurence of the chat scene
+    public void CreateAndStartDialogue(TextAsset dialogueFile)
+    {
+        reader = CSVReader.Instance;
+        displayer = DialogueDisplayer.Instance;
+        timeManager = FindObjectOfType<TimeManager>();
+
+        currentDialogueFile = dialogueFile;
+        Debug.LogWarning(dialogueFile.name);
+        Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
+        dialogueToAdd.id = dialogueList.Count;
+        dialogueToAdd.fileName = dialogueFile.name;
+        AddDialogueToDialogueList(dialogueToAdd);
+        StartDialogue(dialogueToAdd);
     }
     private void AddDialogueToDialogueList(Dialogue dialogueToAdd)
     {
         dialogueList.Add(dialogueToAdd);
-        localisedDialogue = GetLocalisedDialogue(GetElementFileFromName(dialogueFileToLoad.name));
+        localisedDialogue = GetLocalisedDialogue(GetDialogueFileFromName(dialogueFileToLoad.name));
+    }
+    public void StartDialogue()
+    {
+        reader = CSVReader.Instance;
+        displayer = DialogueDisplayer.Instance;
+        timeManager = TimeManager.Instance;
+        CreateAndStartDialogue(currentDialogueFile);
     }
     private void StartDialogue(Dialogue dialogueToStart)
     {
         displayer.StartDialogue(dialogueToStart);
     }
+    #endregion
 
-    #region BRANCH Command / Dialogue Initialisation
+    #region Dialogue localisation functions
+    public string GetLocalisedDialoguePath(string dialogueName)
+    {
+        if (ignoreDialogueLocalisation)
+        {
+            return "Tables\\FR\\FR-" + GetUnlocalisedDialogue(dialogueName);
+        }
+
+        return "Tables\\" + UserSettings.Instance.languagePrefix + "\\" + dialogueName;
+    }
+    public string GetUnlocalisedDialogue(TextAsset dialogue)
+    {
+        string dialogueName = dialogue.name;
+        int endOfLocalisation = dialogueName.IndexOf("-");
+        string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
+
+        unlocalisedDialogue = unlocalisedDialogueName;
+        return unlocalisedDialogueName;
+    }
+    public string GetLocalisedDialogue(TextAsset dialogue, bool hasPrefix = true)
+    {
+        string dialogueName = dialogue.name;
+
+        if (!ignoreDialogueLocalisation)
+        {
+            if (hasPrefix)
+            {
+                dialogueName = UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogue);
+            }
+            else
+            {
+                dialogueName = UserSettings.Instance.languagePrefix + "-" + dialogue;
+            }
+
+        }
+        else
+        {
+            dialogueName = "FR-" + GetUnlocalisedDialogue(dialogue);
+        }
+
+        localisedDialogue = dialogueName;
+        return dialogueName;
+    }
+    public string GetUnlocalisedDialogue(string dialogue)
+    {
+        string dialogueName = dialogue;
+        int endOfLocalisation = dialogueName.IndexOf("-");
+        string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
+
+        unlocalisedDialogue = unlocalisedDialogueName;
+        return unlocalisedDialogueName;
+    }
+    public string GetLocalisedDialogue(string dialogue, bool hasPrefix = true)
+    {
+        string dialogueName = dialogue;
+        if (!ignoreDialogueLocalisation)
+        {
+            if (hasPrefix)
+            {
+                dialogueName = UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogue);
+            }
+            else
+            {
+                dialogueName = UserSettings.Instance.languagePrefix + "-" + dialogue;
+            }
+        }
+        else
+        {
+            if (hasPrefix)
+            {
+                dialogueName = "FR-" + GetUnlocalisedDialogue(dialogue);
+            }
+            else
+            {
+                dialogueName = "FR-" + dialogue;
+            }
+        }
+
+        localisedDialogue = dialogueName;
+        TextAsset temp = GetDialogueFileFromName(dialogueName);
+        currentDialogueFile = temp;
+
+        return dialogueName;
+    }
+    #endregion
+
+    #region BRANCH Command
 
     public void Branch(string dialogueFileName)
     {
@@ -220,7 +263,7 @@ public class DialogueManager : MonoBehaviour
                 displayer.cameFromBranch = true;
                 if (dialogueFileName != "")
                 {
-                    dialogueList.Insert(dialogueList.Count, CreateDialogue(GetLocalisedDialogue(UserSettings.Instance.languagePrefix + "-" + dialogueFileName)));
+                    dialogueList.Insert(dialogueList.Count, CreateDialogue(GetLocalisedDialogue(dialogueFileName, false)));
                 }
             }
         }
@@ -232,7 +275,7 @@ public class DialogueManager : MonoBehaviour
         displayer = DialogueDisplayer.Instance;
         timeManager = TimeManager.Instance;
 
-        currentDialogueFile = GetElementFileFromName(dialogueFileName);
+        currentDialogueFile = GetDialogueFileFromName(dialogueFileName);
         Dialogue dialogueToAdd = reader.CreateDialogueFromData(currentDialogueFile);
         dialogueToAdd.id = dialogueList.Count;
         dialogueToAdd.fileName = dialogueFileName;
@@ -240,24 +283,19 @@ public class DialogueManager : MonoBehaviour
         return dialogueToAdd;
     }
 
-    //The text asset function executes for the starting file
-    public void CreateAndStartDialogue(TextAsset dialogueFile)
+    //The string function executes when a BRANCH command is called
+    public void CreateAndStartDialogue(string dialogueFileName)
     {
+
         reader = CSVReader.Instance;
         displayer = DialogueDisplayer.Instance;
         timeManager = FindObjectOfType<TimeManager>();
 
-        currentDialogueFile = dialogueFile;
-        Dialogue dialogueToAdd = reader.CreateDialogueFromData(dialogueFile);
+        currentDialogueFile = (TextAsset)Resources.Load(GetLocalisedDialoguePath(dialogueFileName));
+        Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load(GetLocalisedDialoguePath(dialogueFileName)));
         dialogueToAdd.id = dialogueList.Count;
-        dialogueToAdd.fileName = dialogueFile.name;
         AddDialogueToDialogueList(dialogueToAdd);
         StartDialogue(dialogueToAdd);
-    }
-
-    //The string function executes when a BRANCH command is called
-    public void CreateAndStartDialogue(string dialogueFileName)
-    {
 
 #if UNITY_EDITOR
         colorCodeStart = "<color=yellow>";
@@ -269,16 +307,6 @@ public class DialogueManager : MonoBehaviour
             DebugElement(debugMessages.ToArray());
         }
 #endif
-
-        reader = CSVReader.Instance;
-        displayer = DialogueDisplayer.Instance;
-        timeManager = FindObjectOfType<TimeManager>();
-
-        currentDialogueFile = (TextAsset)Resources.Load("Tables\\" + dialogueFileName);
-        Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load("Tables\\" + dialogueFileName));
-        dialogueToAdd.id = dialogueList.Count;
-        AddDialogueToDialogueList(dialogueToAdd);
-        StartDialogue(dialogueToAdd);
     }
     #endregion
 
@@ -632,6 +660,13 @@ public class DialogueManager : MonoBehaviour
             AddToDebugFunctionMessage(colorCodeStart + "Sending a leave message that leads to Scene " + sceneToChangeTo + colorCodeEnd, debugMessages);
             DebugElement(debugMessages.ToArray());
         }
+        else if (displayer.allowedType == DialogueDisplayer.AllowedMessageType.LEAVE)
+        {
+            colorCodeStart = "<color=blue>";
+            AddToDebugFunctionMessage("=======INFO FUNCTION EXECUTING=======", debugMessages);
+            AddToDebugFunctionMessage(colorCodeStart + "Sending an info message" + colorCodeEnd, debugMessages);
+            DebugElement(debugMessages.ToArray());
+        }
 #endif
     }
     #endregion
@@ -670,7 +705,7 @@ public class DialogueManager : MonoBehaviour
         {
             if (mainChatDialoguesToSave[i].fileName == dialogueCheckpoint)
             {
-                dialogueFileToLoad = GetElementFileFromName(dialogueCheckpoint);
+                dialogueFileToLoad = GetDialogueFileFromName(dialogueCheckpoint);
                 displayer.SaveDialogueData(mainChatDialoguesToSave);
                 displayer.currentDialogueElementId = 1;
                 //Debug.LogError(displayer.currentDialogueElementId);

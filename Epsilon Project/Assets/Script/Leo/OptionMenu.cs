@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class OptionMenu : MonoBehaviour
 {
+    #region Display Variables (Shown in the game)
+
     public Image[] profilePictureTransforms;
     public TextMeshProUGUI sliderText;
     public Slider sliderMinTime;
@@ -16,10 +18,15 @@ public class OptionMenu : MonoBehaviour
     public TMP_Dropdown languageDropdown;
     bool audioMuted;
 
+    #endregion
+
+    #region Manager Values
+
     private int sliderMinTimeValue = 1;
     private int sliderMaxTimeValue = 7;
     private bool inactiveToggleValue = true;
     private bool autoModeToggleValue = true;
+    #endregion
 
     private bool initiating = false;
 
@@ -84,6 +91,69 @@ public class OptionMenu : MonoBehaviour
         UpdateMinMaxTime();
     }
 
+    #region Audio
+    private void MuteAudio()
+    {
+        if (!audioMuted)
+            SetAudioMute(false);
+        else if (audioMuted)
+            SetAudioMute(true);
+    }
+    private void SetAudioMute(bool mute)
+    {
+        AudioSource[] sources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        for (int index = 0; index < sources.Length; ++index)
+        {
+            sources[index].mute = mute;
+        }
+        audioMuted = mute;
+    }
+    #endregion
+
+    #region InactivityPeriods
+    public void SetSliderMinTime()
+    {
+        sliderMinTimeValue = (int)sliderMinTime.value;
+        if (!initiating && !inactivePeriodsToggle.isOn)
+        {
+            inactivePeriodsToggle.isOn = true;
+            autoModeToggle.isOn = false;
+        }
+        UpdateMinMaxTime();
+    }
+    public void SetSliderMaxTime()
+    {
+        sliderMaxTimeValue = (int)sliderMaxTime.value;
+        if (!initiating && !inactivePeriodsToggle.isOn)
+        {
+            inactivePeriodsToggle.isOn = true;
+            autoModeToggle.isOn = false;
+        }
+        UpdateMinMaxTime();
+    }
+    public void SetMinMaxTimeToToggle()
+    {
+        WwiseSoundManager.instance.Click.Post(gameObject);
+        inactiveToggleValue = inactivePeriodsToggle.isOn;
+        UpdateMinMaxTime();
+    }
+    private void DisableMinMaxTime()
+    {
+        inactivePeriodsToggle.isOn = false;
+        SetMinMaxTimeToToggle();
+    }
+    #endregion
+
+    #region AutoMode
+    public void SetAutoModeToToggle()
+    {
+        WwiseSoundManager.instance.Click.Post(gameObject);
+        autoModeToggleValue = autoModeToggle.isOn;
+        UpdateAutoMode();
+    } 
+    #endregion
+
+    #region Update
     private void UpdateMenu()
     {
         if (autoModeToggle.isOn)
@@ -113,48 +183,6 @@ public class OptionMenu : MonoBehaviour
 
         SaveSystem.SaveSettings(userSettings);
     }
-
-    public void SetSliderMinTime()
-    {
-        sliderMinTimeValue = (int)sliderMinTime.value;
-        if (!initiating && !inactivePeriodsToggle.isOn)
-        {
-            inactivePeriodsToggle.isOn = true;
-            autoModeToggle.isOn = false;
-        }
-        UpdateMinMaxTime();
-    }
-
-    public void SetSliderMaxTime()
-    {
-        sliderMaxTimeValue = (int)sliderMaxTime.value;
-        if (!initiating && !inactivePeriodsToggle.isOn)
-        {
-            inactivePeriodsToggle.isOn = true;
-            autoModeToggle.isOn = false;
-        }
-        UpdateMinMaxTime();
-    }
-
-    public void SetMinMaxTimeToToggle()
-    {
-        WwiseSoundManager.instance.Click.Post(gameObject);
-        inactiveToggleValue = inactivePeriodsToggle.isOn;
-        UpdateMinMaxTime();
-    }
-
-    private void DisableMinMaxTime()
-    {
-        inactivePeriodsToggle.isOn = false;
-        SetMinMaxTimeToToggle();
-    }
-
-    public void SetAutoModeToToggle()
-    {
-        WwiseSoundManager.instance.Click.Post(gameObject);
-        autoModeToggleValue = autoModeToggle.isOn;
-        UpdateAutoMode();
-    }
     private void UpdateAutoMode()
     {
         userSettings.autoMode = autoModeToggleValue;
@@ -163,7 +191,6 @@ public class OptionMenu : MonoBehaviour
         UpdateAutoModeInManager();
         UpdateMenu();
     }
-
     private void UpdateMinMaxTime()
     {
         sliderMinTime.value = sliderMinTimeValue;
@@ -193,32 +220,14 @@ public class OptionMenu : MonoBehaviour
         UpdateMinMaxTimeInManager();
         UpdateMenu();
     }
-
     private void UpdateMinMaxTimeInManager()
     {
         userSettings.inactivePeriodStartHour = sliderMinTimeValue;
         userSettings.inactivePeriodEndHour = sliderMaxTimeValue;
     }
-
     private void UpdateAutoModeInManager()
     {
         userSettings.autoMode = autoModeToggleValue;
     }
-
-    private void MuteAudio()
-    {
-        if (!audioMuted)
-            SetAudioMute(false);
-        else if (audioMuted)
-            SetAudioMute(true);
-    }
-    private void SetAudioMute(bool mute)
-    {
-        AudioSource[] sources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
-        for (int index = 0; index < sources.Length; ++index)
-        {
-            sources[index].mute = mute;
-        }
-        audioMuted = mute;
-    }
+    #endregion
 }

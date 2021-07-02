@@ -89,6 +89,7 @@ public class DialogueDisplayer : MonoBehaviour
     public GameObject repliesPanel;
     public GameObject replyButtonPrefab;
 
+    [Header("Confirmation window which pops up when you want to go back to the main menu")]
     public AnimBanner confirmationMessage;
 
     DialogueData data;
@@ -164,7 +165,6 @@ public class DialogueDisplayer : MonoBehaviour
             cachedDialogueManager.CreateAndStartDialogue(cachedDialogueManager.GetLocalisedDialogue(cachedDialogueManager.dialogueFileToLoad.name));
         }
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -238,7 +238,7 @@ public class DialogueDisplayer : MonoBehaviour
 
         GameManager.Instance.ResetMinigameProgressionValues();
 
-        cachedDialogueManager.dialogueFileToLoad = cachedDialogueManager.GetElementFileFromName("FR-Intro1");
+        cachedDialogueManager.dialogueFileToLoad = cachedDialogueManager.GetDialogueFileFromName("FR-Intro1");
     }
     public void UpdateDialogueState()
     {

@@ -13054,7 +13054,7 @@ MonoBehaviour:
   displayer: {fileID: 0}
   timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 64c7b97a163d10540b3c488569e8c101, type: 3}
-  dialogueFileToLoad: {fileID: 4900000, guid: bf7f7c3da72b9a34d976f1ea92cacb40, type: 3}
+  dialogueFileToLoad: {fileID: 4900000, guid: 04b8793397bf80446916f1c999aa7c08, type: 3}
   dialogueCheckpoint: 
   dialogueList: []
   mainChatDialoguesToSave: []
