@@ -222,6 +222,14 @@ public class DialogueDisplayer : MonoBehaviour
     }
     #endregion
 
+    public void ClearDialogueChat()
+    {
+        foreach (Transform child in messagePanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     #region Save/Load
     public void DeleteDialogueData()
     {
@@ -1321,7 +1329,7 @@ public class DialogueDisplayer : MonoBehaviour
                     DialogueElement newElement = new DialogueElement();
 
                     messageBubble.gameObject.SetActive(true);
-                    messageBubble.message.text = "Le lien qui a été envoyé n'est plus disponible";
+                    messageBubble.message.text = XMLManager.Instance.GetTagValue("unavailableLink");
                 }
                 currentDialogue.elements[currentDialogueElementId].elementAction = null;
 
@@ -1372,7 +1380,7 @@ public class DialogueDisplayer : MonoBehaviour
                     DialogueElement newElement = new DialogueElement();
 
                     messageBubble.gameObject.SetActive(true);
-                    messageBubble.message.text = "Le lien qui a été envoyé n'est plus disponible";
+                    messageBubble.message.text = XMLManager.Instance.GetTagValue("unavailableLink");
                 }
                 currentDialogue.elements[currentDialogueElementId].elementAction = null;
             }

@@ -45,6 +45,15 @@ public class XMLManager : MonoBehaviour
     }
 
     #region XMLTag fetching / Setup
+
+    public string GetTagValue(string tag) 
+    {
+        string strToReturn = "";
+        int languageId = (int)UserSettings.Instance.language;
+        dictionary[languageId].TryGetValue(tag, out strToReturn);
+
+        return strToReturn;
+    }
     public void GetSceneXMLTags()
     {
         xmlTagLists = new List<XMLTagList>();
@@ -185,6 +194,13 @@ public class XMLManager : MonoBehaviour
         DialogueManager.Instance.localisedDialogue = DialogueManager.Instance.GetLocalisedDialogue(DialogueManager.Instance.dialogueFileToLoad);
         DialogueManager.Instance.unlocalisedDialogue = DialogueManager.Instance.GetUnlocalisedDialogue(DialogueManager.Instance.dialogueFileToLoad);
     }
+
+    public void SwitchDialogueLanguage()
+    {
+        DialogueDisplayer.Instance.ClearDialogueChat();
+        DialogueDisplayer.Instance.LoadDialogueData();
+    }
+
     #endregion
 
     #region XMLTags Dynamic ID functions

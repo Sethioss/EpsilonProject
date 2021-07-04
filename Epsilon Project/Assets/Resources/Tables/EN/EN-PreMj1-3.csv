@@ -1,0 +1,9 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+You'll only be able to see his social network page, but you will be able to send me one mail of your choosing from his mailbox;;;;;;;
+;;;;;;;
+You can only send me one, okay? You only get one chance.;Ok, I understood;;;;;;
+;Why only one?;I want to scare him by making him believe I precisely know about his weaknesses. I only want to blackmail him with one element.;;;;;
+;;;;;;;
+I'll send you the link when you're ready.;I'm ready.;;;;;;
+;;;;;;;
+Good.;;;;;;<LINK>E-mails 'The link to his mailbox';

@@ -8584,7 +8584,7 @@ MonoBehaviour:
   inactivePeriods: 0
   inactivePeriodStartHour: 5
   inactivePeriodEndHour: 10
-  language: 1
+  language: 0
   languagePrefix: FR
   profilePicture: {fileID: 21300000, guid: 1c90b049c0955d4489d6617601677090, type: 3}
   popUpObject: {fileID: 1764447008}

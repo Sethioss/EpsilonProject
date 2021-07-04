@@ -171,6 +171,11 @@ public class GameManager : MonoBehaviour
 
     #region Dialogue and Scene Navigation functions
 
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void SetDialogue(TextAsset textToSet)
     {
         Debug.LogError(DialogueManager.Instance.GetDialogueFileFromName(DialogueManager.Instance.GetLocalisedDialogue(textToSet)).name);
@@ -201,6 +206,12 @@ public class GameManager : MonoBehaviour
     {
         SetDialogue(fileName);
         GoToChatScene();
-    } 
+    }
+
+    public void SetDialogueAndGoToChatScene(TextAsset file)
+    {
+        SetDialogue(file);
+        GoToChatScene();
+    }
     #endregion
 }

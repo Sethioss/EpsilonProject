@@ -12721,7 +12721,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6681529301092192989, guid: f0b8ff28b83b4ac48a020db149c21a71, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDialogueAndGoToGame
+        m_MethodName: SetDialogueAndGoToChatScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4900000, guid: 277a17576547aea43ac40619f06ccbb7, type: 3}
@@ -12736,7 +12736,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6681529301092192989, guid: f0b8ff28b83b4ac48a020db149c21a71, type: 3}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDialogueAndGoToGame
+        m_MethodName: SetDialogueAndGoToChatScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 4900000, guid: bf7f7c3da72b9a34d976f1ea92cacb40, type: 3}
@@ -63889,14 +63889,13 @@ MonoBehaviour:
   localisedDialogue: 
   unlocalisedDialogue: 
   ignoreDialogueLocalisation: 0
-  onGameSceneEntered: 0
-  reader: {fileID: 0}
-  displayer: {fileID: 0}
-  timeManager: {fileID: 0}
   currentDialogueFile: {fileID: 4900000, guid: 9ad692084cf4df542b24db3c3ffc0766, type: 3}
   dialogueFileToLoad: {fileID: 0}
   dialogueCheckpoint: 
   dialogueList: []
+  reader: {fileID: 0}
+  displayer: {fileID: 0}
+  timeManager: {fileID: 0}
   mainChatDialoguesToSave: []
   hackingChatDialoguesToSave: []
   debugReadCommandKeywords: 0
@@ -63906,7 +63905,6 @@ MonoBehaviour:
   m_wentBackHome: 0
   m_wentToBridge: 0
   username: Sebilol
-  confirmationMessage: {fileID: 0}
 --- !u!4 &2028010910
 Transform:
   m_ObjectHideFlags: 0

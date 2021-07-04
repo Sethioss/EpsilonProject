@@ -753,7 +753,7 @@ public class CSVReader : MonoBehaviour
                     {
                         //Creation d'un nouvel élément
 
-                        CreateEndElement(specialMessageElementBuffer, "The End");
+                        CreateEndElement(specialMessageElementBuffer, XMLManager.Instance.GetTagValue("endMessage"));
                     }
 
                     break;
@@ -856,7 +856,7 @@ public class CSVReader : MonoBehaviour
         leaveActions += delegate { DialogueManager.Instance.GoToCheckpoint(); };
 
         //Checkpoint reload reply
-        Reply leaveReply = new Reply("[Recommencer depuis le dernier point de sauvegarde]", null, 0, "00:00:00:01", leaveActions);
+        Reply leaveReply = new Reply(XMLManager.Instance.GetTagValue("gameOverReply1"), null, 0, "00:00:00:01", leaveActions);
         newElement.AddReply(leaveReply);
 
         //Back to menu reply
@@ -864,7 +864,7 @@ public class CSVReader : MonoBehaviour
         leaveActions += delegate { DialogueManager.Instance.AskForConfirmation(); };
 
         //Checkpoint reload reply
-        leaveReply = new Reply("[Retour au menu principal]", null, 1, "00:00:00:01", leaveActions);
+        leaveReply = new Reply(XMLManager.Instance.GetTagValue("gameOverReply2"), null, 1, "00:00:00:01", leaveActions);
         newElement.AddReply(leaveReply);
 
         elementBuffer.Add(newElement);
@@ -878,7 +878,7 @@ public class CSVReader : MonoBehaviour
         UnityAction leaveActions = null;
         leaveActions += delegate { DialogueManager.Instance.AskForConfirmation(); };
 
-        Reply leaveReply = new Reply("[Retour au menu principal]", null, 0, "00:00:00:05", leaveActions);
+        Reply leaveReply = new Reply(XMLManager.Instance.GetTagValue("endReply"), null, 0, "00:00:00:05", leaveActions);
         newElement.AddReply(leaveReply);
         newElement.messageType = DialogueElement.MessageType.END;
 
@@ -896,7 +896,8 @@ public class CSVReader : MonoBehaviour
     {
         if (leaveMessage == null)
         {
-            leaveMessage = "The user has left the chat";
+            XMLManager.Instance.GetTagValue("leaveMessage");
+            //leaveMessage = "The user has left the chat";
         }
 
         DialogueElement newElement = new DialogueElement(leaveMessage, tempDialogue.elements.Count, "00:00:00:05", null);
@@ -913,7 +914,7 @@ public class CSVReader : MonoBehaviour
         }
 
 
-        Reply leaveReply = new Reply("[Partir]", null, 0, "00:00:00:05", leaveActions);
+        Reply leaveReply = new Reply(XMLManager.Instance.GetTagValue("leaveReply1"), null, 0, "00:00:00:05", leaveActions);
         newElement.AddReply(leaveReply);
         newElement.messageType = DialogueElement.MessageType.LEAVE;
 

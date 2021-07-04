@@ -46,6 +46,7 @@ public class OptionMenu : MonoBehaviour
 
         userSettings.language = (UserSettings.Language)languageDropdown.value;
         XMLManager.Instance.SwitchLanguage();
+        XMLManager.Instance.SwitchDialogueLanguage();
     }
 
     public void Init()

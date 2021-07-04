@@ -61,6 +61,14 @@ De Vinci Paris</digitalSchool>
     <eraseDataWarning>Êtes-vous sûr de vouloir supprimer vos données de sauvegarde? L'application se fermera et vous reprendrez le jeu depuis le tout début</eraseDataWarning>
     <backToMenuWarning>Voulez-vous vraiment quitter et revenir au menu principal? Votre partie sera supprimée...</backToMenuWarning>
 
+    <unavailableLink>Le lien qui a été envoyé n'est plus disponible</unavailableLink>
+    <gameOverReply1>[Recommencer depuis le dernier point de sauvegarde]</gameOverReply1>
+    <gameOverReply2>[Retour au menu principal]</gameOverReply2>
+    <leaveMessage>L'utilisateur a quitté la conversation.</leaveMessage>
+    <leaveReply1>[Partir]</leaveReply1>
+    <endMessage>FIN</endMessage>
+    <endReply>[Retour au menu principal]</endReply>
+    
     <mj1LogInSignature>Une application de</mj1LogInSignature>
     <mj1LogInButton>[ CONNEXION ]</mj1LogInButton>
     <mj1ProfileBioContent>Bonjour je m'appelle Pierre tocan, je suis auriginaire du val d'oise et je suis marié depuis 10 ans avec Nathalie Tocan. </mj1ProfileBioContent>
@@ -416,6 +424,14 @@ De Vinci Paris
     <eraseDataText>Erase save data</eraseDataText>
     <eraseDataWarning>Are you sure you want to erase your save data? The application will close, and you will start again from the beginning</eraseDataWarning>
     <backToMenuWarning>Are you sure you want to leave? Your progression will be erased...</backToMenuWarning>
+
+    <unavailableLink>The link your interlocutor has sent is unavailable</unavailableLink>
+    <gameOverReply1>[Get back to the last checkpoint]</gameOverReply1>
+    <gameOverReply2>[Back to main menu]</gameOverReply2>
+    <leaveMessage>The user has left the chat.</leaveMessage>
+    <leaveReply1>[LEAVE]</leaveReply1>
+    <endMessage>THE END</endMessage>
+    <endReply>[Back to main menu]</endReply>
 
     <mj1LogInSignature>A sotfware from</mj1LogInSignature>
     <mj1LogInButton>[ LOG IN ]</mj1LogInButton>
