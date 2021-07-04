@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Dialogue initialisation and list")]
     [HideInInspector]
     public TextAsset currentDialogueFile;
+    [Header("Localisation doesn't matter here, it will automatically get localised in the localisedDialogue variable")]
     public TextAsset dialogueFileToLoad;
 
     [HideInInspector]
@@ -169,15 +170,17 @@ public class DialogueManager : MonoBehaviour
     #region Dialogue localisation functions
     public string GetLocalisedDialoguePath(string dialogueName)
     {
+        //Make sure the dialogue that is sent to this function has a prefix (FR-Intro1/EN-Intro1...)
         if (ignoreDialogueLocalisation)
         {
             return "Tables\\FR\\FR-" + GetUnlocalisedDialogue(dialogueName);
         }
 
-        return "Tables\\" + UserSettings.Instance.languagePrefix + "\\" + dialogueName;
+        return "Tables\\" + UserSettings.Instance.languagePrefix + "\\" + UserSettings.Instance.languagePrefix + "-" + GetUnlocalisedDialogue(dialogueName);
     }
     public string GetUnlocalisedDialogue(TextAsset dialogue)
     {
+        //Make sure the dialogue that is sent to this function has a prefix (FR-Intro1/EN-Intro1...)
         string dialogueName = dialogue.name;
         int endOfLocalisation = dialogueName.IndexOf("-");
         string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
@@ -187,6 +190,7 @@ public class DialogueManager : MonoBehaviour
     }
     public string GetLocalisedDialogue(TextAsset dialogue, bool hasPrefix = true)
     {
+        //Dialogues with prefixes only have their prefix changed depending on the chosen language (FR-Intro1 -> EN-Intro1)
         string dialogueName = dialogue.name;
 
         if (!ignoreDialogueLocalisation)
@@ -211,6 +215,7 @@ public class DialogueManager : MonoBehaviour
     }
     public string GetUnlocalisedDialogue(string dialogue)
     {
+        //Make sure the dialogue that is sent to this function has a prefix (FR-Intro1/EN-Intro1...)
         string dialogueName = dialogue;
         int endOfLocalisation = dialogueName.IndexOf("-");
         string unlocalisedDialogueName = dialogueName.Substring(endOfLocalisation + 1, dialogueName.Length - endOfLocalisation - 1);
@@ -220,6 +225,8 @@ public class DialogueManager : MonoBehaviour
     }
     public string GetLocalisedDialogue(string dialogue, bool hasPrefix = true)
     {
+        //Dialogues with prefixes only have their prefix changed depending on the chosen language (FR-Intro1 -> EN-Intro1)
+
         string dialogueName = dialogue;
         if (!ignoreDialogueLocalisation)
         {
@@ -251,6 +258,8 @@ public class DialogueManager : MonoBehaviour
         return dialogueName;
     }
     #endregion
+
+    #region Command execution functions
 
     #region BRANCH Command
 
@@ -292,7 +301,7 @@ public class DialogueManager : MonoBehaviour
         timeManager = FindObjectOfType<TimeManager>();
 
         currentDialogueFile = (TextAsset)Resources.Load(GetLocalisedDialoguePath(dialogueFileName));
-        Dialogue dialogueToAdd = reader.CreateDialogueFromData((TextAsset)Resources.Load(GetLocalisedDialoguePath(dialogueFileName)));
+        Dialogue dialogueToAdd = reader.CreateDialogueFromData(currentDialogueFile);
         dialogueToAdd.id = dialogueList.Count;
         AddDialogueToDialogueList(dialogueToAdd);
         StartDialogue(dialogueToAdd);
@@ -731,5 +740,6 @@ public class DialogueManager : MonoBehaviour
     {
         displayer.confirmationMessage.ChangeAnim();
     }
+    #endregion 
     #endregion
 }

@@ -1,0 +1,24 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Hey, is anyone there?;;;;;;;
+;;;;;;;
+I know someone's reading this;Hi, I'm there!;;;;;;
+;???;;;;;;
+;;;;;;;
+Thank you for replying;;;;;;;
+;;;;;;;
+I'll keep it short;;;;;;;
+;;;;;;;
+You'd better not uninstall this application;;;;;;;
+;;;;;;;
+Or ignore any of my messages from now on.;Who are you?!;My identity is irrelevant, at least for now;;;;;
+;Is that a threat?;I wish it wasn't;;;;;
+;;;;;;;
+I know you're using a <DMODEL>;;;;;;;
+;;;;;;;
+I know a lot of things. I have control over many others as well;You think I'm scared of you?!;Look, I admire brave people, okay? But in your case, it would be a wise move to not be one of them;;;;;
+;What do you want from me?!;;;;;;
+;;;;;;;
+Let me be clear with you, I'm not going to extort money from you nor am I going to make you do dangerous things.;;;;;;;
+;;;;;;;
+I just need your help.;How can I help?!;;;;<BRANCH>Intro1a;;
+;Why me??;;;;<BRANCH>Intro1b;;
