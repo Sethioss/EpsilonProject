@@ -1,0 +1,4 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Alright, I'll send you the link in a few minutes, get ready!;;;;;;;
+;;;;;;;
+As soon as you notify your presence, I send you the link;I'm there;;00:00:30:00;;<LINK>VirusTutorial 'Here's the link';;

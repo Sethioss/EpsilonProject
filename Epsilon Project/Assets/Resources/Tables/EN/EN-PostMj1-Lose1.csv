@@ -1,0 +1,21 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+It didn't work, unfortunately.;Shit!;;00:02:00:00;;;;
+;Seriously?;;;;;;
+;;;;;;;
+I'll be honest with you.;;;;;;;
+;;;;;;;
+I don't believe a single human lives without secrets. We all have something to hide.;And?;;;;;;
+;;;;;;;
+I would have liked to tell you something like : ''It's okay, there just wasn't any satisfying blackmailing material''. But I wouldn't have believed it myself.;;;;;;;
+;;;;;;;
+I think you messed up.;But I did my best!;;;;;;
+;So? Will you leave me alone now?;;;;;;
+;;;;;;;
+Unfortunately, I'm not letting you go for now. I still believe you can be of use to me.;Damn.;;;;;;
+;That's great news...;;;;;;
+;;;;;;;
+If you're okay with it.;;;;;;;
+;;;;;;;
+Sorry. Whether you're okay with it or not, we'll proceed with the next step. A slightly more serious one.;;;;;;;
+;;;;;;;
+I will contact you in a few hours.;;;;;;<BRANCH>PreMj2-1;

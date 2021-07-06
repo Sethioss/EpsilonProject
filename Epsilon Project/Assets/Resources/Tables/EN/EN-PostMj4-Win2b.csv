@@ -1,0 +1,9 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Very well, that will make my explanations easier, then.;;;;;;;
+;;;;;;;
+Our objective is to accelerate the fall of our society.;I see.;;;;;;
+;;;;;;;
+You see, but you still want to help me?Tu vois mais tu comptes quand même continuer à m'aider?;Yes.;;;;;;
+;I'll think about it...;;;;;;
+;;;;;;;
+Great, I'll recontact you soon.;;;;;;<BRANCH>PreMj5-1b;

@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I'm bringing good news. The mail you chose was the right one and I was able to blackmail him with it!;That's great news!;;00:02:00:00;;;;
+;I see.;;;;;;
+;;;;;;;
+He is forced to resign. We'll see the rest later.;How can you be so sure he'll resign?;;;;;<BRANCH>PostMj1-Win1c;
+;The rest?;;;;<BRANCH>PostMj1-Win1b;;

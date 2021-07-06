@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I don't have any relative to go to, but...;;;;;;;
+;;;;;;;
+The hotel might be a good idea.;;;;;;;
+;;;;;;;
+I'll get back to you.;;;;;;<BRANCH>Final-1;

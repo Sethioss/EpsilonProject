@@ -1,0 +1,14 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+That's simple. You will have to help me once I get inside the building.;;;;;;;
+;;;;;;;
+I'm currently programming what will allow you to disable the building's cameras.;;;;;;;
+;;;;;;;
+I initially thought about disabling all the cameras at once, but that would be too suspicious.;;;;;;;
+;;;;;;;
+Instead, you'll have do disable the cameras one by one as I pass under them.;Why don't your partners take care of it?;;;;;;
+;;;;;;;
+I just have serious doubts about my teammates and their intentions.;You don't trust them?;;;;;;
+;You think they'd betray you?;;;;;;
+;;;;;;;
+I'm wondering if they don't intend on sacrificing me...;What makes you think that?;;;;<BRANCH>PostMj3-3a;;
+;You should run away, then!;;;;<BRANCH>PostMj3-3b;;

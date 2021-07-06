@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Alright, stay connected, then. I think you'll have news withing one week.;Alright.;;;;;;
+;1 week?? That's a long time…;That's true, unfortunately, that is the time we'll need to make sure ou plan worked well.;;;;;
+;;;;;;;
+See you in a week!;;;;;;<BRANCH>Ending-1;

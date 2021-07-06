@@ -1,0 +1,12 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I'll take a look;;;00:00:05:00;;;;
+;;;;;;;
+I checked;;;;;;;
+;;;;;;;
+And checked again just to be sure;;;;;;;
+;;;;;;;
+These coordinates seem to lead to a bridge...;What do they want you to do on a bridge??;I have no idea;;;;;
+;Far from your home?;No, it's near.;;;;;
+;;;;;;;
+Do you think I should go there?;You should go.;;;;<BRANCH>Ending-5a;<BRANCH>Ending-5b;
+;You should get back home.;Are you sure?;;;;;

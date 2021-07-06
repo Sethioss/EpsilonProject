@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+The suitcase.;;;;;;;
+;;;;;;;
+The coordinates that were sent to me.;;;;;;;
+;;;;;;;
+It was supposed to protect me, but there was the corpse of one of my partners inside.;What??;;;;<BRANCH>Final-2;;

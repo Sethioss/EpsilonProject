@@ -712,7 +712,7 @@ public class DialogueManager : MonoBehaviour
     {
         for (int i = mainChatDialoguesToSave.Count - 1; i >= 0; i--)
         {
-            if (mainChatDialoguesToSave[i].fileName == dialogueCheckpoint)
+            if (GetUnlocalisedDialogue(mainChatDialoguesToSave[i].fileName) == GetUnlocalisedDialogue(dialogueCheckpoint))
             {
                 dialogueFileToLoad = GetDialogueFileFromName(dialogueCheckpoint);
                 displayer.SaveDialogueData(mainChatDialoguesToSave);

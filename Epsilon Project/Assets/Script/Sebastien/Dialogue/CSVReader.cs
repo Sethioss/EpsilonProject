@@ -894,13 +894,8 @@ public class CSVReader : MonoBehaviour
     }
     private void CreateLeaveElement(List<DialogueElement> elementBuffer, string branchToGoTo, string leaveMessage = null)
     {
-        if (leaveMessage == null)
-        {
-            XMLManager.Instance.GetTagValue("leaveMessage");
-            //leaveMessage = "The user has left the chat";
-        }
 
-        DialogueElement newElement = new DialogueElement(leaveMessage, tempDialogue.elements.Count, "00:00:00:05", null);
+        DialogueElement newElement = new DialogueElement(XMLManager.Instance.GetTagValue("leaveMessage"), tempDialogue.elements.Count, "00:00:00:05", null);
 
         UnityAction leaveActions = null;
 

@@ -1,0 +1,19 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I really don't know who it was.;;;00:00:30:00;;;;
+;;;;;;;
+I let my house behind;;;;;;;
+;;;;;;;
+I don't know what he plans on doing...;Is everything alright?;I don't know;;;;;
+;Try to stay calm;I'm fucking trying, but I don't know what to do!;;;;;
+;;;;;;;
+I'm outside;;;;;;;
+;;;;;;;
+I don't know if I should get back home;Get back home;;;;;;
+;Wait for a while.;;;;;;
+;;;;;;;
+Fuck, wait;;;00:00:05:00;;;;
+;;;;;;;
+I've just received coordinates.;;;;;;;
+;;;;;;;
+What.The.Fuck.;Where do the coordinates lead to??;;;;;<BRANCH>Ending-4;
+;Coordinates… For a location?;;;;<BRANCH>Ending-3a;;

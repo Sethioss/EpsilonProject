@@ -1,0 +1,21 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Okay, are you there?;Yes.;;00:01:00:00;;;;
+;No.;;;;;;
+;;;;;;;
+I will make a first request.;;;;;;;
+;;;;;;;
+I have to be honest, that is more of a whim than something that will help me.;;;;;;;
+;;;;;;;
+But that will allow me to ''test'' you;And what's your request?;;;;;;
+;Test what?;Telling you would make no sense.;;;;;
+;;;;;;;
+Well, your task is simple.;;;;;;;
+;;;;;;;
+Actually, forget it, it's not that simple.;;;;;;;
+;;;;;;;
+There is this man. An important manager of a no less important company.;;;;;;;
+;;;;;;;
+I know from reliable sources that he is guilty of sexual and moral harassment.;;;;;;;
+;;;;;;;
+With your help, I am planning to ruin his life.;Isn't that a bit extreme??;;;;<BRANCH>PreMj1-1a;;
+;Do you have any proof of your accusations?!;;;;<BRANCH>PreMj1-2;;

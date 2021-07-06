@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Okay, that is pretty embarassing, but...;;;;;;;
+;;;;;;;
+My partners don't trust me anymore. I can't turn back now.;;;;;;;
+;;;;;;;
+And I have been selected for the mission.;And I'm going to assist you? How?;;;;<BRANCH>PostMj3-3;;

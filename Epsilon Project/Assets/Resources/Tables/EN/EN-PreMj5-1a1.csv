@@ -1,0 +1,11 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I'll tell you two things : First of all, give you the details of our goal, and then, tell you about your final task.;;;;;;;
+;;;;;;;
+I told you our goal was to accelerate the positive feedback loops...;;;;;;;
+;;;;;;;
+This is because, as I've already told you, we don't believe it to be possible to stop our demise...;;;;;;;
+;;;;;;;
+So we're going to accelerate it so we can make our society more resilient.;;;;;;;
+;;;;;;;
+The longest our fall will take, the less resilient our society will be.;Resilient?;;;;<BRANCH>PreMj5-1a2;;
+;I see. And why didn't you tell me about it sooner?;;;;<BRANCH>PreMj5-1a3;;

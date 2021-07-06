@@ -1,0 +1,25 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Are they fucking with me?;You should leave.;;00:00:02:00;;;;
+;You should look around.;;;;;;
+;;;;;;;
+Wait.;;;;;;;
+;;;;;;;
+There's a suitcase.;A suitcase?;;;;;;
+;;;;;;;
+I'll get closer.;;;00:00:02:00;;;;
+;;;;;;;
+This is a very big one.;;;;;;;
+;;;;;;;
+Do you think that's what they wanted me to find?;I think so, yes.;;;;;;
+;Was it hidden or in plain sight?;It wasn't really hidden.;;;;;
+;;;;;;;
+Do you think I should open it?;Yes, open it.;;;;<BRANCH>Ending-7a;;
+;No, you should leave.;;;;;;
+;;;;;;;
+I think so too.;;;;;;;
+;;;;;;;
+I'm getting out of here.;;;;;;;
+;;;;;;;
+I'll find a hotel or smth;;;;;;;
+;;;;;;;
+I'll get back to you.;;;;;;<BRANCH>Final-1;

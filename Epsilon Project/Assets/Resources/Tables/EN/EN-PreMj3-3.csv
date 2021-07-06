@@ -1,0 +1,14 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+That's what drives us to act. I can't tell you the way we're going to intervene, but... You'll see it soon enough.;When you say that Humanity is running to its doom, what do you mean exactly?;I will tell you later. I'm sorry, but I don't have time to give you more information for now.;;;;;
+;Very well.;;;;;;
+;;;;;;;
+Besides... I have other bad news.;;;;;;;
+;;;;;;;
+Thanks to you, the hackers did contact us.;;;;;;;
+;;;;;;;
+But they very quickly stopped giving news.;;;;;;;
+;;;;;;;
+We still intend on going forward though.;What are you planning to do?;;;;;;
+;;;;;;;
+We'll infiltrate a building and place a hacking device within it.;What kind of building?;;;;<BRANCH>PreMj3-3a;;
+;Why?;;;;<BRANCH>PreMj3-3b;;

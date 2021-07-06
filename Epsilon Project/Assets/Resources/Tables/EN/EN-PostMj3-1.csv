@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Very well, I'll contact you soon!;;;;;;;
+;;;;;;;
+Okay, listen. The next step will be of utmost importance.;Another preparation for the infiltration?;;00:02:00:00;;<BRANCH>PostMj3-1a;;
+;The infiltration itself?;;;;<BRANCH>PostMj3-2;;

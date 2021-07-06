@@ -1,0 +1,22 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Our base goal was to make the data we stole from the company indecipherable.;;;;;;;
+;;;;;;;
+And given how important these were, it would have had a devastating effect on many of the central aspects of our society.;;;;;;;
+;;;;;;;
+That would have easily created a domino effect.;But...?;;;;;;
+;;;;;;;
+But dissension began to emerge within the group.;;;;;;;
+;;;;;;;
+When some people understood that the actual goal was to ask a ransom to the company.;A ransom?;;;;;;
+;;;;;;;
+Yes. An enormous amount of money, against the key that would have allowed them to get their data back.;;;;;;;
+;;;;;;;
+Of course, it didn't work out, as many didn't agree with this goal. Until someone eventually ratted us out.;;;;;;<CHECK>wentBackHome = 1 ? <BRANCH>Final-2a :  !;
+;;;;;;;
+I had already been pushed off, so I don't know a lot about this situation. The only thing I know is that someone from the group had actually attempted to protect me.;;;;;;;
+;;;;;;;
+They are the ones who got rid of the body.;;;;;;;
+;;;;;;;
+Anyway;;;;;;;
+;;;;;;;
+I'm sorry for everything;;;;;;<END>;

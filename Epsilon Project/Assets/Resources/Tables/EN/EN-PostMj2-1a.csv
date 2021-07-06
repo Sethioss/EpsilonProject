@@ -1,0 +1,15 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+What did he say?;That I should be wary of you and find a way to leave.;Je vois.;;;;;
+;Nothing, that wasn't important;;;;<BRANCH>PostMj2-1b;;
+;;;;;;;
+I will tell you something.;;;;;;;
+;;;;;;;
+I told you that I was part of a group. That is true.;;;;;;;
+;;;;;;;
+That me and my group have decided to confirm you, that is wrong. I'm the only one who decided to send you a message.;;;;;;;
+;;;;;;;
+My group doesn't know about our conversations. I must admit, you'd be in danger if my group knew about it.;;;;;;;
+;;;;;;;
+But I'll cover you, I'll take my responsibilities.;;;;;;;
+;;;;;;;
+If you want to stop, just uninstall this app and you'll be off the hook. Otherwise, stay logged in, I will contact you soon.;;;;;;<BRANCH>PreMj3-1;

@@ -1,0 +1,19 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Are you there?;Yes.;;00:12:00:00;;;<CHECKPOINT>;
+;;;;;;;
+Good, I'm ready to infiltrate the building. I will quickly brief you, then I will give you the link.;;;;;;;
+;;;;;;;
+You'll have to wait 5 minutes before I get in the building and you will be able to disable the cameras.;;;;;;;
+;;;;;;;
+I'll explain you what to do.;Ok;;;;;;
+;;;;;;;
+You will be able to see the building's map. I will be represented by an orange capsule. The cameras and their field of view by cones;;;;;;;
+;;;;;;;
+You will have to be assured I don't pass through the cameras' vision during the whole infiltration.;;;;;;;
+;;;;;;;
+You'll just have to select the corresponding camera group. They will be ''Disabled'' for a moment. That will be more than enough for the pass by them, as long as you don't mess up the timing.;;;;;;;
+;;;;;;;
+Tell me when you're ready, I'll send you the link when I'll be inside the building, okay?;Understood;;;;;;
+;I'm not sure I understood...;We don't have time, read the messages and I'll send you the link.;;;;;
+;;;;;;;
+I'm counting on you.;;;00:00:05:00;;;<LINK>TutoStealthMinigame;

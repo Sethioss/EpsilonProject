@@ -1,0 +1,15 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Did y'all like my lil' game?;;;;;;;
+;;;;;;;
+Wait.;;;;;;;
+;;;;;;;
+Who're you?;;;;;;;
+;;;;;;;
+You related to them?;I... Think so?;;;;;;
+;;;;;;;
+You know what your getting into?;Yes, I know.;If you know that's good;;;;;
+;I'm forced to do all those things, I don't understand any of your stories!;I see what they're doing;;;;;
+;;;;;;;
+A piece of advice : Find a way to get away from it all;;;;;;;
+;;;;;;;
+I'll contact 'em myself;;;;;;<LEAVE>'PostMj2-1';

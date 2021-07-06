@@ -1,0 +1,13 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I'm here.;;;00:00:20:00;;;<SET>wentToBridge 1;
+;;;;;;;
+I'm on the bridge.;Do you see something?;;;;;;
+;;;;;;;
+No, there's nothing, nor is there anyone.;;;;;;;
+;;;;;;;
+I can go under the bridge and get to the other side.;You should check under the bridge.;Alright, I'll tell you if I find something.;;;;;
+;Check the other side.;;;;<BRANCH>Ending-6a;;
+;;;;;;;
+There's nothing there.;;;00:00:04:00;;;;
+;;;;;;;
+That's weird, I'm sure these are the right coordinates...;;;;;;<BRANCH>Ending-7;

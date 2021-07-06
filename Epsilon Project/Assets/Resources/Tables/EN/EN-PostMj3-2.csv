@@ -1,0 +1,8 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Yes.;Don't tell me that I'll actually be the one infiltrating into the building...;No, don't worry. I told you that I wouldn't make you do dangerous things.;;;;;
+;What will I have to do?;Wel...;;;;;
+;;;;;;;
+Let's say you're going to assist me.;Assist you? What does that mean?;;;;;;
+;;;;;;;
+I'm the one who has been nominated to infiltrate the building.;What? Why isn't is someone else?;;;;<BRANCH>PostMj3-2a;;
+;Okay, but what do I have to do then?;;;;<BRANCH>PostMj3-3;;

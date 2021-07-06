@@ -1,0 +1,17 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Wait.;??;;;;;;
+;;;;;;;
+The man I was talking you about.;;;00:00:05:00;;;;
+;;;;;;;
+He's there.;;;;;;;
+;;;;;;;
+I think he saw me, he's in front of my house.;Stay on the lookout!;Yes, I'm observing him right now...;;;;;
+;Can you take a picture of him??;I'm way too scared for that!;;;;;
+;;;;;;;
+Fuck;?!;;;;;;
+;;;;;;;
+I'm sure he saw me. He arrived at my door and repeatedly knocked. What do I do?!;Open the door;;;;;;
+;Find a way to run away!;;;;<BRANCH>Ending-2a;;
+;;;;;;;
+Are you sure? Do you think I can trust him?;Yes. Go on.;;;;;<BRANCH>Ending-2b;
+;Mmh… When I think about it, you should run.;;;;<BRANCH>Ending-2a;;

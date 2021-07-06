@@ -1,0 +1,14 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+If only you knew how glad I am to finally be able to talk to you!;Are you okay?;;01:00:00:00;;;;
+;You're... Glad to talk to me? I mean, are you okay?!;;;;;;
+;;;;;;;
+I'm doing okay, yes... I believe I haven't been seen by the cameras, and that's thanks to you! At least, that's wht I believe...;You think?;Yes. According to my partners, I've been covered by them... But I have no way of knowing if this is true or not.;;;;;
+;That's good!;According to my partners, I've been covered by them... But I have no way of knowing if this is true or not.;;;;;
+;;;;;;;
+In my eyes, you are the one who helped me, and I'd better not count on my partners for this kind of thing anymore.;I'm glad!;;;;<BRANCH>PostMj4-Win2;;
+;How did it go?;;;;;;
+;;;;;;;
+I must say that it was really stressful. I almost messed up when someone started to flirt with me, but...;But?; But my partners have been able to divert this guy's attention.;;;;;
+;;;;;;;
+This doesn't mean that I trust them though. They only wanted me to succeed in my mission, not to get out scot-free.;I see.;;;;<BRANCH>PostMj4-Win2;;
+;Maybe you should trust them more.;;;;<BRANCH>PostMj4-Win1a;;

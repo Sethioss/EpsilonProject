@@ -1,0 +1,12 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I had already been pushed off, so I don't know a lot about this situation. The only thing I know is that someone from the group had actually attempted to warn me.;;;;;;;
+;;;;;;;
+They're the one who got shut down in front of my home.;;;;;;<CHECK>wentToBridge = 1 ? <BRANCH>Final-2a1 :  !;
+;;;;;;;
+And the suitcase.;;;;;;;
+;;;;;;;
+It was probably the corpse of another one of my partners.;;;;;;;
+;;;;;;;
+I don't want to talk about it anymore...;;;;;;;
+;;;;;;;
+I'm sorry for all of this.;;;;;;<END>;

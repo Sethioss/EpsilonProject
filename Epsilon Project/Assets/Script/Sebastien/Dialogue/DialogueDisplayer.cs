@@ -1423,7 +1423,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
     private DialogueElement CreateLeaveMessageBubble(MessageBubble messageBubble)
     {
-        DialogueElement newElement = new DialogueElement(currentDialogue.elements[currentDialogueElementId].message, currentDialogue.elements[currentDialogueElementId].index,
+        DialogueElement newElement = new DialogueElement(XMLManager.Instance.GetTagValue("leaveMessage"), currentDialogue.elements[currentDialogueElementId].index,
          currentDialogue.elements[currentDialogueElementId].initiationTime, currentDialogue.elements[currentDialogueElementId].elementAction);
 
         newElement.messageType = currentDialogue.elements[currentDialogueElementId].messageType;
@@ -1663,10 +1663,16 @@ public class DialogueDisplayer : MonoBehaviour
         System.DateTime typingTime = System.DateTime.MinValue;
         if (message != null || message != "")
         {
+            try
+            {
+                int typingSpeed = GetTypingSpeed(message);
 
-            int typingSpeed = GetTypingSpeed(message);
+                typingTime = typingTime.AddSeconds(typingSpeed);
+            }
+            catch
+            {
 
-            typingTime = typingTime.AddSeconds(typingSpeed);
+            }
 
         }
         return typingTime;

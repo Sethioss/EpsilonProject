@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Let's say you're going to assist me.;Assist you in what?;;;;;;
+;;;;;;;
+I can't tell you for now;At least tell me what you want me to do!;;;;<BRANCH>Intro2;;
+;Ok, but then, why did you contact me in particular?;;;;<BRANCH>Intro1b;;

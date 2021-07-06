@@ -1,0 +1,8 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Alright, sorry to not have contacted you earlier.;No worries.;;00:24:00:00;;<BRANCH>PreMj5-2;<CHECKPOINT>;
+;Took you long enough.;;;;;;
+;;;;;;;
+You're starting to get into it?;I was just worried about you;I see. That's almost kind, you know?;;;;<BRANCH>PreMj5-2;
+;I must admit that yes.;That's good to hear, but we're nearing the end of our project.;;;;;
+;;;;;;;
+Sorry for not contacting you sooner.;;;;;;;

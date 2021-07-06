@@ -1,0 +1,10 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I'm scared he might still be there.;You're right. Maybe you should go to the coordinates.;;;;;;
+;Try to at least give it a look.;;;;<BRANCH>Ending-5b1;;
+;;;;;;;
+Yeah.;;;;;;;
+;;;;;;;
+I'll do that.;;;;;;;
+;;;;;;;
+I have to know what they want from me.;Okay.;;;;<BRANCH>Ending-5c;;
+;Keep me updated.;;;;<BRANCH>Ending-5c;;

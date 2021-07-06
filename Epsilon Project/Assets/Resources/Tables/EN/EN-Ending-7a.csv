@@ -1,0 +1,19 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Are you sure??;;;;;;;
+;;;;;;;
+Fuck I really hope I'm making the right choice by listening to you.;;;;;;;
+;;;;;;;
+FUCK;;;00:00:03:00;;;;
+;;;;;;;
+It's fucking DISGUSTING;;;;;;;
+;;;;;;;
+It FUCKING STINKS!!;It has a smell??;;;;;;
+;;;;;;;
+THE SMELL IS UNBEARABLE;You should run away!!;;;;;;
+;Look what's inside!;;;;<BRANCH>Ending-7a1;;
+;;;;;;;
+You're goddamn right, I'm getting the shit out of here;;;;;;;
+;;;;;;;
+I'll book a hotel room or smth;;;00:00:20:00;;;;
+;;;;;;;
+I'll get back to you;;;;;;<BRANCH>Final-1;

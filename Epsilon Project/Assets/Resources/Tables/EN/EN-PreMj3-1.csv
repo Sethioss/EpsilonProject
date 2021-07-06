@@ -1,0 +1,18 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Are you there? Please tell me you're there.;Yes.;;00:16:00:00;;;;
+;;;;;;;
+Good. Listen, I'll make myself more clear.;;;;;;;
+;;;;;;;
+On our motivation.;I'm listening.;;;;;;
+;Finally!;;;;;;
+;;;;;;;
+We are a group of individuals who have all been... Disappointed in their life, in some way.;;;;;;;
+;;;;;;;
+For some, it was a godsend, but for others, it was another misfortune and one more source of fear.;;;;;;;
+;;;;;;;
+But we've all inquired about the future of our world and society.;;;;;;;
+;;;;;;;
+Either by ourselves, or by ''Informing each other'';;;;;;;
+;;;;;;;
+And... We got used to the idea that our future was going to be pretty dark.;What does that mean?;;;;<BRANCH>PreMj3-2;;
+;What about you?;;;;<BRANCH>PreMj3-1a;;

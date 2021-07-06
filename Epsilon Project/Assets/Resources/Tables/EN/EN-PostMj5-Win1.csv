@@ -1,0 +1,19 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+It worked.;;;00:01:00:00;;;<CHECKPOINT>;
+;;;;;;;
+I'm confirming that it worked, you did it.;No problem;;;;;;
+;That wasn't difficult!;;;;;;
+;;;;;;;
+Now, I will leave you alone.;;;;;;;
+;;;;;;;
+You still want news concerning our plan's success?;I don't know... That might be dangerous.;;;;;;
+;Yes, of course!;;;;<BRANCH>PostMj5-Win2;;
+;;;;;;;
+I promess I'll keep protecting you, you won't be in danger.;;;;;;;
+;;;;;;;
+Although... That's your choice, do as you wish.;I insist, I think it would be best if you never talked to me again.;;;;;;
+;Actually, I still want news.;;;;<BRANCH>PostMj5-Win2;;
+;;;;;;;
+I see. If that's what you want...;;;;;;;
+;;;;;;;
+Goodbye, and thanks for everything. Sorry to have bothered you.;;;;;;<GAMEOVER>'The user has left the conversation';

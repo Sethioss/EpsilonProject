@@ -1,0 +1,4 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Sorry if that disappoints you, but I didn't choose you in particular, that message was sent to multiple people at random.;;;;;;;
+;;;;;;;
+You were the first one to reply, so i figured I'd go with you.;Are you implying I shouldn't have answered?;It's up to you.;;;;<BRANCH>Intro2;

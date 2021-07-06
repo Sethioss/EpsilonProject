@@ -1,0 +1,5 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Of course not, but once again, it was a simple test. We can get down to business, if you're fine with that.;Yes, I'm fine with that.;;;;;;
+;Do I even have a choice?;;;;;;
+;;;;;;;
+Alright, I'll see you in a few hours.;;;;;;<BRANCH>PreMj2-1;

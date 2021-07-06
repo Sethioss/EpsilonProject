@@ -1,0 +1,12 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+So?;I think I did it.;Seriously? Great!;;;;;
+;;;;;;;
+But why do you ''think''?;I didn't get anything of what he said;;;;;;
+;We'll have to wait for a while to be sure;;;;;;
+;;;;;;;
+Did he at least he would contact us?;Yes;;;;;;
+;;;;;;;
+That's good then! Good job!;;;;;;;
+;;;;;;;
+Did he say anything else?;Now that you mention it...;;;;<BRANCH>PostMj2-1a;;
+;No, he only told me that;;;;<BRANCH>PostMj2-1b;;

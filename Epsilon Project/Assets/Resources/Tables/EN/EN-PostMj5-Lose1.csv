@@ -1,0 +1,6 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+I thought it was a pretty simple task but I must have underestimated it.;;;;;;;
+;;;;;;;
+I shouldn't have put so much pressure on someone who doesn't know anything.;;;;;;;
+;;;;;;;
+I'm sorry for all the bother.;;;;;;<GAMEOVER>'The user has left the conversation';

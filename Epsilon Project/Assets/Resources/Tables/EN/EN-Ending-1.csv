@@ -1,0 +1,26 @@
+Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
+Are you there ?;Yes?;Sorry to contact you out of the blue, but...;00:12:00:00;;;<CHECKPOINT>;
+;Hey, weren't you supposed to send me a message in 1 week?;Yes, but I'm contacting you for another reason.;;;;;
+;;;;;;;
+I'm really scared…;Is everything okay??;;;;;;
+;Scared of what??;;;;;;
+;;;;;;;
+It's been two days that I have the feeling I'm observed… I think I'm being followed.;Who would follow you?;;;;;;
+;Are you sure?!;;;;;;
+;;;;;;;
+I don't know, I feel like I'm going crazy...;;;;;;;
+;;;;;;;
+Yesterday, I've seen a man in front of my home.;Did he stay long?;;;;;;
+;Maybe that's a coincidence?;;;;;;
+;;;;;;;
+He stayed there for around four hours...;Oh, that's a lot...;;;;;;
+;????? What;;;;;;
+;;;;;;;
+And that's not all...;;;;;;;
+;;;;;;;
+I feel like I'm being followed in the street.;;;;;;;
+;;;;;;;
+Even today, I have the feeling a man was following me.;Do you think you know who it is?;;;;;;
+;Are you sure all those hacking activities aren't getting to your head?;;;;<BRANCH>Ending-1a;;
+;;;;;;;
+No, I have doubts concerning who might have sent someone after me, but...;Who do you think it is?;;;;<BRANCH>Ending-2;;
