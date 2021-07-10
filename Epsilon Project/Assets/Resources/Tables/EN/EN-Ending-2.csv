@@ -14,4 +14,4 @@ I'm sure he saw me. He arrived at my door and repeatedly knocked. What do I do?!
 ;Find a way to run away!;;;;<BRANCH>Ending-2a;;
 ;;;;;;;
 Are you sure? Do you think I can trust him?;Yes. Go on.;;;;;<BRANCH>Ending-2b;
-;Mmh… When I think about it, you should run.;;;;<BRANCH>Ending-2a;;
+;Mmh... When I think about it, you should run.;;;;<BRANCH>Ending-2a;;
