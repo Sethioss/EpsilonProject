@@ -1,11 +1,11 @@
 Message;Possible Answers;Reactions;Initiation time (dd:hh:mm:ss);Reaction Time (dd:hh:mm:ss);ReplyEvents;ElementEvents;DialogueEvents
-Are you there ?;Yes?;Sorry to contact you out of the blue, but...;00:12:00:00;;;<CHECKPOINT>;
+Are you there?;Yes?;Sorry to contact you out of the blue, but...;00:12:00:00;;;<CHECKPOINT>;
 ;Hey, weren't you supposed to send me a message in 1 week?;Yes, but I'm contacting you for another reason.;;;;;
 ;;;;;;;
-I'm really scared…;Is everything okay??;;;;;;
+I'm really scared...;Is everything okay??;;;;;;
 ;Scared of what??;;;;;;
 ;;;;;;;
-It's been two days that I have the feeling I'm observed… I think I'm being followed.;Who would follow you?;;;;;;
+It's been two days that I have the feeling I'm observed... I think I'm being followed.;Who would follow you?;;;;;;
 ;Are you sure?!;;;;;;
 ;;;;;;;
 I don't know, I feel like I'm going crazy...;;;;;;;
