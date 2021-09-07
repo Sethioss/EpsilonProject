@@ -46,7 +46,11 @@ public class OptionMenu : MonoBehaviour
 
         userSettings.language = (UserSettings.Language)languageDropdown.value;
         XMLManager.Instance.SwitchLanguage();
-        XMLManager.Instance.SwitchDialogueLanguage();
+
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            XMLManager.Instance.SwitchDialogueLanguage();
+        }
     }
 
     public void Init()
@@ -151,7 +155,7 @@ public class OptionMenu : MonoBehaviour
         WwiseSoundManager.instance.Click.Post(gameObject);
         autoModeToggleValue = autoModeToggle.isOn;
         UpdateAutoMode();
-    } 
+    }
     #endregion
 
     #region Update
